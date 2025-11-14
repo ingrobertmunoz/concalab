@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Informes y Reportes de Ensayos de Aptitud - CONCALAB-UASD. Visualiza los resultados y análisis estadísticos de nuestros programas.">
+    <title>Informes - CONCALAB-UASD</title>
+    
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="icon" type="image/x-icon" href="../assets/icons/favicon.ico">
+    
+    <style>
+        .blog-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .blog-post {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 0;
+        }
+
+        .blog-post:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-3px);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 250px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .blog-content {
+            padding: 2rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            flex-wrap: wrap;
+        }
+
+        .blog-category {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .blog-title {
+            font-size: 1.75rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .blog-excerpt {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .blog-author {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .filter-bar {
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .filter-tags {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-tag {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--border-color);
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .filter-tag:hover,
+        .filter-tag.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+        }
+
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--border-color);
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .page-btn:hover,
+        .page-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .embed-placeholder {
+            background: var(--bg-light);
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            padding: 3rem;
+            text-align: center;
+            color: var(--text-light);
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .blog-post {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-tags {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-overlay"></div>
+
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="../assets/images/logo-concalab.png" alt="Logo CONCALAB-UASD" onerror="this.style.display='none'">
+                <div class="logo-text">
+                    <div class="logo-title">CONCALAB-UASD</div>
+                    <div class="logo-subtitle">Control de Calidad de Laboratorios</div>
+                </div>
+            </div>
+
+            <nav class="nav-main">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="../index.html" class="nav-link">Inicio</a></li>
+                    <li class="nav-item dropdown active">
+                        <a href="#" class="nav-link">Publicaciones</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="protocolos.html" class="nav-link">Protocolos</a></li>
+                            <li><a href="informes.html" class="nav-link active">Informes</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="../portal-educativo.html" class="nav-link">Portal Educativo</a></li>
+                    <li class="nav-item"><a href="../servicios.html" class="nav-link">Servicios</a></li>
+                    <li class="nav-item"><a href="../miembros.html" class="nav-link">Miembros</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Sobre Nosotros</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../sobre-nosotros/quienes-somos.html" class="nav-link">Quiénes Somos</a></li>
+                            <li><a href="../sobre-nosotros/historia.html" class="nav-link">Historia</a></li>
+                            <li><a href="../sobre-nosotros/marco-legal.html" class="nav-link">Marco Legal</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="../contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Buscar...">
+                    <button class="search-btn" aria-label="Buscar">🔍</button>
+                </div>
+            </nav>
+
+            <button class="menu-toggle" aria-label="Menú">☰</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in-down">
+                <h1 class="hero-title">Informes y Reportes</h1>
+                <p class="hero-subtitle">Visualiza los resultados, análisis estadísticos y gráficos interactivos de nuestros ensayos de aptitud</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            
+            <!-- Barra de filtros -->
+            <div class="filter-bar reveal">
+                <div class="filter-tags">
+                    <button class="filter-tag active" data-category="todos">Todos</button>
+                    <button class="filter-tag" data-category="quimica">Química Clínica</button>
+                    <button class="filter-tag" data-category="uroanalisis">Uroanálisis</button>
+                    <button class="filter-tag" data-category="estadisticas">Estadísticas</button>
+                </div>
+                <span style="color: var(--text-light); font-size: 0.9rem;">📊 12 informes publicados</span>
+            </div>
+
+            <!-- Grid de Blog/Informes -->
+            <div class="blog-grid">
+                
+                <!-- Post 1 -->
+                <article class="blog-post reveal" data-category="quimica">
+                    <div class="blog-image">📊</div>
+                    <div class="blog-content">
+                        <span class="blog-category">Química Clínica</span>
+                        <h2 class="blog-title">Informe de Resultados - Glucosa Q4 2024</h2>
+                        <div class="blog-meta">
+                            <span>📅 Diciembre 2024</span>
+                            <span>👁️ 342 vistas</span>
+                            <span>💬 8 comentarios</span>
+                        </div>
+                        <p class="blog-excerpt">
+                            Análisis estadístico completo de los resultados del ensayo de aptitud de glucosa 
+                            correspondiente al cuarto trimestre de 2024. Incluye gráficos interactivos, 
+                            comparativas entre laboratorios y recomendaciones.
+                        </p>
+                        <div class="blog-footer">
+                            <div class="blog-author">
+                                <span>👤</span>
+                                <span>Equipo CONCALAB</span>
+                            </div>
+                            <a href="#" class="btn btn-outline">Ver Informe Completo</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post 2 -->
+                <article class="blog-post reveal" data-category="uroanalisis">
+                    <div class="blog-image">🧪</div>
+                    <div class="blog-content">
+                        <span class="blog-category">Uroanálisis</span>
+                        <h2 class="blog-title">Resultados Uroanálisis - Noviembre 2024</h2>
+                        <div class="blog-meta">
+                            <span>📅 Noviembre 2024</span>
+                            <span>👁️ 278 vistas</span>
+                            <span>💬 5 comentarios</span>
+                        </div>
+                        <p class="blog-excerpt">
+                            Informe detallado de los ensayos de aptitud en uroanálisis: proteínas, glucosa, 
+                            cuerpos cetónicos, bilirrubina y nitritos. Análisis de desempeño por laboratorio 
+                            y región.
+                        </p>
+                        <div class="blog-footer">
+                            <div class="blog-author">
+                                <span>👤</span>
+                                <span>Equipo CONCALAB</span>
+                            </div>
+                            <a href="#" class="btn btn-outline">Ver Informe Completo</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post 3 -->
+                <article class="blog-post reveal" data-category="quimica">
+                    <div class="blog-image">💉</div>
+                    <div class="blog-content">
+                        <span class="blog-category">Química Clínica</span>
+                        <h2 class="blog-title">Análisis de Perfil Lipídico - Octubre 2024</h2>
+                        <div class="blog-meta">
+                            <span>📅 Octubre 2024</span>
+                            <span>👁️ 425 vistas</span>
+                            <span>💬 12 comentarios</span>
+                        </div>
+                        <p class="blog-excerpt">
+                            Resultados de los ensayos de aptitud para colesterol total, HDL, LDL y triglicéridos. 
+                            Comparativa inter-laboratorios con análisis de z-score y desviación estándar.
+                        </p>
+                        <div class="blog-footer">
+                            <div class="blog-author">
+                                <span>👤</span>
+                                <span>Equipo CONCALAB</span>
+                            </div>
+                            <a href="#" class="btn btn-outline">Ver Informe Completo</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post 4 -->
+                <article class="blog-post reveal" data-category="estadisticas">
+                    <div class="blog-image">📈</div>
+                    <div class="blog-content">
+                        <span class="blog-category">Estadísticas</span>
+                        <h2 class="blog-title">Resumen Anual 2024 - Participación Nacional</h2>
+                        <div class="blog-meta">
+                            <span>📅 Septiembre 2024</span>
+                            <span>👁️ 589 vistas</span>
+                            <span>💬 15 comentarios</span>
+                        </div>
+                        <p class="blog-excerpt">
+                            Informe estadístico anual con datos de participación de laboratorios a nivel nacional, 
+                            tendencias de desempeño, mejoras observadas y proyecciones para 2025.
+                        </p>
+                        <div class="blog-footer">
+                            <div class="blog-author">
+                                <span>👤</span>
+                                <span>Equipo CONCALAB</span>
+                            </div>
+                            <a href="#" class="btn btn-outline">Ver Informe Completo</a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Paginación -->
+            <div class="pagination reveal">
+                <button class="page-btn">«</button>
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">»</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Sección de Dash Integration -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Visualizaciones Interactivas</h2>
+                <p>Gráficos y dashboards interactivos con Plotly Dash</p>
+            </div>
+            
+            <div class="card reveal">
+                <div class="embed-placeholder">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">📊 Dashboard Interactivo</h3>
+                    <p style="margin-bottom: 1.5rem;">
+                        Aquí se integrará la aplicación Dash con gráficos interactivos de los resultados<br>
+                        de ensayos de aptitud, análisis de tendencias y comparativas entre laboratorios.
+                    </p>
+                    <p style="font-size: 0.9rem; color: var(--text-light);">
+                        <strong>Nota:</strong> Esta sección será desarrollada como una aplicación web independiente<br>
+                        que se integrará mediante iframe o servidor embebido.
+                    </p>
+                    <div style="margin-top: 2rem; padding: 2rem; background: white; border-radius: 8px;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">Características del Dashboard:</p>
+                        <ul style="text-align: left; max-width: 600px; margin: 0 auto; line-height: 2;">
+                            <li>Gráficos interactivos con Plotly</li>
+                            <li>Filtros por fecha, laboratorio y analito</li>
+                            <li>Exportación de datos y gráficos</li>
+                            <li>Análisis estadístico en tiempo real</li>
+                            <li>Comparativas y tendencias históricas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+        <div class="container text-center">
+            <div class="reveal">
+                <h2 style="margin-bottom: 1.5rem;">¿Quieres Acceso Completo a los Informes?</h2>
+                <p style="font-size: 1.1rem; color: var(--text-light); margin-bottom: 2rem;">
+                    Los laboratorios participantes tienen acceso ilimitado a todos los informes,<br>
+                    análisis detallados y herramientas de comparación.
+                </p>
+                <a href="../contacto.html" class="btn btn-primary">Solicitar Participación</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CONCALAB-UASD</h3>
+                    <p>Control de Calidad de Laboratorios</p>
+                    <p>Universidad Autónoma de Santo Domingo</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="../servicios.html">Servicios</a></li>
+                        <li><a href="../portal-educativo.html">Portal Educativo</a></li>
+                        <li><a href="../contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Publicaciones</h3>
+                    <ul class="footer-links">
+                        <li><a href="protocolos.html">Protocolos</a></li>
+                        <li><a href="informes.html">Informes</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>📍 Santo Domingo, República Dominicana</p>
+                    <p>📧 info@concalab.uasd.edu.do</p>
+                    <p>📞 +1 (809) XXX-XXXX</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 CONCALAB-UASD. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" style="position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; opacity: 0; visibility: hidden; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 999;">↑</a>
+
+    <style>
+        .back-to-top.visible { opacity: 1 !important; visibility: visible !important; }
+    </style>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/scroll-reveal.js"></script>
+    
+    <script>
+        // Filtrado de informes
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterTags = document.querySelectorAll('.filter-tag');
+            const blogPosts = document.querySelectorAll('.blog-post');
+
+            filterTags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    filterTags.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-category');
+                    
+                    blogPosts.forEach(post => {
+                        const postCategory = post.getAttribute('data-category');
+                        
+                        if (category === 'todos' || postCategory === category) {
+                            post.style.display = 'grid';
+                        } else {
+                            post.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Historia de CONCALAB-UASD - Más de 40 años de compromiso con la calidad en laboratorios clínicos">
+    <title>Historia - CONCALAB-UASD</title>
+    
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="icon" type="image/x-icon" href="../assets/icons/favicon.ico">
+    
+    <style>
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 2rem 0;
+            position: relative;
+            width: 100%;
+        }
+
+        .timeline-content {
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            position: relative;
+            width: 45%;
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-5px);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            left: 55%;
+        }
+
+        .timeline-year {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            box-shadow: 0 0 0 4px white, 0 0 0 8px var(--primary-color);
+        }
+
+        .timeline-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .timeline-content p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::after {
+                left: 30px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                width: calc(100% - 90px);
+                left: 90px;
+            }
+
+            .timeline-year {
+                width: 60px;
+                height: 60px;
+                font-size: 0.9rem;
+                left: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-overlay"></div>
+
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="../assets/images/logo-concalab.png" alt="Logo CONCALAB-UASD" onerror="this.style.display='none'">
+                <div class="logo-text">
+                    <div class="logo-title">CONCALAB-UASD</div>
+                    <div class="logo-subtitle">Control de Calidad de Laboratorios</div>
+                </div>
+            </div>
+
+            <nav class="nav-main">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="../index.html" class="nav-link">Inicio</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Publicaciones</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../publicaciones/protocolos.html" class="nav-link">Protocolos</a></li>
+                            <li><a href="../publicaciones/informes.html" class="nav-link">Informes</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="../portal-educativo.html" class="nav-link">Portal Educativo</a></li>
+                    <li class="nav-item"><a href="../servicios.html" class="nav-link">Servicios</a></li>
+                    <li class="nav-item"><a href="../miembros.html" class="nav-link">Miembros</a></li>
+                    <li class="nav-item dropdown active">
+                        <a href="#" class="nav-link">Sobre Nosotros</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="quienes-somos.html" class="nav-link">Quiénes Somos</a></li>
+                            <li><a href="historia.html" class="nav-link active">Historia</a></li>
+                            <li><a href="marco-legal.html" class="nav-link">Marco Legal</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="../contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Buscar...">
+                    <button class="search-btn" aria-label="Buscar">🔍</button>
+                </div>
+            </nav>
+
+            <button class="menu-toggle" aria-label="Menú">☰</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in-down">
+                <h1 class="hero-title">Nuestra Historia</h1>
+                <p class="hero-subtitle">Más de 40 años de compromiso con la excelencia en control de calidad</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            
+            <div class="section-title reveal">
+                <h2>Línea de Tiempo</h2>
+                <p>Hitos importantes en la evolución de CONCALAB-UASD</p>
+            </div>
+
+            <div class="timeline">
+                
+                <div class="timeline-item reveal">
+                    <div class="timeline-year">1983</div>
+                    <div class="timeline-content">
+                        <h3>Nacimiento del Laboratorio de Referencia</h3>
+                        <p>
+                            Por iniciativa de varias maestras de la Escuela de Bioanálisis y asesoradas por la 
+                            <strong>Dra. Blanca Odette García Peguero</strong>, nace el Laboratorio de Referencia de la UASD. 
+                            La institución recibió a través de la Oficina Panamericana de la Salud (OPS) donativo de 
+                            sueros controles para que República Dominicana participe en la Evaluación Externa.
+                        </p>
+                        <p style="margin-top: 1rem;">
+                            Estuvo dirigido por un equipo de profesionales como la <strong>Dra. Griselda Andújar</strong>, 
+                            <strong>Nelly Betances</strong> y <strong>Dra. Rosanna Elías de Quiñones</strong>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-year">2012</div>
+                    <div class="timeline-content">
+                        <h3>Receso y Nueva Propuesta</h3>
+                        <p>
+                            <strong>Finales del 2012:</strong> Las autoridades de ese momento deciden poner receso al programa 
+                            por los pocos laboratorios afiliados.
+                        </p>
+                        <p style="margin-top: 1rem;">
+                            Ante esta decisión, la Cátedra de Química Clínica presenta el proyecto liderado por la 
+                            <strong>Mtra. Mariolga Roques Ortiz</strong> (Coordinadora de la Cátedra de Química Clínica) de 
+                            adopción del mismo, proponiendo el nombre <strong>Control Calidad Laboratorios UASD (CONCALAB-UASD)</strong>.
+                        </p>
+                        <p style="margin-top: 1rem;">
+                            El proyecto fue conocido en el Sub Consejo de la Escuela de Bioanálisis, pasó al Consejo de la 
+                            Facultad y de ahí remitido a la Vice Rectoría Docente, pero no fue conocido ante el Consejo 
+                            Universitario porque las Autoridades del momento no asistieron.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-year">2013</div>
+                    <div class="timeline-content">
+                        <h3>Implementación del Sistema de Gestión de Calidad</h3>
+                        <p>
+                            A mediados del año 2013, se comenzó a preparar la documentación del Sistema de Gestión de Calidad 
+                            de la Norma internacional <strong>ISO 9001</strong> en la versión 2008.
+                        </p>
+                        <p style="margin-top: 1rem;">
+                            Posteriormente, la institución se recertificó con la <strong>ISO 9001:2015</strong>, 
+                            vigente hasta el 2019, demostrando su compromiso continuo con la calidad y la mejora continua.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-year">2015</div>
+                    <div class="timeline-content">
+                        <h3>Inauguración Oficial</h3>
+                        <p>
+                            CONCALAB-UASD fue inaugurado por las autoridades universitarias encabezadas por el 
+                            <strong>Dr. Wilson Mejía</strong>, Decano de la Facultad de Ciencias de la Salud.
+                        </p>
+                        <p style="margin-top: 1rem;">
+                            Este evento marcó un hito importante en la consolidación del programa y su reconocimiento 
+                            institucional dentro de la universidad.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-content">
+                        <h3>Reconocimiento Oficial y Rediseño Curricular</h3>
+                        <p>
+                            Debido a la implementación del Rediseño Curricular en el 2023, la Facultad de Ciencias de la Salud 
+                            elaboró su Mapa de Proceso para identificar procesos: Estratégico, Misional y de Apoyo. 
+                            CONCALAB-UASD aparece dentro del proceso Misional de la Facultad de Ciencias de la Salud.
+                        </p>
+                        <p style="margin-top: 1rem;">
+                            <strong>Hito importante:</strong> Fue reconocido el cambio de nombre de Lab-Referencia a 
+                            <strong>Control Calidad Laboratorios UASD (CONCALAB-UASD)</strong> mediante 
+                            <strong>Resolución núm. 372-2023 de fecha 28/06/2023</strong>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-content">
+                        <h3>Nueva Estructura Administrativa</h3>
+                        <p>
+                            En fecha <strong>22 de abril 2025</strong>, la Comisión Administrativa Apéndice de Consejo 
+                            Universitario, establece que el proyecto Control Calidad Laboratorios UASD (CONCALAB-UASD), 
+                            por ser una unidad productiva de la Universidad Autónoma de Santo Domingo, pasará a hacer 
+                            dependencia de la <strong>Vicerrectoría Administrativa</strong>.
+                        </p>
+                        <p style="margin-top: 1rem;">
+                            Este cambio fortalece la posición institucional de CONCALAB-UASD como unidad productiva 
+                            estratégica de la universidad.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Legado y Futuro -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="grid grid-2">
+                <div class="card reveal">
+                    <h3 class="card-title">🏛️ Nuestro Legado</h3>
+                    <p class="card-text">
+                        Más de 40 años de trayectoria nos respaldan como pioneros en la evaluación externa de calidad 
+                        en República Dominicana. Nuestro compromiso con la excelencia ha sido constante, adaptándonos 
+                        a los cambios y evolucionando para ofrecer servicios de clase mundial.
+                    </p>
+                </div>
+
+                <div class="card reveal">
+                    <h3 class="card-title">🚀 Mirando al Futuro</h3>
+                    <p class="card-text">
+                        Continuamos trabajando en la acreditación bajo normas internacionales ISO/IEC 17043, 
+                        ampliación de servicios, implementación de nuevas tecnologías y fortalecimiento de nuestra 
+                        red de laboratorios participantes a nivel nacional.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CONCALAB-UASD</h3>
+                    <p>Control de Calidad de Laboratorios</p>
+                    <p>Universidad Autónoma de Santo Domingo</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="../servicios.html">Servicios</a></li>
+                        <li><a href="../portal-educativo.html">Portal Educativo</a></li>
+                        <li><a href="../contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Sobre Nosotros</h3>
+                    <ul class="footer-links">
+                        <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+                        <li><a href="historia.html">Historia</a></li>
+                        <li><a href="marco-legal.html">Marco Legal</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>📍 Santo Domingo, República Dominicana</p>
+                    <p>📧 info@concalab.uasd.edu.do</p>
+                    <p>📞 +1 (809) XXX-XXXX</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 CONCALAB-UASD. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" style="position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; opacity: 0; visibility: hidden; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 999;">↑</a>
+
+    <style>
+        .back-to-top.visible { opacity: 1 !important; visibility: visible !important; }
+    </style>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/scroll-reveal.js"></script>
+</body>
+</html>
+

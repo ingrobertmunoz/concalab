@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Marco Legal de CONCALAB-UASD - Resoluciones y fundamentos legales de nuestra institución">
+    <title>Marco Legal - CONCALAB-UASD</title>
+    
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="icon" type="image/x-icon" href="../assets/icons/favicon.ico">
+    
+    <style>
+        .legal-document {
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            transition: var(--transition);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .legal-document:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateX(5px);
+        }
+
+        .doc-header {
+            display: flex;
+            align-items: start;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .doc-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .doc-meta {
+            flex: 1;
+        }
+
+        .doc-number {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .doc-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .doc-date {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .doc-content {
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        .doc-content h4 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .doc-content ul, 
+        .doc-content ol {
+            margin-left: 2rem;
+            margin-top: 1rem;
+        }
+
+        .doc-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .doc-footer {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 1rem;
+        }
+
+        .certifications {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .cert-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .cert-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .cert-title {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-description {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-overlay"></div>
+
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="../assets/images/logo-concalab.png" alt="Logo CONCALAB-UASD" onerror="this.style.display='none'">
+                <div class="logo-text">
+                    <div class="logo-title">CONCALAB-UASD</div>
+                    <div class="logo-subtitle">Control de Calidad de Laboratorios</div>
+                </div>
+            </div>
+
+            <nav class="nav-main">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="../index.html" class="nav-link">Inicio</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Publicaciones</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../publicaciones/protocolos.html" class="nav-link">Protocolos</a></li>
+                            <li><a href="../publicaciones/informes.html" class="nav-link">Informes</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="../portal-educativo.html" class="nav-link">Portal Educativo</a></li>
+                    <li class="nav-item"><a href="../servicios.html" class="nav-link">Servicios</a></li>
+                    <li class="nav-item"><a href="../miembros.html" class="nav-link">Miembros</a></li>
+                    <li class="nav-item dropdown active">
+                        <a href="#" class="nav-link">Sobre Nosotros</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="quienes-somos.html" class="nav-link">Quiénes Somos</a></li>
+                            <li><a href="historia.html" class="nav-link">Historia</a></li>
+                            <li><a href="marco-legal.html" class="nav-link active">Marco Legal</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="../contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Buscar...">
+                    <button class="search-btn" aria-label="Buscar">🔍</button>
+                </div>
+            </nav>
+
+            <button class="menu-toggle" aria-label="Menú">☰</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in-down">
+                <h1 class="hero-title">Marco Legal</h1>
+                <p class="hero-subtitle">Fundamentos jurídicos y normativos de CONCALAB-UASD</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            
+            <!-- Resolución Principal -->
+            <div class="legal-document reveal">
+                <div class="doc-header">
+                    <div class="doc-icon">📜</div>
+                    <div class="doc-meta">
+                        <span class="doc-number">Resolución Oficial</span>
+                        <h2 class="doc-title">Resolución núm. 372-2023</h2>
+                        <p class="doc-date">📅 Fecha: 28 de junio de 2023</p>
+                    </div>
+                </div>
+                <div class="doc-content">
+                    <h4>Objeto de la Resolución:</h4>
+                    <p>
+                        Mediante esta resolución se reconoce oficialmente el cambio de nombre de "Laboratorio de Referencia" 
+                        a <strong>"Control de Calidad de Laboratorios UASD (CONCALAB-UASD)"</strong>.
+                    </p>
+                    <h4>Aspectos Destacados:</h4>
+                    <ul>
+                        <li>Reconocimiento oficial del nombre CONCALAB-UASD</li>
+                        <li>Consolidación de la identidad institucional</li>
+                        <li>Respaldo institucional de la Universidad Autónoma de Santo Domingo</li>
+                        <li>Base legal para las operaciones y servicios ofrecidos</li>
+                    </ul>
+                    <h4>Autoridad Emisora:</h4>
+                    <p>
+                        Consejo Universitario de la Universidad Autónoma de Santo Domingo (UASD)
+                    </p>
+                </div>
+                <div class="doc-footer">
+                    <button class="btn btn-outline" onclick="alert('Documento disponible para descarga previa autorización')">
+                        📥 Descargar Resolución
+                    </button>
+                </div>
+            </div>
+
+            <!-- Resolución de Dependencia Administrativa -->
+            <div class="legal-document reveal">
+                <div class="doc-header">
+                    <div class="doc-icon">📋</div>
+                    <div class="doc-meta">
+                        <span class="doc-number">Resolución Administrativa</span>
+                        <h2 class="doc-title">Dependencia Administrativa</h2>
+                        <p class="doc-date">📅 Fecha: 22 de abril de 2025</p>
+                    </div>
+                </div>
+                <div class="doc-content">
+                    <h4>Determinación de la Comisión Administrativa:</h4>
+                    <p>
+                        La Comisión Administrativa Apéndice del Consejo Universitario establece que el proyecto 
+                        <strong>Control de Calidad de Laboratorios UASD (CONCALAB-UASD)</strong>, por ser una unidad 
+                        productiva de la Universidad Autónoma de Santo Domingo, pasará a hacer dependencia de la 
+                        <strong>Vicerrectoría Administrativa</strong>.
+                    </p>
+                    <h4>Implicaciones:</h4>
+                    <ul>
+                        <li>CONCALAB-UASD como unidad productiva de la UASD</li>
+                        <li>Adscripción a la Vicerrectoría Administrativa</li>
+                        <li>Autonomía operativa dentro del marco institucional</li>
+                        <li>Capacidad de generación de recursos propios</li>
+                        <li>Rendición de cuentas a la Vicerrectoría Administrativa</li>
+                    </ul>
+                </div>
+                <div class="doc-footer">
+                    <button class="btn btn-outline" onclick="alert('Documento disponible para descarga previa autorización')">
+                        📥 Descargar Resolución
+                    </button>
+                </div>
+            </div>
+
+            <!-- Certificaciones y Normas -->
+            <div class="certifications reveal">
+                <h2 style="text-align: center; color: var(--secondary-color); margin-bottom: 2rem;">
+                    Certificaciones y Normas Aplicables
+                </h2>
+                <div class="cert-grid">
+                    <div class="cert-card">
+                        <div class="cert-icon">✅</div>
+                        <h3 class="cert-title">ISO 9001:2015</h3>
+                        <p class="cert-description">
+                            Certificación del Sistema de Gestión de Calidad obtenida en 2013 
+                            (versión 2008) y recertificada con ISO 9001:2015, vigente hasta 2019.
+                        </p>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-icon">📋</div>
+                        <h3 class="cert-title">ISO/IEC 17043</h3>
+                        <p class="cert-description">
+                            Norma internacional para proveedores de ensayos de aptitud. 
+                            En proceso de implementación para futura acreditación.
+                        </p>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-icon">🏛️</div>
+                        <h3 class="cert-title">Respaldo UASD</h3>
+                        <p class="cert-description">
+                            Respaldo institucional de la Universidad Autónoma de Santo Domingo, 
+                            primera universidad de América fundada en 1538.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Marco Normativo Aplicable -->
+            <div class="section-title reveal">
+                <h2>Marco Normativo Aplicable</h2>
+                <p>Normas y regulaciones que rigen nuestras operaciones</p>
+            </div>
+
+            <div class="grid grid-2">
+                <div class="card reveal">
+                    <h3 class="card-title">📖 Normas Internacionales</h3>
+                    <ul class="card-text" style="list-style-position: inside;">
+                        <li>ISO/IEC 17043:2023 - Ensayos de Aptitud</li>
+                        <li>ISO 9001:2015 - Gestión de Calidad</li>
+                        <li>ISO 13528:2022 - Métodos Estadísticos</li>
+                        <li>ISO 15189:2022 - Laboratorios Clínicos</li>
+                        <li>Guías de la OMS para Control de Calidad</li>
+                    </ul>
+                </div>
+
+                <div class="card reveal">
+                    <h3 class="card-title">🇩🇴 Regulación Nacional</h3>
+                    <ul class="card-text" style="list-style-position: inside;">
+                        <li>Ley Orgánica de la UASD</li>
+                        <li>Estatuto Orgánico de la UASD</li>
+                        <li>Reglamento de la Facultad de Ciencias de la Salud</li>
+                        <li>Normativas del Ministerio de Salud Pública</li>
+                        <li>Regulaciones de laboratorios clínicos en RD</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Políticas Institucionales -->
+            <div class="legal-document reveal" style="border-left-color: var(--secondary-color);">
+                <div class="doc-header">
+                    <div class="doc-icon">⚖️</div>
+                    <div class="doc-meta">
+                        <h2 class="doc-title">Políticas Institucionales</h2>
+                    </div>
+                </div>
+                <div class="doc-content">
+                    <h4>Política de Calidad:</h4>
+                    <p>
+                        CONCALAB-UASD se compromete a proporcionar servicios de evaluación externa de calidad 
+                        que cumplan con los requisitos de los laboratorios participantes y las normas internacionales 
+                        aplicables, mediante un sistema de gestión de calidad efectivo y en mejora continua.
+                    </p>
+
+                    <h4>Política de Confidencialidad:</h4>
+                    <p>
+                        Toda la información de los laboratorios participantes es tratada con estricta confidencialidad. 
+                        Los resultados individuales no son compartidos con terceros sin autorización expresa del laboratorio.
+                    </p>
+
+                    <h4>Política de Imparcialidad:</h4>
+                    <p>
+                        CONCALAB-UASD mantiene imparcialidad en todas sus actividades, evitando conflictos de interés 
+                        y garantizando evaluaciones objetivas basadas en criterios técnicos y científicos.
+                    </p>
+
+                    <h4>Política de Mejora Continua:</h4>
+                    <p>
+                        La institución se compromete a la revisión y mejora continua de sus procesos, servicios y 
+                        sistema de gestión, basándose en la retroalimentación de los participantes y las mejores 
+                        prácticas internacionales.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Documentos Disponibles -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Documentos Oficiales</h2>
+                <p>Accede a nuestros documentos institucionales</p>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="card reveal text-center">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">📄</div>
+                    <h3 class="card-title">Manual de Calidad</h3>
+                    <p class="card-text">Documento que describe el sistema de gestión de calidad de CONCALAB-UASD</p>
+                    <button class="btn btn-outline mt-2" onclick="alert('Disponible para laboratorios participantes')">
+                        Ver Documento
+                    </button>
+                </div>
+
+                <div class="card reveal text-center">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">📋</div>
+                    <h3 class="card-title">Código de Ética</h3>
+                    <p class="card-text">Principios éticos que rigen las operaciones y relaciones de la institución</p>
+                    <button class="btn btn-outline mt-2" onclick="alert('Disponible para laboratorios participantes')">
+                        Ver Documento
+                    </button>
+                </div>
+
+                <div class="card reveal text-center">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">⚖️</div>
+                    <h3 class="card-title">Reglamento Interno</h3>
+                    <p class="card-text">Normas internas que regulan el funcionamiento de CONCALAB-UASD</p>
+                    <button class="btn btn-outline mt-2" onclick="alert('Disponible para laboratorios participantes')">
+                        Ver Documento
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+        <div class="container text-center">
+            <div class="reveal">
+                <h2 style="margin-bottom: 1.5rem;">¿Necesitas Más Información Legal?</h2>
+                <p style="font-size: 1.1rem; color: var(--text-light); margin-bottom: 2rem;">
+                    Contáctanos para obtener copias de documentos oficiales o resolver dudas sobre nuestro marco legal
+                </p>
+                <a href="../contacto.html" class="btn btn-primary">Contactar</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CONCALAB-UASD</h3>
+                    <p>Control de Calidad de Laboratorios</p>
+                    <p>Universidad Autónoma de Santo Domingo</p>
+                    <p style="margin-top: 1rem;">
+                        Dependencia de la Vicerrectoría Administrativa<br>
+                        Unidad Productiva de la UASD
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="../servicios.html">Servicios</a></li>
+                        <li><a href="../portal-educativo.html">Portal Educativo</a></li>
+                        <li><a href="../contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Sobre Nosotros</h3>
+                    <ul class="footer-links">
+                        <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+                        <li><a href="historia.html">Historia</a></li>
+                        <li><a href="marco-legal.html">Marco Legal</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>📍 Santo Domingo, República Dominicana</p>
+                    <p>📧 info@concalab.uasd.edu.do</p>
+                    <p>📞 +1 (809) XXX-XXXX</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 CONCALAB-UASD. Todos los derechos reservados.</p>
+                <p style="margin-top: 0.5rem;">
+                    Universidad Autónoma de Santo Domingo | Primera Universidad de América
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" style="position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; opacity: 0; visibility: hidden; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 999;">↑</a>
+
+    <style>
+        .back-to-top.visible { opacity: 1 !important; visibility: visible !important; }
+    </style>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/scroll-reveal.js"></script>
+</body>
+</html>
+

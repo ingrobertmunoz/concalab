@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Servicios de CONCALAB-UASD - Ensayos de Aptitud y Consultoría en ISO/IEC 17043">
+    <title>Servicios - CONCALAB-UASD</title>
+    
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+    
+    <style>
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-5px);
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .service-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .analyte-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .analyte-item {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .analyte-item:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        .analyte-item h4 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .price-section {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            color: var(--success-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-overlay"></div>
+
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="assets/images/logo-concalab.png" alt="Logo CONCALAB-UASD" onerror="this.style.display='none'">
+                <div class="logo-text">
+                    <div class="logo-title">CONCALAB-UASD</div>
+                    <div class="logo-subtitle">Control de Calidad de Laboratorios</div>
+                </div>
+            </div>
+
+            <nav class="nav-main">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Publicaciones</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="publicaciones/protocolos.html" class="nav-link">Protocolos</a></li>
+                            <li><a href="publicaciones/informes.html" class="nav-link">Informes</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="portal-educativo.html" class="nav-link">Portal Educativo</a></li>
+                    <li class="nav-item"><a href="servicios.html" class="nav-link active">Servicios</a></li>
+                    <li class="nav-item"><a href="miembros.html" class="nav-link">Miembros</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Sobre Nosotros</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="sobre-nosotros/quienes-somos.html" class="nav-link">Quiénes Somos</a></li>
+                            <li><a href="sobre-nosotros/historia.html" class="nav-link">Historia</a></li>
+                            <li><a href="sobre-nosotros/marco-legal.html" class="nav-link">Marco Legal</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Buscar...">
+                    <button class="search-btn" aria-label="Buscar">🔍</button>
+                </div>
+            </nav>
+
+            <button class="menu-toggle" aria-label="Menú">☰</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in-down">
+                <h1 class="hero-title">Nuestros Servicios</h1>
+                <p class="hero-subtitle">Soluciones profesionales en control de calidad para laboratorios clínicos</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            
+            <!-- Consultoría ISO/IEC 17043 -->
+            <div class="service-card reveal" id="consultoria">
+                <div class="service-header">
+                    <div class="service-icon">📋</div>
+                    <div>
+                        <h2 class="service-title">Consultoría en la norma ISO/IEC 17043</h2>
+                        <p style="color: var(--text-light); margin: 0;">Asesoramiento especializado para implementación y mantenimiento</p>
+                    </div>
+                </div>
+                
+                <div class="service-content">
+                    <p>
+                        Ofrecemos servicios de consultoría especializada para proveedores de ensayos de aptitud que desean 
+                        implementar o mantener un sistema de gestión conforme a la norma ISO/IEC 17043:2023.
+                    </p>
+
+                    <h3 style="color: var(--primary-color); margin-top: 2rem;">Nuestros servicios incluyen:</h3>
+                    <ul class="features-list">
+                        <li>Diagnóstico inicial y análisis de brecha (gap analysis)</li>
+                        <li>Diseño e implementación del sistema de gestión</li>
+                        <li>Desarrollo de documentación técnica y procedimientos</li>
+                        <li>Diseño estadístico de esquemas de ensayos de aptitud</li>
+                        <li>Capacitación del personal en requisitos de la norma</li>
+                        <li>Auditorías internas y preparación para acreditación</li>
+                        <li>Asesoría en métodos estadísticos (ISO 13528)</li>
+                        <li>Soporte continuo post-implementación</li>
+                    </ul>
+
+                    <div class="grid grid-2" style="margin-top: 2rem;">
+                        <div class="card">
+                            <h4 style="color: var(--primary-color);">Beneficios</h4>
+                            <ul>
+                                <li>Expertise académico y práctico</li>
+                                <li>Conocimiento actualizado de la norma</li>
+                                <li>Metodología probada</li>
+                                <li>Precios competitivos</li>
+                                <li>Acompañamiento personalizado</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4 style="color: var(--primary-color);">¿Para quién?</h4>
+                            <ul>
+                                <li>Organizaciones que desean ser proveedores de EA</li>
+                                <li>Proveedores actuales en proceso de acreditación</li>
+                                <li>Laboratorios de referencia</li>
+                                <li>Instituciones académicas</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="price-section">
+                        <h4 style="color: var(--primary-color);">Solicita una cotización</h4>
+                        <p>Contactanos para recibir una propuesta personalizada según las necesidades de tu organización.</p>
+                        <a href="contacto.html" class="btn btn-primary mt-2">Solicitar Información</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ensayos de Aptitud - Química Clínica -->
+            <div class="service-card reveal" id="quimica">
+                <div class="service-header">
+                    <div class="service-icon">🧬</div>
+                    <div>
+                        <h2 class="service-title">Ensayos de Aptitud en Química Clínica</h2>
+                        <p style="color: var(--text-light); margin: 0;">Evaluación externa de calidad para analitos fundamentales</p>
+                    </div>
+                </div>
+                
+                <div class="service-content">
+                    <p>
+                        Programa de evaluación externa de calidad para los principales analitos en química clínica, 
+                        diseñado para cumplir con los requisitos de acreditación y mejora continua de laboratorios.
+                    </p>
+
+                    <h3 style="color: var(--primary-color); margin-top: 2rem;">Analitos Evaluados:</h3>
+                    <div class="analyte-grid">
+                        <div class="analyte-item">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🩸</div>
+                            <h4>Glucosa</h4>
+                        </div>
+                        <div class="analyte-item">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">💧</div>
+                            <h4>Colesterol Total</h4>
+                        </div>
+                        <div class="analyte-item">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">💚</div>
+                            <h4>HDL-Colesterol</h4>
+                        </div>
+                        <div class="analyte-item">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔴</div>
+                            <h4>LDL-Colesterol</h4>
+                        </div>
+                        <div class="analyte-item">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">💉</div>
+                            <h4>Triglicéridos</h4>
+                        </div>
+                    </div>
+
+                    <h3 style="color: var(--primary-color); margin-top: 2rem;">Características del Programa:</h3>
+                    <ul class="features-list">
+                        <li>Frecuencia trimestral (4 rondas anuales)</li>
+                        <li>Muestras líquidas listas para usar</li>
+                        <li>Valores asignados por métodos de referencia</li>
+                        <li>Análisis estadístico robusto (z-score, EN-score)</li>
+                        <li>Reportes individuales detallados con gráficos</li>
+                        <li>Comparación con grupo de pares (peer group)</li>
+                        <li>Certificado de participación</li>
+                        <li>Soporte técnico permanente</li>
+                    </ul>
+
+                    <div class="grid grid-2" style="margin-top: 2rem;">
+                        <div class="card">
+                            <h4 style="color: var(--primary-color);">Qué Recibes</h4>
+                            <ul>
+                                <li>2 niveles de concentración por analito</li>
+                                <li>Protocolos detallados</li>
+                                <li>Formulario de reporte</li>
+                                <li>Informe de resultados con análisis estadístico</li>
+                                <li>Certificado de participación</li>
+                                <li>Acceso al portal web para consulta de históricos</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4 style="color: var(--primary-color);">Inscripción</h4>
+                            <p>Modalidades disponibles:</p>
+                            <ul>
+                                <li><strong>Individual:</strong> Por analito</li>
+                                <li><strong>Paquete completo:</strong> Todos los analitos</li>
+                                <li><strong>Anual:</strong> 4 rondas garantizadas</li>
+                            </ul>
+                            <a href="contacto.html" class="btn btn-outline mt-2">Inscribirse</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ensayos de Aptitud - Uroanálisis -->
+            <div class="service-card reveal" id="uroanalisis">
+                <div class="service-header">
+                    <div class="service-icon">🧪</div>
+                    <div>
+                        <h2 class="service-title">Ensayos de Aptitud en Uroanálisis</h2>
+                        <p style="color: var(--text-light); margin: 0;">Control de calidad para parámetros esenciales en orina</p>
+                    </div>
+                </div>
+                
+                <div class="service-content">
+                    <p>
+                        Programa especializado de evaluación externa para el examen general de orina (EGO), 
+                        uno de los análisis más frecuentes en el laboratorio clínico.
+                    </p>
+
+                    <h3 style="color: var(--primary-color); margin-top: 2rem;">Analitos Evaluados:</h3>
+                    <div class="analyte-grid">
+                        <div class="analyte-item">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔬</div>
+                            <h4>Proteínas</h4>
+                        </div>
+                        <div class="analyte-item">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🩸</div>
+                            <h4>Glucosa</h4>
+                        </div>
+                        <div class="analyte-item">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚗️</div>
+                            <h4>Cuerpos Cetónicos</h4>
+                        </div>
+                        <div class="analyte-item">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🟡</div>
+                            <h4>Bilirrubina</h4>
+                        </div>
+                        <div class="analyte-item">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">💧</div>
+                            <h4>Nitritos</h4>
+                        </div>
+                    </div>
+
+                    <h3 style="color: var(--primary-color); margin-top: 2rem;">Características del Programa:</h3>
+                    <ul class="features-list">
+                        <li>Frecuencia trimestral (4 rondas anuales)</li>
+                        <li>Muestras sintéticas estables</li>
+                        <li>Compatible con métodos automatizados y manuales</li>
+                        <li>Evaluación cualitativa y semicuantitativa</li>
+                        <li>Análisis por método (tiras reactivas vs métodos confirmatorios)</li>
+                        <li>Reportes con interpretación clínica</li>
+                        <li>Certificado de participación</li>
+                        <li>Asesoría para mejora de desempeño</li>
+                    </ul>
+
+                    <div class="grid grid-2" style="margin-top: 2rem;">
+                        <div class="card">
+                            <h4 style="color: var(--primary-color);">Metodologías Aceptadas</h4>
+                            <ul>
+                                <li>Tiras reactivas (todas las marcas)</li>
+                                <li>Métodos automatizados</li>
+                                <li>Métodos confirmatorios químicos</li>
+                                <li>Microscopía (en desarrollo)</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4 style="color: var(--primary-color);">Ventajas Especiales</h4>
+                            <ul>
+                                <li>Enfoque en diagnóstico clínico</li>
+                                <li>Comparación por marca de tiras</li>
+                                <li>Estabilidad prolongada de muestras</li>
+                                <li>Fácil manejo y almacenamiento</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="price-section" style="margin-top: 2rem;">
+                        <h4 style="color: var(--primary-color);">Inscripción Abierta</h4>
+                        <p>Únete a nuestro programa de uroanálisis y mejora la calidad de tus resultados.</p>
+                        <a href="contacto.html" class="btn btn-primary">Solicitar Información</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="section section-light">
+        <div class="container text-center">
+            <div class="reveal">
+                <h2 style="margin-bottom: 1.5rem;">¿Interesado en Nuestros Servicios?</h2>
+                <p style="font-size: 1.1rem; color: var(--text-light); margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    Contáctanos para recibir más información detallada, cotizaciones y condiciones de participación.
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="contacto.html" class="btn btn-primary">Solicitar Información</a>
+                    <a href="publicaciones/protocolos.html" class="btn btn-outline">Ver Protocolos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CONCALAB-UASD</h3>
+                    <p>Control de Calidad de Laboratorios</p>
+                    <p>Universidad Autónoma de Santo Domingo</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="portal-educativo.html">Portal Educativo</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Servicios</h3>
+                    <ul class="footer-links">
+                        <li><a href="#consultoria">Consultoría ISO/IEC 17043</a></li>
+                        <li><a href="#quimica">Química Clínica</a></li>
+                        <li><a href="#uroanalisis">Uroanálisis</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>📍 Santo Domingo, República Dominicana</p>
+                    <p>📧 info@concalab.uasd.edu.do</p>
+                    <p>📞 +1 (809) XXX-XXXX</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 CONCALAB-UASD. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" style="position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; opacity: 0; visibility: hidden; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 999;">↑</a>
+
+    <style>
+        .back-to-top.visible { opacity: 1 !important; visibility: visible !important; }
+    </style>
+
+    <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/scroll-reveal.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Protocolos de Ensayos de Aptitud - CONCALAB-UASD. Descarga los protocolos oficiales para participar en nuestros programas de evaluación externa.">
+    <title>Protocolos - CONCALAB-UASD</title>
+    
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="icon" type="image/x-icon" href="../assets/icons/favicon.ico">
+    
+    <style>
+        .protocols-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .protocol-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .protocol-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-color);
+        }
+
+        .protocol-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .protocol-category {
+            display: inline-block;
+            background: var(--bg-light);
+            color: var(--primary-color);
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .protocol-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+        }
+
+        .protocol-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .protocol-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .protocol-description {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--border-color);
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .search-filter {
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+
+        .search-filter input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--border-color);
+            border-radius: 30px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .search-filter input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-light);
+        }
+
+        .download-stats {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-overlay"></div>
+
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="../assets/images/logo-concalab.png" alt="Logo CONCALAB-UASD" onerror="this.style.display='none'">
+                <div class="logo-text">
+                    <div class="logo-title">CONCALAB-UASD</div>
+                    <div class="logo-subtitle">Control de Calidad de Laboratorios</div>
+                </div>
+            </div>
+
+            <nav class="nav-main">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="../index.html" class="nav-link">Inicio</a></li>
+                    <li class="nav-item dropdown active">
+                        <a href="#" class="nav-link">Publicaciones</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="protocolos.html" class="nav-link active">Protocolos</a></li>
+                            <li><a href="informes.html" class="nav-link">Informes</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="../portal-educativo.html" class="nav-link">Portal Educativo</a></li>
+                    <li class="nav-item"><a href="../servicios.html" class="nav-link">Servicios</a></li>
+                    <li class="nav-item"><a href="../miembros.html" class="nav-link">Miembros</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Sobre Nosotros</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../sobre-nosotros/quienes-somos.html" class="nav-link">Quiénes Somos</a></li>
+                            <li><a href="../sobre-nosotros/historia.html" class="nav-link">Historia</a></li>
+                            <li><a href="../sobre-nosotros/marco-legal.html" class="nav-link">Marco Legal</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="../contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Buscar...">
+                    <button class="search-btn" aria-label="Buscar">🔍</button>
+                </div>
+            </nav>
+
+            <button class="menu-toggle" aria-label="Menú">☰</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in-down">
+                <h1 class="hero-title">Protocolos de Ensayos de Aptitud</h1>
+                <p class="hero-subtitle">Documentos oficiales y guías para la participación en nuestros programas de evaluación externa de calidad</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="section">
+        <div class="container">
+            <!-- Filtros -->
+            <div class="filter-section reveal">
+                <div class="search-filter">
+                    <input type="text" id="protocolSearch" placeholder="🔍 Buscar protocolo...">
+                </div>
+                
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="todos">Todos</button>
+                    <button class="filter-btn" data-category="quimica">Química Clínica</button>
+                    <button class="filter-btn" data-category="uroanalisis">Uroanálisis</button>
+                    <button class="filter-btn" data-category="general">General</button>
+                </div>
+            </div>
+
+            <!-- Grid de Protocolos -->
+            <div class="protocols-grid" id="protocolsGrid">
+                
+                <!-- Protocolo General -->
+                <div class="protocol-card reveal" data-category="general">
+                    <div class="protocol-icon">📋</div>
+                    <span class="protocol-category">General</span>
+                    <h3 class="protocol-title">Protocolo General de Participación</h3>
+                    <div class="protocol-meta">
+                        <span>📅 2024</span>
+                        <span>📄 15 páginas</span>
+                    </div>
+                    <p class="protocol-description">
+                        Guía completa con instrucciones generales para la participación en todos los 
+                        programas de ensayos de aptitud de CONCALAB-UASD.
+                    </p>
+                    <a href="../assets/documents/protocolo-general.pdf" class="btn btn-primary" download>
+                        Descargar PDF
+                    </a>
+                    <div class="download-stats">
+                        <span>⬇️ 245 descargas</span>
+                    </div>
+                </div>
+
+                <!-- Química Clínica - Glucosa -->
+                <div class="protocol-card reveal" data-category="quimica">
+                    <div class="protocol-icon">🩸</div>
+                    <span class="protocol-category">Química Clínica</span>
+                    <h3 class="protocol-title">Protocolo de Glucosa</h3>
+                    <div class="protocol-meta">
+                        <span>📅 2024</span>
+                        <span>📄 12 páginas</span>
+                    </div>
+                    <p class="protocol-description">
+                        Procedimientos específicos para el ensayo de aptitud de glucosa, incluyendo 
+                        preparación de muestras y criterios de evaluación.
+                    </p>
+                    <a href="../assets/documents/protocolo-glucosa.pdf" class="btn btn-primary" download>
+                        Descargar PDF
+                    </a>
+                    <div class="download-stats">
+                        <span>⬇️ 189 descargas</span>
+                    </div>
+                </div>
+
+                <!-- Química Clínica - Lípidos -->
+                <div class="protocol-card reveal" data-category="quimica">
+                    <div class="protocol-icon">💧</div>
+                    <span class="protocol-category">Química Clínica</span>
+                    <h3 class="protocol-title">Protocolo de Perfil Lipídico</h3>
+                    <div class="protocol-meta">
+                        <span>📅 2024</span>
+                        <span>📄 18 páginas</span>
+                    </div>
+                    <p class="protocol-description">
+                        Protocolos para ensayos de aptitud de colesterol total, HDL, LDL y triglicéridos, 
+                        con métodos de cálculo y rangos aceptables.
+                    </p>
+                    <a href="../assets/documents/protocolo-lipidos.pdf" class="btn btn-primary" download>
+                        Descargar PDF
+                    </a>
+                    <div class="download-stats">
+                        <span>⬇️ 167 descargas</span>
+                    </div>
+                </div>
+
+                <!-- Uroanálisis -->
+                <div class="protocol-card reveal" data-category="uroanalisis">
+                    <div class="protocol-icon">🧪</div>
+                    <span class="protocol-category">Uroanálisis</span>
+                    <h3 class="protocol-title">Protocolo de Uroanálisis Completo</h3>
+                    <div class="protocol-meta">
+                        <span>📅 2024</span>
+                        <span>📄 20 páginas</span>
+                    </div>
+                    <p class="protocol-description">
+                        Procedimientos detallados para ensayos de aptitud en uroanálisis: proteínas, 
+                        glucosa, cuerpos cetónicos, bilirrubina y nitritos.
+                    </p>
+                    <a href="../assets/documents/protocolo-uroanalisis.pdf" class="btn btn-primary" download>
+                        Descargar PDF
+                    </a>
+                    <div class="download-stats">
+                        <span>⬇️ 142 descargas</span>
+                    </div>
+                </div>
+
+                <!-- Manejo de Muestras -->
+                <div class="protocol-card reveal" data-category="general">
+                    <div class="protocol-icon">📦</div>
+                    <span class="protocol-category">General</span>
+                    <h3 class="protocol-title">Manejo y Conservación de Muestras</h3>
+                    <div class="protocol-meta">
+                        <span>📅 2024</span>
+                        <span>📄 10 páginas</span>
+                    </div>
+                    <p class="protocol-description">
+                        Guía sobre el correcto manejo, almacenamiento y transporte de muestras para 
+                        ensayos de aptitud.
+                    </p>
+                    <a href="../assets/documents/protocolo-muestras.pdf" class="btn btn-primary" download>
+                        Descargar PDF
+                    </a>
+                    <div class="download-stats">
+                        <span>⬇️ 198 descargas</span>
+                    </div>
+                </div>
+
+                <!-- Reporte de Resultados -->
+                <div class="protocol-card reveal" data-category="general">
+                    <div class="protocol-icon">📊</div>
+                    <span class="protocol-category">General</span>
+                    <h3 class="protocol-title">Protocolo de Reporte de Resultados</h3>
+                    <div class="protocol-meta">
+                        <span>📅 2024</span>
+                        <span>📄 8 páginas</span>
+                    </div>
+                    <p class="protocol-description">
+                        Instrucciones para el correcto reporte de resultados en la plataforma, 
+                        formatos y plazos de entrega.
+                    </p>
+                    <a href="../assets/documents/protocolo-reporte.pdf" class="btn btn-primary" download>
+                        Descargar PDF
+                    </a>
+                    <div class="download-stats">
+                        <span>⬇️ 221 descargas</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Mensaje de no resultados -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <h3>No se encontraron protocolos</h3>
+                <p>Intenta con otros términos de búsqueda o categoría</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Información adicional -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="grid grid-2">
+                <div class="card reveal">
+                    <h3 class="card-title">💡 Nota Importante</h3>
+                    <p class="card-text">
+                        Los protocolos son documentos oficiales que deben ser seguidos estrictamente 
+                        para garantizar la validez de los ensayos de aptitud. Cualquier desviación 
+                        debe ser reportada inmediatamente.
+                    </p>
+                </div>
+                <div class="card reveal">
+                    <h3 class="card-title">📞 ¿Necesitas Ayuda?</h3>
+                    <p class="card-text">
+                        Si tienes dudas sobre algún protocolo o necesitas asistencia técnica, 
+                        no dudes en contactarnos. Nuestro equipo estará encantado de ayudarte.
+                    </p>
+                    <a href="../contacto.html" class="btn btn-outline mt-1">Contactar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CONCALAB-UASD</h3>
+                    <p>Control de Calidad de Laboratorios</p>
+                    <p>Universidad Autónoma de Santo Domingo</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="../servicios.html">Servicios</a></li>
+                        <li><a href="../portal-educativo.html">Portal Educativo</a></li>
+                        <li><a href="../contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Publicaciones</h3>
+                    <ul class="footer-links">
+                        <li><a href="protocolos.html">Protocolos</a></li>
+                        <li><a href="informes.html">Informes</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>📍 Santo Domingo, República Dominicana</p>
+                    <p>📧 info@concalab.uasd.edu.do</p>
+                    <p>📞 +1 (809) XXX-XXXX</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 CONCALAB-UASD. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" style="position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; opacity: 0; visibility: hidden; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 999;">↑</a>
+
+    <style>
+        .back-to-top.visible { opacity: 1 !important; visibility: visible !important; }
+    </style>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/scroll-reveal.js"></script>
+    
+    <script>
+        // Filtrado de protocolos
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const protocolCards = document.querySelectorAll('.protocol-card');
+            const searchInput = document.getElementById('protocolSearch');
+            const noResults = document.getElementById('noResults');
+
+            // Filtrado por categoría
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-category');
+                    filterProtocols(category, searchInput.value);
+                });
+            });
+
+            // Búsqueda en tiempo real
+            searchInput.addEventListener('input', function() {
+                const activeCategory = document.querySelector('.filter-btn.active').getAttribute('data-category');
+                filterProtocols(activeCategory, this.value);
+            });
+
+            function filterProtocols(category, searchTerm) {
+                let visibleCount = 0;
+                searchTerm = searchTerm.toLowerCase();
+
+                protocolCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    const title = card.querySelector('.protocol-title').textContent.toLowerCase();
+                    const description = card.querySelector('.protocol-description').textContent.toLowerCase();
+                    
+                    const matchCategory = category === 'todos' || cardCategory === category;
+                    const matchSearch = !searchTerm || title.includes(searchTerm) || description.includes(searchTerm);
+                    
+                    if (matchCategory && matchSearch) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+            }
+        });
+    </script>
+</body>
+</html>
+

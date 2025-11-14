@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Laboratorios Miembros de CONCALAB-UASD - Red nacional de laboratorios participantes en programas de evaluación externa de calidad">
+    <title>Miembros - CONCALAB-UASD</title>
+    
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+    
+    <style>
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .member-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .member-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .member-logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin: 0 auto 1.5rem;
+        }
+
+        .member-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-location {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .member-type {
+            display: inline-block;
+            background: var(--bg-light);
+            color: var(--primary-color);
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 0.5rem auto;
+            display: block;
+            width: fit-content;
+        }
+
+        .member-since {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 1rem;
+        }
+
+        .filter-region {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .region-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--border-color);
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .region-btn:hover,
+        .region-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+        }
+
+        .join-cta {
+            background: var(--bg-light);
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-overlay"></div>
+
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="assets/images/logo-concalab.png" alt="Logo CONCALAB-UASD" onerror="this.style.display='none'">
+                <div class="logo-text">
+                    <div class="logo-title">CONCALAB-UASD</div>
+                    <div class="logo-subtitle">Control de Calidad de Laboratorios</div>
+                </div>
+            </div>
+
+            <nav class="nav-main">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Publicaciones</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="publicaciones/protocolos.html" class="nav-link">Protocolos</a></li>
+                            <li><a href="publicaciones/informes.html" class="nav-link">Informes</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="portal-educativo.html" class="nav-link">Portal Educativo</a></li>
+                    <li class="nav-item"><a href="servicios.html" class="nav-link">Servicios</a></li>
+                    <li class="nav-item"><a href="miembros.html" class="nav-link active">Miembros</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Sobre Nosotros</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="sobre-nosotros/quienes-somos.html" class="nav-link">Quiénes Somos</a></li>
+                            <li><a href="sobre-nosotros/historia.html" class="nav-link">Historia</a></li>
+                            <li><a href="sobre-nosotros/marco-legal.html" class="nav-link">Marco Legal</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Buscar...">
+                    <button class="search-btn" aria-label="Buscar">🔍</button>
+                </div>
+            </nav>
+
+            <button class="menu-toggle" aria-label="Menú">☰</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in-down">
+                <h1 class="hero-title">Laboratorios Miembros</h1>
+                <p class="hero-subtitle">Red nacional de laboratorios comprometidos con la calidad y la excelencia</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            
+            <!-- Estadísticas -->
+            <div class="stats-section reveal">
+                <h2 style="text-align: center; color: var(--secondary-color); margin-bottom: 2rem;">Nuestra Red Nacional</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3 class="counter" data-target="100">0</h3>
+                        <p>Laboratorios Activos</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 class="counter" data-target="32">0</h3>
+                        <p>Provincias Representadas</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 class="counter" data-target="40">0</h3>
+                        <p>Años de Experiencia</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 class="counter" data-target="95">0</h3>
+                        <p>% Participación Activa</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filtros por Región -->
+            <div class="section-title reveal">
+                <h2>Nuestros Laboratorios Participantes</h2>
+                <p>Laboratorios comprometidos con la excelencia en análisis clínicos</p>
+            </div>
+
+            <div class="filter-region reveal">
+                <button class="region-btn active" data-region="todos">Todos</button>
+                <button class="region-btn" data-region="distrito-nacional">Distrito Nacional</button>
+                <button class="region-btn" data-region="santiago">Santiago</button>
+                <button class="region-btn" data-region="este">Región Este</button>
+                <button class="region-btn" data-region="norte">Región Norte</button>
+                <button class="region-btn" data-region="sur">Región Sur</button>
+            </div>
+
+            <!-- Grid de Miembros -->
+            <div class="members-grid">
+                
+                <!-- Ejemplo de laboratorios (datos ficticios para demostración) -->
+                <div class="member-card reveal" data-region="distrito-nacional">
+                    <div class="member-logo">🏥</div>
+                    <h3 class="member-name">Laboratorio Clínico Central</h3>
+                    <p class="member-location">📍 Santo Domingo, Distrito Nacional</p>
+                    <span class="member-type">Público</span>
+                    <p class="member-since">Miembro desde 2015</p>
+                </div>
+
+                <div class="member-card reveal" data-region="santiago">
+                    <div class="member-logo">🔬</div>
+                    <h3 class="member-name">Lab Diagnóstico Santiago</h3>
+                    <p class="member-location">📍 Santiago de los Caballeros</p>
+                    <span class="member-type">Privado</span>
+                    <p class="member-since">Miembro desde 2017</p>
+                </div>
+
+                <div class="member-card reveal" data-region="distrito-nacional">
+                    <div class="member-logo">⚕️</div>
+                    <h3 class="member-name">Centro Médico Universal</h3>
+                    <p class="member-location">📍 Santo Domingo, Distrito Nacional</p>
+                    <span class="member-type">Privado</span>
+                    <p class="member-since">Miembro desde 2016</p>
+                </div>
+
+                <div class="member-card reveal" data-region="este">
+                    <div class="member-logo">🏥</div>
+                    <h3 class="member-name">Hospital Regional del Este</h3>
+                    <p class="member-location">📍 San Pedro de Macorís</p>
+                    <span class="member-type">Público</span>
+                    <p class="member-since">Miembro desde 2018</p>
+                </div>
+
+                <div class="member-card reveal" data-region="norte">
+                    <div class="member-logo">🔬</div>
+                    <h3 class="member-name">Laboratorio Norte Médico</h3>
+                    <p class="member-location">📍 Puerto Plata</p>
+                    <span class="member-type">Privado</span>
+                    <p class="member-since">Miembro desde 2019</p>
+                </div>
+
+                <div class="member-card reveal" data-region="sur">
+                    <div class="member-logo">⚕️</div>
+                    <h3 class="member-name">Centro de Diagnóstico del Sur</h3>
+                    <p class="member-location">📍 Barahona</p>
+                    <span class="member-type">Privado</span>
+                    <p class="member-since">Miembro desde 2020</p>
+                </div>
+
+                <div class="member-card reveal" data-region="distrito-nacional">
+                    <div class="member-logo">🏥</div>
+                    <h3 class="member-name">Hospital General Plaza</h3>
+                    <p class="member-location">📍 Santo Domingo, Distrito Nacional</p>
+                    <span class="member-type">Público</span>
+                    <p class="member-since">Miembro desde 2014</p>
+                </div>
+
+                <div class="member-card reveal" data-region="santiago">
+                    <div class="member-logo">🔬</div>
+                    <h3 class="member-name">Clínica Diagnóstica del Cibao</h3>
+                    <p class="member-location">📍 Santiago de los Caballeros</p>
+                    <span class="member-type">Privado</span>
+                    <p class="member-since">Miembro desde 2016</p>
+                </div>
+
+                <div class="member-card reveal" data-region="este">
+                    <div class="member-logo">⚕️</div>
+                    <h3 class="member-name">Laboratorio La Altagracia</h3>
+                    <p class="member-location">📍 Higüey</p>
+                    <span class="member-type">Privado</span>
+                    <p class="member-since">Miembro desde 2019</p>
+                </div>
+
+                <!-- Más laboratorios se pueden agregar aquí -->
+                
+            </div>
+
+            <!-- CTA para unirse -->
+            <div class="join-cta reveal">
+                <h2 style="color: var(--primary-color); margin-bottom: 1rem;">¿Tu Laboratorio Desea Unirse a Nuestra Red?</h2>
+                <p style="color: var(--text-light); margin-bottom: 2rem; font-size: 1.1rem;">
+                    Forma parte de la red más grande de laboratorios comprometidos con la calidad en República Dominicana.<br>
+                    Benefíciate de nuestros programas de evaluación externa y mejora continua.
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="contacto.html" class="btn btn-primary">Solicitar Información</a>
+                    <a href="servicios.html" class="btn btn-outline">Ver Servicios</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Beneficios de ser Miembro -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Beneficios de ser Miembro</h2>
+                <p>Ventajas de participar en nuestros programas de evaluación externa</p>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="card reveal">
+                    <div class="card-icon">✅</div>
+                    <h3 class="card-title">Certificación de Calidad</h3>
+                    <p class="card-text">
+                        Recibe certificados de participación que demuestran tu compromiso con la calidad 
+                        y cumplimiento de estándares internacionales.
+                    </p>
+                </div>
+
+                <div class="card reveal">
+                    <div class="card-icon">📊</div>
+                    <h3 class="card-title">Reportes Detallados</h3>
+                    <p class="card-text">
+                        Accede a informes completos con análisis estadístico, comparativas y recomendaciones 
+                        para mejora continua.
+                    </p>
+                </div>
+
+                <div class="card reveal">
+                    <div class="card-icon">🎓</div>
+                    <h3 class="card-title">Capacitación Continua</h3>
+                    <p class="card-text">
+                        Participa en talleres, seminarios y cursos de actualización en control de calidad 
+                        y buenas prácticas de laboratorio.
+                    </p>
+                </div>
+
+                <div class="card reveal">
+                    <div class="card-icon">🤝</div>
+                    <h3 class="card-title">Red de Contactos</h3>
+                    <p class="card-text">
+                        Conéctate con otros laboratorios, comparte experiencias y aprende de las mejores 
+                        prácticas del sector.
+                    </p>
+                </div>
+
+                <div class="card reveal">
+                    <div class="card-icon">💼</div>
+                    <h3 class="card-title">Respaldo Institucional</h3>
+                    <p class="card-text">
+                        Cuenta con el apoyo de la UASD y reconocimiento oficial en el sector de salud 
+                        de República Dominicana.
+                    </p>
+                </div>
+
+                <div class="card reveal">
+                    <div class="card-icon">📈</div>
+                    <h3 class="card-title">Mejora Continua</h3>
+                    <p class="card-text">
+                        Identifica oportunidades de mejora, detecta problemas analíticos tempranamente y 
+                        mantén altos estándares de calidad.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CONCALAB-UASD</h3>
+                    <p>Control de Calidad de Laboratorios</p>
+                    <p>Universidad Autónoma de Santo Domingo</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="portal-educativo.html">Portal Educativo</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Publicaciones</h3>
+                    <ul class="footer-links">
+                        <li><a href="publicaciones/protocolos.html">Protocolos</a></li>
+                        <li><a href="publicaciones/informes.html">Informes</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>📍 Santo Domingo, República Dominicana</p>
+                    <p>📧 info@concalab.uasd.edu.do</p>
+                    <p>📞 +1 (809) XXX-XXXX</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 CONCALAB-UASD. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" style="position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; opacity: 0; visibility: hidden; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 999;">↑</a>
+
+    <style>
+        .back-to-top.visible { opacity: 1 !important; visibility: visible !important; }
+    </style>
+
+    <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/scroll-reveal.js"></script>
+
+    <script>
+        // Filtrado por región
+        document.addEventListener('DOMContentLoaded', function() {
+            const regionBtns = document.querySelectorAll('.region-btn');
+            const memberCards = document.querySelectorAll('.member-card');
+
+            regionBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    regionBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const region = this.getAttribute('data-region');
+                    
+                    memberCards.forEach(card => {
+                        const cardRegion = card.getAttribute('data-region');
+                        
+                        if (region === 'todos' || cardRegion === region) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

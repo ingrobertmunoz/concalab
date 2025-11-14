@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Quiénes Somos - CONCALAB-UASD. Misión, Visión y Valores de nuestra institución">
+    <title>Quiénes Somos - CONCALAB-UASD</title>
+    
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="icon" type="image/x-icon" href="../assets/icons/favicon.ico">
+    
+    <style>
+        .mission-vision-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 4rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+        }
+
+        .mv-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .mv-card h3 {
+            color: var(--secondary-color);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .mv-card p {
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .value-title {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .value-description {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-overlay"></div>
+
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="../assets/images/logo-concalab.png" alt="Logo CONCALAB-UASD" onerror="this.style.display='none'">
+                <div class="logo-text">
+                    <div class="logo-title">CONCALAB-UASD</div>
+                    <div class="logo-subtitle">Control de Calidad de Laboratorios</div>
+                </div>
+            </div>
+
+            <nav class="nav-main">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="../index.html" class="nav-link">Inicio</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Publicaciones</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../publicaciones/protocolos.html" class="nav-link">Protocolos</a></li>
+                            <li><a href="../publicaciones/informes.html" class="nav-link">Informes</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="../portal-educativo.html" class="nav-link">Portal Educativo</a></li>
+                    <li class="nav-item"><a href="../servicios.html" class="nav-link">Servicios</a></li>
+                    <li class="nav-item"><a href="../miembros.html" class="nav-link">Miembros</a></li>
+                    <li class="nav-item dropdown active">
+                        <a href="#" class="nav-link">Sobre Nosotros</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="quienes-somos.html" class="nav-link active">Quiénes Somos</a></li>
+                            <li><a href="historia.html" class="nav-link">Historia</a></li>
+                            <li><a href="marco-legal.html" class="nav-link">Marco Legal</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="../contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Buscar...">
+                    <button class="search-btn" aria-label="Buscar">🔍</button>
+                </div>
+            </nav>
+
+            <button class="menu-toggle" aria-label="Menú">☰</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in-down">
+                <h1 class="hero-title">Quiénes Somos</h1>
+                <p class="hero-subtitle">Marco Institucional - Misión, Visión y Valores</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            
+            <!-- Misión y Visión -->
+            <div class="mission-vision-section reveal">
+                <div class="mv-card">
+                    <h3><span>🎯</span> Misión</h3>
+                    <p>
+                        Somos una organización que orienta a los laboratorios públicos y privados a nivel nacional 
+                        que participan en el programa de Evaluación Externa De Calidad encaminados a identificar 
+                        mejoras en sus resultados, conociendo oportunamente las necesidades de nuestros clientes y 
+                        superando sus expectativas con soluciones integrales de calidad mundial; cumpliendo con los 
+                        objetivos trazados por CONCALAB-UASD.
+                    </p>
+                </div>
+
+                <div class="mv-card">
+                    <h3><span>🔭</span> Visión</h3>
+                    <p>
+                        Ser una organización reconocida, acreditada y demandante por las partes interesadas del 
+                        programa de Evaluación Externa De Calidad, enfocada en la calidad del uso de nuestros 
+                        controles en todas las áreas de laboratorio Clínico a nivel nacional e internacional.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Valores -->
+            <div class="section-title reveal">
+                <h2>Nuestros Valores</h2>
+                <p>Principios que guían nuestro trabajo diario</p>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card reveal">
+                    <div class="value-icon">🏆</div>
+                    <h3 class="value-title">Liderazgo</h3>
+                    <p class="value-description">
+                        Ser la organización sólida en la distribución de Controles de Calidad Externo, 
+                        siendo referentes en el sector y marcando el camino hacia la excelencia.
+                    </p>
+                </div>
+
+                <div class="value-card reveal">
+                    <div class="value-icon">⭐</div>
+                    <h3 class="value-title">Excelencia</h3>
+                    <p class="value-description">
+                        Ofrecer el mejor servicio y experiencia a nuestros clientes, superando constantemente 
+                        las expectativas y manteniendo los más altos estándares de calidad.
+                    </p>
+                </div>
+
+                <div class="value-card reveal">
+                    <div class="value-icon">🤝</div>
+                    <h3 class="value-title">Accesibilidad</h3>
+                    <p class="value-description">
+                        Ofrecer productos y servicios que sean apreciables y asequibles a nuestros clientes, 
+                        facilitando el acceso a programas de control de calidad para todos los laboratorios.
+                    </p>
+                </div>
+
+                <div class="value-card reveal">
+                    <div class="value-icon">✅</div>
+                    <h3 class="value-title">Responsabilidad</h3>
+                    <p class="value-description">
+                        Es un valor que está en la conciencia de las personas, que le permite reflexionar, 
+                        administrar, orientar y valorar las consecuencias de sus actos siempre en el plano moral, 
+                        siendo coherentes con nuestros compromisos.
+                    </p>
+                </div>
+
+                <div class="value-card reveal">
+                    <div class="value-icon">💡</div>
+                    <h3 class="value-title">Innovadores</h3>
+                    <p class="value-description">
+                        Proveer un servicio de máxima calidad para satisfacer las necesidades de nuestros usuarios, 
+                        incorporando continuamente nuevas tecnologías y metodologías actualizadas.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Información Adicional -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="grid grid-2">
+                <div class="card reveal">
+                    <h3 class="card-title">📍 Ubicación Institucional</h3>
+                    <p class="card-text">
+                        <strong>Dependencia:</strong> Vicerrectoría Administrativa<br>
+                        <strong>Institución:</strong> Universidad Autónoma de Santo Domingo (UASD)<br>
+                        <strong>Categoría:</strong> Unidad Productiva de la UASD<br>
+                        <strong>Reconocimiento:</strong> Resolución núm. 372-2023
+                    </p>
+                </div>
+
+                <div class="card reveal">
+                    <h3 class="card-title">🎓 Respaldo Académico</h3>
+                    <p class="card-text">
+                        Como parte de la Universidad Autónoma de Santo Domingo, la primera universidad de América 
+                        fundada en 1538, CONCALAB-UASD cuenta con el respaldo académico e institucional de más de 
+                        480 años de historia y excelencia educativa.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+        <div class="container text-center">
+            <div class="reveal">
+                <h2 style="margin-bottom: 1.5rem;">¿Quieres Conocer Más Sobre Nosotros?</h2>
+                <p style="font-size: 1.1rem; color: var(--text-light); margin-bottom: 2rem;">
+                    Descubre nuestra historia y el marco legal que nos respalda
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="historia.html" class="btn btn-primary">Nuestra Historia</a>
+                    <a href="marco-legal.html" class="btn btn-outline">Marco Legal</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CONCALAB-UASD</h3>
+                    <p>Control de Calidad de Laboratorios</p>
+                    <p>Universidad Autónoma de Santo Domingo</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="../servicios.html">Servicios</a></li>
+                        <li><a href="../portal-educativo.html">Portal Educativo</a></li>
+                        <li><a href="../contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Sobre Nosotros</h3>
+                    <ul class="footer-links">
+                        <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+                        <li><a href="historia.html">Historia</a></li>
+                        <li><a href="marco-legal.html">Marco Legal</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>📍 Santo Domingo, República Dominicana</p>
+                    <p>📧 info@concalab.uasd.edu.do</p>
+                    <p>📞 +1 (809) XXX-XXXX</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 CONCALAB-UASD. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" style="position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; opacity: 0; visibility: hidden; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 999;">↑</a>
+
+    <style>
+        .back-to-top.visible { opacity: 1 !important; visibility: visible !important; }
+    </style>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/scroll-reveal.js"></script>
+</body>
+</html>
+

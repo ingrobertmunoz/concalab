@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portal Educativo - CONCALAB-UASD. Recursos educativos sobre ensayos de aptitud, normas de calidad y control de calidad en laboratorios clínicos.">
+    <title>Portal Educativo - CONCALAB-UASD</title>
+    
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+    
+    <style>
+        .accordion {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .accordion:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .accordion-header {
+            padding: 1.5rem 2rem;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+            border-bottom: 2px solid transparent;
+        }
+
+        .accordion-header:hover {
+            background: var(--bg-light);
+        }
+
+        .accordion.active .accordion-header {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .accordion-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .accordion-icon {
+            font-size: 2rem;
+        }
+
+        .accordion-toggle {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion.active .accordion-toggle {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: white;
+        }
+
+        .accordion-content-inner {
+            padding: 2rem;
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        .accordion-content h4 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .accordion-content ul, 
+        .accordion-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .accordion-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .topic-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .topic-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .topic-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .topic-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .external-links {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+
+        .external-links h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .external-links ul {
+            list-style: none;
+        }
+
+        .external-links li {
+            margin-bottom: 1rem;
+        }
+
+        .external-links a {
+            color: white;
+            text-decoration: underline;
+            transition: var(--transition);
+        }
+
+        .external-links a:hover {
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-overlay"></div>
+
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="assets/images/logo-concalab.png" alt="Logo CONCALAB-UASD" onerror="this.style.display='none'">
+                <div class="logo-text">
+                    <div class="logo-title">CONCALAB-UASD</div>
+                    <div class="logo-subtitle">Control de Calidad de Laboratorios</div>
+                </div>
+            </div>
+
+            <nav class="nav-main">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Publicaciones</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="publicaciones/protocolos.html" class="nav-link">Protocolos</a></li>
+                            <li><a href="publicaciones/informes.html" class="nav-link">Informes</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="portal-educativo.html" class="nav-link active">Portal Educativo</a></li>
+                    <li class="nav-item"><a href="servicios.html" class="nav-link">Servicios</a></li>
+                    <li class="nav-item"><a href="miembros.html" class="nav-link">Miembros</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Sobre Nosotros</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="sobre-nosotros/quienes-somos.html" class="nav-link">Quiénes Somos</a></li>
+                            <li><a href="sobre-nosotros/historia.html" class="nav-link">Historia</a></li>
+                            <li><a href="sobre-nosotros/marco-legal.html" class="nav-link">Marco Legal</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Buscar...">
+                    <button class="search-btn" aria-label="Buscar">🔍</button>
+                </div>
+            </nav>
+
+            <button class="menu-toggle" aria-label="Menú">☰</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in-down">
+                <h1 class="hero-title">Portal Educativo</h1>
+                <p class="hero-subtitle">Recursos educativos sobre ensayos de aptitud, control de calidad y normas internacionales</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Temas Educativos</h2>
+                <p>Aprende sobre control de calidad en laboratorios clínicos</p>
+            </div>
+
+            <!-- Categorías de Temas -->
+            <div class="topic-categories reveal">
+                <div class="topic-card" data-scroll-to="ensayos">
+                    <div class="topic-icon">🔬</div>
+                    <div class="topic-title">Ensayos de Aptitud</div>
+                </div>
+                <div class="topic-card" data-scroll-to="criterios">
+                    <div class="topic-icon">✅</div>
+                    <div class="topic-title">Criterios de Desempeño</div>
+                </div>
+                <div class="topic-card" data-scroll-to="normas">
+                    <div class="topic-icon">📋</div>
+                    <div class="topic-title">Normas ISO</div>
+                </div>
+                <div class="topic-card" data-scroll-to="conceptos">
+                    <div class="topic-icon">📚</div>
+                    <div class="topic-title">Conceptos Técnicos</div>
+                </div>
+            </div>
+
+            <!-- Acordeones Educativos -->
+            <div id="ensayos"></div>
+            <div class="accordion reveal">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <span class="accordion-icon">🔬</span>
+                        <span>¿Qué es un Ensayo de Aptitud o Prueba Interlaboratorial?</span>
+                    </div>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p>
+                            Un ensayo de aptitud (también conocido como prueba interlaboratorial o ensayo de comparación interlaboratorios) 
+                            es la evaluación del desempeño de los participantes contra criterios preestablecidos por medio de comparaciones interlaboratoriales.
+                        </p>
+                        <h4>Características principales:</h4>
+                        <ul>
+                            <li><strong>Evaluación externa:</strong> Un organismo independiente evalúa el desempeño del laboratorio</li>
+                            <li><strong>Muestras estandarizadas:</strong> Todos los laboratorios analizan las mismas muestras</li>
+                            <li><strong>Comparación estadística:</strong> Los resultados se comparan con otros laboratorios</li>
+                            <li><strong>Periodicidad regular:</strong> Se realizan de forma sistemática y continua</li>
+                        </ul>
+                        <h4>Objetivos:</h4>
+                        <ol>
+                            <li>Identificar problemas analíticos en el laboratorio</li>
+                            <li>Verificar la exactitud y precisión de los métodos analíticos</li>
+                            <li>Demostrar competencia técnica ante organismos reguladores</li>
+                            <li>Promover la mejora continua de la calidad</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion reveal">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <span class="accordion-icon">🎯</span>
+                        <span>¿Por qué es importante la participación en estas pruebas?</span>
+                    </div>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p>
+                            La participación en ensayos de aptitud es fundamental para garantizar la calidad y confiabilidad 
+                            de los resultados de laboratorio clínico. Su importancia radica en:
+                        </p>
+                        <h4>Beneficios para el Laboratorio:</h4>
+                        <ul>
+                            <li><strong>Validación externa:</strong> Confirmación independiente de la calidad de los análisis</li>
+                            <li><strong>Detección de problemas:</strong> Identificación temprana de errores sistemáticos o aleatorios</li>
+                            <li><strong>Mejora continua:</strong> Oportunidad de implementar acciones correctivas</li>
+                            <li><strong>Capacitación del personal:</strong> Herramienta educativa para el equipo técnico</li>
+                            <li><strong>Cumplimiento normativo:</strong> Requisito de normas ISO y organismos acreditadores</li>
+                        </ul>
+                        <h4>Beneficios para los Pacientes:</h4>
+                        <ul>
+                            <li>Mayor confiabilidad en los resultados de laboratorio</li>
+                            <li>Diagnósticos más precisos y oportunos</li>
+                            <li>Reducción de riesgo de errores médicos</li>
+                            <li>Mejor calidad en la atención de salud</li>
+                        </ul>
+                        <h4>Requerimiento Legal:</h4>
+                        <p>
+                            En muchos países, incluyendo República Dominicana, la participación en programas de 
+                            evaluación externa de calidad es un requisito legal para el funcionamiento de laboratorios clínicos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="criterios"></div>
+            <div class="accordion reveal">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <span class="accordion-icon">📊</span>
+                        <span>Criterios de Desempeño o Aceptación</span>
+                    </div>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p>
+                            Los criterios de desempeño son los estándares utilizados para evaluar si el resultado 
+                            reportado por un laboratorio es aceptable o no.
+                        </p>
+                        <h4>Principales Métodos de Evaluación:</h4>
+                        <ul>
+                            <li><strong>Z-score:</strong> Mide la desviación del resultado respecto a la media del grupo
+                                <ul>
+                                    <li>|Z| ≤ 2: Resultado satisfactorio</li>
+                                    <li>2 < |Z| ≤ 3: Resultado cuestionable (advertencia)</li>
+                                    <li>|Z| > 3: Resultado insatisfactorio</li>
+                                </ul>
+                            </li>
+                            <li><strong>Desviación Estándar (SD):</strong> Medida de dispersión de los resultados</li>
+                            <li><strong>Coeficiente de Variación (CV):</strong> Mide la variabilidad relativa</li>
+                            <li><strong>Sesgo (Bias):</strong> Diferencia sistemática con el valor de referencia</li>
+                        </ul>
+                        <h4>Categorías de Desempeño:</h4>
+                        <ol>
+                            <li><strong>Satisfactorio:</strong> El resultado cumple con todos los criterios establecidos</li>
+                            <li><strong>Advertencia:</strong> El resultado está cerca del límite aceptable</li>
+                            <li><strong>Insatisfactorio:</strong> El resultado excede los límites de aceptación</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion reveal">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <span class="accordion-icon">📅</span>
+                        <span>Frecuencia Recomendada de Participación</span>
+                    </div>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p>
+                            La frecuencia de participación en ensayos de aptitud depende de varios factores:
+                        </p>
+                        <h4>Recomendaciones Generales:</h4>
+                        <ul>
+                            <li><strong>Mínimo obligatorio:</strong> 2-3 veces por año para cada analito</li>
+                            <li><strong>Recomendado:</strong> 4-6 veces por año (trimestral o bimestral)</li>
+                            <li><strong>Óptimo:</strong> Mensual para analitos críticos</li>
+                        </ul>
+                        <h4>Factores a Considerar:</h4>
+                        <ul>
+                            <li>Volumen de pruebas realizadas en el laboratorio</li>
+                            <li>Criticidad del analito para decisiones clínicas</li>
+                            <li>Requisitos de acreditación (ISO 15189, ISO 17025)</li>
+                            <li>Complejidad del método analítico</li>
+                            <li>Historial de desempeño del laboratorio</li>
+                        </ul>
+                        <h4>Frecuencia por Tipo de Análisis:</h4>
+                        <ul>
+                            <li><strong>Análisis de rutina:</strong> Trimestral o cuatrimestral</li>
+                            <li><strong>Análisis especializados:</strong> Semestral como mínimo</li>
+                            <li><strong>Nuevos métodos implementados:</strong> Mensual durante los primeros 6 meses</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion reveal">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <span class="accordion-icon">⚠️</span>
+                        <span>Recomendaciones antes de realizar los Ensayos de Aptitud</span>
+                    </div>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <h4>Antes de recibir la muestra:</h4>
+                        <ul>
+                            <li>Verificar que el equipo esté calibrado y en buen estado</li>
+                            <li>Asegurar disponibilidad de reactivos con fecha de vencimiento vigente</li>
+                            <li>Revisar que el personal esté capacitado</li>
+                            <li>Tener los protocolos actualizados y accesibles</li>
+                        </ul>
+                        <h4>Al recibir la muestra:</h4>
+                        <ul>
+                            <li>Verificar la integridad del envío</li>
+                            <li>Registrar fecha y hora de recepción</li>
+                            <li>Almacenar según indicaciones del proveedor</li>
+                            <li>Leer cuidadosamente las instrucciones</li>
+                        </ul>
+                        <h4>Durante el análisis:</h4>
+                        <ul>
+                            <li>Tratar las muestras como si fueran de pacientes reales</li>
+                            <li>Seguir los procedimientos operativos estándares (POE)</li>
+                            <li>Realizar los análisis en condiciones rutinarias</li>
+                            <li>No modificar métodos o condiciones analíticas</li>
+                            <li>Documentar cualquier incidencia</li>
+                        </ul>
+                        <h4>Al reportar resultados:</h4>
+                        <ul>
+                            <li>Verificar las unidades de medida</li>
+                            <li>Revisar que los datos sean coherentes</li>
+                            <li>Respetar los plazos de entrega</li>
+                            <li>Incluir información del método utilizado</li>
+                        </ul>
+                        <h4>⚠️ Prohibido:</h4>
+                        <ul>
+                            <li>Repetir el análisis múltiples veces y promediar</li>
+                            <li>Comparar resultados con otros laboratorios antes de reportar</li>
+                            <li>Modificar condiciones analíticas especialmente para la muestra de EA</li>
+                            <li>Enviar resultados fuera del plazo establecido</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="conceptos"></div>
+            <div class="accordion reveal">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <span class="accordion-icon">⚙️</span>
+                        <span>Diferencia entre Calibración y Ajuste</span>
+                    </div>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <h4>Calibración:</h4>
+                        <p>
+                            Es el proceso de establecer la relación entre los valores indicados por un instrumento 
+                            o sistema de medición y los valores correspondientes de magnitudes establecidos por patrones.
+                        </p>
+                        <ul>
+                            <li>No modifica el instrumento, solo documenta su comportamiento</li>
+                            <li>Determina la exactitud del instrumento</li>
+                            <li>Genera un certificado de calibración</li>
+                            <li>Debe ser realizada periódicamente</li>
+                        </ul>
+                        <h4>Ajuste:</h4>
+                        <p>
+                            Es la operación destinada a poner un instrumento de medición en un estado de funcionamiento 
+                            conveniente para su uso.
+                        </p>
+                        <ul>
+                            <li>Sí modifica el instrumento para corregir desviaciones</li>
+                            <li>Se realiza cuando la calibración muestra desviaciones significativas</li>
+                            <li>Debe ser seguido de una nueva calibración para verificar el ajuste</li>
+                            <li>Solo personal autorizado debe realizarlo</li>
+                        </ul>
+                        <h4>Secuencia Recomendada:</h4>
+                        <ol>
+                            <li>Calibración inicial (documentar estado actual)</li>
+                            <li>Ajuste (si es necesario)</li>
+                            <li>Calibración final (verificar que el ajuste fue efectivo)</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion reveal">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <span class="accordion-icon">🎯</span>
+                        <span>¿Qué es Mensurando?</span>
+                    </div>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p>
+                            <strong>Mensurando</strong> es la magnitud particular sujeta a medición. Es decir, 
+                            es la cantidad o propiedad que se desea medir.
+                        </p>
+                        <h4>Ejemplos en Laboratorio Clínico:</h4>
+                        <ul>
+                            <li>Concentración de glucosa en suero (mg/dL)</li>
+                            <li>Concentración de hemoglobina en sangre (g/dL)</li>
+                            <li>Concentración de creatinina en orina (mg/dL)</li>
+                            <li>Actividad enzimática de ALT en suero (U/L)</li>
+                        </ul>
+                        <h4>Especificación del Mensurando:</h4>
+                        <p>Para definir correctamente un mensurando se debe especificar:</p>
+                        <ol>
+                            <li><strong>La magnitud:</strong> ¿Qué se va a medir? (ej: glucosa)</li>
+                            <li><strong>El tipo de muestra:</strong> ¿En qué matriz? (ej: suero, plasma, sangre total)</li>
+                            <li><strong>Las condiciones:</strong> ¿En qué condiciones? (ej: en ayunas, posprandial)</li>
+                            <li><strong>Las unidades:</strong> ¿En qué unidades? (ej: mg/dL, mmol/L)</li>
+                        </ol>
+                        <h4>Importancia:</h4>
+                        <p>
+                            La correcta definición del mensurando es crucial porque diferentes mensurandos pueden 
+                            tener diferentes procedimientos de medición, valores de referencia y criterios de aceptación.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion reveal">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <span class="accordion-icon">📏</span>
+                        <span>¿Qué es Incertidumbre de Medición?</span>
+                    </div>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p>
+                            La <strong>incertidumbre de medición</strong> es un parámetro asociado al resultado de una 
+                            medición que caracteriza la dispersión de los valores que podrían razonablemente ser atribuidos 
+                            al mensurando.
+                        </p>
+                        <h4>En términos simples:</h4>
+                        <p>
+                            Es una estimación cuantitativa de la duda que existe sobre el resultado de una medición. 
+                            Nos indica qué tan confiable es el valor reportado.
+                        </p>
+                        <h4>Fuentes de Incertidumbre:</h4>
+                        <ul>
+                            <li>Variabilidad del muestreo</li>
+                            <li>Efectos ambientales (temperatura, humedad)</li>
+                            <li>Incertidumbres de patrones y materiales de referencia</li>
+                            <li>Aproximaciones y suposiciones en el método</li>
+                            <li>Variabilidad aleatoria (precisión del método)</li>
+                            <li>Calibración del equipo</li>
+                            <li>Variación del operador</li>
+                        </ul>
+                        <h4>Cómo se expresa:</h4>
+                        <p>Ejemplo: Glucosa = 100 ± 5 mg/dL (k=2)</p>
+                        <ul>
+                            <li>100 mg/dL es el valor medido</li>
+                            <li>± 5 mg/dL es la incertidumbre expandida</li>
+                            <li>k=2 indica un nivel de confianza del 95%</li>
+                        </ul>
+                        <h4>Importancia:</h4>
+                        <ul>
+                            <li>Requisito de la norma ISO/IEC 17025</li>
+                            <li>Permite comparar resultados de diferentes laboratorios</li>
+                            <li>Ayuda en la interpretación clínica de resultados cercanos a valores de decisión</li>
+                            <li>Demuestra competencia técnica del laboratorio</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="normas"></div>
+            <div class="accordion reveal">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <span class="accordion-icon">📋</span>
+                        <span>¿Qué es la norma ISO/IEC 17043?</span>
+                    </div>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p>
+                            <strong>ISO/IEC 17043:2023</strong> es la norma internacional que especifica los requisitos 
+                            generales para la competencia de los proveedores de ensayos de aptitud y el desarrollo y 
+                            operación de esquemas de ensayos de aptitud.
+                        </p>
+                        <h4>Alcance de la norma:</h4>
+                        <ul>
+                            <li>Requisitos para proveedores de ensayos de aptitud</li>
+                            <li>Diseño y operación de esquemas de EA</li>
+                            <li>Análisis estadístico de resultados</li>
+                            <li>Gestión de la calidad del proveedor</li>
+                            <li>Requisitos de personal e instalaciones</li>
+                        </ul>
+                        <h4>Beneficios de la acreditación bajo ISO/IEC 17043:</h4>
+                        <ul>
+                            <li>Reconocimiento internacional de competencia técnica</li>
+                            <li>Mayor confianza en los programas de EA ofrecidos</li>
+                            <li>Mejora continua en la operación de los programas</li>
+                            <li>Credibilidad ante laboratorios participantes</li>
+                        </ul>
+                        <h4>Para Laboratorios Participantes:</h4>
+                        <p>
+                            Participar en programas acreditados bajo ISO/IEC 17043 garantiza:
+                        </p>
+                        <ul>
+                            <li>Evaluación justa y técnicamente sólida</li>
+                            <li>Confidencialidad de resultados</li>
+                            <li>Métodos estadísticos apropiados</li>
+                            <li>Reportes claros y oportunos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion reveal">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <span class="accordion-icon">🏆</span>
+                        <span>¿Qué es la norma ISO/IEC 17025?</span>
+                    </div>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p>
+                            <strong>ISO/IEC 17025:2017</strong> es la norma internacional que especifica los requisitos 
+                            generales para la competencia de los laboratorios de ensayo y calibración.
+                        </p>
+                        <h4>Requisitos Principales:</h4>
+                        <ul>
+                            <li><strong>Requisitos de gestión:</strong> Sistema de gestión de calidad</li>
+                            <li><strong>Requisitos técnicos:</strong> Personal, instalaciones, equipos, métodos</li>
+                            <li><strong>Validación de métodos</strong></li>
+                            <li><strong>Estimación de incertidumbre</strong></li>
+                            <li><strong>Aseguramiento de calidad de resultados</strong></li>
+                            <li><strong>Trazabilidad metrológica</strong></li>
+                        </ul>
+                        <h4>¿Por qué es importante para los laboratorios clínicos?</h4>
+                        <ul>
+                            <li><strong>Reconocimiento internacional:</strong> Facilita aceptación de resultados entre países</li>
+                            <li><strong>Competencia técnica demostrada:</strong> Evidencia de capacidad para producir resultados válidos</li>
+                            <li><strong>Mejora continua:</strong> Sistema estructurado de gestión de calidad</li>
+                            <li><strong>Confianza del cliente:</strong> Mayor credibilidad ante pacientes y médicos</li>
+                            <li><strong>Requisito contractual:</strong> Muchos contratos y licitaciones lo requieren</li>
+                            <li><strong>Cumplimiento regulatorio:</strong> Requerido por organismos de salud en varios países</li>
+                        </ul>
+                        <h4>Diferencia con ISO 15189:</h4>
+                        <p>
+                            <strong>ISO 15189</strong> es específica para laboratorios clínicos y además de los requisitos 
+                            técnicos incluye requisitos relacionados con la interpretación de resultados y asesoramiento clínico.
+                        </p>
+                        <p>
+                            <strong>ISO 17025</strong> es más general y aplica a cualquier tipo de laboratorio (clínico, 
+                            ambiental, alimentario, etc.).
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion reveal">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <span class="accordion-icon">📚</span>
+                        <span>Principales Normas de Calidad para Laboratorios Clínicos</span>
+                    </div>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <h4>Normas ISO para Laboratorios:</h4>
+                        <ul>
+                            <li><strong>ISO 15189:2022</strong> - Requisitos para la calidad y competencia de laboratorios clínicos</li>
+                            <li><strong>ISO/IEC 17025:2017</strong> - Requisitos generales para la competencia de laboratorios de ensayo y calibración</li>
+                            <li><strong>ISO 22870:2016</strong> - Requisitos para análisis en el lugar de atención (Point-of-care testing)</li>
+                            <li><strong>ISO 15190:2003</strong> - Requisitos de seguridad en el laboratorio médico</li>
+                            <li><strong>ISO 15195:2018</strong> - Requisitos de laboratorios de referencia</li>
+                        </ul>
+                        <h4>Normas para Proveedores de Ensayos de Aptitud:</h4>
+                        <ul>
+                            <li><strong>ISO/IEC 17043:2023</strong> - Evaluación de la conformidad. Requisitos generales para ensayos de aptitud</li>
+                            <li><strong>ISO 13528:2022</strong> - Métodos estadísticos para uso en ensayos de aptitud</li>
+                        </ul>
+                        <h4>Guías y Documentos de la OMS:</h4>
+                        <ul>
+                            <li>WHO Laboratory Quality Management System (LQMS)</li>
+                            <li>WHO Guidelines on Drawing Blood</li>
+                            <li>Laboratory Biosafety Manual</li>
+                        </ul>
+                        <h4>Normas CLSI (Clinical and Laboratory Standards Institute):</h4>
+                        <ul>
+                            <li>CLSI GP26-A4 - Application of a Quality Management System Model for Laboratory Services</li>
+                            <li>CLSI C24-A3 - Statistical Quality Control for Quantitative Measurement Procedures</li>
+                            <li>CLSI EP15-A3 - User Verification of Precision and Estimation of Bias</li>
+                        </ul>
+
+                        <div class="external-links">
+                            <h3>Enlaces a Organizaciones de Normalización:</h3>
+                            <ul>
+                                <li><a href="https://www.iso.org" target="_blank" rel="noopener">ISO - International Organization for Standardization</a></li>
+                                <li><a href="https://www.iec.ch" target="_blank" rel="noopener">IEC - International Electrotechnical Commission</a></li>
+                                <li><a href="https://clsi.org" target="_blank" rel="noopener">CLSI - Clinical and Laboratory Standards Institute</a></li>
+                                <li><a href="https://www.who.int/health-topics/laboratories" target="_blank" rel="noopener">WHO - Organización Mundial de la Salud - Laboratorios</a></li>
+                                <li><a href="https://www.ilac.org" target="_blank" rel="noopener">ILAC - International Laboratory Accreditation Cooperation</a></li>
+                                <li><a href="https://www.bipm.org" target="_blank" rel="noopener">BIPM - Bureau International des Poids et Mesures</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section-light">
+        <div class="container text-center">
+            <div class="reveal">
+                <h2 style="margin-bottom: 1.5rem;">¿Tienes más preguntas?</h2>
+                <p style="font-size: 1.1rem; color: var(--text-light); margin-bottom: 2rem;">
+                    Nuestro equipo está disponible para responder tus dudas sobre control de calidad<br>
+                    y ensayos de aptitud en laboratorios clínicos.
+                </p>
+                <a href="contacto.html" class="btn btn-primary">Contactar al Equipo</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CONCALAB-UASD</h3>
+                    <p>Control de Calidad de Laboratorios</p>
+                    <p>Universidad Autónoma de Santo Domingo</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="portal-educativo.html">Portal Educativo</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Publicaciones</h3>
+                    <ul class="footer-links">
+                        <li><a href="publicaciones/protocolos.html">Protocolos</a></li>
+                        <li><a href="publicaciones/informes.html">Informes</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>📍 Santo Domingo, República Dominicana</p>
+                    <p>📧 info@concalab.uasd.edu.do</p>
+                    <p>📞 +1 (809) XXX-XXXX</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 CONCALAB-UASD. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" style="position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; opacity: 0; visibility: hidden; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 999;">↑</a>
+
+    <style>
+        .back-to-top.visible { opacity: 1 !important; visibility: visible !important; }
+    </style>
+
+    <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/scroll-reveal.js"></script>
+
+    <script>
+        // Scroll suave a secciones específicas
+        document.querySelectorAll('.topic-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-scroll-to');
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    const headerOffset = 100;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
