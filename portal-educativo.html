@@ -781,6 +781,27 @@
     <script src="js/scroll-reveal.js"></script>
 
     <script>
+        // Funcionalidad de acordeones
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', function() {
+                const accordion = this.parentElement;
+                const content = accordion.querySelector('.accordion-content');
+                const isActive = accordion.classList.contains('active');
+                
+                // Cerrar todos los acordeones
+                document.querySelectorAll('.accordion').forEach(acc => {
+                    acc.classList.remove('active');
+                    acc.querySelector('.accordion-content').style.maxHeight = null;
+                });
+                
+                // Abrir el acordeón clickeado si no estaba activo
+                if (!isActive) {
+                    accordion.classList.add('active');
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                }
+            });
+        });
+
         // Scroll suave a secciones específicas
         document.querySelectorAll('.topic-card').forEach(card => {
             card.addEventListener('click', function() {
@@ -796,6 +817,17 @@
                         top: offsetPosition,
                         behavior: 'smooth'
                     });
+                    
+                    // Abrir automáticamente el primer acordeón de la sección
+                    setTimeout(() => {
+                        const firstAccordion = targetElement.nextElementSibling;
+                        if (firstAccordion && firstAccordion.classList.contains('accordion')) {
+                            const header = firstAccordion.querySelector('.accordion-header');
+                            if (header && !firstAccordion.classList.contains('active')) {
+                                header.click();
+                            }
+                        }
+                    }, 500);
                 }
             });
         });
