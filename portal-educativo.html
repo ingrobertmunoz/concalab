@@ -792,12 +792,22 @@
                 if (isActive) {
                     // Cerrar este acordeón
                     accordion.classList.remove('active');
-                    content.style.maxHeight = null;
+                    content.style.maxHeight = '0';
                 } else {
                     // Abrir este acordeón
                     accordion.classList.add('active');
-                    content.style.maxHeight = content.scrollHeight + 'px';
+                    // Obtener la altura real del contenido
+                    const contentInner = content.querySelector('.accordion-content-inner');
+                    const height = contentInner.scrollHeight;
+                    content.style.maxHeight = height + 'px';
                 }
+            });
+        });
+        
+        // Asegurar que todos los acordeones tengan maxHeight inicial de 0
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.accordion-content').forEach(content => {
+                content.style.maxHeight = '0';
             });
         });
 
