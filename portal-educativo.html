@@ -781,21 +781,20 @@
     <script src="js/scroll-reveal.js"></script>
 
     <script>
-        // Funcionalidad de acordeones
+        // Funcionalidad de acordeones - cada uno funciona independientemente
         document.querySelectorAll('.accordion-header').forEach(header => {
             header.addEventListener('click', function() {
                 const accordion = this.parentElement;
                 const content = accordion.querySelector('.accordion-content');
                 const isActive = accordion.classList.contains('active');
                 
-                // Cerrar todos los acordeones
-                document.querySelectorAll('.accordion').forEach(acc => {
-                    acc.classList.remove('active');
-                    acc.querySelector('.accordion-content').style.maxHeight = null;
-                });
-                
-                // Abrir el acordeón clickeado si no estaba activo
-                if (!isActive) {
+                // Toggle del acordeón clickeado (no cerrar los demás)
+                if (isActive) {
+                    // Cerrar este acordeón
+                    accordion.classList.remove('active');
+                    content.style.maxHeight = null;
+                } else {
+                    // Abrir este acordeón
                     accordion.classList.add('active');
                     content.style.maxHeight = content.scrollHeight + 'px';
                 }
