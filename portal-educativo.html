@@ -781,36 +781,7 @@
     <script src="js/scroll-reveal.js"></script>
 
     <script>
-        // Esperar a que el DOM esté completamente cargado
         document.addEventListener('DOMContentLoaded', function() {
-            // Inicializar maxHeight de todos los acordeones
-            document.querySelectorAll('.accordion-content').forEach(content => {
-                content.style.maxHeight = '0';
-            });
-            
-            // Funcionalidad de acordeones - cada uno funciona independientemente
-            document.querySelectorAll('.accordion-header').forEach(header => {
-                header.addEventListener('click', function() {
-                    const accordion = this.parentElement;
-                    const content = accordion.querySelector('.accordion-content');
-                    const isActive = accordion.classList.contains('active');
-                    
-                    // Toggle del acordeón clickeado (no cerrar los demás)
-                    if (isActive) {
-                        // Cerrar este acordeón
-                        accordion.classList.remove('active');
-                        content.style.maxHeight = '0';
-                    } else {
-                        // Abrir este acordeón
-                        accordion.classList.add('active');
-                        // Obtener la altura real del contenido
-                        const contentInner = content.querySelector('.accordion-content-inner');
-                        const height = contentInner.scrollHeight;
-                        content.style.maxHeight = height + 'px';
-                    }
-                });
-            });
-            
             // Scroll suave a secciones específicas
             document.querySelectorAll('.topic-card').forEach(card => {
                 card.addEventListener('click', function() {
