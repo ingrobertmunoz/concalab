@@ -8,6 +8,11 @@
         max-width: 960px;
     }
 
+    /* Solución para problemas de fondo fijo en iOS (iPhone/iPad) */
+    .hero {
+        background-attachment: scroll;
+    }
+
     .hero-title {
         font-size: 2.5rem;
     }
