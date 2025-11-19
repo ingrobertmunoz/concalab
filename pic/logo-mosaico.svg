@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="180" viewBox="0 0 320 180">
+  <defs>
+    <linearGradient id="pulse" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0B2E45"/>
+      <stop offset="100%" stop-color="#1D98A3"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="180" fill="#f5f7fb" rx="18"/>
+  <g transform="translate(30 30)">
+    <rect width="60" height="60" fill="#0B2E45" rx="8"/>
+    <rect x="70" width="60" height="60" fill="#1D98A3" rx="8"/>
+    <rect x="140" width="60" height="60" fill="#7BC6C7" rx="8"/>
+    <rect x="210" width="60" height="60" fill="#e4e7ee" rx="8"/>
+    <path d="M210 0 L270 0 L270 60 L210 60 Z M210 0 L270 60 M270 0 L210 60" stroke="#0B2E45" stroke-width="2" fill="none" opacity="0.35"/>
+  </g>
+  <text x="40" y="135" fill="#0B2E45" font-family="Montserrat, 'Gill Sans', sans-serif" font-size="42" font-weight="700">CONCA</text>
+  <text x="190" y="135" fill="#4b5563" font-family="Montserrat, 'Gill Sans', sans-serif" font-size="42" font-weight="400">LAB</text>
+  <rect x="40" y="145" width="110" height="6" rx="3" fill="url(#pulse)"/>
+</svg>
+
+
