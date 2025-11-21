@@ -34,8 +34,7 @@ CONCALAB/
 │   ├── images/                        # Imágenes
 │   ├── icons/                         # Iconos
 │   └── documents/                     # Documentos PDF
-├── firebase.json                       # Configuración de Firebase
-└── .firebaserc                        # Proyecto de Firebase
+└── CNAME                              # Dominio personalizado para GitHub Pages
 ```
 
 ## ✨ Características
@@ -45,64 +44,40 @@ CONCALAB/
 - ✅ **Buscador Global**: Búsqueda disponible en todas las páginas
 - ✅ **Navegación Intuitiva**: Menú estructurado con dropdowns
 - ✅ **Optimizado para SEO**: Meta tags y estructura semántica
-- ✅ **Firebase Hosting**: Configurado para despliegue en Firebase
+- ✅ **GitHub Pages**: Despliegue automático desde la rama `master`
 
-## 🚀 Despliegue en Firebase
+## 🚀 Despliegue en GitHub Pages
+
+Este repositorio se publica con **GitHub Pages** (rama `master`, carpeta raíz) y utiliza el archivo `CNAME` para conservar el dominio personalizado.
 
 ### Prerrequisitos
 
-1. Tener Node.js instalado
-2. Tener una cuenta de Firebase
-3. Instalar Firebase CLI:
+1. Tener Git instalado
+2. Tener acceso de escritura al repositorio en GitHub
+
+### Flujo de despliegue
+
+1. Realiza tus cambios de contenido/estilos.
+2. Revisa localmente abriendo `index.html` (es un sitio estático; no requiere servidor).
+3. Guarda los cambios:
+   ```bash
+   git add .
+   git commit -m "Descripción del cambio"
+   git push origin master
+   ```
+4. GitHub Pages actualizará el sitio automáticamente en unos segundos.
+
+### Configuración de Pages
+
+- Repositorio: `ingrobertmunoz/concalab`
+- Fuente: `Deploy from a branch` → `master` / `/ (root)`
+- Dominio: definido en `CNAME` (mantén el archivo si cambias el dominio).
+
+Para forzar una recompilación puedes hacer un commit vacío:
 
 ```bash
-npm install -g firebase-tools
-```
-
-### Pasos para Desplegar
-
-1. **Iniciar sesión en Firebase**:
-```bash
-firebase login
-```
-
-2. **Crear un proyecto en Firebase Console**:
-   - Ve a [console.firebase.google.com](https://console.firebase.google.com)
-   - Crea un nuevo proyecto llamado "concalab-uasd" (o el nombre que prefieras)
-   - Copia el ID del proyecto
-
-3. **Actualizar la configuración**:
-   - Edita `.firebaserc` y reemplaza `"concalab-uasd"` con tu ID de proyecto
-
-4. **Inicializar Firebase (opcional, solo si no está configurado)**:
-```bash
-firebase init hosting
-```
-
-5. **Desplegar el sitio**:
-```bash
-firebase deploy
-```
-
-6. **Acceder al sitio**:
-   - Tu sitio estará disponible en: `https://tu-proyecto.web.app`
-   - O en: `https://tu-proyecto.firebaseapp.com`
-
-### Comandos Útiles
-
-- **Ver el sitio localmente**:
-```bash
-firebase serve
-```
-
-- **Solo desplegar hosting**:
-```bash
-firebase deploy --only hosting
-```
-
-- **Ver logs de Firebase**:
-```bash
-firebase hosting:channel:list
+git commit --allow-empty -m "Trigger deploy"
+git push origin master
 ```
 
 ## 🎨 Personalización
@@ -171,19 +146,24 @@ La página de Informes está preparada para integrar una aplicación Dash con:
 
 1. Colocar archivos PDF en `assets/documents/`
 2. Actualizar `publicaciones/protocolos.html` con la nueva entrada
-3. Desplegar cambios: `firebase deploy`
+3. Publicar cambios:
+   ```bash
+   git add .
+   git commit -m "Actualiza protocolos"
+   git push origin master
+   ```
 
 ### Agregar Nuevo Laboratorio Miembro
 
 1. Editar `miembros.html`
 2. Añadir un nuevo `<div class="member-card">` con los datos
-3. Desplegar cambios
+3. Publicar cambios (commit + push) para que GitHub Pages los refleje
 
 ### Modificar Contenido Educativo
 
 1. Editar `portal-educativo.html`
 2. Añadir/modificar secciones en los acordeones
-3. Desplegar cambios
+3. Publicar cambios (commit + push) para que GitHub Pages los refleje
 
 ## 📧 Soporte
 
