@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../css/animations.css">
     <link rel="icon" type="image/x-icon" href="../assets/icons/favicon.ico">
 
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
     <style>
         .blog-grid {
             display: grid;
@@ -394,25 +395,10 @@
             </div>
 
             <div class="card reveal">
-                <div class="embed-placeholder">
-                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">📊 Dashboard Interactivo</h3>
-                    <p style="margin-bottom: 1.5rem;">
-                        Aquí se integrará la aplicación Dash con gráficos interactivos de los resultados<br>
-                        de ensayos de aptitud, análisis de tendencias y comparativas entre laboratorios.
-                    </p>
-                    <p style="font-size: 0.9rem; color: var(--text-light);">
-                        <strong>Nota:</strong> Esta sección será desarrollada como una aplicación web independiente<br>
-                        que se integrará mediante iframe o servidor embebido.
-                    </p>
-                    <div style="margin-top: 2rem; padding: 2rem; background: white; border-radius: 8px;">
-                        <p style="font-weight: 600; margin-bottom: 1rem;">Características del Dashboard:</p>
-                        <ul style="text-align: left; max-width: 600px; margin: 0 auto; line-height: 2;">
-                            <li>Gráficos interactivos con Plotly</li>
-                            <li>Filtros por fecha, laboratorio y analito</li>
-                            <li>Exportación de datos y gráficos</li>
-                            <li>Análisis estadístico en tiempo real</li>
-                            <li>Comparativas y tendencias históricas</li>
-                        </ul>
+                <div id="charts-container">
+                    <!-- Los gráficos se cargarán aquí dinámicamente -->
+                    <div style="text-align: center; padding: 2rem; color: var(--text-light);">
+                        <p>Cargando gráficos de aptitud...</p>
                     </div>
                 </div>
             </div>
@@ -487,6 +473,7 @@
     <script src="../js/main.js"></script>
     <script src="../js/search.js"></script>
     <script src="../js/scroll-reveal.js"></script>
+    <script src="../js/charts.js"></script>
 
     <script>
         // Filtrado de informes

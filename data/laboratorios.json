@@ -1,0 +1,261 @@
+[
+  {
+    "nombre": "LABORATORIO CLINICO ALCÁNTARA Y GONZÁLEZ",
+    "direccion": "Avenida  Ortega y Gasset esquina Alexander Fleming Ensanche La Fe",
+    "año": "2017",
+    "region": "distrito-nacional",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO ATENCIONES MEDICAS DOMINICANAS S.A. (AMEDOSA)",
+    "direccion": "Calle Sánchez #1, San Cristóbal",
+    "año": "2015",
+    "region": "sur",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO BAEZ SOTO",
+    "direccion": "Calle Chefito Batista la Vega",
+    "año": "2015",
+    "region": "norte",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO Y BANCO DE SANGRE MENDOZA (OTANEZ)",
+    "direccion": "Calle Santome Número 53, San Cristóbal",
+    "año": "2015",
+    "region": "sur",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO BIONET",
+    "direccion": "Pedro Ignacio Espaillat 256, Suite 102",
+    "año": "2021",
+    "region": "distrito-nacional",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO BRITO",
+    "direccion": "en la Avenida Nicolás de Ovando #225 Ensanche Capotillo",
+    "año": "2015",
+    "region": "distrito-nacional",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO CENTRO MEDICO CARIBE",
+    "direccion": "Aven.27 de febrero Santo Domingo frente a caribe tours #6",
+    "año": "2015",
+    "region": "distrito-nacional",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "EL CENTRO MEDICO CAROLINA DE JESUS",
+    "direccion": "calle padre Fantino Esq. Mella Bonao",
+    "año": "2017",
+    "region": "norte",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO CENTRO MEDICO REGIONAL DR. AGUASVIVAS",
+    "direccion": "Calle presidente Billini #43 bone prov. Peravia",
+    "año": "2017",
+    "region": "sur",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO CENTRO ESPECIALIZADO RAFAELA ISABEL CERILAB",
+    "direccion": "Aven. Santa Rosa 165 la Romana Plaza Rosanta",
+    "año": "2015",
+    "region": "este",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO OBRA SOCIAL SALESIANA",
+    "direccion": "Calle Gastón F. Deligne No. 47-A, la Colonia Agrícola, Jarabacoa",
+    "año": "2016",
+    "region": "norte",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO DANNERYS FELIZ",
+    "direccion": "Víctor Manuel Truman no.14 Los Trabajadores",
+    "año": "2015",
+    "region": "distrito-nacional",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO INSTITUTO DE DIABETES ENDOCRONOLOGIA Y NUTRICION (IDEN)",
+    "direccion": "Carretera Sánchez km 1 ½  San Juan-Azua",
+    "año": "2017",
+    "region": "sur",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "EL LABORATORIO CLINICO GOMEZ CRUZ",
+    "direccion": "Calle Matilde Viñas #14 A Esquina Duarte",
+    "año": "2017",
+    "region": "norte",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO CENTRO MEDICO HISPANICO",
+    "direccion": "en la calle  marginal #32 alma rosa 2da",
+    "año": "2017",
+    "region": "este",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO HOSPITAL INFANTIL DOCENTE PEDIATRICO ROBERT REID.",
+    "direccion": "en la Av. Abraham Lincon #2 Santo Domingo 10101",
+    "año": "2015",
+    "region": "distrito-nacional",
+    "tipo": "Público"
+  },
+  {
+    "nombre": "CLINICA  INDEPENDENCIA",
+    "direccion": "Ave. Independencia #301 sector honduras",
+    "año": "2019",
+    "region": "distrito-nacional",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "EL LABORATORIO CLINICO KLEYDI LUZ",
+    "direccion": "prolongación padre Fantino #84 maimón, Monseñor Nouel",
+    "año": "2017",
+    "region": "norte",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "LABORATORIO HOSPITAL DOCENTE UNIVERSITARIO MATERNIDAD  NUESTRA SEÑORA DE LA  ALTAGRACIA",
+    "direccion": "Av. Pedro Henríquez Ureña, #49 Gazcue,D.N",
+    "año": "2017",
+    "region": "distrito-nacional",
+    "tipo": "Público"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO CENTRO DE SANGRE Y ESPECIALIDADES",
+    "direccion": "Calle los Mameyes 2da casa 80 D.N",
+    "año": "2015",
+    "region": "distrito-nacional",
+    "tipo": "Público"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO DEL CENTRO MEDICO DR. PELLETIER",
+    "direccion": "C/19 de Marzo 99, Azua. República Dominicana",
+    "año": "2015",
+    "region": "sur",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO HOSPITAL TRAUMATOLOGICO DR. DARIO CONTRERAS",
+    "direccion": "Aven.Las Américas 120 ens.Ozama",
+    "año": "2017",
+    "region": "este",
+    "tipo": "Público"
+  },
+  {
+    "nombre": "LABORATORIO INMUNOLOGICO Y CLINICO GLADYS GOMEZ",
+    "direccion": "Condominio las Perlas calle Santiago esq. Doctor delgado apart. E-1",
+    "año": "2015",
+    "region": "santiago",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO GLOBULAB TAMIRA GROUP",
+    "direccion": "Calle Gustavo Mejía Ricart 130-C, esq. Virgilio Díaz Ordoñez, Evaristo Morales",
+    "año": "2018",
+    "region": "distrito-nacional",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO HOSPITAL DR. MARCELINO VELEZ SANTANA.",
+    "direccion": "en la Av. Isabel Aguilar #141, Herrera, Santo Domingo Oeste",
+    "año": "2025",
+    "region": "distrito-nacional",
+    "tipo": "Público"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO MUSALAB",
+    "direccion": "Calle Clara pardo No. 3, esquina Serafina de Tapia, Sector San Jerónimo",
+    "año": "2015",
+    "region": "distrito-nacional",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO SIRENY",
+    "direccion": "Calle Juan Pablo Duarte #3 la Terrena Samaná",
+    "año": "2017",
+    "region": "norte",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO T S I",
+    "direccion": "Calle Santome/Esquina Independencia, Azua R.D",
+    "año": "2015",
+    "region": "sur",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO MEDICINA DIAGNOSTICA AVANZADA Y LABORATORIO MEDILAB",
+    "direccion": "Calle Duarte Esq. Dr. Salvador Gautier #198 (Bonao)",
+    "año": "2015",
+    "region": "norte",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO LABOUASD",
+    "direccion": "Avenida  Av. Alma Máter, Santo Domingo 10105",
+    "año": "2025",
+    "region": "distrito-nacional",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "INSTITUTO REGIONAL MATERNO INFANTIL Y ESPECIALIDADES (IRMIE)",
+    "direccion": "Av. Presidente Billini #48 esq. Canela (Bani)",
+    "año": "2015",
+    "region": "sur",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "HOSPITAL MATERNO DR REYNALDO ALMANZAR",
+    "direccion": "Avenida Charles De Gaulle, Villa Mella, Santo Domingo Norte, R. D",
+    "año": "2025",
+    "region": "distrito-nacional",
+    "tipo": "Público"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO INSTITUTO DE  ESPECIALIDADES MEDICAS MONSEÑOR NOUEL",
+    "direccion": "Avén. Aniana Vargas no.04, Bonao, Republica Dominicana",
+    "año": "2015",
+    "region": "norte",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO PEYNADO PION",
+    "direccion": "calle Dr. Delgado Esq. San Juan Bosco Edif. D-3, Don Bosco",
+    "año": "2017",
+    "region": "distrito-nacional",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO RM",
+    "direccion": "Aven.canada #72 san José de ocoa",
+    "año": "2018",
+    "region": "sur",
+    "tipo": "Privado"
+  },
+  {
+    "nombre": "HOSPITAL MATERNO INFANTIL SAN LORENZO DE LOS MINA",
+    "direccion": "San Vicente de Paul 84 zona oriental",
+    "año": "2015",
+    "region": "este",
+    "tipo": "Público"
+  },
+  {
+    "nombre": "LABORATORIO CLINICO PROCESOS LAB",
+    "direccion": "Calle José Cabrera no: 75 Ensanche Ozama",
+    "año": "2025",
+    "region": "este",
+    "tipo": "Privado"
+  }
+]

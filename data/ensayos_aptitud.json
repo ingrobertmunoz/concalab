@@ -1,0 +1,116 @@
+{
+    "meta": {
+        "ronda": "2024-01",
+        "fecha_informe": "2024-02-15"
+    },
+    "analitos": [
+        {
+            "id": "glu",
+            "nombre": "Glucosa",
+            "unidades": "mg/dL",
+            "valor_asignado": 98.5,
+            "desviacion_estandar": 4.2,
+            "resultados": [
+                {
+                    "lab": "Lab. Alcántara y González",
+                    "valor": 97.4,
+                    "z_score": -0.26
+                },
+                {
+                    "lab": "Lab. Baez Soto",
+                    "valor": 98.0,
+                    "z_score": -0.12
+                },
+                {
+                    "lab": "Centro Medico Caribe",
+                    "valor": 105.2,
+                    "z_score": 1.6
+                },
+                {
+                    "lab": "Lab. Brito",
+                    "valor": 99.1,
+                    "z_score": 0.14
+                },
+                {
+                    "lab": "Lab. Robert Reid",
+                    "valor": 90.5,
+                    "z_score": -1.9
+                },
+                {
+                    "lab": "Centro Medico Regional",
+                    "valor": 98.5,
+                    "z_score": 0.0
+                },
+                {
+                    "lab": "Lab. Salesiana",
+                    "valor": 102.1,
+                    "z_score": 0.86
+                },
+                {
+                    "lab": "Lab. Gomez Cruz",
+                    "valor": 112.0,
+                    "z_score": 3.2
+                },
+                {
+                    "lab": "Hospital Dario Contreras",
+                    "valor": 96.2,
+                    "z_score": -0.55
+                }
+            ]
+        },
+        {
+            "id": "chol",
+            "nombre": "Colesterol Total",
+            "unidades": "mg/dL",
+            "valor_asignado": 195.0,
+            "desviacion_estandar": 8.5,
+            "resultados": [
+                {
+                    "lab": "Lab. Alcántara y González",
+                    "valor": 194.5,
+                    "z_score": -0.06
+                },
+                {
+                    "lab": "Lab. Baez Soto",
+                    "valor": 200.1,
+                    "z_score": 0.6
+                },
+                {
+                    "lab": "Centro Medico Caribe",
+                    "valor": 182.0,
+                    "z_score": -1.53
+                },
+                {
+                    "lab": "Lab. Brito",
+                    "valor": 198.2,
+                    "z_score": 0.38
+                },
+                {
+                    "lab": "Lab. Robert Reid",
+                    "valor": 195.0,
+                    "z_score": 0.0
+                },
+                {
+                    "lab": "Centro Medico Regional",
+                    "valor": 215.0,
+                    "z_score": 2.35
+                },
+                {
+                    "lab": "Lab. Salesiana",
+                    "valor": 190.4,
+                    "z_score": -0.54
+                },
+                {
+                    "lab": "Lab. Gomez Cruz",
+                    "valor": 196.1,
+                    "z_score": 0.13
+                },
+                {
+                    "lab": "Hospital Dario Contreras",
+                    "valor": 188.8,
+                    "z_score": -0.73
+                }
+            ]
+        }
+    ]
+}
