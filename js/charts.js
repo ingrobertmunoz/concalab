@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (!container) return; // Exit if no container
 
-    fetch('../data/ensayos_aptitud.json')
+    fetch('../data/ensayos_aptitud.json?t=' + new Date().getTime())
         .then(response => response.json())
         .then(data => {
             renderCharts(data, container);
@@ -15,15 +15,19 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function renderCharts(data, container) {
-    const analitos = data.analitos;
+    // New JSON structure uses 'resultados' array
+    const analitos = data.resultados;
+    const metadata = data.metadata;
 
     // Add Metadata header
     const header = document.createElement('div');
     header.className = 'report-header';
-    header.innerHTML = `<h3>Ronda: ${data.meta.ronda} (Fecha: ${data.meta.fecha_informe})</h3>`;
+    header.innerHTML = `<h3>Ronda: ${metadata.ronda} (Fecha: ${metadata.fecha})</h3>`;
     container.appendChild(header);
 
-    analitos.forEach(analito => {
+    analitos.forEach(item => {
+        // item is now { analito: "Glucosa", unidades: "mg/dL", datos: [...] }
+
         // Wrapper for this analyte
         const wrapper = document.createElement('div');
         wrapper.className = 'analito-wrapper section-light';
@@ -32,21 +36,24 @@ function renderCharts(data, container) {
         wrapper.style.borderRadius = '12px';
 
         const title = document.createElement('h3');
-        title.innerText = `${analito.nombre} (${analito.unidades})`;
+        title.innerText = `${item.analito} (${item.unidades})`;
         title.style.color = 'var(--primary-color)';
         title.style.marginBottom = '1rem';
         wrapper.appendChild(title);
 
         const chartDiv = document.createElement('div');
-        chartDiv.id = `chart-${analito.id}`;
+        // create a safe ID from the name
+        const safeId = item.analito.replace(/\s+/g, '-').toLowerCase();
+        chartDiv.id = `chart-${safeId}`;
         chartDiv.style.height = '400px';
         wrapper.appendChild(chartDiv);
 
         container.appendChild(wrapper);
 
-        // Prepare Data for Plotly
-        const labs = analito.resultados.map(r => r.lab);
-        const zScores = analito.resultados.map(r => r.z_score);
+        // Prepare Data for Plotly from 'datos' array
+        // datos: [{ laboratorio: "LAB-001", z_score: 0.5, resultado: 100 }, ...]
+        const labs = item.datos.map(r => r.laboratorio);
+        const zScores = item.datos.map(r => r.z_score);
 
         // Color logic based on Z-Score
         const colors = zScores.map(z => {
@@ -68,7 +75,7 @@ function renderCharts(data, container) {
         };
 
         const layout = {
-            title: `Desempeño (Z-Score) - ${analito.nombre}`,
+            title: `Desempeño (Z-Score) - ${item.analito}`,
             yaxis: {
                 title: 'Z-Score',
                 range: [-4, 4],
