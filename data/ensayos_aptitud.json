@@ -1,116 +1,391 @@
 {
-    "meta": {
-        "ronda": "2024-01",
-        "fecha_informe": "2024-02-15"
-    },
-    "analitos": [
+  "metadata": {
+    "ronda": "2024-01",
+    "fecha": "Enero 2024",
+    "total_laboratorios": 37
+  },
+  "resultados": [
+    {
+      "analito": "Glucosa",
+      "unidades": "mg/dL",
+      "datos": [
         {
-            "id": "glu",
-            "nombre": "Glucosa",
-            "unidades": "mg/dL",
-            "valor_asignado": 98.5,
-            "desviacion_estandar": 4.2,
-            "resultados": [
-                {
-                    "lab": "Lab. Alcántara y González",
-                    "valor": 97.4,
-                    "z_score": -0.26
-                },
-                {
-                    "lab": "Lab. Baez Soto",
-                    "valor": 98.0,
-                    "z_score": -0.12
-                },
-                {
-                    "lab": "Centro Medico Caribe",
-                    "valor": 105.2,
-                    "z_score": 1.6
-                },
-                {
-                    "lab": "Lab. Brito",
-                    "valor": 99.1,
-                    "z_score": 0.14
-                },
-                {
-                    "lab": "Lab. Robert Reid",
-                    "valor": 90.5,
-                    "z_score": -1.9
-                },
-                {
-                    "lab": "Centro Medico Regional",
-                    "valor": 98.5,
-                    "z_score": 0.0
-                },
-                {
-                    "lab": "Lab. Salesiana",
-                    "valor": 102.1,
-                    "z_score": 0.86
-                },
-                {
-                    "lab": "Lab. Gomez Cruz",
-                    "valor": 112.0,
-                    "z_score": 3.2
-                },
-                {
-                    "lab": "Hospital Dario Contreras",
-                    "valor": 96.2,
-                    "z_score": -0.55
-                }
-            ]
+          "laboratorio": "LAB-001",
+          "z_score": -0.35,
+          "resultado": 107.5
         },
         {
-            "id": "chol",
-            "nombre": "Colesterol Total",
-            "unidades": "mg/dL",
-            "valor_asignado": 195.0,
-            "desviacion_estandar": 8.5,
-            "resultados": [
-                {
-                    "lab": "Lab. Alcántara y González",
-                    "valor": 194.5,
-                    "z_score": -0.06
-                },
-                {
-                    "lab": "Lab. Baez Soto",
-                    "valor": 200.1,
-                    "z_score": 0.6
-                },
-                {
-                    "lab": "Centro Medico Caribe",
-                    "valor": 182.0,
-                    "z_score": -1.53
-                },
-                {
-                    "lab": "Lab. Brito",
-                    "valor": 198.2,
-                    "z_score": 0.38
-                },
-                {
-                    "lab": "Lab. Robert Reid",
-                    "valor": 195.0,
-                    "z_score": 0.0
-                },
-                {
-                    "lab": "Centro Medico Regional",
-                    "valor": 215.0,
-                    "z_score": 2.35
-                },
-                {
-                    "lab": "Lab. Salesiana",
-                    "valor": 190.4,
-                    "z_score": -0.54
-                },
-                {
-                    "lab": "Lab. Gomez Cruz",
-                    "valor": 196.1,
-                    "z_score": 0.13
-                },
-                {
-                    "lab": "Hospital Dario Contreras",
-                    "valor": 188.8,
-                    "z_score": -0.73
-                }
-            ]
+          "laboratorio": "LAB-002",
+          "z_score": 1.18,
+          "resultado": 104.3
+        },
+        {
+          "laboratorio": "LAB-003",
+          "z_score": -1.01,
+          "resultado": 97.8
+        },
+        {
+          "laboratorio": "LAB-004",
+          "z_score": 0.52,
+          "resultado": 106.0
+        },
+        {
+          "laboratorio": "LAB-005",
+          "z_score": 1.2,
+          "resultado": 88.5
+        },
+        {
+          "laboratorio": "LAB-006",
+          "z_score": -2.01,
+          "resultado": 105.4
+        },
+        {
+          "laboratorio": "LAB-007",
+          "z_score": 1.71,
+          "resultado": 73.3
+        },
+        {
+          "laboratorio": "LAB-008",
+          "z_score": -1.37,
+          "resultado": 87.8
+        },
+        {
+          "laboratorio": "LAB-009",
+          "z_score": -1.31,
+          "resultado": 93.0
+        },
+        {
+          "laboratorio": "LAB-010",
+          "z_score": -0.92,
+          "resultado": 90.0
+        },
+        {
+          "laboratorio": "LAB-011",
+          "z_score": -1.43,
+          "resultado": 101.7
+        },
+        {
+          "laboratorio": "LAB-012",
+          "z_score": 2.74,
+          "resultado": 108.7
+        },
+        {
+          "laboratorio": "LAB-013",
+          "z_score": -0.71,
+          "resultado": 82.0
+        },
+        {
+          "laboratorio": "LAB-014",
+          "z_score": 0.99,
+          "resultado": 75.1
+        },
+        {
+          "laboratorio": "LAB-015",
+          "z_score": -1.62,
+          "resultado": 84.8
+        },
+        {
+          "laboratorio": "LAB-016",
+          "z_score": 0.75,
+          "resultado": 72.7
+        },
+        {
+          "laboratorio": "LAB-017",
+          "z_score": 0.34,
+          "resultado": 84.1
+        },
+        {
+          "laboratorio": "LAB-018",
+          "z_score": 0.35,
+          "resultado": 97.2
+        },
+        {
+          "laboratorio": "LAB-019",
+          "z_score": -0.2,
+          "resultado": 104.3
+        },
+        {
+          "laboratorio": "LAB-020",
+          "z_score": -0.79,
+          "resultado": 86.3
+        },
+        {
+          "laboratorio": "LAB-021",
+          "z_score": -1.62,
+          "resultado": 82.3
+        },
+        {
+          "laboratorio": "LAB-022",
+          "z_score": -0.34,
+          "resultado": 84.2
+        },
+        {
+          "laboratorio": "LAB-023",
+          "z_score": -1.12,
+          "resultado": 104.1
+        },
+        {
+          "laboratorio": "LAB-024",
+          "z_score": -2.73,
+          "resultado": 71.8
+        },
+        {
+          "laboratorio": "LAB-025",
+          "z_score": -3.2,
+          "resultado": 84.5
+        },
+        {
+          "laboratorio": "LAB-026",
+          "z_score": -0.9,
+          "resultado": 100.3
+        },
+        {
+          "laboratorio": "LAB-027",
+          "z_score": 0.03,
+          "resultado": 95.0
+        },
+        {
+          "laboratorio": "LAB-028",
+          "z_score": 1.55,
+          "resultado": 99.9
+        },
+        {
+          "laboratorio": "LAB-029",
+          "z_score": -1.36,
+          "resultado": 105.8
+        },
+        {
+          "laboratorio": "LAB-030",
+          "z_score": 1.88,
+          "resultado": 93.0
+        },
+        {
+          "laboratorio": "LAB-031",
+          "z_score": -0.58,
+          "resultado": 101.9
+        },
+        {
+          "laboratorio": "LAB-032",
+          "z_score": 1.74,
+          "resultado": 93.7
+        },
+        {
+          "laboratorio": "LAB-033",
+          "z_score": 1.15,
+          "resultado": 94.8
+        },
+        {
+          "laboratorio": "LAB-034",
+          "z_score": 0.39,
+          "resultado": 89.6
+        },
+        {
+          "laboratorio": "LAB-035",
+          "z_score": -1.82,
+          "resultado": 102.4
+        },
+        {
+          "laboratorio": "LAB-036",
+          "z_score": -1.73,
+          "resultado": 79.6
+        },
+        {
+          "laboratorio": "LAB-037",
+          "z_score": 1.29,
+          "resultado": 86.8
         }
-    ]
+      ]
+    },
+    {
+      "analito": "Colesterol Total",
+      "unidades": "mg/dL",
+      "datos": [
+        {
+          "laboratorio": "LAB-001",
+          "z_score": -0.34,
+          "resultado": 72.0
+        },
+        {
+          "laboratorio": "LAB-002",
+          "z_score": 0.31,
+          "resultado": 102.9
+        },
+        {
+          "laboratorio": "LAB-003",
+          "z_score": 0.2,
+          "resultado": 83.2
+        },
+        {
+          "laboratorio": "LAB-004",
+          "z_score": -1.83,
+          "resultado": 74.7
+        },
+        {
+          "laboratorio": "LAB-005",
+          "z_score": 1.07,
+          "resultado": 94.0
+        },
+        {
+          "laboratorio": "LAB-006",
+          "z_score": -0.79,
+          "resultado": 70.4
+        },
+        {
+          "laboratorio": "LAB-007",
+          "z_score": 0.47,
+          "resultado": 97.2
+        },
+        {
+          "laboratorio": "LAB-008",
+          "z_score": 1.5,
+          "resultado": 72.0
+        },
+        {
+          "laboratorio": "LAB-009",
+          "z_score": 1.33,
+          "resultado": 83.3
+        },
+        {
+          "laboratorio": "LAB-010",
+          "z_score": -1.63,
+          "resultado": 96.6
+        },
+        {
+          "laboratorio": "LAB-011",
+          "z_score": -1.66,
+          "resultado": 77.8
+        },
+        {
+          "laboratorio": "LAB-012",
+          "z_score": -1.31,
+          "resultado": 91.3
+        },
+        {
+          "laboratorio": "LAB-013",
+          "z_score": -1.55,
+          "resultado": 77.8
+        },
+        {
+          "laboratorio": "LAB-014",
+          "z_score": -1.24,
+          "resultado": 71.0
+        },
+        {
+          "laboratorio": "LAB-015",
+          "z_score": 1.14,
+          "resultado": 77.6
+        },
+        {
+          "laboratorio": "LAB-016",
+          "z_score": -1.39,
+          "resultado": 93.6
+        },
+        {
+          "laboratorio": "LAB-017",
+          "z_score": 0.7,
+          "resultado": 107.6
+        },
+        {
+          "laboratorio": "LAB-018",
+          "z_score": -1.33,
+          "resultado": 104.6
+        },
+        {
+          "laboratorio": "LAB-019",
+          "z_score": 0.71,
+          "resultado": 89.5
+        },
+        {
+          "laboratorio": "LAB-020",
+          "z_score": -0.04,
+          "resultado": 87.1
+        },
+        {
+          "laboratorio": "LAB-021",
+          "z_score": -0.31,
+          "resultado": 87.1
+        },
+        {
+          "laboratorio": "LAB-022",
+          "z_score": -1.72,
+          "resultado": 78.1
+        },
+        {
+          "laboratorio": "LAB-023",
+          "z_score": 1.41,
+          "resultado": 72.3
+        },
+        {
+          "laboratorio": "LAB-024",
+          "z_score": -1.61,
+          "resultado": 79.9
+        },
+        {
+          "laboratorio": "LAB-025",
+          "z_score": 0.24,
+          "resultado": 85.6
+        },
+        {
+          "laboratorio": "LAB-026",
+          "z_score": 0.39,
+          "resultado": 107.7
+        },
+        {
+          "laboratorio": "LAB-027",
+          "z_score": -1.5,
+          "resultado": 98.3
+        },
+        {
+          "laboratorio": "LAB-028",
+          "z_score": -1.85,
+          "resultado": 75.9
+        },
+        {
+          "laboratorio": "LAB-029",
+          "z_score": -0.94,
+          "resultado": 103.2
+        },
+        {
+          "laboratorio": "LAB-030",
+          "z_score": -1.03,
+          "resultado": 97.4
+        },
+        {
+          "laboratorio": "LAB-031",
+          "z_score": 0.45,
+          "resultado": 94.4
+        },
+        {
+          "laboratorio": "LAB-032",
+          "z_score": -0.41,
+          "resultado": 88.6
+        },
+        {
+          "laboratorio": "LAB-033",
+          "z_score": 1.49,
+          "resultado": 82.3
+        },
+        {
+          "laboratorio": "LAB-034",
+          "z_score": 0.86,
+          "resultado": 101.4
+        },
+        {
+          "laboratorio": "LAB-035",
+          "z_score": -1.37,
+          "resultado": 74.0
+        },
+        {
+          "laboratorio": "LAB-036",
+          "z_score": -3.06,
+          "resultado": 99.6
+        },
+        {
+          "laboratorio": "LAB-037",
+          "z_score": -1.86,
+          "resultado": 108.6
+        }
+      ]
+    }
+  ]
 }
