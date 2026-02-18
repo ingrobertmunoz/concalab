@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Formulario de Entrega de Resultados - CONCALAB-UASD">
+    <title>Reporte de Resultados - CONCALAB-UASD</title>
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+
+    <style>
+        .form-container {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+        }
+
+        /* Table Styles */
+        .results-table-container {
+            overflow-x: auto;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+
+        .results-table th,
+        .results-table td {
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .results-table th {
+            background: var(--bg-light);
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .table-btn {
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            padding: 0.2rem 0.5rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-left: 0.5rem;
+        }
+
+        .table-btn:hover {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .submit-section {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            align-items: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--border-color);
+        }
+
+        #loading-message {
+            display: none;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        #success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border: 1px solid #c3e6cb;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav-overlay"></div>
+
+    <!-- HEADER (Mismo que index.html) -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo"
+                style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 1rem;">
+                <img src="assets/images/logo-concalab.png" alt="Logo CONCALAB-UASD" onerror="this.style.display='none'">
+                <div class="logo-text">
+                    <div class="logo-title">CONCALAB-UASD</div>
+                    <div class="logo-subtitle">Control de Calidad de Laboratorios</div>
+                </div>
+            </a>
+
+            <nav class="nav-main">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Publicaciones</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="publicaciones/protocolos.html" class="nav-link">Protocolos</a></li>
+                            <li><a href="publicaciones/informes.html" class="nav-link">Informes</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="portal-educativo.html" class="nav-link">Portal Educativo</a></li>
+                    <li class="nav-item dropdown active">
+                        <a href="#" class="nav-link active">Servicios</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="servicios.html" class="nav-link">Nuestros Servicios</a></li>
+                            <li><a href="#" class="nav-link active">Reportar Resultados</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="miembros.html" class="nav-link">Miembros</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Sobre Nosotros</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="sobre-nosotros/quienes-somos.html" class="nav-link">Quiénes Somos</a></li>
+                            <li><a href="sobre-nosotros/historia.html" class="nav-link">Historia</a></li>
+                            <li><a href="sobre-nosotros/marco-legal.html" class="nav-link">Marco Legal</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Buscar...">
+                    <button class="search-btn" aria-label="Buscar">🔍</button>
+                </div>
+            </nav>
+
+            <button class="menu-toggle" aria-label="Menú">☰</button>
+        </div>
+    </header>
+
+    <section class="hero" style="padding: 6rem 0 3rem;">
+        <div class="container text-center">
+            <h1 class="hero-title">Reporte de Resultados de Ensayos de Aptitud</h1>
+            <p class="hero-subtitle">Química Clínica y Uroanálisis</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+
+            <div id="success-message">
+                <h2>¡Reporte Enviado Exitosamente!</h2>
+                <p>Los datos han sido registrados correctamente en nuestra base de datos segura.</p>
+                <button onclick="location.reload()" class="btn btn-primary" style="margin-top: 1rem;">Enviar otro
+                    reporte</button>
+            </div>
+
+            <form id="results-form" class="form-container reveal">
+
+                <h3
+                    style="margin-bottom: 1.5rem; color: var(--secondary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 0.5rem;">
+                    1. Información General
+                </h3>
+
+                <div class="form-group">
+                    <label for="lab-selector" class="form-label">Laboratorio Participante *</label>
+                    <select id="lab-selector" name="laboratory" class="form-control" required>
+                        <option value="">-- Seleccione su Laboratorio --</option>
+                        <!-- Populated by JS -->
+                    </select>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                    <div class="form-group">
+                        <label for="report-date" class="form-label">Fecha del Reporte *</label>
+                        <input type="date" id="report-date" name="date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email" class="form-label">Correo Electrónico (quien reporta)</label>
+                        <input type="email" id="contact-email" name="email" class="form-control"
+                            placeholder="ejemplo@laboratorio.com">
+                    </div>
+                </div>
+
+                <h3
+                    style="margin-top: 2.5rem; margin-bottom: 1.5rem; color: var(--secondary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 0.5rem;">
+                    2. Resultados de Química Clínica
+                </h3>
+
+                <div class="alert"
+                    style="background: var(--bg-light); padding: 1rem; border-left: 4px solid var(--secondary-color); margin-bottom: 1rem;">
+                    💡 <strong>Tip:</strong> Puedes usar el botón "⬇ Copiar" en el encabezado de la columna para repetir
+                    el mismo instrumento o método en todas las filas.
+                </div>
+
+                <div class="results-table-container">
+                    <table class="results-table" id="analytes-table-chem">
+                        <thead>
+                            <tr>
+                                <th style="width: 20%;">Analito</th>
+                                <th style="width: 25%;">
+                                    Instrumento
+                                    <button type="button" class="table-btn"
+                                        onclick="copyDown('instrument-input-chem')">⬇
+                                        Copiar</button>
+                                </th>
+                                <th style="width: 25%;">
+                                    Método
+                                </th>
+                                <th style="width: 15%;">Resultado</th>
+                                <th style="width: 15%;">
+                                    Unidad
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Generated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3
+                    style="margin-top: 2.5rem; margin-bottom: 1.5rem; color: var(--secondary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 0.5rem;">
+                    3. Resultados de Uroanálisis
+                </h3>
+
+                <div class="results-table-container">
+                    <table class="results-table" id="analytes-table-uro">
+                        <thead>
+                            <tr>
+                                <th style="width: 20%;">Analito</th>
+                                <th style="width: 25%;">
+                                    Instrumento
+                                    <button type="button" class="table-btn" onclick="copyDown('instrument-input-uro')">⬇
+                                        Copiar</button>
+                                </th>
+                                <th style="width: 25%;">
+                                    Método
+                                </th>
+                                <th style="width: 15%;">Resultado</th>
+                                <th style="width: 15%;">
+                                    Unidad
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Generated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="form-group">
+                    <label for="comments" class="form-label">Comentarios o Notas Adicionales</label>
+                    <textarea id="comments" name="comments" class="form-control" rows="3"></textarea>
+                </div>
+
+                <div class="submit-section">
+                    <div id="loading-message">⏳ Enviando datos a Firebase...</div>
+                    <button type="submit" id="submit-btn" class="btn btn-primary">Enviar Resultados</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/scroll-reveal.js"></script>
+
+    <!-- Script de lógica del formulario (tipo module para imports) -->
+    <script type="module" src="js/results-form.js"></script>
+
+</body>
+
+</html>

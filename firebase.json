@@ -1,0 +1,13 @@
+{
+    "hosting": {
+        "public": ".",
+        "ignore": [
+            "firebase.json",
+            "**/.*",
+            "**/node_modules/**",
+            "scripts/**",
+            "support/codigos_laboratorios_secretos.md",
+            "exclude/**"
+        ]
+    }
+}
