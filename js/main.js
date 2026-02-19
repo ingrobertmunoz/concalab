@@ -3,8 +3,8 @@
    ============================================ */
 
 // Esperar a que el DOM esté completamente cargado
-document.addEventListener('DOMContentLoaded', function() {
-    
+document.addEventListener('DOMContentLoaded', function () {
+
     // ==========================================
     // NAVEGACIÓN MÓVIL
     // ==========================================
@@ -15,13 +15,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Toggle menú móvil
     if (menuToggle) {
-        menuToggle.addEventListener('click', function() {
+        menuToggle.addEventListener('click', function () {
             navMain.classList.toggle('active');
             if (navOverlay) {
                 navOverlay.classList.toggle('active');
             }
             body.style.overflow = navMain.classList.contains('active') ? 'hidden' : '';
-            
+
             // Cambiar icono del menú
             const icon = this.querySelector('i') || this;
             if (navMain.classList.contains('active')) {
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Cerrar menú al hacer click en overlay
     if (navOverlay) {
-        navOverlay.addEventListener('click', function() {
+        navOverlay.addEventListener('click', function () {
             navMain.classList.remove('active');
             navOverlay.classList.remove('active');
             body.style.overflow = '';
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Cerrar menú móvil al hacer click en un enlace
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             // Si es un dropdown, no cerrar el menú
             const parent = this.parentElement;
             if (parent.classList.contains('dropdown') && window.innerWidth <= 768) {
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const header = document.querySelector('.header');
     let lastScroll = 0;
 
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         const currentScroll = window.pageYOffset;
 
         // Agregar clase cuando se hace scroll
@@ -93,10 +93,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // ==========================================
     function setActiveNavLink() {
         const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-        
+
         navLinks.forEach(link => {
             const href = link.getAttribute('href');
-            if (href === currentPage || 
+            if (href === currentPage ||
                 (currentPage === '' && href === 'index.html') ||
                 (currentPage === 'index.html' && href === 'index.html')) {
                 link.classList.add('active');
@@ -112,10 +112,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // SMOOTH SCROLL PARA ENLACES INTERNOS
     // ==========================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
-            
+
             if (target) {
                 const headerOffset = 100;
                 const elementPosition = target.getBoundingClientRect().top;
@@ -133,15 +133,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // FORMULARIOS - VALIDACIÓN
     // ==========================================
     const forms = document.querySelectorAll('form');
-    
+
     forms.forEach(form => {
-        form.addEventListener('submit', function(e) {
+        // El formulario de resultados tiene su propio handler en results-form.js
+        if (form.id === 'results-form') return;
+
+        form.addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             // Validación básica
             let isValid = true;
             const inputs = form.querySelectorAll('input[required], textarea[required], select[required]');
-            
+
             inputs.forEach(input => {
                 if (!input.value.trim()) {
                     isValid = false;
@@ -184,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Remover error al escribir
         const inputs = form.querySelectorAll('input, textarea, select');
         inputs.forEach(input => {
-            input.addEventListener('input', function() {
+            input.addEventListener('input', function () {
                 this.classList.remove('error');
                 removeError(this);
             });
@@ -235,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function animateCounter(element, target, duration = 2000) {
         let start = 0;
         const increment = target / (duration / 16);
-        
+
         const timer = setInterval(() => {
             start += increment;
             if (start >= target) {
@@ -267,9 +270,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // ACORDEONES
     // ==========================================
     const accordionHeaders = document.querySelectorAll('.accordion-header');
-    
+
     accordionHeaders.forEach(header => {
-        header.addEventListener('click', function() {
+        header.addEventListener('click', function () {
             const accordion = this.parentElement;
             const content = accordion.querySelector('.accordion-content');
             const isActive = accordion.classList.contains('active');
@@ -295,12 +298,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // TABS
     // ==========================================
     const tabButtons = document.querySelectorAll('.tab-button');
-    
+
     tabButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const tabGroup = this.closest('.tabs');
             const targetId = this.getAttribute('data-tab');
-            
+
             // Remover clase active de todos los botones y contenidos
             tabGroup.querySelectorAll('.tab-button').forEach(btn => {
                 btn.classList.remove('active');
@@ -322,13 +325,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // MODAL / LIGHTBOX
     // ==========================================
     const modalTriggers = document.querySelectorAll('[data-modal]');
-    
+
     modalTriggers.forEach(trigger => {
-        trigger.addEventListener('click', function(e) {
+        trigger.addEventListener('click', function (e) {
             e.preventDefault();
             const modalId = this.getAttribute('data-modal');
             const modal = document.getElementById(modalId);
-            
+
             if (modal) {
                 modal.classList.add('active');
                 body.style.overflow = 'hidden';
@@ -338,9 +341,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Cerrar modal
     const modalCloses = document.querySelectorAll('.modal-close, .modal-overlay');
-    
+
     modalCloses.forEach(close => {
-        close.addEventListener('click', function() {
+        close.addEventListener('click', function () {
             const modal = this.closest('.modal');
             if (modal) {
                 modal.classList.remove('active');
@@ -350,7 +353,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Cerrar modal con tecla ESC
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
             const activeModal = document.querySelector('.modal.active');
             if (activeModal) {
@@ -364,9 +367,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // TOOLTIP
     // ==========================================
     const tooltipTriggers = document.querySelectorAll('[data-tooltip]');
-    
+
     tooltipTriggers.forEach(trigger => {
-        trigger.addEventListener('mouseenter', function() {
+        trigger.addEventListener('mouseenter', function () {
             const text = this.getAttribute('data-tooltip');
             const tooltip = document.createElement('div');
             tooltip.className = 'tooltip';
@@ -382,14 +385,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 z-index: 1000;
                 pointer-events: none;
             `;
-            
+
             document.body.appendChild(tooltip);
-            
+
             const rect = this.getBoundingClientRect();
             tooltip.style.top = (rect.top - tooltip.offsetHeight - 10) + 'px';
             tooltip.style.left = (rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2)) + 'px';
-            
-            this.addEventListener('mouseleave', function() {
+
+            this.addEventListener('mouseleave', function () {
                 tooltip.remove();
             }, { once: true });
         });
@@ -419,9 +422,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // BOTÓN VOLVER ARRIBA
     // ==========================================
     const backToTop = document.querySelector('.back-to-top');
-    
+
     if (backToTop) {
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             if (window.pageYOffset > 300) {
                 backToTop.classList.add('visible');
             } else {
@@ -429,7 +432,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        backToTop.addEventListener('click', function(e) {
+        backToTop.addEventListener('click', function (e) {
             e.preventDefault();
             window.scrollTo({
                 top: 0,

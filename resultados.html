@@ -12,6 +12,16 @@
     <link rel="stylesheet" href="css/animations.css">
     <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
 
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init({
+                publicKey: "FIaxmqBuhcXtmwHAj",
+            });
+        })();
+    </script>
+
     <style>
         .form-container {
             background: white;
@@ -207,7 +217,8 @@
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
                     <div class="form-group">
                         <label for="report-date" class="form-label">Fecha del Reporte *</label>
-                        <input type="date" id="report-date" name="date" class="form-control" required>
+                        <input type="text" id="report-date" name="date" class="form-control" placeholder="DD/MM/AAAA"
+                            maxlength="10" pattern="\d{2}/\d{2}/\d{4}" required>
                     </div>
                     <div class="form-group">
                         <label for="contact-email" class="form-label">Correo Electrónico (quien reporta)</label>
@@ -299,6 +310,23 @@
     <!-- Scripts -->
     <script src="js/main.js"></script>
     <script src="js/scroll-reveal.js"></script>
+
+    <!-- Auto-formato de fecha DD/MM/AAAA -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const dateInput = document.getElementById('report-date');
+            dateInput.addEventListener('input', function (e) {
+                let val = e.target.value.replace(/\D/g, ''); // Solo dígitos
+                if (val.length > 8) val = val.substring(0, 8);
+                if (val.length >= 5) {
+                    val = val.substring(0, 2) + '/' + val.substring(2, 4) + '/' + val.substring(4);
+                } else if (val.length >= 3) {
+                    val = val.substring(0, 2) + '/' + val.substring(2);
+                }
+                e.target.value = val;
+            });
+        });
+    </script>
 
     <!-- Script de lógica del formulario (tipo module para imports) -->
     <script type="module" src="js/results-form.js"></script>

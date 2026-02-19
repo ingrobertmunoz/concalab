@@ -139,13 +139,17 @@ async function handleFormSubmit(e) {
     loadingMsg.style.display = 'block';
 
     try {
-        const formData = new FormData(e.target);
-        const laboratory = formData.get('laboratory');
-        const reportDate = formData.get('date');
-        const email = formData.get('email');
-        const comments = formData.get('comments');
+        // Leer valores directamente del DOM (más confiable que FormData en Chrome)
+        const laboratory = document.getElementById('lab-selector').value;
+        const reportDate = document.getElementById('report-date').value;
+        const email = document.getElementById('contact-email').value;
+        const comments = document.getElementById('comments').value;
 
-        if (!laboratory) throw new Error("Debes seleccionar un laboratorio.");
+        console.log("Datos del formulario:", { laboratory, reportDate, email });
+
+        if (!laboratory || laboratory === "") {
+            throw new Error("Debes seleccionar un laboratorio válido.");
+        }
 
         // Recolectar datos de Química
         const resultsChem = scrapeTable('#analytes-table-chem tbody', 'chem');
@@ -154,33 +158,84 @@ async function handleFormSubmit(e) {
 
         const allResults = [...resultsChem, ...resultsUro];
 
-        if (allResults.length === 0) throw new Error("No has ingresado ningún resultado.");
+        if (allResults.length === 0) throw new Error("No has ingresado ningún resultado en las tablas.");
 
-        // Guardar en Firestore
-        await addDoc(collection(db, "resultados_generales"), {
-            laboratorio: laboratory,
-            fecha_reporte: reportDate,
-            email_contacto: email,
-            comentarios: comments,
-            resultados: allResults,
-            tipos_incluidos: {
-                quimica: resultsChem.length > 0,
-                uroanalisis: resultsUro.length > 0
-            },
-            timestamp: serverTimestamp(),
-            userAgent: navigator.userAgent
-        });
+        // --- PASO 1: ENVIAR CORREO (EmailJS) - INDEPENDIENTE de Firebase ---
+        if (email && window.emailjs) {
+            loadingMsg.textContent = "⏳ Enviando confirmación al correo...";
 
-        // Éxito
+            // Generar resumen DETALLADO con los valores reales
+            let summaryLines = [];
+
+            if (resultsChem.length > 0) {
+                summaryLines.push('--- QUÍMICA CLÍNICA ---');
+                resultsChem.forEach(r => {
+                    summaryLines.push(`• ${r.analyte}: ${r.result} ${r.unit} (Método: ${r.method || 'N/A'}, Instrumento: ${r.instrument || 'N/A'})`);
+                });
+            }
+
+            if (resultsUro.length > 0) {
+                summaryLines.push('');
+                summaryLines.push('--- UROANÁLISIS ---');
+                resultsUro.forEach(r => {
+                    summaryLines.push(`• ${r.analyte}: ${r.result} ${r.unit} (Método: ${r.method || 'N/A'}, Instrumento: ${r.instrument || 'N/A'})`);
+                });
+            }
+
+            summaryLines.push('');
+            summaryLines.push(`Total: ${allResults.length} analitos reportados.`);
+
+            const summary = summaryLines.join('\n');
+
+            const templateParams = {
+                name: laboratory,            // → {{name}} en "From Name"
+                email: email,                // → {{email}} en "Reply To"
+                lab_name: laboratory,
+                report_date: reportDate,
+                entered_email: email,
+                results_summary: summary
+            };
+
+            try {
+                await window.emailjs.send('service_80iwfhm', 'template_53vkh45', templateParams);
+                console.log('✅ Correo enviado exitosamente!');
+            } catch (emailError) {
+                console.error('⚠️ Error al enviar correo:', emailError);
+            }
+        }
+
+        // --- PASO 2: Guardar en Firebase (con timeout de 10s) ---
+        loadingMsg.textContent = "⏳ Guardando datos en la base de datos...";
+        const firebaseTimeout = new Promise((_, reject) =>
+            setTimeout(() => reject(new Error('Firebase timeout')), 10000)
+        );
+
+        try {
+            await Promise.race([
+                addDoc(collection(db, "resultados_generales"), {
+                    laboratorio: laboratory,
+                    fecha_reporte: reportDate,
+                    email_contacto: email,
+                    comentarios: comments,
+                    resultados: allResults,
+                    tipos_incluidos: {
+                        quimica: resultsChem.length > 0,
+                        uroanalisis: resultsUro.length > 0
+                    },
+                    timestamp: serverTimestamp(),
+                    userAgent: navigator.userAgent
+                }),
+                firebaseTimeout
+            ]);
+            console.log('✅ Datos guardados en Firebase!');
+        } catch (fbError) {
+            console.warn('⚠️ Firebase no respondió a tiempo (datos pueden sincronizarse después):', fbError.message);
+        }
+
+        // Éxito (se muestra sin importar si Firebase respondió o no)
         loadingMsg.style.display = 'none';
         successMsg.style.display = 'block';
         window.scrollTo(0, 0);
-
-        setTimeout(() => {
-            if (confirm("¿Deseas enviar otro reporte?")) {
-                location.reload();
-            }
-        }, 2000);
 
     } catch (error) {
         console.error("Error al enviar:", error);
