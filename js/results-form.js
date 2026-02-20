@@ -1,16 +1,92 @@
-import { db, collection, addDoc, serverTimestamp } from './firebase-config.js';
+import { db, collection, addDoc, serverTimestamp, auth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from './firebase-config.js';
 
 document.addEventListener('DOMContentLoaded', async function () {
     console.log("Inicializando formulario de resultados...");
 
-    // 1. Cargar Laboratorios
-    await loadLaboratories();
+    // UI Elements
+    const loginSection = document.getElementById('login-section');
+    const resultsForm = document.getElementById('results-form');
+    const userBar = document.getElementById('user-bar');
+    const userEmailSpan = document.getElementById('user-email');
+    const loginBtn = document.getElementById('login-btn');
+    const logoutBtn = document.getElementById('logout-btn');
+    const loginError = document.getElementById('login-error');
 
-    // 2. Generar Tablas de Analitos (Química y Uroanálisis)
-    generateAnalytesTable('chem');
-    generateAnalytesTable('uro');
+    // --- AUTH STATE LISTENER ---
+    onAuthStateChanged(auth, async (user) => {
+        if (user) {
+            // Usuario autenticado → mostrar formulario
+            console.log("✅ Usuario autenticado:", user.email);
+            loginSection.style.display = 'none';
+            resultsForm.style.display = 'block';
+            userBar.style.display = 'flex';
+            userEmailSpan.textContent = user.email;
 
-    // 3. Manejar Envío
+            // Pre-llenar email de contacto
+            const emailInput = document.getElementById('contact-email');
+            if (emailInput && !emailInput.value) {
+                emailInput.value = user.email;
+            }
+
+            // Cargar datos del formulario
+            await loadLaboratories();
+            generateAnalytesTable('chem');
+            generateAnalytesTable('uro');
+        } else {
+            // No autenticado → mostrar login
+            console.log("🔒 No autenticado");
+            loginSection.style.display = 'block';
+            resultsForm.style.display = 'none';
+            userBar.style.display = 'none';
+        }
+    });
+
+    // --- LOGIN ---
+    loginBtn.addEventListener('click', async () => {
+        const email = document.getElementById('login-email').value.trim();
+        const password = document.getElementById('login-password').value;
+
+        if (!email || !password) {
+            loginError.textContent = 'Por favor ingrese correo y contraseña.';
+            loginError.style.display = 'block';
+            return;
+        }
+
+        loginBtn.disabled = true;
+        loginBtn.textContent = 'Verificando...';
+        loginError.style.display = 'none';
+
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
+            // onAuthStateChanged se encargará de mostrar el formulario
+        } catch (error) {
+            console.error("Error de autenticación:", error.code);
+            if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
+                loginError.textContent = 'Correo o contraseña incorrectos.';
+            } else if (error.code === 'auth/too-many-requests') {
+                loginError.textContent = 'Demasiados intentos. Intente más tarde.';
+            } else {
+                loginError.textContent = 'Error al iniciar sesión. Intente de nuevo.';
+            }
+            loginError.style.display = 'block';
+        } finally {
+            loginBtn.disabled = false;
+            loginBtn.textContent = 'Iniciar Sesión';
+        }
+    });
+
+    // Enter key en el campo de contraseña
+    document.getElementById('login-password').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') loginBtn.click();
+    });
+
+    // --- LOGOUT ---
+    logoutBtn.addEventListener('click', async () => {
+        await signOut(auth);
+        location.reload();
+    });
+
+    // Manejar Envío
     const form = document.getElementById('results-form');
     form.addEventListener('submit', handleFormSubmit);
 });

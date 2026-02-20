@@ -124,6 +124,76 @@
             margin-bottom: 2rem;
             text-align: center;
         }
+
+        /* Login Card */
+        .login-container {
+            max-width: 450px;
+            margin: 0 auto;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .login-container h2 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .login-container .login-subtitle {
+            color: #666;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .login-container .login-icon {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        #login-error {
+            display: none;
+            background: #f8d7da;
+            color: #721c24;
+            padding: 0.75rem;
+            border: 1px solid #f5c6cb;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .user-bar {
+            display: none;
+            background: var(--bg-light);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .user-bar .user-info {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .btn-logout {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .btn-logout:hover {
+            background: #c82333;
+        }
     </style>
 </head>
 
@@ -192,6 +262,33 @@
     <section class="section">
         <div class="container">
 
+            <!-- LOGIN SECTION -->
+            <div id="login-section" class="login-container reveal">
+                <div class="login-icon">🔒</div>
+                <h2>Acceso al Reporte</h2>
+                <p class="login-subtitle">Ingrese sus credenciales para reportar resultados</p>
+
+                <div id="login-error">Correo o contraseña incorrectos.</div>
+
+                <div class="form-group">
+                    <label for="login-email" class="form-label">Correo Electrónico</label>
+                    <input type="email" id="login-email" class="form-control" placeholder="laboratorio@ejemplo.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="login-password" class="form-label">Contraseña</label>
+                    <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
+                </div>
+
+                <button id="login-btn" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Iniciar Sesión</button>
+            </div>
+
+            <!-- USER BAR (visible after login) -->
+            <div id="user-bar" class="user-bar">
+                <span class="user-info">👤 <span id="user-email"></span></span>
+                <button id="logout-btn" class="btn-logout">Cerrar Sesión</button>
+            </div>
+
             <div id="success-message">
                 <h2>¡Reporte Enviado Exitosamente!</h2>
                 <p>Los datos han sido registrados correctamente en nuestra base de datos segura.</p>
@@ -199,7 +296,7 @@
                     reporte</button>
             </div>
 
-            <form id="results-form" class="form-container reveal">
+            <form id="results-form" class="form-container reveal" style="display: none;">
 
                 <h3
                     style="margin-bottom: 1.5rem; color: var(--secondary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 0.5rem;">
