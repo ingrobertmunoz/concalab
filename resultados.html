@@ -272,7 +272,8 @@
 
                 <div class="form-group">
                     <label for="login-email" class="form-label">Correo Electrónico</label>
-                    <input type="email" id="login-email" class="form-control" placeholder="laboratorio@ejemplo.com" required>
+                    <input type="email" id="login-email" class="form-control" placeholder="laboratorio@ejemplo.com"
+                        required>
                 </div>
 
                 <div class="form-group">
@@ -280,7 +281,8 @@
                     <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
                 </div>
 
-                <button id="login-btn" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Iniciar Sesión</button>
+                <button id="login-btn" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Iniciar
+                    Sesión</button>
             </div>
 
             <!-- USER BAR (visible after login) -->
@@ -309,6 +311,13 @@
                         <option value="">-- Seleccione su Laboratorio --</option>
                         <!-- Populated by JS -->
                     </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="round-code" class="form-label">Código de Ensayo de Intercomparación *</label>
+                    <input type="text" id="round-code" name="round_code" class="form-control" placeholder="EA-001-2025"
+                        maxlength="11" pattern="EA-\d{3}-\d{4}" required style="text-transform: uppercase;">
+                    <small style="color: #666; font-size: 0.8rem;">Formato: EA-001-2025</small>
                 </div>
 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
@@ -408,12 +417,13 @@
     <script src="js/main.js"></script>
     <script src="js/scroll-reveal.js"></script>
 
-    <!-- Auto-formato de fecha DD/MM/AAAA -->
+    <!-- Auto-formato de fecha DD/MM/AAAA y código EA-XXX-YYYY -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Auto-formato fecha
             const dateInput = document.getElementById('report-date');
             dateInput.addEventListener('input', function (e) {
-                let val = e.target.value.replace(/\D/g, ''); // Solo dígitos
+                let val = e.target.value.replace(/\D/g, '');
                 if (val.length > 8) val = val.substring(0, 8);
                 if (val.length >= 5) {
                     val = val.substring(0, 2) + '/' + val.substring(2, 4) + '/' + val.substring(4);
@@ -421,6 +431,26 @@
                     val = val.substring(0, 2) + '/' + val.substring(2);
                 }
                 e.target.value = val;
+            });
+
+            // Auto-formato código de ensayo EA-001-2025
+            const roundInput = document.getElementById('round-code');
+            roundInput.addEventListener('input', function (e) {
+                let val = e.target.value.toUpperCase();
+                // Si no empieza con EA-, forzarlo
+                if (!val.startsWith('EA-') && !val.startsWith('EA') && !val.startsWith('E')) {
+                    val = 'EA-' + val.replace(/[^0-9]/g, '');
+                }
+                // Remover caracteres no válidos después de EA-
+                let raw = val.replace(/^EA-?/, '').replace(/[^0-9]/g, '');
+                if (raw.length > 7) raw = raw.substring(0, 7);
+                if (raw.length >= 4) {
+                    e.target.value = 'EA-' + raw.substring(0, 3) + '-' + raw.substring(3);
+                } else if (raw.length > 0) {
+                    e.target.value = 'EA-' + raw;
+                } else {
+                    e.target.value = val.startsWith('E') ? val.substring(0, Math.min(val.length, 3)) : '';
+                }
             });
         });
     </script>

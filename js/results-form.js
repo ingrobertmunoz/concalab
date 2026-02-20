@@ -217,14 +217,19 @@ async function handleFormSubmit(e) {
     try {
         // Leer valores directamente del DOM (más confiable que FormData en Chrome)
         const laboratory = document.getElementById('lab-selector').value;
+        const roundCode = document.getElementById('round-code').value.toUpperCase();
         const reportDate = document.getElementById('report-date').value;
         const email = document.getElementById('contact-email').value;
         const comments = document.getElementById('comments').value;
 
-        console.log("Datos del formulario:", { laboratory, reportDate, email });
+        console.log("Datos del formulario:", { laboratory, roundCode, reportDate, email });
 
         if (!laboratory || laboratory === "") {
             throw new Error("Debes seleccionar un laboratorio válido.");
+        }
+
+        if (!roundCode || !/^EA-\d{3}-\d{4}$/.test(roundCode)) {
+            throw new Error("El código de ensayo debe tener el formato EA-001-2025.");
         }
 
         // Recolectar datos de Química
@@ -264,9 +269,10 @@ async function handleFormSubmit(e) {
             const summary = summaryLines.join('\n');
 
             const templateParams = {
-                name: laboratory,            // → {{name}} en "From Name"
-                email: email,                // → {{email}} en "Reply To"
+                name: laboratory,
+                email: email,
                 lab_name: laboratory,
+                round_code: roundCode,
                 report_date: reportDate,
                 entered_email: email,
                 results_summary: summary
@@ -290,6 +296,7 @@ async function handleFormSubmit(e) {
             await Promise.race([
                 addDoc(collection(db, "resultados_generales"), {
                     laboratorio: laboratory,
+                    codigo_ensayo: roundCode,
                     fecha_reporte: reportDate,
                     email_contacto: email,
                     comentarios: comments,
