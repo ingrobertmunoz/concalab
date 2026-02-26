@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Informe de Ensayo de Aptitud EA-001-2025 - CONCALAB-UASD. Resultados y análisis estadísticos con gráficos interactivos.">
+    <title>Informe EA-001-2025 - CONCALAB-UASD</title>
+
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="../../css/animations.css">
+    <link rel="icon" type="image/x-icon" href="../../assets/icons/favicon.ico">
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
+    <style>
+        .report-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .report-header .badge {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .report-header h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .report-header p {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        /* Summary cards */
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .summary-card {
+            text-align: center;
+            padding: 1.2rem;
+            border-radius: 12px;
+            color: white;
+        }
+
+        .summary-card .number {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .summary-card .label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        /* Analyte nav index */
+        .nav-toc {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .nav-toc h3 {
+            margin-bottom: 0.75rem;
+            color: var(--primary-color);
+        }
+
+        .nav-toc .pills {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .nav-toc .pills a {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            background: var(--bg-light);
+            color: var(--primary-color);
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .nav-toc .pills a:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .nav-toc .pills a.pill-summary {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Analyte section */
+        .analyte-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .analyte-section h2 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Stats row */
+        .analyte-stats {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .analyte-stats .stat {
+            background: var(--bg-light);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .analyte-stats .stat strong {
+            color: var(--primary-color);
+        }
+
+        /* Charts container */
+        .chart-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Summary table */
+        .summary-table-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .summary-table-container h3 {
+            color: var(--primary-color);
+            padding: 1.2rem 1.5rem 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .summary-table th {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.7rem 0.8rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .summary-table td {
+            padding: 0.6rem 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-table tr:hover {
+            background: var(--bg-light);
+        }
+
+        .cv-high {
+            color: #856404;
+            font-weight: bold;
+        }
+
+        .cv-critical {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        /* Alerts */
+        .alert-box {
+            padding: 1rem 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .alert-warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            color: #856404;
+        }
+
+        .alert-danger {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            color: #721c24;
+        }
+
+        /* Methodology */
+        .methodology {
+            background: var(--bg-light);
+            padding: 1.2rem 1.5rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            margin-top: 1.5rem;
+        }
+
+        .methodology strong {
+            color: var(--primary-color);
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-light);
+        }
+
+        .loading .spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--border-color);
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .analyte-selector select {
+                min-width: 100%;
+            }
+
+            .summary-table {
+                font-size: 0.75rem;
+            }
+
+            .summary-table th,
+            .summary-table td {
+                padding: 0.4rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav-overlay"></div>
+
+    <header class="header">
+        <div class="header-container">
+            <a href="../../index.html" class="logo"
+                style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 1rem;">
+                <img src="../../assets/images/logo-concalab.png" alt="Logo CONCALAB-UASD"
+                    onerror="this.style.display='none'">
+                <div class="logo-text">
+                    <div class="logo-title">CONCALAB-UASD</div>
+                    <div class="logo-subtitle">Control de Calidad de Laboratorios</div>
+                </div>
+            </a>
+
+            <nav class="nav-main">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="../../index.html" class="nav-link">Inicio</a></li>
+                    <li class="nav-item dropdown active">
+                        <a href="#" class="nav-link">Publicaciones</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../protocolos.html" class="nav-link">Protocolos</a></li>
+                            <li><a href="../informes.html" class="nav-link active">Informes</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="../../portal-educativo.html" class="nav-link">Educación</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Servicios</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../../servicios.html" class="nav-link">Nuestros Servicios</a></li>
+                            <li><a href="../../resultados.html" class="nav-link">Reportar Resultados</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="../../miembros.html" class="nav-link">Miembros</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Nosotros</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../../sobre-nosotros/quienes-somos.html" class="nav-link">Quiénes Somos</a>
+                            </li>
+                            <li><a href="../../sobre-nosotros/historia.html" class="nav-link">Historia</a></li>
+                            <li><a href="../../sobre-nosotros/marco-legal.html" class="nav-link">Marco Legal</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="../../contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Buscar...">
+                    <button class="search-btn" aria-label="Buscar">🔍</button>
+                </div>
+            </nav>
+
+            <button class="menu-toggle" aria-label="Menú">☰</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in-down">
+                <h1 class="hero-title">Informe de Ensayo de Aptitud</h1>
+                <p class="hero-subtitle">Química Clínica — Resultados y Análisis Estadístico Interactivo</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+
+            <!-- Report Header -->
+            <div class="report-header card reveal" id="report-header">
+                <div class="loading" id="loading-msg">
+                    <div class="spinner"></div>
+                    <p style="margin-top: 1rem;">Cargando datos del informe...</p>
+                </div>
+            </div>
+
+            <!-- Summary Cards -->
+            <div class="summary-cards" id="summary-cards" style="display:none;"></div>
+
+            <!-- Navigation Index -->
+            <div class="nav-toc" id="nav-toc" style="display:none;">
+                <h3>📋 Índice de Analitos</h3>
+                <ul class="pills" id="nav-pills"></ul>
+            </div>
+
+            <!-- All Analytes Charts (rendered dynamically) -->
+            <div id="all-analytes"></div>
+
+            <!-- Summary Table -->
+            <div class="summary-table-container" id="summary-table-container" style="display:none;">
+                <h3>📊 Resumen Estadístico por Analito</h3>
+                <table class="summary-table">
+                    <thead>
+                        <tr>
+                            <th>Analito</th>
+                            <th>n</th>
+                            <th>X* (Valor Asignado)</th>
+                            <th>σ* (SD Robusta)</th>
+                            <th>CV (%)</th>
+                            <th>✅ A</th>
+                            <th>⚠️ C</th>
+                            <th>❌ I</th>
+                        </tr>
+                    </thead>
+                    <tbody id="summary-tbody"></tbody>
+                </table>
+            </div>
+
+            <!-- CV Alerts -->
+            <div id="cv-alerts"></div>
+
+            <!-- Methodology -->
+            <div class="methodology" id="methodology-box" style="display:none;">
+                <strong>Metodología:</strong><br>
+                • <strong>Valor asignado (X*):</strong> Media robusta — Algoritmo A, ISO 13528:2015<br>
+                • <strong>Desviación estándar (σ*):</strong> SD robusta — Algoritmo S, ISO 13528:2015<br>
+                • <strong>Z-Score:</strong> z = (x − X*) / σ*, donde x es el resultado del laboratorio<br>
+                • <strong>Criterios:</strong> |z| ≤ 2 → Aceptable &nbsp;|&nbsp; 2 &lt; |z| &lt; 3 → Cuestionable
+                &nbsp;|&nbsp; |z| ≥ 3 → Inaceptable<br>
+                • <strong>CV umbral:</strong> Se alerta cuando CV &gt; 15% (alto) o CV &gt; 30% (muy alto)
+            </div>
+
+            <!-- Back to informes -->
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="../informes.html" class="btn btn-outline">← Volver a Informes</a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CONCALAB-UASD</h3>
+                    <p>Control de Calidad de Laboratorios</p>
+                    <p>Universidad Autónoma de Santo Domingo</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="../../index.html">Inicio</a></li>
+                        <li><a href="../../servicios.html">Servicios</a></li>
+                        <li><a href="../../portal-educativo.html">Educación</a></li>
+                        <li><a href="../../contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Publicaciones</h3>
+                    <ul class="footer-links">
+                        <li><a href="../protocolos.html">Protocolos</a></li>
+                        <li><a href="../informes.html">Informes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>📍 Santo Domingo, República Dominicana</p>
+                    <p>📧 info@concalab.uasd.edu.do</p>
+                    <p>📞 +1 (809) XXX-XXXX</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CONCALAB-UASD. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/search.js"></script>
+    <script src="../../js/scroll-reveal.js"></script>
+
+    <script>
+        // ================================================================
+        // INFORME INTERACTIVO — EA-001-2025
+        // Lee JSON y dibuja TODOS los analitos con Plotly.js
+        // ================================================================
+
+        const JSON_URL = '../../data/informes/EA-001-2025.json';
+
+        function zColor(z) {
+            const abs = Math.abs(z);
+            if (abs <= 2) return '#28a745';
+            if (abs < 3) return '#ffc107';
+            return '#dc3545';
+        }
+
+        function safeId(name) {
+            return name.replace(/\s/g, '-').replace(/[().]/g, '');
+        }
+
+        // Cargar datos
+        fetch(JSON_URL)
+            .then(res => {
+                if (!res.ok) throw new Error('No se pudo cargar el JSON');
+                return res.json();
+            })
+            .then(data => renderReport(data))
+            .catch(err => {
+                document.getElementById('loading-msg').innerHTML =
+                    `<p style="color: #dc3545;">❌ Error cargando datos: ${err.message}</p>`;
+            });
+
+        function renderReport(data) {
+            // Header
+            const header = document.getElementById('report-header');
+            header.innerHTML = `
+            <span class="badge">${data.codigo}</span>
+            <h2>Informe de Ensayo de Aptitud</h2>
+            <p>${data.metodologia} — Fecha: ${data.fecha}</p>
+        `;
+
+            // Summary cards
+            const r = data.resumen;
+            const pctA = (r.aceptables / r.total * 100).toFixed(1);
+            const pctC = (r.cuestionables / r.total * 100).toFixed(1);
+            const pctI = (r.inaceptables / r.total * 100).toFixed(1);
+
+            const cards = document.getElementById('summary-cards');
+            cards.style.display = 'grid';
+            cards.innerHTML = `
+            <div class="summary-card" style="background: #28a745;">
+                <div class="number">${r.aceptables}</div>
+                <div class="label">Aceptables (${pctA}%)</div>
+            </div>
+            <div class="summary-card" style="background: #ffc107; color: #333;">
+                <div class="number">${r.cuestionables}</div>
+                <div class="label">Cuestionables (${pctC}%)</div>
+            </div>
+            <div class="summary-card" style="background: #dc3545;">
+                <div class="number">${r.inaceptables}</div>
+                <div class="label">Inaceptables (${pctI}%)</div>
+            </div>
+            <div class="summary-card" style="background: var(--primary-color);">
+                <div class="number">${r.total}</div>
+                <div class="label">Total Evaluaciones</div>
+            </div>
+            <div class="summary-card" style="background: #6f42c1;">
+                <div class="number">${data.analitos.length}</div>
+                <div class="label">Analitos Evaluados</div>
+            </div>
+        `;
+
+            // Navigation pills
+            const navToc = document.getElementById('nav-toc');
+            navToc.style.display = 'block';
+            const pills = document.getElementById('nav-pills');
+            data.analitos.forEach(a => {
+                pills.innerHTML += `<li><a href="#${safeId(a.nombre)}">${a.nombre}</a></li>`;
+            });
+            pills.innerHTML += `<li><a href="#resumen-tabla" class="pill-summary">📊 Resumen</a></li>`;
+
+            // Render ALL analytes
+            const container = document.getElementById('all-analytes');
+            data.analitos.forEach((a, i) => {
+                const id = safeId(a.nombre);
+                const countA = a.laboratorios.filter(l => l.clasificacion === 'A').length;
+                const countC = a.laboratorios.filter(l => l.clasificacion === 'C').length;
+                const countI = a.laboratorios.filter(l => l.clasificacion === 'I').length;
+
+                container.innerHTML += `
+                <div class="analyte-section" id="${id}">
+                    <h2>🧪 ${a.nombre}</h2>
+                    <div class="analyte-stats" style="display:flex;">
+                        <div class="stat"><strong>n:</strong> ${a.n} labs</div>
+                        <div class="stat"><strong>X*:</strong> ${a.valor_asignado} ${a.unidad}</div>
+                        <div class="stat"><strong>σ*:</strong> ${a.sd_robusta} ${a.unidad}</div>
+                        <div class="stat"><strong>CV:</strong> ${a.cv}%</div>
+                        <div class="stat">✅ ${countA} ⚠️ ${countC} ❌ ${countI}</div>
+                    </div>
+                    <div id="hist-${i}" style="width:100%;"></div>
+                    <div id="bar-${i}" style="width:100%; margin-top:1rem;"></div>
+                </div>
+            `;
+            });
+
+            // Draw charts (after DOM is ready)
+            requestAnimationFrame(() => {
+                data.analitos.forEach((a, i) => renderCharts(a, i));
+            });
+
+            // Summary table + alerts
+            renderSummaryTable(data.analitos);
+            renderCVAlerts(data.analitos);
+            document.getElementById('methodology-box').style.display = 'block';
+        }
+
+        function renderCharts(analyte, index) {
+            const resultados = analyte.laboratorios.map(l => l.resultado);
+            const z2low = analyte.valor_asignado - 2 * analyte.sd_robusta;
+            const z2high = analyte.valor_asignado + 2 * analyte.sd_robusta;
+
+            // Histogram
+            Plotly.newPlot(`hist-${index}`, [{
+                x: resultados,
+                type: 'histogram',
+                nbinsx: Math.max(8, Math.min(20, Math.floor(resultados.length / 2))),
+                marker: {
+                    color: 'rgba(26, 35, 126, 0.7)',
+                    line: { color: 'rgba(26, 35, 126, 1)', width: 1.5 }
+                },
+                hovertemplate: 'Rango: %{x}<br>Frecuencia: %{y}<extra></extra>'
+            }], {
+                title: { text: `Distribución de Resultados — ${analyte.nombre} (${analyte.unidad})`, font: { size: 15, color: '#1a237e' } },
+                xaxis: { title: `Resultado (${analyte.unidad})`, gridcolor: '#eee' },
+                yaxis: { title: 'Frecuencia (n° de laboratorios)', gridcolor: '#eee', dtick: 1 },
+                height: 380, margin: { l: 60, r: 30, t: 50, b: 50 },
+                bargap: 0.05, plot_bgcolor: 'white', paper_bgcolor: 'white',
+                shapes: [
+                    {
+                        type: 'line', x0: analyte.valor_asignado, x1: analyte.valor_asignado, y0: 0, y1: 1, yref: 'paper',
+                        line: { color: 'red', width: 2.5, dash: 'dash' }
+                    },
+                    {
+                        type: 'rect', x0: z2low, x1: z2high, y0: 0, y1: 1, yref: 'paper',
+                        fillcolor: 'rgba(40, 167, 69, 0.1)', line: { width: 0 }
+                    }
+                ],
+                annotations: [
+                    {
+                        x: analyte.valor_asignado, y: 1, yref: 'paper', text: `X* = ${analyte.valor_asignado}`,
+                        showarrow: false, font: { color: 'red', size: 11 }, xanchor: 'left', xshift: 5
+                    }
+                ]
+            }, { responsive: true });
+
+            // Z-Score bars
+            const labs = analyte.laboratorios;
+            const labLabels = labs.map(l => `Lab ${l.id}`);
+            const zValues = labs.map(l => l.z_score);
+            const colors = zValues.map(z => zColor(z));
+            const hoverTexts = labs.map(l =>
+                `Lab ${l.id}<br>Z-Score: ${l.z_score.toFixed(2)}<br>Resultado: ${l.resultado} ${analyte.unidad}`
+            );
+            const yMin = Math.min(Math.min(...zValues) - 1, -4);
+            const yMax = Math.max(Math.max(...zValues) + 1, 4);
+
+            Plotly.newPlot(`bar-${index}`, [{
+                x: labLabels, y: zValues, type: 'bar', orientation: 'v',
+                marker: { color: colors, line: { color: 'rgba(0,0,0,0.15)', width: 0.5 } },
+                text: zValues.map(z => z.toFixed(2)), textposition: 'outside', textfont: { size: 8 },
+                hovertext: hoverTexts, hoverinfo: 'text'
+            }], {
+                title: { text: `Z-Score por Laboratorio — ${analyte.nombre}`, font: { size: 15, color: '#1a237e' } },
+                xaxis: { title: 'Laboratorio', tickangle: -45, tickfont: { size: 9 }, gridcolor: '#eee' },
+                yaxis: { title: 'Z-Score', range: [yMin, yMax], gridcolor: '#eee', zeroline: false },
+                height: 450, margin: { l: 60, r: 60, t: 50, b: 100 },
+                plot_bgcolor: 'white', paper_bgcolor: 'white',
+                shapes: [
+                    { type: 'line', x0: 0, x1: 1, xref: 'paper', y0: 0, y1: 0, line: { color: '#666', width: 1 } },
+                    { type: 'line', x0: 0, x1: 1, xref: 'paper', y0: 2, y1: 2, line: { color: 'orange', width: 1.5, dash: 'dash' } },
+                    { type: 'line', x0: 0, x1: 1, xref: 'paper', y0: -2, y1: -2, line: { color: 'orange', width: 1.5, dash: 'dash' } },
+                    { type: 'line', x0: 0, x1: 1, xref: 'paper', y0: 3, y1: 3, line: { color: 'red', width: 1.5, dash: 'dot' } },
+                    { type: 'line', x0: 0, x1: 1, xref: 'paper', y0: -3, y1: -3, line: { color: 'red', width: 1.5, dash: 'dot' } },
+                    {
+                        type: 'rect', x0: 0, x1: 1, xref: 'paper', y0: -2, y1: 2,
+                        fillcolor: 'rgba(40, 167, 69, 0.05)', line: { width: 0 }
+                    }
+                ],
+                annotations: [
+                    { x: 1.02, xref: 'paper', y: 2, text: 'z=+2', showarrow: false, font: { color: 'orange', size: 9 } },
+                    { x: 1.02, xref: 'paper', y: -2, text: 'z=-2', showarrow: false, font: { color: 'orange', size: 9 } },
+                    { x: 1.02, xref: 'paper', y: 3, text: 'z=+3', showarrow: false, font: { color: 'red', size: 9 } },
+                    { x: 1.02, xref: 'paper', y: -3, text: 'z=-3', showarrow: false, font: { color: 'red', size: 9 } }
+                ]
+            }, { responsive: true });
+        }
+
+        function renderSummaryTable(analitos) {
+            const container = document.getElementById('summary-table-container');
+            container.style.display = 'block';
+            container.id = 'resumen-tabla';
+            const tbody = document.getElementById('summary-tbody');
+
+            analitos.forEach(a => {
+                const countA = a.laboratorios.filter(l => l.clasificacion === 'A').length;
+                const countC = a.laboratorios.filter(l => l.clasificacion === 'C').length;
+                const countI = a.laboratorios.filter(l => l.clasificacion === 'I').length;
+                let cvClass = '';
+                if (a.cv > 30) cvClass = 'cv-critical';
+                else if (a.cv > 15) cvClass = 'cv-high';
+
+                tbody.innerHTML += `
+                <tr>
+                    <td><strong>${a.nombre}</strong></td>
+                    <td>${a.n}</td>
+                    <td>${a.valor_asignado} ${a.unidad}</td>
+                    <td>${a.sd_robusta} ${a.unidad}</td>
+                    <td class="${cvClass}">${a.cv}%</td>
+                    <td>${countA}</td>
+                    <td>${countC}</td>
+                    <td>${countI}</td>
+                </tr>
+            `;
+            });
+        }
+
+        function renderCVAlerts(analitos) {
+            const container = document.getElementById('cv-alerts');
+            const highCV = analitos.filter(a => a.cv > 15).sort((a, b) => b.cv - a.cv);
+            if (highCV.length === 0) return;
+
+            let html = '<h3 style="color: var(--primary-color); margin-bottom: 1rem;">⚠️ Alertas de Coeficiente de Variación</h3>';
+            highCV.forEach(a => {
+                const isVeryHigh = a.cv > 30;
+                const cls = isVeryHigh ? 'alert-danger' : 'alert-warning';
+                const icon = isVeryHigh ? '🔴' : '⚠️';
+                const nivel = isVeryHigh ? 'MUY ALTO' : 'ALTO';
+
+                html += `<div class="alert-box ${cls}">
+                ${icon} <strong>${a.nombre}</strong> — CV = ${a.cv}% (${nivel}).
+                σ* = ${a.sd_robusta} ${a.unidad} sobre X* = ${a.valor_asignado} ${a.unidad}.
+                Un CV elevado indica alta dispersión entre laboratorios.
+            </div>`;
+            });
+            container.innerHTML = html;
+        }
+    </script>
+
+</body>
+
+</html>

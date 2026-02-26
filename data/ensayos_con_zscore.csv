@@ -1,0 +1,460 @@
+laboratorio,analito,muestra,resultado,unidad,valor_asignado,sd_robusta,z_score,clasificacion_calculada,clasificacion_original
+1,(ALP) Fosfatasa Alcalina,# 1,280.0,U/L,321.12,220.71,-0.19,A,A
+2,(ALP) Fosfatasa Alcalina,# 1,607.0,U/L,321.12,220.71,1.3,A,I
+4,(ALP) Fosfatasa Alcalina,# 1,179.0,U/L,321.12,220.71,-0.64,A,A
+7,(ALP) Fosfatasa Alcalina,# 1,262.0,U/L,321.12,220.71,-0.27,A,A
+11,(ALP) Fosfatasa Alcalina,# 1,589.0,U/L,321.12,220.71,1.21,A,I
+14,(ALP) Fosfatasa Alcalina,# 1,575.0,U/L,321.12,220.71,1.15,A,I
+17,(ALP) Fosfatasa Alcalina,# 1,143.0,U/L,321.12,220.71,-0.81,A,A
+21,(ALP) Fosfatasa Alcalina,# 1,505.0,U/L,321.12,220.71,0.83,A,A
+26,(ALP) Fosfatasa Alcalina,# 1,322.0,U/L,321.12,220.71,0.0,A,A
+32,(ALP) Fosfatasa Alcalina,# 1,142.9,U/L,321.12,220.71,-0.81,A,I
+33,(ALP) Fosfatasa Alcalina,# 1,158.0,U/L,321.12,220.71,-0.74,A,A
+43,(ALP) Fosfatasa Alcalina,# 1,139.0,U/L,321.12,220.71,-0.83,A,I
+46,(ALP) Fosfatasa Alcalina,# 1,227.0,U/L,321.12,220.71,-0.43,A,I
+47,(ALP) Fosfatasa Alcalina,# 1,228.0,U/L,321.12,220.71,-0.42,A,A
+53,(ALP) Fosfatasa Alcalina,# 1,594.0,U/L,321.12,220.71,1.24,A,A
+55,(ALP) Fosfatasa Alcalina,# 1,31.0,U/L,321.12,220.71,-1.31,A,I
+56,(ALP) Fosfatasa Alcalina,# 1,200.0,U/L,321.12,220.71,-0.55,A,A
+68,(ALP) Fosfatasa Alcalina,# 1,152.0,U/L,321.12,220.71,-0.77,A,A
+76,(ALP) Fosfatasa Alcalina,# 1,304.0,U/L,321.12,220.71,-0.08,A,A
+78,(ALP) Fosfatasa Alcalina,# 1,530.0,U/L,321.12,220.71,0.95,A,I
+87,(ALP) Fosfatasa Alcalina,# 1,183.0,U/L,321.12,220.71,-0.63,A,A
+90,(ALP) Fosfatasa Alcalina,# 1,720.0,U/L,321.12,220.71,1.81,A,I
+128,(ALP) Fosfatasa Alcalina,# 1,675.0,U/L,321.12,220.71,1.6,A,I
+131,(ALP) Fosfatasa Alcalina,# 1,183.0,U/L,321.12,220.71,-0.63,A,A
+135,(ALP) Fosfatasa Alcalina,# 1,474.0,U/L,321.12,220.71,0.69,A,I
+138,(ALP) Fosfatasa Alcalina,# 1,177.0,U/L,321.12,220.71,-0.65,A,A
+140,(ALP) Fosfatasa Alcalina,# 1,181.0,U/L,321.12,220.71,-0.63,A,A
+1,ACIDO URICO,# 1,6.56,mg/dL,5.93,0.71,0.89,A,A
+2,ACIDO URICO,# 1,6.7,mg/dL,5.93,0.71,1.08,A,A
+4,ACIDO URICO,# 1,5.6,mg/dL,5.93,0.71,-0.46,A,A
+7,ACIDO URICO,# 1,4.9,mg/dL,5.93,0.71,-1.45,A,I
+11,ACIDO URICO,# 1,5.77,mg/dL,5.93,0.71,-0.22,A,A
+14,ACIDO URICO,# 1,6.2,mg/dL,5.93,0.71,0.38,A,A
+15,ACIDO URICO,# 1,8.57,mg/dL,5.93,0.71,3.71,I,I
+17,ACIDO URICO,# 1,4.0,mg/dL,5.93,0.71,-2.71,C,I
+21,ACIDO URICO,# 1,5.0,mg/dL,5.93,0.71,-1.3,A,A
+26,ACIDO URICO,# 1,6.8,mg/dL,5.93,0.71,1.22,A,A
+32,ACIDO URICO,# 1,6.3,mg/dL,5.93,0.71,0.52,A,A
+33,ACIDO URICO,# 1,5.6,mg/dL,5.93,0.71,-0.46,A,A
+43,ACIDO URICO,# 1,6.5,mg/dL,5.93,0.71,0.8,A,A
+45,ACIDO URICO,# 1,5.4,mg/dL,5.93,0.71,-0.74,A,A
+46,ACIDO URICO,# 1,5.67,mg/dL,5.93,0.71,-0.36,A,A
+47,ACIDO URICO,# 1,3.15,mg/dL,5.93,0.71,-3.9,I,I
+53,ACIDO URICO,# 1,6.5,mg/dL,5.93,0.71,0.8,A,A
+55,ACIDO URICO,# 1,5.18,mg/dL,5.93,0.71,-1.05,A,A
+56,ACIDO URICO,# 1,5.8,mg/dL,5.93,0.71,-0.18,A,A
+68,ACIDO URICO,# 1,5.32,mg/dL,5.93,0.71,-0.86,A,A
+71,ACIDO URICO,# 1,7.4,mg/dL,5.93,0.71,2.07,C,I
+76,ACIDO URICO,# 1,6.23,mg/dL,5.93,0.71,0.42,A,A
+78,ACIDO URICO,# 1,6.3,mg/dL,5.93,0.71,0.52,A,A
+87,ACIDO URICO,# 1,6.19,mg/dL,5.93,0.71,0.37,A,A
+90,ACIDO URICO,# 1,6.2,mg/dL,5.93,0.71,0.38,A,A
+128,ACIDO URICO,# 1,5.8,mg/dL,5.93,0.71,-0.18,A,A
+131,ACIDO URICO,# 1,5.89,mg/dL,5.93,0.71,-0.05,A,A
+135,ACIDO URICO,# 1,6.1,mg/dL,5.93,0.71,0.24,A,A
+138,ACIDO URICO,# 1,6.23,mg/dL,5.93,0.71,0.42,A,A
+140,ACIDO URICO,# 1,5.4,mg/dL,5.93,0.71,-0.74,A,A
+1,ALT (TGP),# 1,41.0,U/L,32.5,3.36,2.53,C,A
+2,ALT (TGP),# 1,31.0,U/L,32.5,3.36,-0.45,A,A
+4,ALT (TGP),# 1,36.0,U/L,32.5,3.36,1.04,A,A
+7,ALT (TGP),# 1,34.0,U/L,32.5,3.36,0.45,A,A
+11,ALT (TGP),# 1,40.0,U/L,32.5,3.36,2.23,C,A
+14,ALT (TGP),# 1,31.0,U/L,32.5,3.36,-0.45,A,A
+15,ALT (TGP),# 1,34.8,U/L,32.5,3.36,0.68,A,A
+17,ALT (TGP),# 1,29.5,U/L,32.5,3.36,-0.89,A,A
+21,ALT (TGP),# 1,30.0,U/L,32.5,3.36,-0.75,A,A
+26,ALT (TGP),# 1,30.0,U/L,32.5,3.36,-0.75,A,A
+32,ALT (TGP),# 1,29.6,U/L,32.5,3.36,-0.86,A,A
+33,ALT (TGP),# 1,34.0,U/L,32.5,3.36,0.45,A,A
+43,ALT (TGP),# 1,26.0,U/L,32.5,3.36,-1.94,A,A
+45,ALT (TGP),# 1,38.0,U/L,32.5,3.36,1.64,A,A
+46,ALT (TGP),# 1,39.0,U/L,32.5,3.36,1.94,A,A
+47,ALT (TGP),# 1,31.0,U/L,32.5,3.36,-0.45,A,A
+53,ALT (TGP),# 1,31.0,U/L,32.5,3.36,-0.45,A,A
+55,ALT (TGP),# 1,31.0,U/L,32.5,3.36,-0.45,A,A
+56,ALT (TGP),# 1,34.0,U/L,32.5,3.36,0.45,A,A
+68,ALT (TGP),# 1,30.0,U/L,32.5,3.36,-0.75,A,A
+71,ALT (TGP),# 1,32.0,U/L,32.5,3.36,-0.15,A,A
+76,ALT (TGP),# 1,29.0,U/L,32.5,3.36,-1.04,A,A
+78,ALT (TGP),# 1,32.0,U/L,32.5,3.36,-0.15,A,A
+87,ALT (TGP),# 1,39.0,U/L,32.5,3.36,1.94,A,A
+90,ALT (TGP),# 1,32.0,U/L,32.5,3.36,-0.15,A,A
+128,ALT (TGP),# 1,29.0,U/L,32.5,3.36,-1.04,A,A
+131,ALT (TGP),# 1,32.0,U/L,32.5,3.36,-0.15,A,A
+135,ALT (TGP),# 1,31.0,U/L,32.5,3.36,-0.45,A,A
+138,ALT (TGP),# 1,34.0,U/L,32.5,3.36,0.45,A,A
+140,ALT (TGP),# 1,32.0,U/L,32.5,3.36,-0.15,A,A
+1,AST (TGO),# 1,36.0,U/L,33.08,4.74,0.62,A,A
+2,AST (TGO),# 1,31.0,U/L,33.08,4.74,-0.44,A,A
+4,AST (TGO),# 1,45.0,U/L,33.08,4.74,2.52,C,A
+7,AST (TGO),# 1,36.0,U/L,33.08,4.74,0.62,A,A
+11,AST (TGO),# 1,37.0,U/L,33.08,4.74,0.83,A,A
+14,AST (TGO),# 1,30.0,U/L,33.08,4.74,-0.65,A,A
+15,AST (TGO),# 1,37.14,U/L,33.08,4.74,0.86,A,A
+17,AST (TGO),# 1,30.2,U/L,33.08,4.74,-0.61,A,A
+21,AST (TGO),# 1,26.0,U/L,33.08,4.74,-1.49,A,A
+26,AST (TGO),# 1,29.0,U/L,33.08,4.74,-0.86,A,A
+32,AST (TGO),# 1,34.7,U/L,33.08,4.74,0.34,A,A
+33,AST (TGO),# 1,39.0,U/L,33.08,4.74,1.25,A,A
+43,AST (TGO),# 1,22.0,U/L,33.08,4.74,-2.34,C,A
+45,AST (TGO),# 1,42.0,U/L,33.08,4.74,1.88,A,A
+46,AST (TGO),# 1,40.0,U/L,33.08,4.74,1.46,A,A
+47,AST (TGO),# 1,32.0,U/L,33.08,4.74,-0.23,A,A
+53,AST (TGO),# 1,32.0,U/L,33.08,4.74,-0.23,A,A
+55,AST (TGO),# 1,33.0,U/L,33.08,4.74,-0.02,A,A
+56,AST (TGO),# 1,38.0,U/L,33.08,4.74,1.04,A,A
+68,AST (TGO),# 1,32.0,U/L,33.08,4.74,-0.23,A,A
+71,AST (TGO),# 1,33.0,U/L,33.08,4.74,-0.02,A,A
+76,AST (TGO),# 1,26.0,U/L,33.08,4.74,-1.49,A,A
+78,AST (TGO),# 1,31.0,U/L,33.08,4.74,-0.44,A,A
+87,AST (TGO),# 1,36.0,U/L,33.08,4.74,0.62,A,A
+90,AST (TGO),# 1,32.0,U/L,33.08,4.74,-0.23,A,A
+128,AST (TGO),# 1,29.0,U/L,33.08,4.74,-0.86,A,A
+131,AST (TGO),# 1,29.0,U/L,33.08,4.74,-0.86,A,A
+135,AST (TGO),# 1,31.0,U/L,33.08,4.74,-0.44,A,A
+138,AST (TGO),# 1,34.0,U/L,33.08,4.74,0.19,A,A
+140,AST (TGO),# 1,32.0,U/L,33.08,4.74,-0.23,A,A
+1,Albúmina,# 1,4.79,g/dL,4.52,0.62,0.43,A,A
+2,Albúmina,# 1,5.8,g/dL,4.52,0.62,2.04,C,I
+4,Albúmina,# 1,4.3,g/dL,4.52,0.62,-0.36,A,A
+7,Albúmina,# 1,4.4,g/dL,4.52,0.62,-0.2,A,A
+11,Albúmina,# 1,5.2,g/dL,4.52,0.62,1.08,A,I
+15,Albúmina,# 1,4.3,g/dL,4.52,0.62,-0.36,A,A
+17,Albúmina,# 1,3.9,g/dL,4.52,0.62,-1.0,A,A
+21,Albúmina,# 1,3.2,g/dL,4.52,0.62,-2.12,C,I
+26,Albúmina,# 1,4.5,g/dL,4.52,0.62,-0.04,A,A
+32,Albúmina,# 1,3.8,g/dL,4.52,0.62,-1.16,A,A
+33,Albúmina,# 1,3.5,g/dL,4.52,0.62,-1.64,A,A
+43,Albúmina,# 1,8.4,g/dL,4.52,0.62,6.21,I,I
+46,Albúmina,# 1,4.55,g/dL,4.52,0.62,0.04,A,A
+47,Albúmina,# 1,4.2,g/dL,4.52,0.62,-0.52,A,A
+53,Albúmina,# 1,5.3,g/dL,4.52,0.62,1.24,A,I
+55,Albúmina,# 1,4.2,g/dL,4.52,0.62,-0.52,A,A
+56,Albúmina,# 1,5.0,g/dL,4.52,0.62,0.76,A,I
+68,Albúmina,# 1,3.9,g/dL,4.52,0.62,-1.0,A,A
+71,Albúmina,# 1,4.6,g/dL,4.52,0.62,0.12,A,A
+76,Albúmina,# 1,5.2,g/dL,4.52,0.62,1.08,A,I
+78,Albúmina,# 1,4.6,g/dL,4.52,0.62,0.12,A,A
+87,Albúmina,# 1,4.31,g/dL,4.52,0.62,-0.34,A,A
+90,Albúmina,# 1,5.2,g/dL,4.52,0.62,1.08,A,I
+128,Albúmina,# 1,4.7,g/dL,4.52,0.62,0.28,A,A
+131,Albúmina,# 1,4.18,g/dL,4.52,0.62,-0.55,A,A
+135,Albúmina,# 1,5.1,g/dL,4.52,0.62,0.92,A,I
+138,Albúmina,# 1,4.16,g/dL,4.52,0.62,-0.58,A,A
+140,Albúmina,# 1,4.2,g/dL,4.52,0.62,-0.52,A,A
+1,Amilasa,# 1,111.0,U/L,99.62,20.7,0.55,A,A
+2,Amilasa,# 1,114.0,U/L,99.62,20.7,0.69,A,I
+4,Amilasa,# 1,72.0,U/L,99.62,20.7,-1.33,A,A
+7,Amilasa,# 1,173.0,U/L,99.62,20.7,3.55,I,I
+11,Amilasa,# 1,101.0,U/L,99.62,20.7,0.07,A,I
+14,Amilasa,# 1,94.0,U/L,99.62,20.7,-0.27,A,A
+17,Amilasa,# 1,111.0,U/L,99.62,20.7,0.55,A,A
+21,Amilasa,# 1,86.0,U/L,99.62,20.7,-0.66,A,A
+26,Amilasa,# 1,100.0,U/L,99.62,20.7,0.02,A,A
+32,Amilasa,# 1,85.6,U/L,99.62,20.7,-0.68,A,A
+33,Amilasa,# 1,68.0,U/L,99.62,20.7,-1.53,A,A
+43,Amilasa,# 1,75.0,U/L,99.62,20.7,-1.19,A,A
+46,Amilasa,# 1,81.0,U/L,99.62,20.7,-0.9,A,I
+47,Amilasa,# 1,148.0,U/L,99.62,20.7,2.34,C,I
+53,Amilasa,# 1,107.0,U/L,99.62,20.7,0.36,A,I
+55,Amilasa,# 1,126.0,U/L,99.62,20.7,1.27,A,I
+56,Amilasa,# 1,90.0,U/L,99.62,20.7,-0.46,A,A
+68,Amilasa,# 1,66.0,U/L,99.62,20.7,-1.62,A,A
+76,Amilasa,# 1,144.0,U/L,99.62,20.7,2.14,C,I
+78,Amilasa,# 1,102.0,U/L,99.62,20.7,0.11,A,I
+87,Amilasa,# 1,114.0,U/L,99.62,20.7,0.69,A,I
+90,Amilasa,# 1,100.0,U/L,99.62,20.7,0.02,A,A
+128,Amilasa,# 1,102.0,U/L,99.62,20.7,0.11,A,A
+131,Amilasa,# 1,87.0,U/L,99.62,20.7,-0.61,A,A
+135,Amilasa,# 1,102.0,U/L,99.62,20.7,0.11,A,A
+138,Amilasa,# 1,103.0,U/L,99.62,20.7,0.16,A,A
+140,Amilasa,# 1,97.0,U/L,99.62,20.7,-0.13,A,A
+1,Bilirrubina Directa,# 1,0.5,mg/Dl,1.07,0.22,-2.58,C,I
+2,Bilirrubina Directa,# 1,0.9,mg/Dl,1.07,0.22,-0.78,A,A
+4,Bilirrubina Directa,# 1,0.66,mg/Dl,1.07,0.22,-1.86,A,I
+7,Bilirrubina Directa,# 1,1.3,mg/Dl,1.07,0.22,1.03,A,A
+11,Bilirrubina Directa,# 1,1.33,mg/Dl,1.07,0.22,1.17,A,A
+14,Bilirrubina Directa,# 1,1.0,mg/Dl,1.07,0.22,-0.32,A,A
+17,Bilirrubina Directa,# 1,1.15,mg/Dl,1.07,0.22,0.35,A,I
+21,Bilirrubina Directa,# 1,1.2,mg/Dl,1.07,0.22,0.58,A,A
+26,Bilirrubina Directa,# 1,0.8,mg/Dl,1.07,0.22,-1.23,A,I
+32,Bilirrubina Directa,# 1,1.35,mg/Dl,1.07,0.22,1.26,A,A
+33,Bilirrubina Directa,# 1,1.7,mg/Dl,1.07,0.22,2.84,C,A
+43,Bilirrubina Directa,# 1,1.2,mg/Dl,1.07,0.22,0.58,A,A
+46,Bilirrubina Directa,# 1,0.6,mg/Dl,1.07,0.22,-2.13,C,I
+47,Bilirrubina Directa,# 1,1.06,mg/Dl,1.07,0.22,-0.05,A,A
+53,Bilirrubina Directa,# 1,1.3,mg/Dl,1.07,0.22,1.03,A,A
+55,Bilirrubina Directa,# 1,1.23,mg/Dl,1.07,0.22,0.71,A,A
+56,Bilirrubina Directa,# 1,0.8,mg/Dl,1.07,0.22,-1.23,A,I
+68,Bilirrubina Directa,# 1,1.0,mg/Dl,1.07,0.22,-0.32,A,A
+71,Bilirrubina Directa,# 1,1.12,mg/Dl,1.07,0.22,0.22,A,A
+76,Bilirrubina Directa,# 1,1.16,mg/Dl,1.07,0.22,0.4,A,A
+78,Bilirrubina Directa,# 1,1.1,mg/Dl,1.07,0.22,0.13,A,A
+87,Bilirrubina Directa,# 1,1.09,mg/Dl,1.07,0.22,0.08,A,A
+90,Bilirrubina Directa,# 1,1.1,mg/Dl,1.07,0.22,0.13,A,A
+128,Bilirrubina Directa,# 1,1.1,mg/Dl,1.07,0.22,0.13,A,A
+131,Bilirrubina Directa,# 1,0.96,mg/Dl,1.07,0.22,-0.51,A,A
+135,Bilirrubina Directa,# 1,0.9,mg/Dl,1.07,0.22,-0.78,A,A
+138,Bilirrubina Directa,# 1,1.24,mg/Dl,1.07,0.22,0.76,A,A
+140,Bilirrubina Directa,# 1,1.0,mg/Dl,1.07,0.22,-0.32,A,A
+1,Bilirrubina Total,# 1,1.53,mg/dL,1.65,0.23,-0.51,A,A
+2,Bilirrubina Total,# 1,1.6,mg/dL,1.65,0.23,-0.21,A,A
+4,Bilirrubina Total,# 1,1.59,mg/dL,1.65,0.23,-0.25,A,A
+7,Bilirrubina Total,# 1,1.8,mg/dL,1.65,0.23,0.64,A,A
+11,Bilirrubina Total,# 1,2.14,mg/dL,1.65,0.23,2.1,C,I
+14,Bilirrubina Total,# 1,1.5,mg/dL,1.65,0.23,-0.64,A,A
+15,Bilirrubina Total,# 1,1.19,mg/dL,1.65,0.23,-1.97,A,I
+17,Bilirrubina Total,# 1,1.92,mg/dL,1.65,0.23,1.16,A,A
+21,Bilirrubina Total,# 1,1.5,mg/dL,1.65,0.23,-0.64,A,A
+26,Bilirrubina Total,# 1,1.4,mg/dL,1.65,0.23,-1.07,A,A
+32,Bilirrubina Total,# 1,2.0,mg/dL,1.65,0.23,1.5,A,A
+33,Bilirrubina Total,# 1,1.9,mg/dL,1.65,0.23,1.07,A,A
+43,Bilirrubina Total,# 1,1.7,mg/dL,1.65,0.23,0.22,A,A
+46,Bilirrubina Total,# 1,1.78,mg/dL,1.65,0.23,0.56,A,A
+47,Bilirrubina Total,# 1,1.64,mg/dL,1.65,0.23,-0.04,A,A
+53,Bilirrubina Total,# 1,1.8,mg/dL,1.65,0.23,0.64,A,A
+55,Bilirrubina Total,# 1,1.63,mg/dL,1.65,0.23,-0.08,A,A
+56,Bilirrubina Total,# 1,1.0,mg/dL,1.65,0.23,-2.78,C,I
+68,Bilirrubina Total,# 1,1.5,mg/dL,1.65,0.23,-0.64,A,A
+71,Bilirrubina Total,# 1,1.86,mg/dL,1.65,0.23,0.9,A,A
+76,Bilirrubina Total,# 1,1.94,mg/dL,1.65,0.23,1.24,A,A
+78,Bilirrubina Total,# 1,1.5,mg/dL,1.65,0.23,-0.64,A,A
+87,Bilirrubina Total,# 1,1.76,mg/dL,1.65,0.23,0.47,A,A
+90,Bilirrubina Total,# 1,1.6,mg/dL,1.65,0.23,-0.21,A,A
+128,Bilirrubina Total,# 1,1.4,mg/dL,1.65,0.23,-1.07,A,A
+131,Bilirrubina Total,# 1,1.48,mg/dL,1.65,0.23,-0.73,A,A
+135,Bilirrubina Total,# 1,1.4,mg/dL,1.65,0.23,-1.07,A,A
+138,Bilirrubina Total,# 1,1.81,mg/dL,1.65,0.23,0.69,A,A
+140,Bilirrubina Total,# 1,1.7,mg/dL,1.65,0.23,0.22,A,A
+1,Colesterol,#  1,167.0,mg/dL,159.17,16.05,0.49,A,A
+2,Colesterol,#  1,172.0,mg/dL,159.17,16.05,0.8,A,A
+4,Colesterol,#  1,169.0,mg/dL,159.17,16.05,0.61,A,A
+7,Colesterol,#  1,155.0,mg/dL,159.17,16.05,-0.26,A,A
+11,Colesterol,#  1,178.0,mg/dL,159.17,16.05,1.17,A,A
+14,Colesterol,#  1,152.0,mg/dL,159.17,16.05,-0.45,A,A
+15,Colesterol,#  1,160.0,mg/dL,159.17,16.05,0.05,A,A
+17,Colesterol,#  1,242.0,mg/dL,159.17,16.05,5.16,I,I
+21,Colesterol,#  1,130.0,mg/dL,159.17,16.05,-1.82,A,A
+26,Colesterol,#  1,157.0,mg/dL,159.17,16.05,-0.14,A,A
+32,Colesterol,#  1,179.4,mg/dL,159.17,16.05,1.26,A,A
+33,Colesterol,#  1,140.0,mg/dL,159.17,16.05,-1.19,A,A
+43,Colesterol,#  1,125.0,mg/dL,159.17,16.05,-2.13,C,I
+45,Colesterol,#  1,130.8,mg/dL,159.17,16.05,-1.77,A,I
+46,Colesterol,#  1,167.0,mg/dL,159.17,16.05,0.49,A,A
+47,Colesterol,#  1,152.0,mg/dL,159.17,16.05,-0.45,A,A
+53,Colesterol,#  1,155.0,mg/dL,159.17,16.05,-0.26,A,A
+55,Colesterol,#  1,172.0,mg/dL,159.17,16.05,0.8,A,A
+56,Colesterol,#  1,165.0,mg/dL,159.17,16.05,0.36,A,A
+68,Colesterol,#  1,151.0,mg/dL,159.17,16.05,-0.51,A,A
+71,Colesterol,#  1,142.0,mg/dL,159.17,16.05,-1.07,A,A
+76,Colesterol,#  1,210.0,mg/dL,159.17,16.05,3.17,I,I
+78,Colesterol,#  1,141.0,mg/dL,159.17,16.05,-1.13,A,A
+87,Colesterol,#  1,162.0,mg/dL,159.17,16.05,0.18,A,A
+90,Colesterol,#  1,173.0,mg/dL,159.17,16.05,0.86,A,A
+128,Colesterol,#  1,154.0,mg/dL,159.17,16.05,-0.32,A,A
+131,Colesterol,#  1,165.0,mg/dL,159.17,16.05,0.36,A,A
+135,Colesterol,#  1,152.0,mg/dL,159.17,16.05,-0.45,A,A
+138,Colesterol,#  1,166.0,mg/dL,159.17,16.05,0.43,A,A
+140,Colesterol,#  1,157.0,mg/dL,159.17,16.05,-0.14,A,A
+1,Colesterol HDL,# 1,44.0,mg/Dl,50.03,12.46,-0.48,A,A
+2,Colesterol HDL,# 1,63.0,mg/Dl,50.03,12.46,1.04,A,A
+4,Colesterol HDL,# 1,59.0,mg/Dl,50.03,12.46,0.72,A,A
+7,Colesterol HDL,# 1,61.0,mg/Dl,50.03,12.46,0.88,A,A
+11,Colesterol HDL,# 1,46.2,mg/Dl,50.03,12.46,-0.31,A,A
+14,Colesterol HDL,# 1,58.0,mg/Dl,50.03,12.46,0.64,A,A
+15,Colesterol HDL,# 1,64.0,mg/Dl,50.03,12.46,1.12,A,I
+17,Colesterol HDL,# 1,26.0,mg/Dl,50.03,12.46,-1.93,A,I
+21,Colesterol HDL,# 1,48.0,mg/Dl,50.03,12.46,-0.16,A,A
+26,Colesterol HDL,# 1,54.8,mg/Dl,50.03,12.46,0.38,A,A
+32,Colesterol HDL,# 1,72.6,mg/Dl,50.03,12.46,1.81,A,I
+33,Colesterol HDL,# 1,53.0,mg/Dl,50.03,12.46,0.24,A,A
+43,Colesterol HDL,# 1,37.0,mg/Dl,50.03,12.46,-1.05,A,I
+46,Colesterol HDL,# 1,38.5,mg/Dl,50.03,12.46,-0.93,A,I
+47,Colesterol HDL,# 1,19.0,mg/Dl,50.03,12.46,-2.49,C,I
+53,Colesterol HDL,# 1,58.0,mg/Dl,50.03,12.46,0.64,A,A
+55,Colesterol HDL,# 1,57.0,mg/Dl,50.03,12.46,0.56,A,A
+56,Colesterol HDL,# 1,32.0,mg/Dl,50.03,12.46,-1.45,A,I
+68,Colesterol HDL,# 1,45.3,mg/Dl,50.03,12.46,-0.38,A,A
+71,Colesterol HDL,# 1,50.0,mg/Dl,50.03,12.46,-0.0,A,A
+76,Colesterol HDL,# 1,48.9,mg/Dl,50.03,12.46,-0.09,A,A
+78,Colesterol HDL,# 1,57.0,mg/Dl,50.03,12.46,0.56,A,A
+87,Colesterol HDL,# 1,33.0,mg/Dl,50.03,12.46,-1.37,A,I
+90,Colesterol HDL,# 1,60.0,mg/Dl,50.03,12.46,0.8,A,A
+128,Colesterol HDL,# 1,55.0,mg/Dl,50.03,12.46,0.4,A,A
+131,Colesterol HDL,# 1,33.5,mg/Dl,50.03,12.46,-1.33,A,I
+135,Colesterol HDL,# 1,56.0,mg/Dl,50.03,12.46,0.48,A,A
+138,Colesterol HDL,# 1,48.3,mg/Dl,50.03,12.46,-0.14,A,A
+140,Colesterol HDL,# 1,59.0,mg/Dl,50.03,12.46,0.72,A,A
+1,Creatinina,# 1,1.35,mg/dL,1.37,0.2,-0.12,A,A
+2,Creatinina,# 1,1.3,mg/dL,1.37,0.2,-0.37,A,A
+4,Creatinina,# 1,1.31,mg/dL,1.37,0.2,-0.32,A,A
+7,Creatinina,# 1,1.3,mg/dL,1.37,0.2,-0.37,A,A
+11,Creatinina,# 1,1.38,mg/dL,1.37,0.2,0.03,A,A
+14,Creatinina,# 1,1.4,mg/dL,1.37,0.2,0.13,A,A
+15,Creatinina,# 1,1.03,mg/dL,1.37,0.2,-1.7,A,A
+17,Creatinina,# 1,1.52,mg/dL,1.37,0.2,0.72,A,A
+21,Creatinina,# 1,1.13,mg/dL,1.37,0.2,-1.21,A,A
+26,Creatinina,# 1,1.58,mg/dL,1.37,0.2,1.02,A,A
+32,Creatinina,# 1,1.3,mg/dL,1.37,0.2,-0.37,A,A
+33,Creatinina,# 1,1.38,mg/dL,1.37,0.2,0.03,A,A
+43,Creatinina,# 1,6.8,mg/dL,1.37,0.2,26.83,I,I
+45,Creatinina,# 1,1.0,mg/dL,1.37,0.2,-1.85,A,I
+46,Creatinina,# 1,1.62,mg/dL,1.37,0.2,1.21,A,A
+47,Creatinina,# 1,1.6,mg/dL,1.37,0.2,1.11,A,A
+53,Creatinina,# 1,2.19,mg/dL,1.37,0.2,4.03,I,I
+55,Creatinina,# 1,1.25,mg/dL,1.37,0.2,-0.62,A,A
+56,Creatinina,# 1,1.7,mg/dL,1.37,0.2,1.61,A,I
+68,Creatinina,# 1,0.75,mg/dL,1.37,0.2,-3.09,I,I
+71,Creatinina,# 1,1.45,mg/dL,1.37,0.2,0.37,A,A
+76,Creatinina,# 1,1.31,mg/dL,1.37,0.2,-0.32,A,A
+78,Creatinina,# 1,1.33,mg/dL,1.37,0.2,-0.22,A,A
+87,Creatinina,# 1,1.49,mg/dL,1.37,0.2,0.57,A,A
+90,Creatinina,# 1,1.32,mg/dL,1.37,0.2,-0.27,A,A
+128,Creatinina,# 1,1.21,mg/dL,1.37,0.2,-0.81,A,A
+131,Creatinina,# 1,1.43,mg/dL,1.37,0.2,0.27,A,A
+135,Creatinina,# 1,1.26,mg/dL,1.37,0.2,-0.57,A,A
+138,Creatinina,# 1,1.27,mg/dL,1.37,0.2,-0.52,A,A
+140,Creatinina,# 1,1.5,mg/dL,1.37,0.2,0.62,A,A
+1,GLUCOSA,# 1,104.0,mg/dL,105.17,9.2,-0.13,A,A
+2,GLUCOSA,# 1,118.0,mg/dL,105.17,9.2,1.4,A,A
+4,GLUCOSA,# 1,107.0,mg/dL,105.17,9.2,0.2,A,A
+7,GLUCOSA,# 1,107.0,mg/dL,105.17,9.2,0.2,A,A
+11,GLUCOSA,# 1,110.2,mg/dL,105.17,9.2,0.55,A,A
+14,GLUCOSA,# 1,108.4,mg/dL,105.17,9.2,0.35,A,A
+15,GLUCOSA,# 1,88.8,mg/dL,105.17,9.2,-1.78,A,I
+17,GLUCOSA,# 1,105.0,mg/dL,105.17,9.2,-0.02,A,A
+21,GLUCOSA,# 1,90.0,mg/dL,105.17,9.2,-1.65,A,I
+26,GLUCOSA,# 1,122.0,mg/dL,105.17,9.2,1.83,A,A
+32,GLUCOSA,# 1,106.0,mg/dL,105.17,9.2,0.09,A,A
+33,GLUCOSA,# 1,105.0,mg/dL,105.17,9.2,-0.02,A,A
+43,GLUCOSA,# 1,81.0,mg/dL,105.17,9.2,-2.63,C,I
+45,GLUCOSA,# 1,72.0,mg/dL,105.17,9.2,-3.61,I,I
+46,GLUCOSA,# 1,94.0,mg/dL,105.17,9.2,-1.21,A,I
+47,GLUCOSA,# 1,108.0,mg/dL,105.17,9.2,0.31,A,A
+53,GLUCOSA,# 1,107.0,mg/dL,105.17,9.2,0.2,A,A
+55,GLUCOSA,# 1,110.0,mg/dL,105.17,9.2,0.53,A,A
+56,GLUCOSA,# 1,107.0,mg/dL,105.17,9.2,0.2,A,A
+68,GLUCOSA,# 1,98.0,mg/dL,105.17,9.2,-0.78,A,A
+71,GLUCOSA,# 1,118.0,mg/dL,105.17,9.2,1.4,A,A
+76,GLUCOSA,# 1,144.0,mg/dL,105.17,9.2,4.22,I,I
+78,GLUCOSA,# 1,107.0,mg/dL,105.17,9.2,0.2,A,A
+87,GLUCOSA,# 1,103.0,mg/dL,105.17,9.2,-0.24,A,A
+90,GLUCOSA,# 1,106.0,mg/dL,105.17,9.2,0.09,A,A
+128,GLUCOSA,# 1,106.0,mg/dL,105.17,9.2,0.09,A,A
+131,GLUCOSA,# 1,102.0,mg/dL,105.17,9.2,-0.34,A,A
+135,GLUCOSA,# 1,108.0,mg/dL,105.17,9.2,0.31,A,A
+138,GLUCOSA,# 1,112.0,mg/dL,105.17,9.2,0.74,A,A
+140,GLUCOSA,# 1,95.0,mg/dL,105.17,9.2,-1.11,A,A
+1,Lipasa,# 1,20.0,U/L,35.48,12.97,-1.19,A,I
+2,Lipasa,# 1,23.0,U/L,35.48,12.97,-0.96,A,I
+4,Lipasa,# 1,217.0,U/L,35.48,12.97,14.0,I,A
+7,Lipasa,# 1,30.0,U/L,35.48,12.97,-0.42,A,A
+11,Lipasa,# 1,33.0,U/L,35.48,12.97,-0.19,A,A
+14,Lipasa,# 1,33.0,U/L,35.48,12.97,-0.19,A,A
+17,Lipasa,# 1,21.1,U/L,35.48,12.97,-1.11,A,I
+21,Lipasa,# 1,27.0,U/L,35.48,12.97,-0.65,A,I
+26,Lipasa,# 1,46.0,U/L,35.48,12.97,0.81,A,A
+33,Lipasa,# 1,201.0,U/L,35.48,12.97,12.77,I,A
+43,Lipasa,# 1,42.0,U/L,35.48,12.97,0.5,A,A
+46,Lipasa,# 1,37.7,U/L,35.48,12.97,0.17,A,A
+47,Lipasa,# 1,33.0,U/L,35.48,12.97,-0.19,A,A
+53,Lipasa,# 1,19.0,U/L,35.48,12.97,-1.27,A,I
+55,Lipasa,# 1,38.0,U/L,35.48,12.97,0.19,A,A
+56,Lipasa,# 1,50.0,U/L,35.48,12.97,1.12,A,I
+68,Lipasa,# 1,20.36,U/L,35.48,12.97,-1.17,A,I
+76,Lipasa,# 1,39.3,U/L,35.48,12.97,0.29,A,A
+78,Lipasa,# 1,26.0,U/L,35.48,12.97,-0.73,A,I
+87,Lipasa,# 1,189.0,U/L,35.48,12.97,11.84,I,I
+90,Lipasa,# 1,30.0,U/L,35.48,12.97,-0.42,A,A
+135,Lipasa,# 1,32.0,U/L,35.48,12.97,-0.27,A,A
+138,Lipasa,# 1,45.31,U/L,35.48,12.97,0.76,A,A
+140,Lipasa,# 1,41.0,U/L,35.48,12.97,0.43,A,I
+1,Proteínas Total,# 1,6.39,g/dL,6.02,0.57,0.64,A,A
+2,Proteínas Total,# 1,0.7,g/dL,6.02,0.57,-9.35,I,A
+4,Proteínas Total,# 1,0.6,g/dL,6.02,0.57,-9.52,I,A
+7,Proteínas Total,# 1,5.9,g/dL,6.02,0.57,-0.22,A,A
+11,Proteínas Total,# 1,6.0,g/dL,6.02,0.57,-0.04,A,A
+17,Proteínas Total,# 1,6.1,g/dL,6.02,0.57,0.13,A,A
+21,Proteínas Total,# 1,4.6,g/dL,6.02,0.57,-2.5,C,A
+26,Proteínas Total,# 1,6.3,g/dL,6.02,0.57,0.48,A,A
+32,Proteínas Total,# 1,6.0,g/dL,6.02,0.57,-0.04,A,A
+33,Proteínas Total,# 1,7.0,g/dL,6.02,0.57,1.71,A,A
+43,Proteínas Total,# 1,9.2,g/dL,6.02,0.57,5.57,I,I
+46,Proteínas Total,# 1,6.38,g/dL,6.02,0.57,0.62,A,A
+47,Proteínas Total,# 1,6.1,g/dL,6.02,0.57,0.13,A,A
+53,Proteínas Total,# 1,6.5,g/dL,6.02,0.57,0.84,A,A
+55,Proteínas Total,# 1,6.1,g/dL,6.02,0.57,0.13,A,A
+56,Proteínas Total,# 1,6.1,g/dL,6.02,0.57,0.13,A,A
+68,Proteínas Total,# 1,5.23,g/dL,6.02,0.57,-1.39,A,A
+71,Proteínas Total,# 1,6.1,g/dL,6.02,0.57,0.13,A,A
+76,Proteínas Total,# 1,6.49,g/dL,6.02,0.57,0.82,A,A
+78,Proteínas Total,# 1,6.1,g/dL,6.02,0.57,0.13,A,A
+87,Proteínas Total,# 1,6.19,g/dL,6.02,0.57,0.29,A,A
+90,Proteínas Total,# 1,6.1,g/dL,6.02,0.57,0.13,A,A
+128,Proteínas Total,# 1,6.1,g/dL,6.02,0.57,0.13,A,A
+131,Proteínas Total,# 1,5.36,g/dL,6.02,0.57,-1.17,A,A
+135,Proteínas Total,# 1,1.4,g/dL,6.02,0.57,-8.12,I,A
+138,Proteínas Total,# 1,6.48,g/dL,6.02,0.57,0.8,A,A
+140,Proteínas Total,# 1,6.2,g/dL,6.02,0.57,0.31,A,A
+1,Triglicéridos,# 1,100.0,mg/dL,102.3,10.16,-0.23,A,A
+2,Triglicéridos,# 1,112.0,mg/dL,102.3,10.16,0.95,A,A
+4,Triglicéridos,# 1,137.0,mg/dL,102.3,10.16,3.42,I,A
+7,Triglicéridos,# 1,95.0,mg/dL,102.3,10.16,-0.72,A,A
+11,Triglicéridos,# 1,105.0,mg/dL,102.3,10.16,0.27,A,A
+14,Triglicéridos,# 1,104.0,mg/dL,102.3,10.16,0.17,A,A
+15,Triglicéridos,# 1,100.0,mg/dL,102.3,10.16,-0.23,A,A
+17,Triglicéridos,# 1,116.5,mg/dL,102.3,10.16,1.4,A,A
+21,Triglicéridos,# 1,81.0,mg/dL,102.3,10.16,-2.1,C,I
+26,Triglicéridos,# 1,115.0,mg/dL,102.3,10.16,1.25,A,A
+32,Triglicéridos,# 1,108.2,mg/dL,102.3,10.16,0.58,A,A
+33,Triglicéridos,# 1,110.0,mg/dL,102.3,10.16,0.76,A,A
+43,Triglicéridos,# 1,92.0,mg/dL,102.3,10.16,-1.01,A,A
+45,Triglicéridos,# 1,108.0,mg/dL,102.3,10.16,0.56,A,A
+46,Triglicéridos,# 1,91.0,mg/dL,102.3,10.16,-1.11,A,A
+47,Triglicéridos,# 1,94.0,mg/dL,102.3,10.16,-0.82,A,A
+53,Triglicéridos,# 1,114.0,mg/dL,102.3,10.16,1.15,A,A
+55,Triglicéridos,# 1,103.0,mg/dL,102.3,10.16,0.07,A,A
+56,Triglicéridos,# 1,98.0,mg/dL,102.3,10.16,-0.42,A,A
+68,Triglicéridos,# 1,100.0,mg/dL,102.3,10.16,-0.23,A,A
+71,Triglicéridos,# 1,87.0,mg/dL,102.3,10.16,-1.51,A,A
+76,Triglicéridos,# 1,148.0,mg/dL,102.3,10.16,4.5,I,I
+78,Triglicéridos,# 1,105.0,mg/dL,102.3,10.16,0.27,A,A
+87,Triglicéridos,# 1,89.0,mg/dL,102.3,10.16,-1.31,A,A
+90,Triglicéridos,# 1,102.0,mg/dL,102.3,10.16,-0.03,A,A
+128,Triglicéridos,# 1,100.0,mg/dL,102.3,10.16,-0.23,A,A
+131,Triglicéridos,# 1,105.0,mg/dL,102.3,10.16,0.27,A,A
+135,Triglicéridos,# 1,101.0,mg/dL,102.3,10.16,-0.13,A,A
+138,Triglicéridos,# 1,96.0,mg/dL,102.3,10.16,-0.62,A,A
+140,Triglicéridos,# 1,96.0,mg/dL,102.3,10.16,-0.62,A,A
+1,Urea,# 1,42.0,mg/dL,41.03,7.35,0.13,A,A
+2,Urea,# 1,50.7,mg/dL,41.03,7.35,1.32,A,I
+4,Urea,# 1,20.0,mg/dL,41.03,7.35,-2.86,C,A
+7,Urea,# 1,50.0,mg/dL,41.03,7.35,1.22,A,A
+11,Urea,# 1,47.4,mg/dL,41.03,7.35,0.87,A,A
+14,Urea,# 1,45.0,mg/dL,41.03,7.35,0.54,A,A
+15,Urea,# 1,42.86,mg/dL,41.03,7.35,0.25,A,A
+17,Urea,# 1,41.2,mg/dL,41.03,7.35,0.02,A,A
+21,Urea,# 1,17.6,mg/dL,41.03,7.35,-3.19,I,A
+26,Urea,# 1,46.0,mg/dL,41.03,7.35,0.68,A,A
+32,Urea,# 1,47.4,mg/dL,41.03,7.35,0.87,A,A
+33,Urea,# 1,41.2,mg/dL,41.03,7.35,0.02,A,A
+43,Urea,# 1,37.0,mg/dL,41.03,7.35,-0.55,A,A
+45,Urea,# 1,35.0,mg/dL,41.03,7.35,-0.82,A,I
+46,Urea,# 1,36.5,mg/dL,41.03,7.35,-0.62,A,A
+47,Urea,# 1,48.0,mg/dL,41.03,7.35,0.95,A,A
+53,Urea,# 1,42.8,mg/dL,41.03,7.35,0.24,A,A
+55,Urea,# 1,47.6,mg/dL,41.03,7.35,0.89,A,A
+56,Urea,# 1,40.0,mg/dL,41.03,7.35,-0.14,A,A
+68,Urea,# 1,29.0,mg/dL,41.03,7.35,-1.64,A,A
+71,Urea,# 1,43.0,mg/dL,41.03,7.35,0.27,A,A
+76,Urea,# 1,47.8,mg/dL,41.03,7.35,0.92,A,A
+78,Urea,# 1,44.9,mg/dL,41.03,7.35,0.53,A,A
+87,Urea,# 1,38.0,mg/dL,41.03,7.35,-0.41,A,A
+90,Urea,# 1,48.0,mg/dL,41.03,7.35,0.95,A,A
+128,Urea,# 1,42.16,mg/dL,41.03,7.35,0.15,A,A
+131,Urea,# 1,37.3,mg/dL,41.03,7.35,-0.51,A,A
+135,Urea,# 1,20.7,mg/dL,41.03,7.35,-2.76,C,A
+138,Urea,# 1,39.0,mg/dL,41.03,7.35,-0.28,A,A
+140,Urea,# 1,21.0,mg/dL,41.03,7.35,-2.72,C,A

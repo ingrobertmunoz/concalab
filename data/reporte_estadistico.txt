@@ -1,0 +1,30 @@
+REPORTE ESTADÍSTICO - ENSAYOS DE APTITUD CONCALAB-UASD
+Metodología: ISO/IEC 17043 & ISO 13528 (Estadística Robusta)
+======================================================================
+
+PARÁMETROS ESTADÍSTICOS POR ANALITO:
+
+                 analito  n unidad  media_clasica  sd_clasica  media_robusta  sd_robusta  cv_pct
+(ALP) Fosfatasa Alcalina 27    U/L         324.48      200.93         321.12      220.71    68.7
+             ACIDO URICO 30  mg/dL           5.91        0.97           5.93        0.71    12.0
+               ALT (TGP) 30    U/L          32.76        3.65          32.50        3.36    10.3
+               AST (TGO) 30    U/L          33.17        4.91          33.08        4.74    14.3
+                Albúmina 28   g/dL           4.62        0.94           4.52        0.62    13.8
+                 Amilasa 27    U/L         102.21       24.41          99.62       20.70    20.8
+     Bilirrubina Directa 28  mg/Dl           1.07        0.25           1.07        0.22    20.7
+       Bilirrubina Total 29  mg/dL           1.64        0.25           1.65        0.23    14.2
+              Colesterol 30  mg/dL         161.37       22.77         159.17       16.05    10.1
+          Colesterol HDL 29  mg/Dl          49.56       12.50          50.03       12.46    24.9
+              Creatinina 30  mg/dL           1.55        1.02           1.37        0.20    14.7
+                 GLUCOSA 30  mg/dL         104.98       12.78         105.17        9.20     8.7
+                  Lipasa 24    U/L          53.91       58.10          35.48       12.97    36.5
+         Proteínas Total 27   g/dL           5.62        1.86           6.02        0.57     9.5
+           Triglicéridos 30  mg/dL         103.76       13.54         102.30       10.16     9.9
+                    Urea 30  mg/dL          39.64        9.29          41.03        7.35    17.9
+
+======================================================================
+RESUMEN GENERAL:
+  Total evaluaciones: 459
+  Aceptables:    415 (90.4%)
+  Cuestionables: 23 (5.0%)
+  Inaceptables:  21 (4.6%)
