@@ -240,6 +240,27 @@
         }
 
         /* Loading */
+        /* Heatmap */
+        .heatmap-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .heatmap-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .heatmap-section p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
         .loading {
             text-align: center;
             padding: 3rem;
@@ -360,12 +381,20 @@
 
             <!-- Navigation Index -->
             <div class="nav-toc" id="nav-toc" style="display:none;">
-                <h3>📋 Índice de Analitos</h3>
+                <h3>� Índice de Analitos</h3>
                 <ul class="pills" id="nav-pills"></ul>
             </div>
 
             <!-- All Analytes Charts (rendered dynamically) -->
             <div id="all-analytes"></div>
+
+            <!-- Heatmap -->
+            <div class="heatmap-section" id="heatmap-section" style="display:none;">
+                <h3>�️ Mapa de Desempeño General</h3>
+                <p>Laboratorio vs. Analito — Color según Z-Score. Las celdas grises indican que el laboratorio no
+                    participó en ese analito.</p>
+                <div id="heatmap-chart"></div>
+            </div>
 
             <!-- Summary Table -->
             <div class="summary-table-container" id="summary-table-container" style="display:none;">
@@ -528,6 +557,7 @@
             data.analitos.forEach(a => {
                 pills.innerHTML += `<li><a href="#${safeId(a.nombre)}">${a.nombre}</a></li>`;
             });
+            pills.innerHTML += `<li><a href="#heatmap-section" class="pill-summary">🗺️ Heatmap</a></li>`;
             pills.innerHTML += `<li><a href="#resumen-tabla" class="pill-summary">📊 Resumen</a></li>`;
 
             // Render ALL analytes
@@ -537,6 +567,12 @@
                 const countA = a.laboratorios.filter(l => l.clasificacion === 'A').length;
                 const countC = a.laboratorios.filter(l => l.clasificacion === 'C').length;
                 const countI = a.laboratorios.filter(l => l.clasificacion === 'I').length;
+
+                const cvAlert = a.cv > 30
+                    ? `<div class="alert-box alert-danger" style="margin-bottom:1rem;">🔴 <strong>CV = ${a.cv}% (Muy Alto).</strong> Se recomienda revisar los métodos analíticos de los laboratorios participantes. La alta dispersión de resultados sugiere diferencias significativas en metodología, calibración o condiciones preanalíticas.</div>`
+                    : a.cv > 15
+                        ? `<div class="alert-box alert-warning" style="margin-bottom:1rem;">⚠️ <strong>CV = ${a.cv}% (Alto).</strong> Se recomienda revisar los métodos analíticos de los laboratorios participantes. La dispersión elevada puede indicar diferencias en metodología o calibración entre laboratorios.</div>`
+                        : '';
 
                 container.innerHTML += `
                 <div class="analyte-section" id="${id}">
@@ -548,6 +584,7 @@
                         <div class="stat"><strong>CV:</strong> ${a.cv}%</div>
                         <div class="stat">✅ ${countA} ⚠️ ${countC} ❌ ${countI}</div>
                     </div>
+                    ${cvAlert}
                     <div id="hist-${i}" style="width:100%;"></div>
                     <div id="bar-${i}" style="width:100%; margin-top:1rem;"></div>
                 </div>
@@ -557,6 +594,7 @@
             // Draw charts (after DOM is ready)
             requestAnimationFrame(() => {
                 data.analitos.forEach((a, i) => renderCharts(a, i));
+                renderHeatmap(data);
             });
 
             // Summary table + alerts
@@ -694,6 +732,108 @@
             </div>`;
             });
             container.innerHTML = html;
+        }
+
+        function renderHeatmap(data) {
+            document.getElementById('heatmap-section').style.display = 'block';
+
+            // Collect all unique lab IDs sorted
+            const allLabIds = new Set();
+            data.analitos.forEach(a => a.laboratorios.forEach(l => allLabIds.add(l.id)));
+            const labIds = [...allLabIds].sort((a, b) => a - b);
+            const labLabels = labIds.map(id => `Lab ${id}`);
+
+            // Analyte names (Y axis)
+            const analyteNames = data.analitos.map(a => a.nombre);
+
+            // Build Z-score matrix and custom hover text
+            // Each row = one analyte, each col = one lab
+            const zMatrix = [];
+            const hoverMatrix = [];
+            const CLAMP = 5;
+
+            data.analitos.forEach(a => {
+                const labMap = {};
+                a.laboratorios.forEach(l => { labMap[l.id] = l; });
+
+                const row = [];
+                const hoverRow = [];
+                labIds.forEach(id => {
+                    if (labMap[id]) {
+                        const z = labMap[id].z_score;
+                        row.push(Math.max(-CLAMP, Math.min(CLAMP, z)));
+                        const clasif = labMap[id].clasificacion === 'A' ? 'Aceptable'
+                            : labMap[id].clasificacion === 'C' ? 'Cuestionable' : 'Inaceptable';
+                        hoverRow.push(
+                            `Lab ${id}<br>${a.nombre}<br>Z-Score: ${z.toFixed(2)}<br>Resultado: ${labMap[id].resultado} ${a.unidad}<br>${clasif}`
+                        );
+                    } else {
+                        row.push(null);
+                        hoverRow.push(`Lab ${id}<br>${a.nombre}<br>No participó`);
+                    }
+                });
+                zMatrix.push(row);
+                hoverMatrix.push(hoverRow);
+            });
+
+            // Discrete colorscale aligned with bar charts:
+            // |z| ≤ 2 → green, 2 < |z| < 3 → yellow, |z| ≥ 3 → red
+            // Positions: z=-5→0, z=-3→0.2, z=-2→0.3, z=0→0.5, z=+2→0.7, z=+3→0.8, z=+5→1
+            const colorscale = [
+                [0, '#dc3545'],
+                [0.19, '#dc3545'],
+                [0.2, '#ffc107'],
+                [0.29, '#ffc107'],
+                [0.3, '#28a745'],
+                [0.7, '#28a745'],
+                [0.71, '#ffc107'],
+                [0.8, '#ffc107'],
+                [0.81, '#dc3545'],
+                [1, '#dc3545']
+            ];
+
+            const traceHeatmap = {
+                z: zMatrix,
+                x: labLabels,
+                y: analyteNames,
+                type: 'heatmap',
+                colorscale: colorscale,
+                zmin: -CLAMP,
+                zmax: CLAMP,
+                hoverongaps: false,
+                hovertext: hoverMatrix,
+                hoverinfo: 'text',
+                xgap: 2,
+                ygap: 2,
+                colorbar: {
+                    title: { text: 'Z-Score', side: 'right' },
+                    tickvals: [-5, -3, -2, 0, 2, 3, 5],
+                    ticktext: ['≤-5', '-3', '-2', '0', '+2', '+3', '≥+5'],
+                    len: 0.9
+                },
+                connectgaps: false
+            };
+
+            const heightCalc = Math.max(500, analyteNames.length * 30 + 120);
+
+            Plotly.newPlot('heatmap-chart', [traceHeatmap], {
+                title: { text: 'Desempeño por Laboratorio y Analito (Z-Score)', font: { size: 16, color: '#1a237e' } },
+                xaxis: {
+                    title: 'Laboratorio',
+                    tickangle: -45,
+                    tickfont: { size: 10 },
+                    side: 'bottom'
+                },
+                yaxis: {
+                    title: '',
+                    tickfont: { size: 11 },
+                    automargin: true
+                },
+                height: heightCalc,
+                margin: { l: 180, r: 80, t: 60, b: 100 },
+                plot_bgcolor: '#f0f0f0',
+                paper_bgcolor: 'white'
+            }, { responsive: true });
         }
     </script>
 
