@@ -1,0 +1,9 @@
+{
+  "ronda_activa": {
+    "codigo": "EA-001-2026",
+    "descripcion": "Primera Ronda de Ensayo de Aptitud 2026",
+    "fecha_apertura": "2026-01-01",
+    "fecha_cierre": "2026-12-31",
+    "habilitado": false
+  }
+}

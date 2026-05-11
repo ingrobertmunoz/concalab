@@ -1,7 +1,8 @@
 import { db, collection, addDoc, serverTimestamp, doc, getDoc, auth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from './firebase-config.js';
 
-// Perfil del laboratorio autenticado (cargado desde Firestore)
-let perfilLab = null;
+// Estado global de la sesión
+let perfilLab  = null;
+let rondaActiva = null;
 
 document.addEventListener('DOMContentLoaded', async function () {
 
@@ -13,37 +14,27 @@ document.addEventListener('DOMContentLoaded', async function () {
     const logoutBtn    = document.getElementById('logout-btn');
     const loginError   = document.getElementById('login-error');
 
+    // ── Cargar configuración de ronda activa ──────────────────────────────────
+    rondaActiva = await cargarRondaActiva();
+
     // ── Auth state ────────────────────────────────────────────────────────────
     onAuthStateChanged(auth, async (user) => {
         if (user) {
             perfilLab = await cargarPerfilLab(user.uid);
 
             loginSection.style.display = 'none';
-            resultsForm.style.display  = 'block';
             userBar.style.display      = 'flex';
 
             if (perfilLab) {
-                // Mostrar nombre real del lab en la barra de usuario
                 userEmailSpan.textContent = `${perfilLab.nombre} (${perfilLab.cod_anonimo})`;
-
-                // Pre-llenar campos bloqueados
-                mostrarInfoLab(perfilLab);
             } else {
-                // Lab no encontrado en Firestore (cuenta sin perfil)
                 userEmailSpan.textContent = user.email;
-                mostrarAdvertenciaPerfilAusente();
             }
 
-            // Pre-llenar correo de contacto
-            const emailInput = document.getElementById('contact-email');
-            if (emailInput && !emailInput.value) {
-                emailInput.value = perfilLab?.correo || user.email;
-            }
+            await mostrarEstadoFormulario(user);
 
-            generateAnalytesTable('chem');
-            generateAnalytesTable('uro');
         } else {
-            perfilLab = null;
+            perfilLab  = null;
             loginSection.style.display = 'block';
             resultsForm.style.display  = 'none';
             userBar.style.display      = 'none';
@@ -68,10 +59,10 @@ document.addEventListener('DOMContentLoaded', async function () {
             await signInWithEmailAndPassword(auth, email, password);
         } catch (error) {
             const msgs = {
-                'auth/user-not-found':    'Correo o contraseña incorrectos.',
-                'auth/wrong-password':    'Correo o contraseña incorrectos.',
-                'auth/invalid-credential':'Correo o contraseña incorrectos.',
-                'auth/too-many-requests': 'Demasiados intentos. Intente más tarde.',
+                'auth/user-not-found':     'Correo o contraseña incorrectos.',
+                'auth/wrong-password':     'Correo o contraseña incorrectos.',
+                'auth/invalid-credential': 'Correo o contraseña incorrectos.',
+                'auth/too-many-requests':  'Demasiados intentos. Intente más tarde.',
             };
             mostrarError(loginError, msgs[error.code] || 'Error al iniciar sesión. Intente de nuevo.');
         } finally {
@@ -94,27 +85,123 @@ document.addEventListener('DOMContentLoaded', async function () {
     document.getElementById('results-form').addEventListener('submit', handleFormSubmit);
 });
 
-// ── Carga perfil del lab desde Firestore ──────────────────────────────────────
-async function cargarPerfilLab(uid) {
+// ── Determina qué mostrar según el estado del lab y la ronda ─────────────────
+async function mostrarEstadoFormulario(user) {
+    const resultsForm = document.getElementById('results-form');
+    const container   = document.querySelector('.container');
+
+    // 1. Sin perfil en Firestore
+    if (!perfilLab) {
+        mostrarBanner('error',
+            '⚠ Su cuenta no tiene un perfil registrado.',
+            'Contacte a CONCALAB-UASD para regularizar su acceso.'
+        );
+        return;
+    }
+
+    // 2. No hay ronda activa habilitada
+    if (!rondaActiva || !rondaActiva.habilitado) {
+        const codigo = rondaActiva?.codigo || '—';
+        mostrarBanner('info',
+            `El formulario de reporte no está habilitado en este momento.`,
+            `La próxima ronda es <strong>${codigo}</strong>. CONCALAB-UASD le notificará cuando esté disponible.`
+        );
+        return;
+    }
+
+    // 3. Verificar si el lab ya reportó en esta ronda
+    const yaReporto = await verificarReporteExistente(user.uid, rondaActiva.codigo);
+    if (yaReporto) {
+        mostrarBanner('advertencia',
+            `Ya enviaste resultados para <strong>${rondaActiva.codigo}</strong>.`,
+            'Si necesitas hacer una corrección, contacta a CONCALAB-UASD: <a href="mailto:concalab@uasd.edu.do">concalab@uasd.edu.do</a>'
+        );
+        return;
+    }
+
+    // 4. Todo OK — mostrar formulario
+    resultsForm.style.display = 'block';
+
+    const emailInput = document.getElementById('contact-email');
+    if (emailInput && !emailInput.value) {
+        emailInput.value = perfilLab.correo || user.email;
+    }
+
+    mostrarInfoLab(perfilLab);
+    mostrarRondaActiva(rondaActiva);
+    generateAnalytesTable('chem');
+    generateAnalytesTable('uro');
+}
+
+// ── Carga la configuración de ronda desde data/config.json ────────────────────
+async function cargarRondaActiva() {
     try {
-        const snap = await getDoc(doc(db, 'laboratorios', uid));
-        if (snap.exists()) {
-            return snap.data();
-        }
-        console.warn('Perfil de laboratorio no encontrado en Firestore para uid:', uid);
-        return null;
-    } catch (error) {
-        console.error('Error cargando perfil del laboratorio:', error);
+        const res = await fetch('data/config.json');
+        const cfg = await res.json();
+        return cfg.ronda_activa || null;
+    } catch (e) {
+        console.error('Error cargando config.json:', e);
         return null;
     }
 }
 
-// ── Muestra el nombre y código del lab en el formulario (solo lectura) ─────────
-function mostrarInfoLab(perfil) {
-    const labSelector = document.getElementById('lab-selector');
+// ── Carga el perfil del lab desde Firestore ───────────────────────────────────
+async function cargarPerfilLab(uid) {
+    try {
+        const snap = await getDoc(doc(db, 'laboratorios', uid));
+        return snap.exists() ? snap.data() : null;
+    } catch (e) {
+        console.error('Error cargando perfil del laboratorio:', e);
+        return null;
+    }
+}
 
-    // Reemplazar el <select> por un campo de solo lectura
-    const wrapper = labSelector.closest('.form-group');
+// ── Verifica si el lab ya tiene un reporte en Firestore para esta ronda ───────
+async function verificarReporteExistente(uid, codigoEnsayo) {
+    try {
+        const { getDocs, query, where } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
+        const q = query(
+            collection(db, 'resultados_generales'),
+            where('uid_lab', '==', uid),
+            where('codigo_ensayo', '==', codigoEnsayo)
+        );
+        const snap = await getDocs(q);
+        return !snap.empty;
+    } catch (e) {
+        console.error('Error verificando reporte existente:', e);
+        return false;
+    }
+}
+
+// ── Banners de estado ─────────────────────────────────────────────────────────
+function mostrarBanner(tipo, titulo, mensaje) {
+    const colores = {
+        error:       { bg: '#f8d7da', border: '#dc3545', icon: '🔴' },
+        advertencia: { bg: '#fff3cd', border: '#ffc107', icon: '⚠️' },
+        info:        { bg: '#d1ecf1', border: '#0077b6', icon: 'ℹ️' },
+    };
+    const c = colores[tipo] || colores.info;
+    const banner = document.createElement('div');
+    banner.style.cssText = `
+        background: ${c.bg};
+        border-left: 5px solid ${c.border};
+        border-radius: 8px;
+        padding: 1.5rem 2rem;
+        margin: 0 auto 2rem;
+        max-width: 700px;
+        text-align: center;
+    `;
+    banner.innerHTML = `
+        <div style="font-size:2rem; margin-bottom:0.5rem;">${c.icon}</div>
+        <p style="font-weight:700; font-size:1.1rem; margin-bottom:0.4rem;">${titulo}</p>
+        <p style="margin:0; color:#444;">${mensaje}</p>
+    `;
+    document.querySelector('.container').appendChild(banner);
+}
+
+// ── Muestra el nombre y código del lab en solo lectura ────────────────────────
+function mostrarInfoLab(perfil) {
+    const wrapper = document.getElementById('lab-selector').closest('.form-group');
     wrapper.innerHTML = `
         <label class="form-label">Laboratorio Participante</label>
         <div style="
@@ -126,30 +213,38 @@ function mostrarInfoLab(perfil) {
             align-items: center;
             justify-content: space-between;
         ">
-            <span style="font-weight: 600; color: var(--primary-color);">${perfil.nombre}</span>
+            <span style="font-weight:600; color:var(--primary-color);">${perfil.nombre}</span>
             <span style="
                 background: var(--primary-color);
                 color: white;
-                padding: 0.2rem 0.6rem;
+                padding: 0.2rem 0.7rem;
                 border-radius: 4px;
                 font-size: 0.85rem;
                 font-weight: 700;
                 letter-spacing: 0.05em;
             ">${perfil.cod_anonimo}</span>
         </div>
-        <input type="hidden" id="lab-nombre" value="${perfil.nombre}">
-        <input type="hidden" id="lab-cod-anonimo" value="${perfil.cod_anonimo}">
     `;
 }
 
-function mostrarAdvertenciaPerfilAusente() {
-    const labSelector = document.getElementById('lab-selector');
-    const wrapper = labSelector.closest('.form-group');
+// ── Muestra la ronda activa en solo lectura ───────────────────────────────────
+function mostrarRondaActiva(ronda) {
+    const wrapper = document.getElementById('round-code').closest('.form-group');
     wrapper.innerHTML = `
-        <label class="form-label">Laboratorio Participante</label>
-        <div style="padding: 0.75rem; background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px; color: #856404;">
-            ⚠ Su cuenta no tiene un perfil registrado. Contacte a CONCALAB-UASD.
+        <label class="form-label">Código de Ensayo de Intercomparación</label>
+        <div style="
+            padding: 0.75rem 1rem;
+            background: var(--bg-light);
+            border: 2px solid var(--secondary-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        ">
+            <span style="font-weight:700; color:var(--primary-color); font-size:1.1rem; letter-spacing:0.05em;">${ronda.codigo}</span>
+            <span style="color:#666; font-size:0.85rem;">${ronda.descripcion}</span>
         </div>
+        <input type="hidden" id="round-code" value="${ronda.codigo}">
     `;
 }
 
@@ -187,16 +282,15 @@ function generateAnalytesTable(type) {
         const row = document.createElement('tr');
         row.innerHTML = `
             <td style="font-weight:600;">${analyte}</td>
-            <td><input type="text"   class="form-control instrument-input-${type}" placeholder="Ej: Cobas 6000"></td>
-            <td><input type="text"   class="form-control method-input-${type}"     placeholder="Ej: Enzimático"></td>
+            <td><input type="text" class="form-control instrument-input-${type}" placeholder="Ej: Cobas 6000"></td>
+            <td><input type="text" class="form-control method-input-${type}" placeholder="Ej: Enzimático"></td>
             <td><input type="${inputType}" class="form-control result-input-${type}" ${inputType === 'number' ? 'step="any"' : ''}></td>
-            <td><input type="text"   class="form-control unit-input-${type}"       placeholder="Ej: mg/dL"></td>
+            <td><input type="text" class="form-control unit-input-${type}" placeholder="Ej: mg/dL"></td>
         `;
         tbody.appendChild(row);
     });
 }
 
-// Copia el valor del primer campo a todos los vacíos de la misma clase
 window.copyDown = function (className) {
     const inputs = document.querySelectorAll(`.${className}`);
     if (!inputs.length) return;
@@ -208,8 +302,8 @@ window.copyDown = function (className) {
 async function handleFormSubmit(e) {
     e.preventDefault();
 
-    if (!perfilLab) {
-        alert('No se pudo identificar su laboratorio. Por favor cierre sesión y vuelva a ingresar.');
+    if (!perfilLab || !rondaActiva) {
+        alert('Error de sesión. Por favor cierre sesión y vuelva a ingresar.');
         return;
     }
 
@@ -221,39 +315,31 @@ async function handleFormSubmit(e) {
     loadingMsg.style.display = 'block';
 
     try {
-        const roundCode  = document.getElementById('round-code').value.toUpperCase();
+        const roundCode  = rondaActiva.codigo;
         const reportDate = document.getElementById('report-date').value;
         const email      = document.getElementById('contact-email').value;
         const comments   = document.getElementById('comments').value;
 
-        if (!roundCode || !/^EA-\d{3}-\d{4}$/.test(roundCode)) {
-            throw new Error('El código de ensayo debe tener el formato EA-001-2025.');
-        }
-        if (!reportDate) {
-            throw new Error('La fecha del reporte es obligatoria.');
-        }
+        if (!reportDate) throw new Error('La fecha del reporte es obligatoria.');
 
         const resultsChem = scrapeTable('#analytes-table-chem tbody', 'chem');
         const resultsUro  = scrapeTable('#analytes-table-uro tbody', 'uro');
         const allResults  = [...resultsChem, ...resultsUro];
 
-        if (!allResults.length) {
-            throw new Error('No has ingresado ningún resultado en las tablas.');
-        }
+        if (!allResults.length) throw new Error('No has ingresado ningún resultado en las tablas.');
 
-        // ── Enviar correo de confirmación (EmailJS) ───────────────────────────
+        // ── Correo de confirmación (EmailJS) ──────────────────────────────────
         if (email && window.emailjs) {
             loadingMsg.textContent = '⏳ Enviando confirmación al correo...';
-            const resumen = construirResumen(resultsChem, resultsUro);
             try {
                 await window.emailjs.send('service_80iwfhm', 'template_53vkh45', {
-                    name:             perfilLab.nombre,
-                    email:            email,
-                    lab_name:         perfilLab.nombre,
-                    round_code:       roundCode,
-                    report_date:      reportDate,
-                    entered_email:    email,
-                    results_summary:  resumen,
+                    name:            perfilLab.nombre,
+                    email:           email,
+                    lab_name:        perfilLab.nombre,
+                    round_code:      roundCode,
+                    report_date:     reportDate,
+                    entered_email:   email,
+                    results_summary: construirResumen(resultsChem, resultsUro),
                 });
             } catch (emailErr) {
                 console.warn('Correo no enviado (no bloquea el guardado):', emailErr);
@@ -265,13 +351,10 @@ async function handleFormSubmit(e) {
 
         await Promise.race([
             addDoc(collection(db, 'resultados_generales'), {
-                // Identificación anónima (la que va a los informes)
                 cod_anonimo:    perfilLab.cod_anonimo,
                 cod_interno:    perfilLab.cod_interno,
-                // Datos internos (solo visibles para CONCALAB)
                 laboratorio:    perfilLab.nombre,
                 uid_lab:        auth.currentUser.uid,
-                // Datos del reporte
                 codigo_ensayo:  roundCode,
                 fecha_reporte:  reportDate,
                 email_contacto: email,
@@ -281,9 +364,9 @@ async function handleFormSubmit(e) {
                     quimica:     resultsChem.length > 0,
                     uroanalisis: resultsUro.length > 0,
                 },
-                timestamp:      serverTimestamp(),
+                timestamp: serverTimestamp(),
             }),
-            new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 10000))
+            new Promise((_, reject) => setTimeout(() => reject(new Error('Firebase timeout')), 10000))
         ]);
 
         loadingMsg.style.display = 'none';

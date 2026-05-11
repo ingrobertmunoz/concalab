@@ -420,7 +420,7 @@
     <!-- Auto-formato de fecha DD/MM/AAAA y código EA-XXX-YYYY -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Auto-formato fecha
+            // Auto-formato fecha DD/MM/AAAA
             const dateInput = document.getElementById('report-date');
             dateInput.addEventListener('input', function (e) {
                 let val = e.target.value.replace(/\D/g, '');
@@ -431,26 +431,6 @@
                     val = val.substring(0, 2) + '/' + val.substring(2);
                 }
                 e.target.value = val;
-            });
-
-            // Auto-formato código de ensayo EA-001-2025
-            const roundInput = document.getElementById('round-code');
-            roundInput.addEventListener('input', function (e) {
-                let val = e.target.value.toUpperCase();
-                // Si no empieza con EA-, forzarlo
-                if (!val.startsWith('EA-') && !val.startsWith('EA') && !val.startsWith('E')) {
-                    val = 'EA-' + val.replace(/[^0-9]/g, '');
-                }
-                // Remover caracteres no válidos después de EA-
-                let raw = val.replace(/^EA-?/, '').replace(/[^0-9]/g, '');
-                if (raw.length > 7) raw = raw.substring(0, 7);
-                if (raw.length >= 4) {
-                    e.target.value = 'EA-' + raw.substring(0, 3) + '-' + raw.substring(3);
-                } else if (raw.length > 0) {
-                    e.target.value = 'EA-' + raw;
-                } else {
-                    e.target.value = val.startsWith('E') ? val.substring(0, Math.min(val.length, 3)) : '';
-                }
             });
         });
     </script>
