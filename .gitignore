@@ -5,3 +5,30 @@ dist/
 .env
 *.log
 support/codigos_laboratorios_secretos.md
+*.docx
+
+# Hojas de cálculo y datos confidenciales
+*.xlsx
+*.xls
+
+# Archivos PDF
+*.pdf
+
+# Configuraciones locales de Claude
+.claude/settings.local.json
+.claude/history/
+.claude/logs/
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Otros archivos de entorno
+.env.*
+
+# Editores y SO
+.vscode/
+.idea/
+Thumbs.db

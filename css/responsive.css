@@ -296,3 +296,39 @@
     }
 }
 
+
+/* Stats Band responsive */
+@media (max-width: 768px) {
+    .stats-band__inner {
+        padding: 40px 24px;
+        gap: 1.5rem;
+    }
+
+    .stats-band__number {
+        font-size: 3rem;
+    }
+
+    .stats-band__suffix {
+        font-size: 2rem;
+    }
+
+    .stats-band__divider {
+        display: none;
+    }
+
+    .stats-band__item {
+        min-width: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-band__inner {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 40px 20px;
+    }
+
+    .hero-title {
+        font-size: 2.4rem;
+    }
+}
