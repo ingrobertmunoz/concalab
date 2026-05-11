@@ -74,36 +74,65 @@ Grid layouts: `.grid-2`, `.grid-3`, `.grid-4`. Cards: `.card`. Buttons: `.btn-pr
 ### Results Submission Flow (`resultados.html`)
 
 ```
-Lab visits resultados.html
-  └─ Firebase Auth login (email + password)
-       └─ onAuthStateChanged fires
-            └─ Loads lab profile from Firestore → collection "laboratorios" / doc {uid}
-                 Profile fields: cod_interno, cod_anonimo, nombre, correo, representante
-            └─ Form displays lab name + cod_anonimo as read-only (no dropdown)
-            └─ Lab fills in: código de ensayo (EA-XXX-YYYY), fecha, analitos
-            └─ On submit:
-                 1. EmailJS → confirmation email to lab's contact address
-                 2. Firestore → collection "resultados_generales" with:
-                      - cod_anonimo (e.g. "AG4") ← used in public reports
-                      - cod_interno, uid_lab      ← internal traceability
-                      - laboratorio (real name)   ← internal only, never published
-                      - resultados[]              ← analyte rows
+CONCALAB habilita una ronda
+  └─ Edita data/config.json → "habilitado": true, define "codigo" (ej: EA-001-2026)
+  └─ git push origin master → GitHub Pages se actualiza automáticamente
+
+Lab entra a resultados.html
+  └─ Firebase Auth login (email + contraseña asignada por CONCALAB)
+       └─ onAuthStateChanged carga perfil desde Firestore → colección "laboratorios" / doc {uid}
+            Campos del perfil: cod_interno, cod_anonimo, nombre, correo, representante, telefono
+       └─ El formulario evalúa el estado en este orden:
+            1. Sin perfil en Firestore → banner de error, pedir contacto con admin
+            2. habilitado=false en config.json → banner informativo con código de próxima ronda
+            3. Ya reportó en esta ronda → banner de advertencia, pedir contacto con admin
+            4. Todo OK → formulario activo
+       └─ Formulario muestra en solo lectura (no editables por el lab):
+            - Nombre del laboratorio + cod_anonimo (cargado de Firestore)
+            - Código de ensayo EA-XXX-YYYY (cargado de config.json)
+       └─ Lab completa: fecha del reporte, tablas de analitos (Química + Uroanálisis)
+       └─ Al enviar:
+            1. EmailJS → correo de confirmación al email de contacto del lab
+            2. Firestore → colección "resultados_generales" con:
+                 - cod_anonimo (ej: "AG4") ← único identificador en informes públicos
+                 - cod_interno, uid_lab    ← trazabilidad interna
+                 - laboratorio            ← nombre real, solo uso interno, nunca publicado
+                 - codigo_ensayo          ← tomado de config.json, no del lab
+                 - resultados[]           ← filas de analitos
+```
+
+**Políticas de negocio implementadas:**
+- **Sin edición por el lab** — si un resultado fue enviado con error, el lab contacta al admin y este lo corrige manualmente en Firestore.
+- **Sin doble reporte** — Firestore verifica por `uid_lab` + `codigo_ensayo` antes de mostrar el formulario.
+- **Código de ensayo controlado por CONCALAB** — el lab nunca escribe el código EA-XXX-YYYY, lo lee de `data/config.json`.
+
+**Para abrir/cerrar una ronda** — editar `data/config.json` y hacer `git push`:
+```json
+{
+  "ronda_activa": {
+    "codigo": "EA-001-2026",
+    "descripcion": "Primera Ronda de Ensayo de Aptitud 2026",
+    "fecha_apertura": "2026-01-01",
+    "fecha_cierre": "2026-12-31",
+    "habilitado": true
+  }
+}
 ```
 
 **Lab database management (local tooling, never deployed):**
-- `support/laboratorios_concalab.xlsx` — master registry: real names, emails, passwords, cod_anonimo. **Never commit.**
-- `support/firebase-service-account.json` — Firebase Admin SDK key. **Never commit.**
-- `support/generar_laboratorios.py` — regenerates the Excel with unique codes and passwords.
-- `scripts/importar_labs_firebase.py` — imports the Excel into Firebase Auth + Firestore.
+- `support/laboratorios_concalab.xlsx` — registro maestro: nombres reales, correos, contraseñas, cod_anonimo. **Nunca commitear.**
+- `support/concalab-uasd-64ff4-firebase-adminsdk-fbsvc-c400cdf10b.json` — clave Firebase Admin SDK. **Nunca commitear.**
+- `support/generar_laboratorios.py` — regenera el Excel con códigos y contraseñas únicos.
+- `scripts/importar_labs_firebase.py` — importa el Excel a Firebase Auth + Firestore.
 
 ```bash
-# To import labs (requires service account key):
+# Importar laboratorios a Firebase (requiere clave de servicio):
 conda activate concalab
-python scripts/importar_labs_firebase.py --dry-run  # simulate first
-python scripts/importar_labs_firebase.py            # write to Firebase
+python scripts/importar_labs_firebase.py --dry-run  # simular primero
+python scripts/importar_labs_firebase.py            # escribir en Firebase
 ```
 
-**Anonymization rule:** `cod_anonimo` (2 letters + 1 digit, e.g. `AG4`) is the only lab identifier that appears in public reports. Real names exist only in Firestore (internal) and `support/` files.
+**Regla de anonimización:** `cod_anonimo` (2 letras + 1 dígito, ej: `AG4`) es el único identificador de laboratorio que aparece en informes públicos. Los nombres reales existen solo en Firestore (uso interno) y en archivos `support/` (nunca deployados).
 
 ### Proficiency Test Reports
 Reports follow the naming scheme `EA-XXX-YYYY`. Each report has:
