@@ -9,5 +9,8 @@
             "support/codigos_laboratorios_secretos.md",
             "exclude/**"
         ]
+    },
+    "firestore": {
+        "rules": "firestore.rules"
     }
 }

@@ -1,0 +1,20 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Cada lab puede leer solo su propio perfil
+    match /laboratorios/{uid} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow write: if false; // Solo el Admin SDK puede escribir perfiles
+    }
+
+    // Cada lab puede crear y leer sus propios reportes
+    match /resultados_generales/{docId} {
+      allow create: if request.auth != null
+                    && request.resource.data.uid_lab == request.auth.uid;
+      allow read:   if request.auth != null
+                    && resource.data.uid_lab == request.auth.uid;
+      allow update, delete: if false; // Sin edición desde el cliente
+    }
+  }
+}
