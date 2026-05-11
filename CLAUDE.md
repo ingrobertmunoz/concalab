@@ -64,12 +64,46 @@ All colors, shadows, and transitions are defined as CSS variables. Always use th
 Grid layouts: `.grid-2`, `.grid-3`, `.grid-4`. Cards: `.card`. Buttons: `.btn-primary` (gold), `.btn-secondary` (white outline), `.btn-outline` (blue outline).
 
 ### JavaScript Modules (`js/`)
-- `firebase-config.js` — initializes Firebase app and exports `db`, `auth`, and SDK functions
+- `firebase-config.js` — initializes Firebase app and exports `db`, `auth`, `doc`, `getDoc`, and SDK functions
 - `results-form.js` — authenticated form for lab result submission; imports from `firebase-config.js`
 - `charts.js` — Plotly rendering for proficiency test visualizations
 - `main.js` — global nav, dropdowns, hamburger menu
 - `search.js` — in-page content indexer and search UI
 - `scroll-reveal.js` — IntersectionObserver-based scroll animations
+
+### Results Submission Flow (`resultados.html`)
+
+```
+Lab visits resultados.html
+  └─ Firebase Auth login (email + password)
+       └─ onAuthStateChanged fires
+            └─ Loads lab profile from Firestore → collection "laboratorios" / doc {uid}
+                 Profile fields: cod_interno, cod_anonimo, nombre, correo, representante
+            └─ Form displays lab name + cod_anonimo as read-only (no dropdown)
+            └─ Lab fills in: código de ensayo (EA-XXX-YYYY), fecha, analitos
+            └─ On submit:
+                 1. EmailJS → confirmation email to lab's contact address
+                 2. Firestore → collection "resultados_generales" with:
+                      - cod_anonimo (e.g. "AG4") ← used in public reports
+                      - cod_interno, uid_lab      ← internal traceability
+                      - laboratorio (real name)   ← internal only, never published
+                      - resultados[]              ← analyte rows
+```
+
+**Lab database management (local tooling, never deployed):**
+- `support/laboratorios_concalab.xlsx` — master registry: real names, emails, passwords, cod_anonimo. **Never commit.**
+- `support/firebase-service-account.json` — Firebase Admin SDK key. **Never commit.**
+- `support/generar_laboratorios.py` — regenerates the Excel with unique codes and passwords.
+- `scripts/importar_labs_firebase.py` — imports the Excel into Firebase Auth + Firestore.
+
+```bash
+# To import labs (requires service account key):
+conda activate concalab
+python scripts/importar_labs_firebase.py --dry-run  # simulate first
+python scripts/importar_labs_firebase.py            # write to Firebase
+```
+
+**Anonymization rule:** `cod_anonimo` (2 letters + 1 digit, e.g. `AG4`) is the only lab identifier that appears in public reports. Real names exist only in Firestore (internal) and `support/` files.
 
 ### Proficiency Test Reports
 Reports follow the naming scheme `EA-XXX-YYYY`. Each report has:
@@ -85,8 +119,8 @@ Z-Score classification: |Z| ≤ 2 → Satisfactory, 2 < |Z| < 3 → Questionable
 - **Lab data is always anonymized** in publicly deployed files. Real lab names must never appear in published files.
 - **HTML filenames** use lowercase with hyphens (`portal-educativo.html`).
 - **`scripts/`** and `support/` directories are excluded from Firebase/GitHub Pages deployment — they are local tooling only.
-- **`support/codigos_laboratorios_secretos.md`** is excluded from deployment and must never be committed to a public branch.
-- When adding new analytes or labs, update `data/laboratorios.json` and `support/analitos.md` as the source of truth.
+- **`support/codigos_laboratorios_secretos.md`**, **`support/firebase-service-account.json`**, and **`support/laboratorios_concalab.xlsx`** must never be committed — all are in `.gitignore`.
+- When adding new analytes or labs, update `data/laboratorios.json` and `support/analitos.md` as the source of truth. Also update `support/laboratorios_concalab.xlsx` and re-run `scripts/importar_labs_firebase.py`.
 
 ## Available Skills
 
