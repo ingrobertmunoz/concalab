@@ -298,6 +298,59 @@ window.copyDown = function (className) {
     inputs.forEach(input => { if (!input.value) input.value = firstValue; });
 };
 
+// ── Modal de confirmación ─────────────────────────────────────────────────────
+function mostrarModalConfirmacion(datos) {
+    return new Promise((resolve) => {
+        const modal    = document.getElementById('modal-confirmacion');
+        const resumen  = document.getElementById('modal-resumen');
+        const btnOk    = document.getElementById('modal-confirmar');
+        const btnCancelar = document.getElementById('modal-cancelar');
+
+        // Construir resumen visual para el modal
+        let html = `
+            <p><strong>Laboratorio:</strong> ${datos.perfilLab.nombre} (${datos.perfilLab.cod_anonimo})</p>
+            <p><strong>Ronda:</strong> ${datos.roundCode}</p>
+            <p><strong>Fecha:</strong> ${datos.reportDate}</p>
+            <p><strong>Correo:</strong> ${datos.email || '—'}</p>
+            <hr style="margin:0.8rem 0; border:none; border-top:1px solid #dde3ee;">
+        `;
+
+        if (datos.resultsChem.length) {
+            html += `<p><strong>Química Clínica (${datos.resultsChem.length} analitos):</strong></p>`;
+            datos.resultsChem.forEach(r => {
+                html += `<p style="padding-left:0.8rem;">• ${r.analyte}: <strong>${r.result} ${r.unit}</strong></p>`;
+            });
+        }
+        if (datos.resultsUro.length) {
+            html += `<p style="margin-top:0.5rem;"><strong>Uroanálisis (${datos.resultsUro.length} analitos):</strong></p>`;
+            datos.resultsUro.forEach(r => {
+                html += `<p style="padding-left:0.8rem;">• ${r.analyte}: <strong>${r.result} ${r.unit}</strong></p>`;
+            });
+        }
+
+        resumen.innerHTML = html;
+        modal.classList.add('active');
+        window.scrollTo(0, 0);
+
+        const confirmar = () => {
+            cleanup();
+            resolve(true);
+        };
+        const cancelar = () => {
+            cleanup();
+            resolve(false);
+        };
+        const cleanup = () => {
+            modal.classList.remove('active');
+            btnOk.removeEventListener('click', confirmar);
+            btnCancelar.removeEventListener('click', cancelar);
+        };
+
+        btnOk.addEventListener('click', confirmar);
+        btnCancelar.addEventListener('click', cancelar);
+    });
+}
+
 // ── Envío del formulario ──────────────────────────────────────────────────────
 async function handleFormSubmit(e) {
     e.preventDefault();
@@ -307,30 +360,44 @@ async function handleFormSubmit(e) {
         return;
     }
 
+    const roundCode  = rondaActiva.codigo;
+    const reportDate = document.getElementById('report-date').value;
+    const email      = document.getElementById('contact-email').value;
+    const comments   = document.getElementById('comments').value;
+
+    if (!reportDate) {
+        alert('La fecha del reporte es obligatoria.');
+        return;
+    }
+
+    const resultsChem = scrapeTable('#analytes-table-chem tbody', 'chem');
+    const resultsUro  = scrapeTable('#analytes-table-uro tbody', 'uro');
+    const allResults  = [...resultsChem, ...resultsUro];
+
+    if (!allResults.length) {
+        alert('No has ingresado ningún resultado en las tablas.');
+        return;
+    }
+
+    // ── Mostrar modal de confirmación ─────────────────────────────────────────
+    const confirmado = await mostrarModalConfirmacion({
+        perfilLab, roundCode, reportDate, email, resultsChem, resultsUro
+    });
+
+    if (!confirmado) return;
+
     const submitBtn  = document.getElementById('submit-btn');
     const loadingMsg = document.getElementById('loading-message');
     const successMsg = document.getElementById('success-message');
+    const resultsForm = document.getElementById('results-form');
 
     submitBtn.disabled = true;
     loadingMsg.style.display = 'block';
 
     try {
-        const roundCode  = rondaActiva.codigo;
-        const reportDate = document.getElementById('report-date').value;
-        const email      = document.getElementById('contact-email').value;
-        const comments   = document.getElementById('comments').value;
-
-        if (!reportDate) throw new Error('La fecha del reporte es obligatoria.');
-
-        const resultsChem = scrapeTable('#analytes-table-chem tbody', 'chem');
-        const resultsUro  = scrapeTable('#analytes-table-uro tbody', 'uro');
-        const allResults  = [...resultsChem, ...resultsUro];
-
-        if (!allResults.length) throw new Error('No has ingresado ningún resultado en las tablas.');
-
-        // ── Correo de confirmación (EmailJS) ──────────────────────────────────
+        // ── Correo con resumen del reporte (EmailJS) ──────────────────────────
         if (email && window.emailjs) {
-            loadingMsg.textContent = '⏳ Enviando confirmación al correo...';
+            loadingMsg.textContent = '⏳ Enviando correo de confirmación...';
             try {
                 await window.emailjs.send('service_80iwfhm', 'template_53vkh45', {
                     name:            perfilLab.nombre,
@@ -341,6 +408,7 @@ async function handleFormSubmit(e) {
                     entered_email:   email,
                     results_summary: construirResumen(resultsChem, resultsUro),
                 });
+                console.log('✓ Correo enviado.');
             } catch (emailErr) {
                 console.warn('Correo no enviado (no bloquea el guardado):', emailErr);
             }
@@ -369,7 +437,9 @@ async function handleFormSubmit(e) {
             new Promise((_, reject) => setTimeout(() => reject(new Error('Firebase timeout')), 10000))
         ]);
 
+        // ── Éxito: ocultar formulario permanentemente ─────────────────────────
         loadingMsg.style.display = 'none';
+        resultsForm.style.display = 'none';
         successMsg.style.display = 'block';
         window.scrollTo(0, 0);
 
