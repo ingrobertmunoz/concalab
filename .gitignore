@@ -5,6 +5,8 @@ dist/
 .env
 *.log
 support/codigos_laboratorios_secretos.md
+support/firebase-service-account.json
+support/laboratorios_concalab.xlsx
 *.docx
 
 # Hojas de cálculo y datos confidenciales
