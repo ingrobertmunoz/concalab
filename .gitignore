@@ -6,6 +6,7 @@ dist/
 *.log
 support/codigos_laboratorios_secretos.md
 support/firebase-service-account.json
+support/concalab-uasd-64ff4-firebase-adminsdk-fbsvc-c400cdf10b.json
 support/laboratorios_concalab.xlsx
 *.docx
 
