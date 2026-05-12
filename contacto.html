@@ -253,78 +253,53 @@
 
             <div class="contact-grid">
 
-                <!-- Formulario de Contacto -->
+                <!-- Cómo contactarnos -->
                 <div class="contact-form reveal">
-                    <h2 style="color: var(--primary-color); margin-bottom: 1.5rem;">Envíanos un Mensaje</h2>
-                    <p style="color: var(--text-light); margin-bottom: 2rem;">
-                        Completa el formulario y nos pondremos en contacto contigo lo antes posible
+                    <h2 style="color: var(--primary-color); margin-bottom: 1.5rem;">¿Cómo contactarnos?</h2>
+                    <p style="color: var(--text-light); margin-bottom: 2rem; line-height: 1.8;">
+                        CONCALAB-UASD atiende consultas sobre inscripción en ensayos de aptitud, protocolos,
+                        resultados y servicios de consultoría ISO/IEC 17043. Puedes comunicarte con nosotros
+                        por correo electrónico o teléfono durante nuestro horario de atención.
                     </p>
 
-                    <form id="contactForm">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label" for="nombre">Nombre Completo *</label>
-                                <input type="text" id="nombre" name="nombre" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="institucion">Institución/Laboratorio</label>
-                                <input type="text" id="institucion" name="institucion" class="form-control">
-                            </div>
-                        </div>
+                    <a href="mailto:concalab@uasd.edu.do" class="btn btn-primary" style="width: 100%; display: block; text-align: center; margin-bottom: 1rem; text-decoration: none;">
+                        ✉ Escribir correo a concalab@uasd.edu.do
+                    </a>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label" for="email">Correo Electrónico *</label>
-                                <input type="email" id="email" name="email" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="telefono">Teléfono</label>
-                                <input type="tel" id="telefono" name="telefono" class="form-control">
-                            </div>
-                        </div>
+                    <a href="tel:+18095358273" class="btn btn-secondary" style="width: 100%; display: block; text-align: center; margin-bottom: 2rem; text-decoration: none;">
+                        ☎ Llamar al +1 (809) 535-8273
+                    </a>
 
-                        <div class="form-group">
-                            <label class="form-label" for="asunto">Asunto *</label>
-                            <select id="asunto" name="asunto" class="form-control" required>
-                                <option value="">Seleccione un asunto</option>
-                                <option value="informacion-general">Información General</option>
-                                <option value="inscripcion">Inscripción en Ensayos de Aptitud</option>
-                                <option value="consultoria">Consultoría ISO/IEC 17043</option>
-                                <option value="resultados">Consulta sobre Resultados</option>
-                                <option value="protocolos">Protocolos y Procedimientos</option>
-                                <option value="facturacion">Facturación y Pagos</option>
-                                <option value="otro">Otro</option>
-                            </select>
-                        </div>
+                    <hr style="border: none; border-top: 1px solid #eee; margin-bottom: 2rem;">
 
-                        <div class="form-group">
-                            <label class="form-label" for="mensaje">Mensaje *</label>
-                            <textarea id="mensaje" name="mensaje" class="form-control" rows="6" required></textarea>
-                        </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <h3 style="color: var(--primary-color); margin-bottom: 0.75rem;">Tiempos de respuesta</h3>
+                        <p style="color: var(--text-light); line-height: 1.8;">
+                            Las consultas enviadas por correo electrónico son atendidas en un plazo de
+                            <strong>24 a 48 horas hábiles</strong>. Para consultas urgentes, comuníquese
+                            telefónicamente en horario de atención.
+                        </p>
+                    </div>
 
-                        <div class="form-group">
-                            <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
-                                <input type="checkbox" required>
-                                <span style="color: var(--text-light); font-size: 0.9rem;">
-                                    Acepto la <a href="#" style="color: var(--primary-color);">política de
-                                        privacidad</a>
-                                    y el tratamiento de mis datos
-                                </span>
-                            </label>
-                        </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <h3 style="color: var(--primary-color); margin-bottom: 0.75rem;">¿Es usted un laboratorio participante?</h3>
+                        <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 1rem;">
+                            Si su laboratorio ya está inscrito, puede reportar sus resultados directamente
+                            desde el portal de participantes.
+                        </p>
+                        <a href="resultados.html" class="btn btn-outline" style="text-decoration: none;">
+                            Ir al portal de resultados →
+                        </a>
+                    </div>
 
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            Enviar Mensaje
-                        </button>
-
-                        <div class="success-message" id="successMessage">
-                            ✓ ¡Mensaje enviado exitosamente! Nos pondremos en contacto contigo pronto.
-                        </div>
-
-                        <div id="errorMessage" style="display:none; background: var(--error-color); color: white; padding: 1rem; border-radius: 8px; margin-top: 1rem; text-align: center;">
-                            ✗ Error al enviar el mensaje. Por favor intenta de nuevo o escríbenos a <a href="mailto:concalab@uasd.edu.do" style="color:white; font-weight:bold;">concalab@uasd.edu.do</a>
-                        </div>
-                    </form>
+                    <div>
+                        <h3 style="color: var(--primary-color); margin-bottom: 0.75rem;">Inscripción nueva</h3>
+                        <p style="color: var(--text-light); line-height: 1.8;">
+                            Para inscribir su laboratorio en los Ensayos de Aptitud, envíe un correo a
+                            <a href="mailto:concalab@uasd.edu.do" style="color: var(--primary-color); font-weight: 600;">concalab@uasd.edu.do</a>
+                            indicando el nombre del laboratorio, responsable técnico y los analitos de interés.
+                        </p>
+                    </div>
                 </div>
 
                 <!-- Información de Contacto -->
@@ -518,51 +493,9 @@
         }
     </style>
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/search.js"></script>
     <script src="js/scroll-reveal.js"></script>
-
-    <script>
-        emailjs.init({ publicKey: "FIaxmqBuhcXtmwHAj" });
-
-        document.getElementById('contactForm').addEventListener('submit', async function (e) {
-            e.preventDefault();
-
-            const btn = this.querySelector('button[type="submit"]');
-            const successMessage = document.getElementById('successMessage');
-            const errorMessage = document.getElementById('errorMessage');
-            const originalText = btn.textContent;
-
-            btn.disabled = true;
-            btn.textContent = 'Enviando...';
-
-            try {
-                await emailjs.send('service_80iwfhm', 'template_98uovwv', {
-                    nombre:      this.nombre.value,
-                    institucion: this.institucion.value,
-                    email:       this.email.value,
-                    telefono:    this.telefono.value,
-                    asunto:      this.asunto.value,
-                    mensaje:     this.mensaje.value,
-                });
-
-                successMessage.style.display = 'block';
-                this.reset();
-                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-                setTimeout(() => { successMessage.style.display = 'none'; }, 6000);
-            } catch (err) {
-                errorMessage.style.display = 'block';
-                errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                setTimeout(() => { errorMessage.style.display = 'none'; }, 8000);
-                console.error('EmailJS error:', err);
-            } finally {
-                btn.disabled = false;
-                btn.textContent = originalText;
-            }
-        });
-    </script>
 </body>
 
 </html>
