@@ -35,3 +35,6 @@ venv/
 .vscode/
 .idea/
 Thumbs.db
+
+# Carpetas
+tarea-dss/

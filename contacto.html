@@ -344,11 +344,7 @@
                         <div class="info-content">
                             <h3>Correo Electrónico</h3>
                             <p>
-                                General: <a href="mailto:info@concalab.uasd.edu.do">info@concalab.uasd.edu.do</a><br>
-                                Soporte Técnico: <a
-                                    href="mailto:soporte@concalab.uasd.edu.do">soporte@concalab.uasd.edu.do</a><br>
-                                Administración: <a
-                                    href="mailto:admin@concalab.uasd.edu.do">admin@concalab.uasd.edu.do</a>
+                                <a href="mailto:concalab@uasd.edu.do">concalab@uasd.edu.do</a>
                             </p>
                         </div>
                     </div>
@@ -358,9 +354,7 @@
                         <div class="info-content">
                             <h3>Teléfonos</h3>
                             <p>
-                                Oficina Principal: +1 (809) XXX-XXXX<br>
-                                WhatsApp: +1 (809) XXX-XXXX<br>
-                                Fax: +1 (809) XXX-XXXX
+                                +1 (809) 535-8273
                             </p>
                         </div>
                     </div>
@@ -491,8 +485,8 @@
                 <div class="footer-section">
                     <h3>Contacto</h3>
                     <p>📍 Santo Domingo, República Dominicana</p>
-                    <p>📧 info@concalab.uasd.edu.do</p>
-                    <p>📞 +1 (809) XXX-XXXX</p>
+                    <p>📧 concalab@uasd.edu.do</p>
+                    <p>📞 +1 (809) 535-8273</p>
                     <div class="footer-social">
                         <a href="#" class="social-icon" aria-label="Facebook">📘</a>
                         <a href="#" class="social-icon" aria-label="Instagram">📷</a>
@@ -520,31 +514,46 @@
         }
     </style>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/search.js"></script>
     <script src="js/scroll-reveal.js"></script>
 
     <script>
-        // Manejo del formulario de contacto
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
+        emailjs.init({ publicKey: "FIaxmqBuhcXtmwHAj" });
+
+        document.getElementById('contactForm').addEventListener('submit', async function (e) {
             e.preventDefault();
 
-            // Aquí iría la lógica para enviar el formulario
-            // Por ahora, solo mostramos el mensaje de éxito
-
+            const btn = this.querySelector('button[type="submit"]');
             const successMessage = document.getElementById('successMessage');
-            successMessage.style.display = 'block';
+            const originalText = btn.textContent;
 
-            // Limpiar formulario
-            this.reset();
+            btn.disabled = true;
+            btn.textContent = 'Enviando...';
 
-            // Ocultar mensaje después de 5 segundos
-            setTimeout(() => {
-                successMessage.style.display = 'none';
-            }, 5000);
+            try {
+                await emailjs.send('service_80iwfhm', 'template_98uovwv', {
+                    nombre:      this.nombre.value,
+                    institucion: this.institucion.value,
+                    email:       this.email.value,
+                    telefono:    this.telefono.value,
+                    asunto:      this.asunto.value,
+                    mensaje:     this.mensaje.value,
+                });
 
-            // Scroll al mensaje de éxito
-            successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                successMessage.style.display = 'block';
+                this.reset();
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                setTimeout(() => { successMessage.style.display = 'none'; }, 6000);
+            } catch (err) {
+                alert('Error al enviar el mensaje. Por favor intenta de nuevo o escríbenos a concalab@uasd.edu.do');
+                console.error('EmailJS error:', err);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = originalText;
+            }
         });
     </script>
 </body>
