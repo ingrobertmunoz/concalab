@@ -320,6 +320,10 @@
                         <div class="success-message" id="successMessage">
                             ✓ ¡Mensaje enviado exitosamente! Nos pondremos en contacto contigo pronto.
                         </div>
+
+                        <div id="errorMessage" style="display:none; background: var(--error-color); color: white; padding: 1rem; border-radius: 8px; margin-top: 1rem; text-align: center;">
+                            ✗ Error al enviar el mensaje. Por favor intenta de nuevo o escríbenos a <a href="mailto:concalab@uasd.edu.do" style="color:white; font-weight:bold;">concalab@uasd.edu.do</a>
+                        </div>
                     </form>
                 </div>
 
@@ -527,6 +531,7 @@
 
             const btn = this.querySelector('button[type="submit"]');
             const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
             const originalText = btn.textContent;
 
             btn.disabled = true;
@@ -548,7 +553,9 @@
 
                 setTimeout(() => { successMessage.style.display = 'none'; }, 6000);
             } catch (err) {
-                alert('Error al enviar el mensaje. Por favor intenta de nuevo o escríbenos a concalab@uasd.edu.do');
+                errorMessage.style.display = 'block';
+                errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(() => { errorMessage.style.display = 'none'; }, 8000);
                 console.error('EmailJS error:', err);
             } finally {
                 btn.disabled = false;
