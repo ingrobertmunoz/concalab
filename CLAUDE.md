@@ -11,10 +11,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Pure static site** — no build process, no npm, no framework. HTML5 + CSS3 + Vanilla JS (ES6+).
 - **Plotly.js** for interactive data visualizations in proficiency test reports.
 - **Firebase** (Firestore + Auth + Analytics) for the results submission form (`resultados.html`).
-- **EmailJS** for transactional email in two forms:
+- **EmailJS** for transactional email:
   - `resultados.html` → `template_53vkh45` (confirmación al lab tras enviar resultados)
-  - `contacto.html` → `template_98uovwv` (mensaje recibido a concalab@uasd.edu.do)
-  - Shared config: `service_80iwfhm`, `publicKey: FIaxmqBuhcXtmwHAj`
+  - Config: `service_80iwfhm`, `publicKey: FIaxmqBuhcXtmwHAj`
+  - `contacto.html` no usa formulario — tiene botones directos mailto/tel y enlace al portal de resultados
 - **Deployed via** GitHub Pages (primary, `master` branch root) and Firebase Hosting (alternative).
 
 ## Running Locally
