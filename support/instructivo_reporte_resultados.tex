@@ -1,0 +1,286 @@
+\documentclass[12pt, letterpaper]{article}
+
+% ── Paquetes ──────────────────────────────────────────────────────────────────
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{mdframed}
+\usepackage{fontawesome5}
+\usepackage{hyperref}
+\usepackage{draftwatermark}
+
+% ── Marca de agua BORRADOR ────────────────────────────────────────────────────
+\SetWatermarkText{BORRADOR}
+\SetWatermarkScale{3.5}
+\SetWatermarkColor[gray]{0.88}
+
+% ── Colores institucionales UASD ─────────────────────────────────────────────
+\definecolor{azuluasd}{RGB}{0, 63, 135}
+\definecolor{doradouasd}{RGB}{253, 185, 19}
+\definecolor{grisclaro}{RGB}{244, 246, 251}
+\definecolor{verdexito}{RGB}{21, 87, 36}
+\definecolor{verdebg}{RGB}{212, 237, 218}
+\definecolor{amarillobg}{RGB}{255, 243, 205}
+\definecolor{rojoalerta}{RGB}{114, 28, 36}
+
+% ── Hipervínculos ─────────────────────────────────────────────────────────────
+\hypersetup{
+    colorlinks=true,
+    linkcolor=azuluasd,
+    urlcolor=azuluasd,
+}
+
+% ── Encabezado y pie de página ────────────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{azuluasd}{\textbf{CONCALAB-UASD}}}
+\fancyhead[R]{\textcolor{gray}{\small Control de Calidad de Laboratorios}}
+\fancyfoot[C]{\textcolor{gray}{\small\thepage}}
+\fancyfoot[R]{\textcolor{gray}{\small\textit{Documento interno — BORRADOR 2026}}}
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{azuluasd}\leaders\hrule height \headrulewidth\hfill}}
+
+% ── Títulos de sección ────────────────────────────────────────────────────────
+\titleformat{\section}
+  {\large\bfseries\color{azuluasd}}
+  {\thesection.}{0.6em}{}
+  [\color{doradouasd}\titlerule[1.5pt]]
+
+\titleformat{\subsection}
+  {\normalsize\bfseries\color{azuluasd}}
+  {\thesubsection.}{0.5em}{}
+
+% ── Cajas de aviso ────────────────────────────────────────────────────────────
+\newmdenv[
+  backgroundcolor=amarillobg,
+  linecolor=doradouasd,
+  linewidth=1.5pt,
+  leftline=true, rightline=false, topline=false, bottomline=false,
+  innerleftmargin=10pt, innerrightmargin=8pt,
+  innertopmargin=6pt, innerbottommargin=6pt,
+  skipabove=8pt, skipbelow=8pt,
+]{cajaaviso}
+
+\newmdenv[
+  backgroundcolor=verdebg,
+  linecolor=verdexito,
+  linewidth=1.5pt,
+  leftline=true, rightline=false, topline=false, bottomline=false,
+  innerleftmargin=10pt, innerrightmargin=8pt,
+  innertopmargin=6pt, innerbottommargin=6pt,
+  skipabove=8pt, skipbelow=8pt,
+]{cajaexito}
+
+\newmdenv[
+  backgroundcolor=grisclaro,
+  linecolor=azuluasd,
+  linewidth=1.5pt,
+  leftline=true, rightline=false, topline=false, bottomline=false,
+  innerleftmargin=10pt, innerrightmargin=8pt,
+  innertopmargin=6pt, innerbottommargin=6pt,
+  skipabove=8pt, skipbelow=8pt,
+]{cajainfo}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\begin{document}
+
+% ── Portada ───────────────────────────────────────────────────────────────────
+\begin{titlepage}
+  \centering
+  \vspace*{1.5cm}
+
+  {\Huge\bfseries\color{azuluasd} CONCALAB-UASD}\\[0.4cm]
+  {\large\color{gray} Universidad Autónoma de Santo Domingo}\\[0.2cm]
+  {\large\color{gray} Control de Calidad de Laboratorios}
+
+  \vspace{1.5cm}
+  \noindent\color{doradouasd}\rule{\linewidth}{2pt}
+  \vspace{0.5cm}
+
+  {\LARGE\bfseries\color{azuluasd}
+    Instructivo para el Reporte de Resultados\\[0.3cm]
+    de Ensayos de Aptitud}
+
+  \vspace{0.5cm}
+  \noindent\color{doradouasd}\rule{\linewidth}{2pt}
+
+  \vspace{1.2cm}
+  \colorbox{doradouasd}{%
+    \parbox{6cm}{\centering\large\bfseries\color{azuluasd} BORRADOR}%
+  }
+
+  \vfill
+
+  \begin{tabular}{ll}
+    \textbf{Ronda:}    & Primera Ronda de Ensayo de Aptitud 2026 (EA-001-2026) \\[4pt]
+    \textbf{Versión:}  & 1.0 — Borrador \\[4pt]
+    \textbf{Fecha:}    & Mayo 2026 \\[4pt]
+    \textbf{Elaborado por:} & CONCALAB-UASD \\
+  \end{tabular}
+
+  \vspace{1.5cm}
+  {\small\color{gray} Este documento es de uso interno y no debe distribuirse sin autorización.}
+\end{titlepage}
+
+% ── Cuerpo ────────────────────────────────────────────────────────────────────
+\tableofcontents
+\newpage
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Requisitos previos}
+
+Antes de iniciar el proceso de reporte, asegúrese de contar con lo siguiente:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item Credenciales de acceso (correo electrónico y contraseña) asignadas por CONCALAB-UASD.
+  \item Resultados de la ronda activa disponibles y verificados.
+  \item Conexión a internet estable.
+  \item Navegador actualizado: Google Chrome, Mozilla Firefox o Microsoft Edge.
+\end{itemize}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Ingresar al formulario}
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item Abra su navegador.
+  \item Ingrese a la página web oficial de CONCALAB-UASD.
+  \item En el menú de navegación, haga clic en \textbf{Servicios → Reportar Resultados}.
+\end{enumerate}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Iniciar sesión}
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item Ingrese su \textbf{correo electrónico} y \textbf{contraseña} asignados por CONCALAB-UASD.
+  \item Haga clic en \textbf{Iniciar Sesión}.
+\end{enumerate}
+
+\begin{cajaaviso}
+\textbf{⚠ Importante:} Si no recuerda su contraseña, contacte a CONCALAB-UASD antes de intentar acceder varias veces. Después de múltiples intentos fallidos, el sistema bloqueará el acceso temporalmente.
+\end{cajaaviso}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Verificar la información pre-cargada}
+
+Una vez autenticado, el formulario mostrará automáticamente:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Nombre de su laboratorio} y código asignado (ej: \texttt{AG4}).
+  \item \textbf{Código de la ronda activa} (ej: \texttt{EA-001-2026}).
+\end{itemize}
+
+Estos campos \textbf{no son editables}. Si detecta algún error en esta información, comuníquese con CONCALAB-UASD antes de continuar.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Completar la información general}
+
+Llene los siguientes campos:
+
+\vspace{0.5em}
+\begin{tabularx}{\linewidth}{>{\bfseries}lX}
+  \toprule
+  Campo & Descripción \\
+  \midrule
+  Fecha del Reporte    & Fecha en que reporta los resultados (formato DD/MM/AAAA). \\[4pt]
+  Correo Electrónico   & Se completa automáticamente. Puede modificarlo si es necesario. \\
+  \bottomrule
+\end{tabularx}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Ingresar resultados de Química Clínica}
+
+La tabla muestra los analitos de la ronda activa. Para cada analito que haya procesado, complete las siguientes columnas:
+
+\vspace{0.5em}
+\begin{tabularx}{\linewidth}{>{\bfseries}lX}
+  \toprule
+  Columna & Descripción \\
+  \midrule
+  Instrumento & Nombre del equipo utilizado (ej: Cobas 6000, Mindray BS-430). \\[4pt]
+  Método      & Método analítico empleado (ej: Enzimático, Colorimétrico). \\[4pt]
+  Resultado   & Valor numérico obtenido. \\[4pt]
+  Unidad      & Unidad de medida (ej: mg/dL, U/L, mmol/L). \\
+  \bottomrule
+\end{tabularx}
+
+\begin{cajainfo}
+\textbf{Consejo:} Use el botón \textbf{⬇ Copiar} en el encabezado de la columna Instrumento para repetir automáticamente el mismo equipo en todos los analitos.
+\end{cajainfo}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Ingresar resultados de Uroanálisis}
+
+Complete la tabla de Uroanálisis de la misma forma que la de Química Clínica. Los resultados pueden ser cualitativos (ej: Negativo, +, ++, +++).
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Comentarios adicionales (opcional)}
+
+Si desea agregar alguna observación sobre los resultados o las condiciones del análisis, utilice el campo \textbf{Comentarios o Notas Adicionales}.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Enviar los resultados}
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item Haga clic en el botón \textbf{Enviar Resultados}.
+  \item Aparecerá una ventana de \textbf{confirmación} con el resumen de los datos:
+    \begin{itemize}
+      \item Nombre del laboratorio, código y ronda.
+      \item Fecha y correo de contacto.
+      \item Listado completo de analitos con sus resultados.
+    \end{itemize}
+  \item Revise cuidadosamente el resumen:
+    \begin{itemize}
+      \item Si todo está correcto → haga clic en \textbf{Confirmar y Enviar}.
+      \item Si necesita corregir algo → haga clic en \textbf{Revisar de nuevo}.
+    \end{itemize}
+\end{enumerate}
+
+\begin{cajaaviso}
+\textbf{⚠ Importante:} Una vez confirmado el envío, los resultados \textbf{no podrán ser modificados} desde el portal. Cualquier corrección debe solicitarse directamente a CONCALAB-UASD.
+\end{cajaaviso}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Confirmación del envío}
+
+Si el envío fue exitoso, verá el siguiente mensaje en pantalla:
+
+\begin{cajaexito}
+\textbf{✓ ¡Reporte Enviado Exitosamente!}\\
+Los datos han sido registrados en nuestra base de datos segura.\\
+Se ha enviado una copia al correo electrónico registrado.
+\end{cajaexito}
+
+Además, recibirá un \textbf{correo electrónico} con el resumen completo de los resultados reportados como constancia.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Situaciones especiales}
+
+\subsection{El formulario no está disponible}
+Si aparece el mensaje \textit{``El formulario de reporte no está habilitado en este momento''}, la ronda aún no ha sido abierta por CONCALAB-UASD. Espere la notificación oficial.
+
+\subsection{Ya reportó en esta ronda}
+Si aparece el mensaje \textit{``Ya enviaste resultados para EA-XXX-XXXX''}, su reporte fue registrado previamente. Si necesita una corrección, contacte a CONCALAB-UASD.
+
+\subsection{Problemas de acceso}
+Si su cuenta no es reconocida o aparece un mensaje de error, comuníquese con CONCALAB-UASD para verificar su registro en el sistema.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Contacto}
+
+\begin{cajainfo}
+\textbf{CONCALAB-UASD — Control de Calidad de Laboratorios}\\
+Universidad Autónoma de Santo Domingo (UASD)\\
+Correo: \href{mailto:concalab@uasd.edu.do}{concalab@uasd.edu.do}
+\end{cajainfo}
+
+\vfill
+{\small\color{gray}\centering Documento interno — CONCALAB-UASD — BORRADOR 2026. No distribuir sin autorización.}
+
+\end{document}
