@@ -188,7 +188,7 @@ HTML interactivo (publicaciones/informes/EA-001-2025.html)
 
 **Química Clínica** (26 analitos): Glucosa, Ácido Úrico, Colesterol, Colesterol HDL, Triglicéridos, Urea, Creatinina, Proteínas Total, Albúmina, Bilirrubina Total, Bilirrubina Directa, Amilasa, Lipasa, ALP, AST, ALT, Gamma GGT, LDH, CK-Total, Calcio, Fósforo, Cloruro, Sodio, Potasio, Magnesio, Hierro.
 
-**Uroanálisis**: Proteínas, Glucosa, Cuerpos Cetónicos, Bilirrubina, Nitritos.
+**Uroanálisis** (10 analitos): Bilirrubina, Sangre, Glucosa, Cetonas, Leucocitos, Nitritos, pH, Proteínas T., Densidad, Urobilinógeno.
 
 ### Estadísticas calculadas por analito
 

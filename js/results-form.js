@@ -269,7 +269,7 @@ function generateAnalytesTable(type) {
         },
         uro: {
             tableId: '#analytes-table-uro',
-            analytes: ["Proteínas", "Glucosa", "Cuerpos Cetónicos", "Bilirrubina", "Nitritos"],
+            analytes: ["Bilirrubina", "Sangre", "Glucosa", "Cetonas", "Leucocitos", "Nitritos", "pH", "Proteínas T.", "Densidad", "Urobilinógeno"],
             inputType: 'text',
         },
     };
@@ -282,8 +282,8 @@ function generateAnalytesTable(type) {
         const row = document.createElement('tr');
         row.innerHTML = `
             <td style="font-weight:600;">${analyte}</td>
-            <td><input type="text" class="form-control instrument-input-${type}" placeholder="Ej: Cobas 6000"></td>
-            <td><input type="text" class="form-control method-input-${type}" placeholder="Ej: Enzimático"></td>
+            <td><input type="text" class="form-control instrument-input-${type}" placeholder="Marca / modelo del equipo"></td>
+            <td><input type="text" class="form-control method-input-${type}" placeholder="Método de análisis"></td>
             <td><input type="${inputType}" class="form-control result-input-${type}" ${inputType === 'number' ? 'step="any"' : ''}></td>
             <td><input type="text" class="form-control unit-input-${type}" placeholder="Ej: mg/dL"></td>
         `;

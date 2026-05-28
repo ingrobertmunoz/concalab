@@ -29,8 +29,13 @@
 26. Hierro
 
 ## Uroanálisis (Existentes en el sistema)
-1. Proteínas
-2. Glucosa
-3. Cuerpos Cetónicos
-4. Bilirrubina
-5. Nitritos
+1. Bilirrubina
+2. Sangre
+3. Glucosa
+4. Cetonas
+5. Leucocitos
+6. Nitritos
+7. pH
+8. Proteínas T.
+9. Densidad
+10. Urobilinógeno
