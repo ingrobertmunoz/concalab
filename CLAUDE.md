@@ -126,15 +126,43 @@ Lab entra a resultados.html
 **Lab database management (local tooling, never deployed):**
 - `support/laboratorios_concalab.xlsx` — registro maestro: nombres reales, correos, contraseñas, cod_anonimo. **Nunca commitear.**
 - `support/concalab-uasd-64ff4-firebase-adminsdk-fbsvc-c400cdf10b.json` — clave Firebase Admin SDK. **Nunca commitear.**
-- `support/generar_laboratorios.py` — regenera el Excel con códigos y contraseñas únicos.
-- `scripts/importar_labs_firebase.py` — importa el Excel a Firebase Auth + Firestore.
+- `support/generar_laboratorios.py` — **solo para la creación inicial masiva.** Regenera el Excel completo desde cero con códigos anónimos y contraseñas nuevos al azar. **NUNCA usar para cambios puntuales** (invalidaría el login y el código público de todos los labs existentes).
+- `scripts/importar_labs_firebase.py` — importa el Excel **completo** a Firebase Auth + Firestore. Pensado para la carga inicial. No sirve para cambiar correos (crearía usuarios duplicados).
+- `scripts/actualizar_labs_firebase.py` — **herramienta para cambios puntuales** (alta, correo, datos, contraseña, activar/desactivar) sin tocar el resto de labs. Es la vía recomendada para mantenimiento día a día.
 
 ```bash
-# Importar laboratorios a Firebase (requiere clave de servicio):
+# Carga inicial masiva (requiere clave de servicio):
 conda activate concalab
 python scripts/importar_labs_firebase.py --dry-run  # simular primero
 python scripts/importar_labs_firebase.py            # escribir en Firebase
 ```
+
+#### Flujo para editar/actualizar un laboratorio
+
+**Regla de oro:** editar el Excel NO cambia nada en Firebase. El Excel es solo el registro maestro (fuente de verdad). Todo cambio son **dos pasos**: (1) editar el Excel → (2) aplicarlo a Firebase con `scripts/actualizar_labs_firebase.py`.
+
+**Por qué importa la acción correcta:** `correo` y `password` viven en **Firebase Auth** (solo se cambian con `update_user`); `nombre`, `representante`, `telefono`, `cod_anonimo`, `activo` viven en **Firestore** (se cambian actualizando el documento). El `cod_interno` y el `cod_anonimo` no deben cambiar una vez asignados.
+
+Pasos:
+1. Cerrar el Excel en LibreOffice (libera el `.~lock`), luego editar `support/laboratorios_concalab.xlsx`.
+2. Editar la lista `OPERACIONES` en `scripts/actualizar_labs_firebase.py` (tiene un ejemplo comentado de cada acción).
+3. Simular y aplicar:
+```bash
+conda activate concalab
+python scripts/actualizar_labs_firebase.py --dry-run  # revisar
+python scripts/actualizar_labs_firebase.py            # aplicar
+```
+4. Verificar contra Firebase y enviar credenciales nuevas al lab si cambió correo/contraseña.
+
+| Cambio | Editar Excel | Acción en `OPERACIONES` | Dónde escribe |
+|---|---|---|---|
+| Lab nuevo | Agregar fila (cód. anónimo único) | `crear` | Auth + Firestore |
+| Cambiar correo | Celda correo | `cambiar_correo` | Auth + Firestore |
+| Nombre / representante / teléfono | Sí | `cambiar_datos` | Firestore (+ display_name en Auth si cambia nombre) |
+| Contraseña | Celda contraseña | `cambiar_password` | Auth |
+| Desactivar / reactivar | Columna Activo | `desactivar` (`"activo": False/True`) | Auth (`disabled`) + Firestore (`activo`) |
+
+El script localiza cada lab por `cod_interno` (consulta Firestore), por eso **no duplica** usuarios al cambiar correos.
 
 **Regla de anonimización:** `cod_anonimo` (2 letras + 1 dígito, ej: `AG4`) es el único identificador de laboratorio que aparece en informes públicos. Los nombres reales existen solo en Firestore (uso interno) y en archivos `support/` (nunca deployados).
 
