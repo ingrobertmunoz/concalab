@@ -1,0 +1,5697 @@
+{
+  "codigo": "EA-001-2026",
+  "area": "quimica",
+  "fecha": "2026-07-23",
+  "metodologia": "ISO/IEC 17043 & ISO 13528 (Estadística Robusta)",
+  "evaluacion": "agrupada",
+  "resumen": {
+    "laboratorios": 37,
+    "aceptables": 753,
+    "cuestionables": 44,
+    "inaceptables": 55,
+    "sin_evaluar": 6,
+    "total": 852
+  },
+  "analitos": [
+    {
+      "nombre": "ALT (TGP)",
+      "unidad": "U/L",
+      "n": 37,
+      "evaluacion": "agrupada",
+      "valor_asignado": 142.65,
+      "sd_robusta": 18.47,
+      "cv": 12.9,
+      "n_suficiente": true,
+      "laboratorios": [
+        {
+          "id": "QV5",
+          "resultado": 17.8,
+          "z_score": -6.76,
+          "clasificacion": "I"
+        },
+        {
+          "id": "YX6",
+          "resultado": 108.0,
+          "z_score": -1.88,
+          "clasificacion": "A"
+        },
+        {
+          "id": "QZ1",
+          "resultado": 112.7,
+          "z_score": -1.62,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AP2",
+          "resultado": 118.0,
+          "z_score": -1.33,
+          "clasificacion": "A"
+        },
+        {
+          "id": "DX6",
+          "resultado": 121.0,
+          "z_score": -1.17,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GD6",
+          "resultado": 121.0,
+          "z_score": -1.17,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WG5",
+          "resultado": 123.0,
+          "z_score": -1.06,
+          "clasificacion": "A"
+        },
+        {
+          "id": "DW1",
+          "resultado": 126.0,
+          "z_score": -0.9,
+          "clasificacion": "A"
+        },
+        {
+          "id": "UJ4",
+          "resultado": 130.0,
+          "z_score": -0.68,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WJ5",
+          "resultado": 130.0,
+          "z_score": -0.68,
+          "clasificacion": "A"
+        },
+        {
+          "id": "CW7",
+          "resultado": 130.4,
+          "z_score": -0.66,
+          "clasificacion": "A"
+        },
+        {
+          "id": "PZ6",
+          "resultado": 133.0,
+          "z_score": -0.52,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AB8",
+          "resultado": 136.0,
+          "z_score": -0.36,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FU2",
+          "resultado": 137.0,
+          "z_score": -0.31,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ZY9",
+          "resultado": 137.0,
+          "z_score": -0.31,
+          "clasificacion": "A"
+        },
+        {
+          "id": "MS6",
+          "resultado": 139.0,
+          "z_score": -0.2,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LN5",
+          "resultado": 139.8,
+          "z_score": -0.15,
+          "clasificacion": "A"
+        },
+        {
+          "id": "IS1",
+          "resultado": 142.0,
+          "z_score": -0.04,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ER7",
+          "resultado": 143.0,
+          "z_score": 0.02,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YK4",
+          "resultado": 148.0,
+          "z_score": 0.29,
+          "clasificacion": "A"
+        },
+        {
+          "id": "VK4",
+          "resultado": 151.0,
+          "z_score": 0.45,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LD2",
+          "resultado": 151.2,
+          "z_score": 0.46,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NM5",
+          "resultado": 152.0,
+          "z_score": 0.51,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YY6",
+          "resultado": 152.0,
+          "z_score": 0.51,
+          "clasificacion": "A"
+        },
+        {
+          "id": "JU6",
+          "resultado": 153.0,
+          "z_score": 0.56,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KQ7",
+          "resultado": 153.0,
+          "z_score": 0.56,
+          "clasificacion": "A"
+        },
+        {
+          "id": "RI2",
+          "resultado": 153.0,
+          "z_score": 0.56,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EH4",
+          "resultado": 156.0,
+          "z_score": 0.72,
+          "clasificacion": "A"
+        },
+        {
+          "id": "XC8",
+          "resultado": 157.0,
+          "z_score": 0.78,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EG2",
+          "resultado": 159.0,
+          "z_score": 0.89,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LK9",
+          "resultado": 159.0,
+          "z_score": 0.89,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KO7",
+          "resultado": 161.0,
+          "z_score": 0.99,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NL9",
+          "resultado": 161.0,
+          "z_score": 0.99,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AF7",
+          "resultado": 161.6,
+          "z_score": 1.03,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FV4",
+          "resultado": 163.0,
+          "z_score": 1.1,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GB1",
+          "resultado": 166.0,
+          "z_score": 1.26,
+          "clasificacion": "A"
+        },
+        {
+          "id": "BO7",
+          "resultado": 1176.0,
+          "z_score": 55.95,
+          "clasificacion": "I"
+        }
+      ],
+      "evaluacion_confiable": true,
+      "aviso_bimodal": null
+    },
+    {
+      "nombre": "AST (TGO)",
+      "unidad": "U/L",
+      "n": 37,
+      "evaluacion": "agrupada",
+      "valor_asignado": 145.33,
+      "sd_robusta": 25.14,
+      "cv": 17.3,
+      "n_suficiente": true,
+      "laboratorios": [
+        {
+          "id": "QV5",
+          "resultado": 24.6,
+          "z_score": -4.8,
+          "clasificacion": "I"
+        },
+        {
+          "id": "YX6",
+          "resultado": 102.0,
+          "z_score": -1.72,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AP2",
+          "resultado": 108.0,
+          "z_score": -1.48,
+          "clasificacion": "A"
+        },
+        {
+          "id": "VK4",
+          "resultado": 118.0,
+          "z_score": -1.09,
+          "clasificacion": "A"
+        },
+        {
+          "id": "DW1",
+          "resultado": 121.0,
+          "z_score": -0.97,
+          "clasificacion": "A"
+        },
+        {
+          "id": "QZ1",
+          "resultado": 126.8,
+          "z_score": -0.74,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ZY9",
+          "resultado": 127.0,
+          "z_score": -0.73,
+          "clasificacion": "A"
+        },
+        {
+          "id": "UJ4",
+          "resultado": 128.0,
+          "z_score": -0.69,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WJ5",
+          "resultado": 129.0,
+          "z_score": -0.65,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GD6",
+          "resultado": 130.0,
+          "z_score": -0.61,
+          "clasificacion": "A"
+        },
+        {
+          "id": "MS6",
+          "resultado": 132.0,
+          "z_score": -0.53,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AB8",
+          "resultado": 133.0,
+          "z_score": -0.49,
+          "clasificacion": "A"
+        },
+        {
+          "id": "IS1",
+          "resultado": 135.0,
+          "z_score": -0.41,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WG5",
+          "resultado": 135.0,
+          "z_score": -0.41,
+          "clasificacion": "A"
+        },
+        {
+          "id": "RI2",
+          "resultado": 137.0,
+          "z_score": -0.33,
+          "clasificacion": "A"
+        },
+        {
+          "id": "DX6",
+          "resultado": 137.5,
+          "z_score": -0.31,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ER7",
+          "resultado": 139.0,
+          "z_score": -0.25,
+          "clasificacion": "A"
+        },
+        {
+          "id": "CW7",
+          "resultado": 140.11,
+          "z_score": -0.21,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EG2",
+          "resultado": 140.0,
+          "z_score": -0.21,
+          "clasificacion": "A"
+        },
+        {
+          "id": "PZ6",
+          "resultado": 142.0,
+          "z_score": -0.13,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EH4",
+          "resultado": 146.0,
+          "z_score": 0.03,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LD2",
+          "resultado": 146.8,
+          "z_score": 0.06,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NM5",
+          "resultado": 149.0,
+          "z_score": 0.15,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FU2",
+          "resultado": 150.0,
+          "z_score": 0.19,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LN5",
+          "resultado": 150.4,
+          "z_score": 0.2,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AF7",
+          "resultado": 155.3,
+          "z_score": 0.4,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YY6",
+          "resultado": 158.0,
+          "z_score": 0.5,
+          "clasificacion": "A"
+        },
+        {
+          "id": "XC8",
+          "resultado": 161.0,
+          "z_score": 0.62,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NL9",
+          "resultado": 162.0,
+          "z_score": 0.66,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LK9",
+          "resultado": 164.0,
+          "z_score": 0.74,
+          "clasificacion": "A"
+        },
+        {
+          "id": "BO7",
+          "resultado": 169.0,
+          "z_score": 0.94,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YK4",
+          "resultado": 178.0,
+          "z_score": 1.3,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KO7",
+          "resultado": 182.0,
+          "z_score": 1.46,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GB1",
+          "resultado": 186.0,
+          "z_score": 1.62,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KQ7",
+          "resultado": 191.0,
+          "z_score": 1.82,
+          "clasificacion": "A"
+        },
+        {
+          "id": "JU6",
+          "resultado": 192.0,
+          "z_score": 1.86,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FV4",
+          "resultado": 207.0,
+          "z_score": 2.45,
+          "clasificacion": "C"
+        }
+      ],
+      "evaluacion_confiable": true,
+      "aviso_bimodal": null
+    },
+    {
+      "nombre": "Albúmina",
+      "unidad": "g/dL",
+      "n": 35,
+      "evaluacion": "agrupada",
+      "valor_asignado": 3.21,
+      "sd_robusta": 0.41,
+      "cv": 12.9,
+      "n_suficiente": true,
+      "laboratorios": [
+        {
+          "id": "YX6",
+          "resultado": 2.4,
+          "z_score": -1.98,
+          "clasificacion": "A"
+        },
+        {
+          "id": "QZ1",
+          "resultado": 2.59,
+          "z_score": -1.51,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LD2",
+          "resultado": 2.64,
+          "z_score": -1.39,
+          "clasificacion": "A"
+        },
+        {
+          "id": "VK4",
+          "resultado": 2.7,
+          "z_score": -1.24,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KQ7",
+          "resultado": 2.8,
+          "z_score": -1.0,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AF7",
+          "resultado": 2.84,
+          "z_score": -0.9,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GB1",
+          "resultado": 2.9,
+          "z_score": -0.76,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WJ5",
+          "resultado": 2.9,
+          "z_score": -0.76,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AB8",
+          "resultado": 3.0,
+          "z_score": -0.51,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EG2",
+          "resultado": 3.0,
+          "z_score": -0.51,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NL9",
+          "resultado": 3.0,
+          "z_score": -0.51,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ZY9",
+          "resultado": 3.0,
+          "z_score": -0.51,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EH4",
+          "resultado": 3.08,
+          "z_score": -0.32,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FV4",
+          "resultado": 3.1,
+          "z_score": -0.27,
+          "clasificacion": "A"
+        },
+        {
+          "id": "JU6",
+          "resultado": 3.1,
+          "z_score": -0.27,
+          "clasificacion": "A"
+        },
+        {
+          "id": "BO7",
+          "resultado": 3.2,
+          "z_score": -0.02,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NM5",
+          "resultado": 3.2,
+          "z_score": -0.02,
+          "clasificacion": "A"
+        },
+        {
+          "id": "PZ6",
+          "resultado": 3.2,
+          "z_score": -0.02,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WG5",
+          "resultado": 3.2,
+          "z_score": -0.02,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GD6",
+          "resultado": 3.22,
+          "z_score": 0.02,
+          "clasificacion": "A"
+        },
+        {
+          "id": "XC8",
+          "resultado": 3.23,
+          "z_score": 0.05,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KO7",
+          "resultado": 3.27,
+          "z_score": 0.15,
+          "clasificacion": "A"
+        },
+        {
+          "id": "IS1",
+          "resultado": 3.3,
+          "z_score": 0.22,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YK4",
+          "resultado": 3.32,
+          "z_score": 0.27,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ER7",
+          "resultado": 3.4,
+          "z_score": 0.46,
+          "clasificacion": "A"
+        },
+        {
+          "id": "UJ4",
+          "resultado": 3.4,
+          "z_score": 0.46,
+          "clasificacion": "A"
+        },
+        {
+          "id": "MS6",
+          "resultado": 3.41,
+          "z_score": 0.49,
+          "clasificacion": "A"
+        },
+        {
+          "id": "DX6",
+          "resultado": 3.47,
+          "z_score": 0.63,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YY6",
+          "resultado": 3.54,
+          "z_score": 0.8,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LK9",
+          "resultado": 3.7,
+          "z_score": 1.2,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FU2",
+          "resultado": 3.8,
+          "z_score": 1.44,
+          "clasificacion": "A"
+        },
+        {
+          "id": "QV5",
+          "resultado": 3.89,
+          "z_score": 1.66,
+          "clasificacion": "A"
+        },
+        {
+          "id": "RI2",
+          "resultado": 3.9,
+          "z_score": 1.68,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AP2",
+          "resultado": 3.92,
+          "z_score": 1.73,
+          "clasificacion": "A"
+        },
+        {
+          "id": "CW7",
+          "resultado": 4.1,
+          "z_score": 2.17,
+          "clasificacion": "C"
+        }
+      ],
+      "evaluacion_confiable": true,
+      "aviso_bimodal": null
+    },
+    {
+      "nombre": "Amilasa",
+      "unidad": "U/L",
+      "n": 34,
+      "evaluacion": "agrupada",
+      "valor_asignado": 300.69,
+      "sd_robusta": 63.54,
+      "cv": 21.1,
+      "n_suficiente": true,
+      "laboratorios": [
+        {
+          "id": "QV5",
+          "resultado": 118.0,
+          "z_score": -2.88,
+          "clasificacion": "C"
+        },
+        {
+          "id": "GB1",
+          "resultado": 175.0,
+          "z_score": -1.98,
+          "clasificacion": "A"
+        },
+        {
+          "id": "JU6",
+          "resultado": 179.0,
+          "z_score": -1.92,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YX6",
+          "resultado": 198.0,
+          "z_score": -1.62,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GD6",
+          "resultado": 217.0,
+          "z_score": -1.32,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KQ7",
+          "resultado": 229.0,
+          "z_score": -1.13,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KO7",
+          "resultado": 262.0,
+          "z_score": -0.61,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FU2",
+          "resultado": 269.0,
+          "z_score": -0.5,
+          "clasificacion": "A"
+        },
+        {
+          "id": "QZ1",
+          "resultado": 270.84,
+          "z_score": -0.47,
+          "clasificacion": "A"
+        },
+        {
+          "id": "IS1",
+          "resultado": 277.0,
+          "z_score": -0.37,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ER7",
+          "resultado": 279.0,
+          "z_score": -0.34,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AB8",
+          "resultado": 281.0,
+          "z_score": -0.31,
+          "clasificacion": "A"
+        },
+        {
+          "id": "MS6",
+          "resultado": 284.0,
+          "z_score": -0.26,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AF7",
+          "resultado": 286.0,
+          "z_score": -0.23,
+          "clasificacion": "A"
+        },
+        {
+          "id": "PZ6",
+          "resultado": 287.0,
+          "z_score": -0.22,
+          "clasificacion": "A"
+        },
+        {
+          "id": "VK4",
+          "resultado": 294.0,
+          "z_score": -0.11,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YY6",
+          "resultado": 302.0,
+          "z_score": 0.02,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NM5",
+          "resultado": 305.0,
+          "z_score": 0.07,
+          "clasificacion": "A"
+        },
+        {
+          "id": "UJ4",
+          "resultado": 306.0,
+          "z_score": 0.08,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YK4",
+          "resultado": 306.0,
+          "z_score": 0.08,
+          "clasificacion": "A"
+        },
+        {
+          "id": "DX6",
+          "resultado": 318.0,
+          "z_score": 0.27,
+          "clasificacion": "A"
+        },
+        {
+          "id": "RI2",
+          "resultado": 321.0,
+          "z_score": 0.32,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AP2",
+          "resultado": 327.0,
+          "z_score": 0.41,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WG5",
+          "resultado": 334.0,
+          "z_score": 0.52,
+          "clasificacion": "A"
+        },
+        {
+          "id": "XC8",
+          "resultado": 335.0,
+          "z_score": 0.54,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LD2",
+          "resultado": 337.0,
+          "z_score": 0.57,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ZY9",
+          "resultado": 338.0,
+          "z_score": 0.59,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EH4",
+          "resultado": 341.0,
+          "z_score": 0.63,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WJ5",
+          "resultado": 362.0,
+          "z_score": 0.96,
+          "clasificacion": "A"
+        },
+        {
+          "id": "BO7",
+          "resultado": 368.0,
+          "z_score": 1.06,
+          "clasificacion": "A"
+        },
+        {
+          "id": "CW7",
+          "resultado": 379.0,
+          "z_score": 1.23,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LK9",
+          "resultado": 395.0,
+          "z_score": 1.48,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FV4",
+          "resultado": 411.0,
+          "z_score": 1.74,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NL9",
+          "resultado": 678.0,
+          "z_score": 5.94,
+          "clasificacion": "I"
+        }
+      ],
+      "evaluacion_confiable": true,
+      "aviso_bimodal": null
+    },
+    {
+      "nombre": "Bilirrubina Directa",
+      "unidad": "mg/dL",
+      "n": 34,
+      "evaluacion": "agrupada",
+      "valor_asignado": 1.94,
+      "sd_robusta": 0.73,
+      "cv": 37.6,
+      "n_suficiente": true,
+      "laboratorios": [
+        {
+          "id": "JU6",
+          "resultado": 0.35,
+          "z_score": -2.18,
+          "clasificacion": "C"
+        },
+        {
+          "id": "QV5",
+          "resultado": 0.76,
+          "z_score": -1.62,
+          "clasificacion": "A"
+        },
+        {
+          "id": "UJ4",
+          "resultado": 0.8,
+          "z_score": -1.56,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GD6",
+          "resultado": 1.13,
+          "z_score": -1.11,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WG5",
+          "resultado": 1.18,
+          "z_score": -1.04,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EG2",
+          "resultado": 1.31,
+          "z_score": -0.86,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LK9",
+          "resultado": 1.37,
+          "z_score": -0.78,
+          "clasificacion": "A"
+        },
+        {
+          "id": "PZ6",
+          "resultado": 1.44,
+          "z_score": -0.68,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ZY9",
+          "resultado": 1.51,
+          "z_score": -0.59,
+          "clasificacion": "A"
+        },
+        {
+          "id": "XC8",
+          "resultado": 1.54,
+          "z_score": -0.55,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AP2",
+          "resultado": 1.672,
+          "z_score": -0.37,
+          "clasificacion": "A"
+        },
+        {
+          "id": "MS6",
+          "resultado": 1.68,
+          "z_score": -0.36,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WJ5",
+          "resultado": 1.7,
+          "z_score": -0.33,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YY6",
+          "resultado": 1.75,
+          "z_score": -0.26,
+          "clasificacion": "A"
+        },
+        {
+          "id": "VK4",
+          "resultado": 1.8,
+          "z_score": -0.19,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GB1",
+          "resultado": 1.81,
+          "z_score": -0.18,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LD2",
+          "resultado": 1.81,
+          "z_score": -0.18,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AF7",
+          "resultado": 1.82,
+          "z_score": -0.16,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EH4",
+          "resultado": 1.87,
+          "z_score": -0.1,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YX6",
+          "resultado": 2.1,
+          "z_score": 0.22,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AB8",
+          "resultado": 2.2,
+          "z_score": 0.36,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FU2",
+          "resultado": 2.2,
+          "z_score": 0.36,
+          "clasificacion": "A"
+        },
+        {
+          "id": "IS1",
+          "resultado": 2.2,
+          "z_score": 0.36,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KQ7",
+          "resultado": 2.2,
+          "z_score": 0.36,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NM5",
+          "resultado": 2.3,
+          "z_score": 0.49,
+          "clasificacion": "A"
+        },
+        {
+          "id": "BO7",
+          "resultado": 2.35,
+          "z_score": 0.56,
+          "clasificacion": "A"
+        },
+        {
+          "id": "RI2",
+          "resultado": 2.4,
+          "z_score": 0.63,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ER7",
+          "resultado": 2.5,
+          "z_score": 0.77,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FV4",
+          "resultado": 2.69,
+          "z_score": 1.03,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YK4",
+          "resultado": 2.8,
+          "z_score": 1.18,
+          "clasificacion": "A"
+        },
+        {
+          "id": "DX6",
+          "resultado": 4.28,
+          "z_score": 3.21,
+          "clasificacion": "I"
+        },
+        {
+          "id": "NL9",
+          "resultado": 4.67,
+          "z_score": 3.74,
+          "clasificacion": "I"
+        },
+        {
+          "id": "QZ1",
+          "resultado": 7.2,
+          "z_score": 7.21,
+          "clasificacion": "I"
+        },
+        {
+          "id": "CW7",
+          "resultado": 91.07,
+          "z_score": 122.1,
+          "clasificacion": "I"
+        }
+      ],
+      "evaluacion_confiable": true,
+      "aviso_bimodal": null
+    },
+    {
+      "nombre": "Bilirrubina Total",
+      "unidad": "mg/dL",
+      "n": 34,
+      "evaluacion": "agrupada",
+      "valor_asignado": 4.85,
+      "sd_robusta": 0.8,
+      "cv": 16.4,
+      "n_suficiente": true,
+      "laboratorios": [
+        {
+          "id": "QV5",
+          "resultado": 1.06,
+          "z_score": -4.74,
+          "clasificacion": "I"
+        },
+        {
+          "id": "UJ4",
+          "resultado": 1.2,
+          "z_score": -4.56,
+          "clasificacion": "I"
+        },
+        {
+          "id": "YX6",
+          "resultado": 3.4,
+          "z_score": -1.81,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FV4",
+          "resultado": 3.43,
+          "z_score": -1.77,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YY6",
+          "resultado": 4.29,
+          "z_score": -0.7,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AB8",
+          "resultado": 4.3,
+          "z_score": -0.69,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WJ5",
+          "resultado": 4.37,
+          "z_score": -0.6,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ER7",
+          "resultado": 4.4,
+          "z_score": -0.56,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FU2",
+          "resultado": 4.4,
+          "z_score": -0.56,
+          "clasificacion": "A"
+        },
+        {
+          "id": "IS1",
+          "resultado": 4.4,
+          "z_score": -0.56,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NM5",
+          "resultado": 4.5,
+          "z_score": -0.44,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YK4",
+          "resultado": 4.51,
+          "z_score": -0.42,
+          "clasificacion": "A"
+        },
+        {
+          "id": "MS6",
+          "resultado": 4.59,
+          "z_score": -0.32,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EH4",
+          "resultado": 4.6,
+          "z_score": -0.31,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GB1",
+          "resultado": 4.78,
+          "z_score": -0.09,
+          "clasificacion": "A"
+        },
+        {
+          "id": "RI2",
+          "resultado": 4.8,
+          "z_score": -0.06,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EG2",
+          "resultado": 4.82,
+          "z_score": -0.04,
+          "clasificacion": "A"
+        },
+        {
+          "id": "XC8",
+          "resultado": 4.83,
+          "z_score": -0.02,
+          "clasificacion": "A"
+        },
+        {
+          "id": "JU6",
+          "resultado": 4.84,
+          "z_score": -0.01,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GD6",
+          "resultado": 4.89,
+          "z_score": 0.05,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LD2",
+          "resultado": 4.9,
+          "z_score": 0.06,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WG5",
+          "resultado": 4.96,
+          "z_score": 0.14,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ZY9",
+          "resultado": 5.01,
+          "z_score": 0.2,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AF7",
+          "resultado": 5.03,
+          "z_score": 0.23,
+          "clasificacion": "A"
+        },
+        {
+          "id": "VK4",
+          "resultado": 5.1,
+          "z_score": 0.31,
+          "clasificacion": "A"
+        },
+        {
+          "id": "PZ6",
+          "resultado": 5.26,
+          "z_score": 0.51,
+          "clasificacion": "A"
+        },
+        {
+          "id": "BO7",
+          "resultado": 5.42,
+          "z_score": 0.71,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AP2",
+          "resultado": 5.61,
+          "z_score": 0.95,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KQ7",
+          "resultado": 5.7,
+          "z_score": 1.06,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LK9",
+          "resultado": 5.91,
+          "z_score": 1.33,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NL9",
+          "resultado": 7.05,
+          "z_score": 2.75,
+          "clasificacion": "C"
+        },
+        {
+          "id": "DX6",
+          "resultado": 7.7,
+          "z_score": 3.56,
+          "clasificacion": "I"
+        },
+        {
+          "id": "QZ1",
+          "resultado": 8.3,
+          "z_score": 4.31,
+          "clasificacion": "I"
+        },
+        {
+          "id": "CW7",
+          "resultado": 47.48,
+          "z_score": 53.29,
+          "clasificacion": "I"
+        }
+      ],
+      "evaluacion_confiable": true,
+      "aviso_bimodal": null
+    },
+    {
+      "nombre": "CK-TOTAL",
+      "unidad": "U/L",
+      "n": 22,
+      "evaluacion": "agrupada",
+      "valor_asignado": 553.34,
+      "sd_robusta": 142.2,
+      "cv": 25.7,
+      "n_suficiente": true,
+      "laboratorios": [
+        {
+          "id": "QV5",
+          "resultado": 106.0,
+          "z_score": -3.15,
+          "clasificacion": "I"
+        },
+        {
+          "id": "CW7",
+          "resultado": 148.9,
+          "z_score": -2.84,
+          "clasificacion": "C"
+        },
+        {
+          "id": "GD6",
+          "resultado": 355.0,
+          "z_score": -1.39,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GB1",
+          "resultado": 444.0,
+          "z_score": -0.77,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YY6",
+          "resultado": 458.0,
+          "z_score": -0.67,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YX6",
+          "resultado": 461.0,
+          "z_score": -0.65,
+          "clasificacion": "A"
+        },
+        {
+          "id": "JU6",
+          "resultado": 485.0,
+          "z_score": -0.48,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WJ5",
+          "resultado": 489.0,
+          "z_score": -0.45,
+          "clasificacion": "A"
+        },
+        {
+          "id": "BO7",
+          "resultado": 504.0,
+          "z_score": -0.35,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KQ7",
+          "resultado": 520.0,
+          "z_score": -0.23,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FV4",
+          "resultado": 543.0,
+          "z_score": -0.07,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EH4",
+          "resultado": 577.0,
+          "z_score": 0.17,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AF7",
+          "resultado": 608.0,
+          "z_score": 0.38,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ZY9",
+          "resultado": 608.0,
+          "z_score": 0.38,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LD2",
+          "resultado": 609.0,
+          "z_score": 0.39,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NL9",
+          "resultado": 617.8,
+          "z_score": 0.45,
+          "clasificacion": "A"
+        },
+        {
+          "id": "IS1",
+          "resultado": 635.0,
+          "z_score": 0.57,
+          "clasificacion": "A"
+        },
+        {
+          "id": "PZ6",
+          "resultado": 676.0,
+          "z_score": 0.86,
+          "clasificacion": "A"
+        },
+        {
+          "id": "RI2",
+          "resultado": 690.0,
+          "z_score": 0.96,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NM5",
+          "resultado": 712.0,
+          "z_score": 1.12,
+          "clasificacion": "A"
+        },
+        {
+          "id": "DX6",
+          "resultado": 735.0,
+          "z_score": 1.28,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AB8",
+          "resultado": 957.0,
+          "z_score": 2.84,
+          "clasificacion": "C"
+        }
+      ],
+      "evaluacion_confiable": true,
+      "aviso_bimodal": null
+    },
+    {
+      "nombre": "Calcio",
+      "unidad": "mg/dL",
+      "n": 34,
+      "evaluacion": "agrupada",
+      "valor_asignado": 11.74,
+      "sd_robusta": 1.3,
+      "cv": 11.1,
+      "n_suficiente": true,
+      "laboratorios": [
+        {
+          "id": "CW7",
+          "resultado": 3.45,
+          "z_score": -6.38,
+          "clasificacion": "I"
+        },
+        {
+          "id": "QV5",
+          "resultado": 6.88,
+          "z_score": -3.74,
+          "clasificacion": "I"
+        },
+        {
+          "id": "LD2",
+          "resultado": 8.0,
+          "z_score": -2.88,
+          "clasificacion": "C"
+        },
+        {
+          "id": "YX6",
+          "resultado": 8.5,
+          "z_score": -2.49,
+          "clasificacion": "C"
+        },
+        {
+          "id": "YK4",
+          "resultado": 10.0,
+          "z_score": -1.34,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EG2",
+          "resultado": 10.4,
+          "z_score": -1.03,
+          "clasificacion": "A"
+        },
+        {
+          "id": "UJ4",
+          "resultado": 10.8,
+          "z_score": -0.72,
+          "clasificacion": "A"
+        },
+        {
+          "id": "MS6",
+          "resultado": 10.94,
+          "z_score": -0.62,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FU2",
+          "resultado": 11.2,
+          "z_score": -0.42,
+          "clasificacion": "A"
+        },
+        {
+          "id": "BO7",
+          "resultado": 11.3,
+          "z_score": -0.34,
+          "clasificacion": "A"
+        },
+        {
+          "id": "QZ1",
+          "resultado": 11.3,
+          "z_score": -0.34,
+          "clasificacion": "A"
+        },
+        {
+          "id": "VK4",
+          "resultado": 11.3,
+          "z_score": -0.34,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WJ5",
+          "resultado": 11.3,
+          "z_score": -0.34,
+          "clasificacion": "A"
+        },
+        {
+          "id": "XC8",
+          "resultado": 11.34,
+          "z_score": -0.31,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KQ7",
+          "resultado": 11.4,
+          "z_score": -0.26,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YY6",
+          "resultado": 11.7,
+          "z_score": -0.03,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GB1",
+          "resultado": 11.9,
+          "z_score": 0.12,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EH4",
+          "resultado": 11.97,
+          "z_score": 0.18,
+          "clasificacion": "A"
+        },
+        {
+          "id": "PZ6",
+          "resultado": 12.0,
+          "z_score": 0.2,
+          "clasificacion": "A"
+        },
+        {
+          "id": "JU6",
+          "resultado": 12.1,
+          "z_score": 0.28,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NM5",
+          "resultado": 12.1,
+          "z_score": 0.28,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ER7",
+          "resultado": 12.2,
+          "z_score": 0.35,
+          "clasificacion": "A"
+        },
+        {
+          "id": "IS1",
+          "resultado": 12.2,
+          "z_score": 0.35,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AB8",
+          "resultado": 12.3,
+          "z_score": 0.43,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AF7",
+          "resultado": 12.4,
+          "z_score": 0.51,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WG5",
+          "resultado": 12.4,
+          "z_score": 0.51,
+          "clasificacion": "A"
+        },
+        {
+          "id": "DX6",
+          "resultado": 12.5,
+          "z_score": 0.58,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ZY9",
+          "resultado": 12.7,
+          "z_score": 0.74,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AP2",
+          "resultado": 12.89,
+          "z_score": 0.88,
+          "clasificacion": "A"
+        },
+        {
+          "id": "RI2",
+          "resultado": 13.0,
+          "z_score": 0.97,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LK9",
+          "resultado": 13.4,
+          "z_score": 1.28,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NL9",
+          "resultado": 14.47,
+          "z_score": 2.1,
+          "clasificacion": "C"
+        },
+        {
+          "id": "FV4",
+          "resultado": 17.5,
+          "z_score": 4.43,
+          "clasificacion": "I"
+        },
+        {
+          "id": "GD6",
+          "resultado": 152.0,
+          "z_score": 107.89,
+          "clasificacion": "I"
+        }
+      ],
+      "evaluacion_confiable": true,
+      "aviso_bimodal": null
+    },
+    {
+      "nombre": "Cloruro",
+      "unidad": "mmol/L",
+      "n": 32,
+      "evaluacion": "agrupada",
+      "valor_asignado": 113.81,
+      "sd_robusta": 9.23,
+      "cv": 8.1,
+      "n_suficiente": true,
+      "laboratorios": [
+        {
+          "id": "YX6",
+          "resultado": 82.0,
+          "z_score": -3.45,
+          "clasificacion": "I"
+        },
+        {
+          "id": "AB8",
+          "resultado": 84.0,
+          "z_score": -3.23,
+          "clasificacion": "I"
+        },
+        {
+          "id": "BO7",
+          "resultado": 101.0,
+          "z_score": -1.39,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EG2",
+          "resultado": 103.0,
+          "z_score": -1.17,
+          "clasificacion": "A"
+        },
+        {
+          "id": "DX6",
+          "resultado": 104.0,
+          "z_score": -1.06,
+          "clasificacion": "A"
+        },
+        {
+          "id": "VK4",
+          "resultado": 108.0,
+          "z_score": -0.63,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WG5",
+          "resultado": 108.0,
+          "z_score": -0.63,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ZY9",
+          "resultado": 108.0,
+          "z_score": -0.63,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NL9",
+          "resultado": 108.8,
+          "z_score": -0.54,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ER7",
+          "resultado": 109.0,
+          "z_score": -0.52,
+          "clasificacion": "A"
+        },
+        {
+          "id": "QV5",
+          "resultado": 109.0,
+          "z_score": -0.52,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AF7",
+          "resultado": 110.5,
+          "z_score": -0.36,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KQ7",
+          "resultado": 112.0,
+          "z_score": -0.2,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NM5",
+          "resultado": 112.0,
+          "z_score": -0.2,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FV4",
+          "resultado": 112.1,
+          "z_score": -0.19,
+          "clasificacion": "A"
+        },
+        {
+          "id": "QZ1",
+          "resultado": 112.7,
+          "z_score": -0.12,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GB1",
+          "resultado": 113.0,
+          "z_score": -0.09,
+          "clasificacion": "A"
+        },
+        {
+          "id": "JU6",
+          "resultado": 115.0,
+          "z_score": 0.13,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YY6",
+          "resultado": 115.0,
+          "z_score": 0.13,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FU2",
+          "resultado": 117.0,
+          "z_score": 0.35,
+          "clasificacion": "A"
+        },
+        {
+          "id": "IS1",
+          "resultado": 117.0,
+          "z_score": 0.35,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YK4",
+          "resultado": 117.0,
+          "z_score": 0.35,
+          "clasificacion": "A"
+        },
+        {
+          "id": "MS6",
+          "resultado": 117.7,
+          "z_score": 0.42,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LD2",
+          "resultado": 118.0,
+          "z_score": 0.45,
+          "clasificacion": "A"
+        },
+        {
+          "id": "PZ6",
+          "resultado": 118.0,
+          "z_score": 0.45,
+          "clasificacion": "A"
+        },
+        {
+          "id": "RI2",
+          "resultado": 118.0,
+          "z_score": 0.45,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AP2",
+          "resultado": 120.0,
+          "z_score": 0.67,
+          "clasificacion": "A"
+        },
+        {
+          "id": "CW7",
+          "resultado": 128.0,
+          "z_score": 1.54,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GD6",
+          "resultado": 128.0,
+          "z_score": 1.54,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WJ5",
+          "resultado": 128.0,
+          "z_score": 1.54,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LK9",
+          "resultado": 131.9,
+          "z_score": 1.96,
+          "clasificacion": "A"
+        },
+        {
+          "id": "UJ4",
+          "resultado": 141.0,
+          "z_score": 2.95,
+          "clasificacion": "C"
+        }
+      ],
+      "evaluacion_confiable": true,
+      "aviso_bimodal": null
+    },
+    {
+      "nombre": "Colesterol",
+      "unidad": "mg/dl",
+      "n": 37,
+      "evaluacion": "agrupada",
+      "valor_asignado": 278.24,
+      "sd_robusta": 40.73,
+      "cv": 14.6,
+      "n_suficiente": true,
+      "laboratorios": [
+        {
+          "id": "QV5",
+          "resultado": 113.0,
+          "z_score": -4.06,
+          "clasificacion": "I"
+        },
+        {
+          "id": "YX6",
+          "resultado": 188.0,
+          "z_score": -2.22,
+          "clasificacion": "C"
+        },
+        {
+          "id": "UJ4",
+          "resultado": 220.0,
+          "z_score": -1.43,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LN5",
+          "resultado": 225.6,
+          "z_score": -1.29,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EG2",
+          "resultado": 233.0,
+          "z_score": -1.11,
+          "clasificacion": "A"
+        },
+        {
+          "id": "DW1",
+          "resultado": 237.0,
+          "z_score": -1.01,
+          "clasificacion": "A"
+        },
+        {
+          "id": "IS1",
+          "resultado": 240.0,
+          "z_score": -0.94,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ER7",
+          "resultado": 245.0,
+          "z_score": -0.82,
+          "clasificacion": "A"
+        },
+        {
+          "id": "VK4",
+          "resultado": 249.0,
+          "z_score": -0.72,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NM5",
+          "resultado": 256.0,
+          "z_score": -0.55,
+          "clasificacion": "A"
+        },
+        {
+          "id": "PZ6",
+          "resultado": 258.0,
+          "z_score": -0.5,
+          "clasificacion": "A"
+        },
+        {
+          "id": "RI2",
+          "resultado": 260.0,
+          "z_score": -0.45,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WJ5",
+          "resultado": 262.0,
+          "z_score": -0.4,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LD2",
+          "resultado": 266.0,
+          "z_score": -0.3,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AB8",
+          "resultado": 270.0,
+          "z_score": -0.2,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GD6",
+          "resultado": 270.0,
+          "z_score": -0.2,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FU2",
+          "resultado": 271.0,
+          "z_score": -0.18,
+          "clasificacion": "A"
+        },
+        {
+          "id": "JU6",
+          "resultado": 272.0,
+          "z_score": -0.15,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GB1",
+          "resultado": 274.0,
+          "z_score": -0.1,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WG5",
+          "resultado": 274.0,
+          "z_score": -0.1,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KQ7",
+          "resultado": 275.0,
+          "z_score": -0.08,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ZY9",
+          "resultado": 287.0,
+          "z_score": 0.22,
+          "clasificacion": "A"
+        },
+        {
+          "id": "CW7",
+          "resultado": 292.0,
+          "z_score": 0.34,
+          "clasificacion": "A"
+        },
+        {
+          "id": "XC8",
+          "resultado": 294.0,
+          "z_score": 0.39,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YK4",
+          "resultado": 294.0,
+          "z_score": 0.39,
+          "clasificacion": "A"
+        },
+        {
+          "id": "DX6",
+          "resultado": 298.0,
+          "z_score": 0.49,
+          "clasificacion": "A"
+        },
+        {
+          "id": "MS6",
+          "resultado": 301.0,
+          "z_score": 0.56,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EH4",
+          "resultado": 307.0,
+          "z_score": 0.71,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AF7",
+          "resultado": 313.0,
+          "z_score": 0.85,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AP2",
+          "resultado": 314.0,
+          "z_score": 0.88,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YY6",
+          "resultado": 314.0,
+          "z_score": 0.88,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FV4",
+          "resultado": 318.0,
+          "z_score": 0.98,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KO7",
+          "resultado": 324.0,
+          "z_score": 1.12,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LK9",
+          "resultado": 329.0,
+          "z_score": 1.25,
+          "clasificacion": "A"
+        },
+        {
+          "id": "BO7",
+          "resultado": 343.0,
+          "z_score": 1.59,
+          "clasificacion": "A"
+        },
+        {
+          "id": "QZ1",
+          "resultado": 350.01,
+          "z_score": 1.76,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NL9",
+          "resultado": 437.0,
+          "z_score": 3.9,
+          "clasificacion": "I"
+        }
+      ],
+      "evaluacion_confiable": true,
+      "aviso_bimodal": null
+    },
+    {
+      "nombre": "Colesterol HDL",
+      "unidad": "mg/dl",
+      "n": 35,
+      "evaluacion": "agrupada",
+      "valor_asignado": 89.13,
+      "sd_robusta": 23.43,
+      "cv": 26.3,
+      "n_suficiente": true,
+      "laboratorios": [
+        {
+          "id": "UJ4",
+          "resultado": 28.0,
+          "z_score": -2.61,
+          "clasificacion": "C"
+        },
+        {
+          "id": "YK4",
+          "resultado": 45.0,
+          "z_score": -1.88,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EH4",
+          "resultado": 60.2,
+          "z_score": -1.23,
+          "clasificacion": "A"
+        },
+        {
+          "id": "XC8",
+          "resultado": 60.5,
+          "z_score": -1.22,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AP2",
+          "resultado": 61.3,
+          "z_score": -1.19,
+          "clasificacion": "A"
+        },
+        {
+          "id": "DW1",
+          "resultado": 62.0,
+          "z_score": -1.16,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YY6",
+          "resultado": 69.5,
+          "z_score": -0.84,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FV4",
+          "resultado": 69.7,
+          "z_score": -0.83,
+          "clasificacion": "A"
+        },
+        {
+          "id": "QV5",
+          "resultado": 70.8,
+          "z_score": -0.78,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EG2",
+          "resultado": 73.0,
+          "z_score": -0.69,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KO7",
+          "resultado": 74.0,
+          "z_score": -0.65,
+          "clasificacion": "A"
+        },
+        {
+          "id": "RI2",
+          "resultado": 80.0,
+          "z_score": -0.39,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WG5",
+          "resultado": 80.0,
+          "z_score": -0.39,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LD2",
+          "resultado": 81.1,
+          "z_score": -0.34,
+          "clasificacion": "A"
+        },
+        {
+          "id": "VK4",
+          "resultado": 83.0,
+          "z_score": -0.26,
+          "clasificacion": "A"
+        },
+        {
+          "id": "QZ1",
+          "resultado": 84.79,
+          "z_score": -0.19,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GD6",
+          "resultado": 86.1,
+          "z_score": -0.13,
+          "clasificacion": "A"
+        },
+        {
+          "id": "MS6",
+          "resultado": 86.5,
+          "z_score": -0.11,
+          "clasificacion": "A"
+        },
+        {
+          "id": "JU6",
+          "resultado": 94.0,
+          "z_score": 0.21,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KQ7",
+          "resultado": 96.0,
+          "z_score": 0.29,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ZY9",
+          "resultado": 99.33,
+          "z_score": 0.44,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WJ5",
+          "resultado": 99.6,
+          "z_score": 0.45,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GB1",
+          "resultado": 102.0,
+          "z_score": 0.55,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AF7",
+          "resultado": 103.7,
+          "z_score": 0.62,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YX6",
+          "resultado": 104.0,
+          "z_score": 0.63,
+          "clasificacion": "A"
+        },
+        {
+          "id": "BO7",
+          "resultado": 107.0,
+          "z_score": 0.76,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LK9",
+          "resultado": 107.0,
+          "z_score": 0.76,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AB8",
+          "resultado": 110.0,
+          "z_score": 0.89,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ER7",
+          "resultado": 110.0,
+          "z_score": 0.89,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FU2",
+          "resultado": 110.0,
+          "z_score": 0.89,
+          "clasificacion": "A"
+        },
+        {
+          "id": "IS1",
+          "resultado": 110.0,
+          "z_score": 0.89,
+          "clasificacion": "A"
+        },
+        {
+          "id": "PZ6",
+          "resultado": 110.0,
+          "z_score": 0.89,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NM5",
+          "resultado": 118.1,
+          "z_score": 1.24,
+          "clasificacion": "A"
+        },
+        {
+          "id": "CW7",
+          "resultado": 123.98,
+          "z_score": 1.49,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NL9",
+          "resultado": 166.0,
+          "z_score": 3.28,
+          "clasificacion": "I"
+        }
+      ],
+      "evaluacion_confiable": true,
+      "aviso_bimodal": null
+    },
+    {
+      "nombre": "Creatinina",
+      "unidad": "mg/dL",
+      "n": 37,
+      "evaluacion": "agrupada",
+      "valor_asignado": 3.8,
+      "sd_robusta": 0.51,
+      "cv": 13.4,
+      "n_suficiente": true,
+      "laboratorios": [
+        {
+          "id": "QV5",
+          "resultado": 1.4,
+          "z_score": -4.71,
+          "clasificacion": "I"
+        },
+        {
+          "id": "CW7",
+          "resultado": 1.83,
+          "z_score": -3.86,
+          "clasificacion": "I"
+        },
+        {
+          "id": "QZ1",
+          "resultado": 3.0,
+          "z_score": -1.57,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YX6",
+          "resultado": 3.07,
+          "z_score": -1.43,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EH4",
+          "resultado": 3.23,
+          "z_score": -1.12,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YK4",
+          "resultado": 3.25,
+          "z_score": -1.08,
+          "clasificacion": "A"
+        },
+        {
+          "id": "UJ4",
+          "resultado": 3.3,
+          "z_score": -0.98,
+          "clasificacion": "A"
+        },
+        {
+          "id": "XC8",
+          "resultado": 3.53,
+          "z_score": -0.53,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YY6",
+          "resultado": 3.54,
+          "z_score": -0.51,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WJ5",
+          "resultado": 3.58,
+          "z_score": -0.43,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LN5",
+          "resultado": 3.6,
+          "z_score": -0.39,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KO7",
+          "resultado": 3.61,
+          "z_score": -0.37,
+          "clasificacion": "A"
+        },
+        {
+          "id": "DW1",
+          "resultado": 3.62,
+          "z_score": -0.35,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AB8",
+          "resultado": 3.66,
+          "z_score": -0.27,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AP2",
+          "resultado": 3.66,
+          "z_score": -0.27,
+          "clasificacion": "A"
+        },
+        {
+          "id": "PZ6",
+          "resultado": 3.68,
+          "z_score": -0.24,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WG5",
+          "resultado": 3.7,
+          "z_score": -0.2,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ZY9",
+          "resultado": 3.71,
+          "z_score": -0.18,
+          "clasificacion": "A"
+        },
+        {
+          "id": "IS1",
+          "resultado": 3.73,
+          "z_score": -0.14,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FU2",
+          "resultado": 3.74,
+          "z_score": -0.12,
+          "clasificacion": "A"
+        },
+        {
+          "id": "MS6",
+          "resultado": 3.78,
+          "z_score": -0.04,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EG2",
+          "resultado": 3.82,
+          "z_score": 0.04,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ER7",
+          "resultado": 3.88,
+          "z_score": 0.16,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NM5",
+          "resultado": 3.94,
+          "z_score": 0.27,
+          "clasificacion": "A"
+        },
+        {
+          "id": "DX6",
+          "resultado": 3.96,
+          "z_score": 0.31,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GD6",
+          "resultado": 4.03,
+          "z_score": 0.45,
+          "clasificacion": "A"
+        },
+        {
+          "id": "VK4",
+          "resultado": 4.04,
+          "z_score": 0.47,
+          "clasificacion": "A"
+        },
+        {
+          "id": "RI2",
+          "resultado": 4.08,
+          "z_score": 0.55,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FV4",
+          "resultado": 4.1,
+          "z_score": 0.59,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AF7",
+          "resultado": 4.22,
+          "z_score": 0.82,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GB1",
+          "resultado": 4.28,
+          "z_score": 0.94,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LD2",
+          "resultado": 4.41,
+          "z_score": 1.2,
+          "clasificacion": "A"
+        },
+        {
+          "id": "JU6",
+          "resultado": 4.45,
+          "z_score": 1.27,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KQ7",
+          "resultado": 4.45,
+          "z_score": 1.27,
+          "clasificacion": "A"
+        },
+        {
+          "id": "BO7",
+          "resultado": 4.9,
+          "z_score": 2.16,
+          "clasificacion": "C"
+        },
+        {
+          "id": "LK9",
+          "resultado": 4.9,
+          "z_score": 2.16,
+          "clasificacion": "C"
+        },
+        {
+          "id": "NL9",
+          "resultado": 5.44,
+          "z_score": 3.22,
+          "clasificacion": "I"
+        }
+      ],
+      "evaluacion_confiable": true,
+      "aviso_bimodal": null
+    },
+    {
+      "nombre": "Fosfatasa Alcalina (ALP)",
+      "unidad": "U/L",
+      "n": 36,
+      "evaluacion": "grupo_pares",
+      "grupos": [
+        {
+          "nombre": "Química húmeda",
+          "n": 26,
+          "evaluado": true,
+          "valor_asignado": 406.76,
+          "sd_robusta": 114.89,
+          "cv": 28.2,
+          "n_suficiente": true
+        },
+        {
+          "nombre": "Química seca (plataforma A)",
+          "n": 8,
+          "evaluado": true,
+          "valor_asignado": 1101.6,
+          "sd_robusta": 115.46,
+          "cv": 10.5,
+          "n_suficiente": false
+        },
+        {
+          "nombre": "Química seca (plataforma B)",
+          "n": 2,
+          "evaluado": false,
+          "motivo": "Grupo de pares insuficiente (n < 8)"
+        }
+      ],
+      "cv_global": 61.2,
+      "laboratorios": [
+        {
+          "id": "QV5",
+          "resultado": 230.0,
+          "z_score": -1.54,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "QZ1",
+          "resultado": 270.2,
+          "z_score": -1.19,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "YX6",
+          "resultado": 966.0,
+          "z_score": -1.17,
+          "clasificacion": "A",
+          "grupo": "Química seca (plataforma A)"
+        },
+        {
+          "id": "DW1",
+          "resultado": 286.0,
+          "z_score": -1.05,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "AP2",
+          "resultado": 295.0,
+          "z_score": -0.97,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "ER7",
+          "resultado": 1003.0,
+          "z_score": -0.85,
+          "clasificacion": "A",
+          "grupo": "Química seca (plataforma A)"
+        },
+        {
+          "id": "LD2",
+          "resultado": 336.0,
+          "z_score": -0.62,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "WJ5",
+          "resultado": 336.0,
+          "z_score": -0.62,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "UJ4",
+          "resultado": 340.0,
+          "z_score": -0.58,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "YK4",
+          "resultado": 340.0,
+          "z_score": -0.58,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "VK4",
+          "resultado": 345.0,
+          "z_score": -0.54,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "JU6",
+          "resultado": 347.0,
+          "z_score": -0.52,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "FU2",
+          "resultado": 1045.0,
+          "z_score": -0.49,
+          "clasificacion": "A",
+          "grupo": "Química seca (plataforma A)"
+        },
+        {
+          "id": "KO7",
+          "resultado": 373.0,
+          "z_score": -0.29,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "MS6",
+          "resultado": 375.0,
+          "z_score": -0.28,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "XC8",
+          "resultado": 378.0,
+          "z_score": -0.25,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "YY6",
+          "resultado": 379.0,
+          "z_score": -0.24,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "PZ6",
+          "resultado": 1077.0,
+          "z_score": -0.21,
+          "clasificacion": "A",
+          "grupo": "Química seca (plataforma A)"
+        },
+        {
+          "id": "DX6",
+          "resultado": 385.0,
+          "z_score": -0.19,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "EH4",
+          "resultado": 397.0,
+          "z_score": -0.08,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "CW7",
+          "resultado": 414.0,
+          "z_score": 0.06,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "NM5",
+          "resultado": 1121.0,
+          "z_score": 0.17,
+          "clasificacion": "A",
+          "grupo": "Química seca (plataforma A)"
+        },
+        {
+          "id": "IS1",
+          "resultado": 1126.0,
+          "z_score": 0.21,
+          "clasificacion": "A",
+          "grupo": "Química seca (plataforma A)"
+        },
+        {
+          "id": "WG5",
+          "resultado": 439.0,
+          "z_score": 0.28,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "GD6",
+          "resultado": 475.0,
+          "z_score": 0.59,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "AF7",
+          "resultado": 497.0,
+          "z_score": 0.79,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "RI2",
+          "resultado": 1200.0,
+          "z_score": 0.85,
+          "clasificacion": "A",
+          "grupo": "Química seca (plataforma A)"
+        },
+        {
+          "id": "BO7",
+          "resultado": 516.0,
+          "z_score": 0.95,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "EG2",
+          "resultado": 537.0,
+          "z_score": 1.13,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "NL9",
+          "resultado": 546.0,
+          "z_score": 1.21,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "FV4",
+          "resultado": 577.0,
+          "z_score": 1.48,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "LK9",
+          "resultado": 685.0,
+          "z_score": 2.42,
+          "clasificacion": "C",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "AB8",
+          "resultado": 1410.0,
+          "z_score": 2.67,
+          "clasificacion": "C",
+          "grupo": "Química seca (plataforma A)"
+        },
+        {
+          "id": "ZY9",
+          "resultado": 1391.0,
+          "z_score": 8.57,
+          "clasificacion": "I",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "GB1",
+          "resultado": 300.0,
+          "z_score": null,
+          "clasificacion": "NE",
+          "grupo": "Química seca (plataforma B)"
+        },
+        {
+          "id": "KQ7",
+          "resultado": 308.0,
+          "z_score": null,
+          "clasificacion": "NE",
+          "grupo": "Química seca (plataforma B)"
+        }
+      ],
+      "evaluacion_confiable": true,
+      "aviso_bimodal": null
+    },
+    {
+      "nombre": "Fósforo",
+      "unidad": "mg/dl",
+      "n": 35,
+      "evaluacion": "agrupada",
+      "valor_asignado": 7.32,
+      "sd_robusta": 0.98,
+      "cv": 13.4,
+      "n_suficiente": true,
+      "laboratorios": [
+        {
+          "id": "QV5",
+          "resultado": 4.35,
+          "z_score": -3.03,
+          "clasificacion": "I"
+        },
+        {
+          "id": "WJ5",
+          "resultado": 5.0,
+          "z_score": -2.37,
+          "clasificacion": "C"
+        },
+        {
+          "id": "CW7",
+          "resultado": 5.23,
+          "z_score": -2.13,
+          "clasificacion": "C"
+        },
+        {
+          "id": "YX6",
+          "resultado": 5.8,
+          "z_score": -1.55,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ZY9",
+          "resultado": 5.9,
+          "z_score": -1.45,
+          "clasificacion": "A"
+        },
+        {
+          "id": "QZ1",
+          "resultado": 6.4,
+          "z_score": -0.94,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YY6",
+          "resultado": 6.4,
+          "z_score": -0.94,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EG2",
+          "resultado": 6.6,
+          "z_score": -0.73,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LD2",
+          "resultado": 6.95,
+          "z_score": -0.38,
+          "clasificacion": "A"
+        },
+        {
+          "id": "UJ4",
+          "resultado": 7.0,
+          "z_score": -0.33,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AB8",
+          "resultado": 7.1,
+          "z_score": -0.22,
+          "clasificacion": "A"
+        },
+        {
+          "id": "MS6",
+          "resultado": 7.19,
+          "z_score": -0.13,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AF7",
+          "resultado": 7.3,
+          "z_score": -0.02,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GD6",
+          "resultado": 7.3,
+          "z_score": -0.02,
+          "clasificacion": "A"
+        },
+        {
+          "id": "IS1",
+          "resultado": 7.3,
+          "z_score": -0.02,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KQ7",
+          "resultado": 7.3,
+          "z_score": -0.02,
+          "clasificacion": "A"
+        },
+        {
+          "id": "XC8",
+          "resultado": 7.32,
+          "z_score": 0.0,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EH4",
+          "resultado": 7.36,
+          "z_score": 0.04,
+          "clasificacion": "A"
+        },
+        {
+          "id": "JU6",
+          "resultado": 7.4,
+          "z_score": 0.08,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NM5",
+          "resultado": 7.4,
+          "z_score": 0.08,
+          "clasificacion": "A"
+        },
+        {
+          "id": "RI2",
+          "resultado": 7.4,
+          "z_score": 0.08,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KO7",
+          "resultado": 7.43,
+          "z_score": 0.11,
+          "clasificacion": "A"
+        },
+        {
+          "id": "VK4",
+          "resultado": 7.5,
+          "z_score": 0.18,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YK4",
+          "resultado": 7.5,
+          "z_score": 0.18,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FU2",
+          "resultado": 7.6,
+          "z_score": 0.29,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ER7",
+          "resultado": 7.7,
+          "z_score": 0.39,
+          "clasificacion": "A"
+        },
+        {
+          "id": "PZ6",
+          "resultado": 7.7,
+          "z_score": 0.39,
+          "clasificacion": "A"
+        },
+        {
+          "id": "BO7",
+          "resultado": 7.8,
+          "z_score": 0.49,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WG5",
+          "resultado": 7.89,
+          "z_score": 0.58,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FV4",
+          "resultado": 8.39,
+          "z_score": 1.09,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AP2",
+          "resultado": 8.51,
+          "z_score": 1.21,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GB1",
+          "resultado": 9.0,
+          "z_score": 1.71,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LK9",
+          "resultado": 10.1,
+          "z_score": 2.84,
+          "clasificacion": "C"
+        },
+        {
+          "id": "NL9",
+          "resultado": 10.1,
+          "z_score": 2.84,
+          "clasificacion": "C"
+        },
+        {
+          "id": "DX6",
+          "resultado": 11.0,
+          "z_score": 3.76,
+          "clasificacion": "I"
+        }
+      ],
+      "evaluacion_confiable": true,
+      "aviso_bimodal": null
+    },
+    {
+      "nombre": "Gamma GGT",
+      "unidad": "U/L",
+      "n": 30,
+      "evaluacion": "grupo_pares",
+      "grupos": [
+        {
+          "nombre": "Química húmeda",
+          "n": 20,
+          "evaluado": true,
+          "valor_asignado": 179.86,
+          "sd_robusta": 27.21,
+          "cv": 15.1,
+          "n_suficiente": true
+        },
+        {
+          "nombre": "Química seca (plataforma A)",
+          "n": 8,
+          "evaluado": true,
+          "valor_asignado": 145.41,
+          "sd_robusta": 12.06,
+          "cv": 8.3,
+          "n_suficiente": false
+        },
+        {
+          "nombre": "Química seca (plataforma B)",
+          "n": 2,
+          "evaluado": false,
+          "motivo": "Grupo de pares insuficiente (n < 8)"
+        }
+      ],
+      "cv_global": 19.7,
+      "laboratorios": [
+        {
+          "id": "QV5",
+          "resultado": 33.9,
+          "z_score": -5.36,
+          "clasificacion": "I",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "YX6",
+          "resultado": 107.0,
+          "z_score": -3.18,
+          "clasificacion": "I",
+          "grupo": "Química seca (plataforma A)"
+        },
+        {
+          "id": "QZ1",
+          "resultado": 125.6,
+          "z_score": -1.99,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "MS6",
+          "resultado": 156.0,
+          "z_score": -0.88,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "DX6",
+          "resultado": 159.0,
+          "z_score": -0.77,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "WG5",
+          "resultado": 160.0,
+          "z_score": -0.73,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "GD6",
+          "resultado": 161.0,
+          "z_score": -0.69,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "AP2",
+          "resultado": 162.0,
+          "z_score": -0.66,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "IS1",
+          "resultado": 140.0,
+          "z_score": -0.45,
+          "clasificacion": "A",
+          "grupo": "Química seca (plataforma A)"
+        },
+        {
+          "id": "FU2",
+          "resultado": 141.0,
+          "z_score": -0.37,
+          "clasificacion": "A",
+          "grupo": "Química seca (plataforma A)"
+        },
+        {
+          "id": "LK9",
+          "resultado": 173.0,
+          "z_score": -0.25,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "AB8",
+          "resultado": 143.0,
+          "z_score": -0.2,
+          "clasificacion": "A",
+          "grupo": "Química seca (plataforma A)"
+        },
+        {
+          "id": "ER7",
+          "resultado": 144.0,
+          "z_score": -0.12,
+          "clasificacion": "A",
+          "grupo": "Química seca (plataforma A)"
+        },
+        {
+          "id": "EH4",
+          "resultado": 182.0,
+          "z_score": 0.08,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "FV4",
+          "resultado": 182.0,
+          "z_score": 0.08,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "ZY9",
+          "resultado": 182.0,
+          "z_score": 0.08,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "LD2",
+          "resultado": 185.0,
+          "z_score": 0.19,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "WJ5",
+          "resultado": 185.0,
+          "z_score": 0.19,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "JU6",
+          "resultado": 188.0,
+          "z_score": 0.3,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "PZ6",
+          "resultado": 150.0,
+          "z_score": 0.38,
+          "clasificacion": "A",
+          "grupo": "Química seca (plataforma A)"
+        },
+        {
+          "id": "NL9",
+          "resultado": 194.0,
+          "z_score": 0.52,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "YY6",
+          "resultado": 195.0,
+          "z_score": 0.56,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "AF7",
+          "resultado": 198.8,
+          "z_score": 0.7,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "NM5",
+          "resultado": 156.0,
+          "z_score": 0.88,
+          "clasificacion": "A",
+          "grupo": "Química seca (plataforma A)"
+        },
+        {
+          "id": "BO7",
+          "resultado": 215.0,
+          "z_score": 1.29,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "RI2",
+          "resultado": 162.0,
+          "z_score": 1.38,
+          "clasificacion": "A",
+          "grupo": "Química seca (plataforma A)"
+        },
+        {
+          "id": "KO7",
+          "resultado": 261.0,
+          "z_score": 2.98,
+          "clasificacion": "C",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "CW7",
+          "resultado": 310.7,
+          "z_score": 4.81,
+          "clasificacion": "I",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "GB1",
+          "resultado": 205.0,
+          "z_score": null,
+          "clasificacion": "NE",
+          "grupo": "Química seca (plataforma B)"
+        },
+        {
+          "id": "KQ7",
+          "resultado": 227.0,
+          "z_score": null,
+          "clasificacion": "NE",
+          "grupo": "Química seca (plataforma B)"
+        }
+      ],
+      "evaluacion_confiable": true,
+      "aviso_bimodal": null
+    },
+    {
+      "nombre": "Glucosa",
+      "unidad": "mg/dl",
+      "n": 37,
+      "evaluacion": "agrupada",
+      "valor_asignado": 270.99,
+      "sd_robusta": 26.88,
+      "cv": 9.9,
+      "n_suficiente": true,
+      "laboratorios": [
+        {
+          "id": "QV5",
+          "resultado": 87.0,
+          "z_score": -6.84,
+          "clasificacion": "I"
+        },
+        {
+          "id": "LN5",
+          "resultado": 202.4,
+          "z_score": -2.55,
+          "clasificacion": "C"
+        },
+        {
+          "id": "UJ4",
+          "resultado": 206.0,
+          "z_score": -2.42,
+          "clasificacion": "C"
+        },
+        {
+          "id": "YX6",
+          "resultado": 208.0,
+          "z_score": -2.34,
+          "clasificacion": "C"
+        },
+        {
+          "id": "IS1",
+          "resultado": 247.0,
+          "z_score": -0.89,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AB8",
+          "resultado": 248.0,
+          "z_score": -0.86,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FU2",
+          "resultado": 249.0,
+          "z_score": -0.82,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NM5",
+          "resultado": 251.0,
+          "z_score": -0.74,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ER7",
+          "resultado": 258.0,
+          "z_score": -0.48,
+          "clasificacion": "A"
+        },
+        {
+          "id": "VK4",
+          "resultado": 259.0,
+          "z_score": -0.45,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KQ7",
+          "resultado": 260.0,
+          "z_score": -0.41,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YK4",
+          "resultado": 262.0,
+          "z_score": -0.33,
+          "clasificacion": "A"
+        },
+        {
+          "id": "DW1",
+          "resultado": 263.0,
+          "z_score": -0.3,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GB1",
+          "resultado": 264.0,
+          "z_score": -0.26,
+          "clasificacion": "A"
+        },
+        {
+          "id": "PZ6",
+          "resultado": 264.0,
+          "z_score": -0.26,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YY6",
+          "resultado": 264.0,
+          "z_score": -0.26,
+          "clasificacion": "A"
+        },
+        {
+          "id": "JU6",
+          "resultado": 265.0,
+          "z_score": -0.22,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WJ5",
+          "resultado": 267.0,
+          "z_score": -0.15,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EG2",
+          "resultado": 268.0,
+          "z_score": -0.11,
+          "clasificacion": "A"
+        },
+        {
+          "id": "XC8",
+          "resultado": 268.0,
+          "z_score": -0.11,
+          "clasificacion": "A"
+        },
+        {
+          "id": "RI2",
+          "resultado": 269.0,
+          "z_score": -0.07,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LD2",
+          "resultado": 269.4,
+          "z_score": -0.06,
+          "clasificacion": "A"
+        },
+        {
+          "id": "DX6",
+          "resultado": 271.0,
+          "z_score": 0.0,
+          "clasificacion": "A"
+        },
+        {
+          "id": "MS6",
+          "resultado": 277.0,
+          "z_score": 0.22,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WG5",
+          "resultado": 278.0,
+          "z_score": 0.26,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AF7",
+          "resultado": 279.64,
+          "z_score": 0.32,
+          "clasificacion": "A"
+        },
+        {
+          "id": "QZ1",
+          "resultado": 282.53,
+          "z_score": 0.43,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GD6",
+          "resultado": 285.0,
+          "z_score": 0.52,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EH4",
+          "resultado": 287.0,
+          "z_score": 0.6,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KO7",
+          "resultado": 293.0,
+          "z_score": 0.82,
+          "clasificacion": "A"
+        },
+        {
+          "id": "BO7",
+          "resultado": 300.0,
+          "z_score": 1.08,
+          "clasificacion": "A"
+        },
+        {
+          "id": "CW7",
+          "resultado": 300.0,
+          "z_score": 1.08,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FV4",
+          "resultado": 310.0,
+          "z_score": 1.45,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AP2",
+          "resultado": 344.0,
+          "z_score": 2.72,
+          "clasificacion": "C"
+        },
+        {
+          "id": "LK9",
+          "resultado": 345.0,
+          "z_score": 2.75,
+          "clasificacion": "C"
+        },
+        {
+          "id": "ZY9",
+          "resultado": 346.0,
+          "z_score": 2.79,
+          "clasificacion": "C"
+        },
+        {
+          "id": "NL9",
+          "resultado": 437.0,
+          "z_score": 6.18,
+          "clasificacion": "I"
+        }
+      ],
+      "evaluacion_confiable": true,
+      "aviso_bimodal": null
+    },
+    {
+      "nombre": "Hierro",
+      "unidad": "ug/dl",
+      "n": 12,
+      "evaluacion": "agrupada",
+      "valor_asignado": 205.29,
+      "sd_robusta": 45.82,
+      "cv": 22.3,
+      "n_suficiente": true,
+      "laboratorios": [
+        {
+          "id": "BO7",
+          "resultado": 7.9,
+          "z_score": -4.31,
+          "clasificacion": "I"
+        },
+        {
+          "id": "FV4",
+          "resultado": 173.0,
+          "z_score": -0.7,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GB1",
+          "resultado": 177.0,
+          "z_score": -0.62,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KQ7",
+          "resultado": 181.0,
+          "z_score": -0.53,
+          "clasificacion": "A"
+        },
+        {
+          "id": "JU6",
+          "resultado": 190.0,
+          "z_score": -0.33,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WJ5",
+          "resultado": 191.4,
+          "z_score": -0.3,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YY6",
+          "resultado": 196.0,
+          "z_score": -0.2,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EH4",
+          "resultado": 207.0,
+          "z_score": 0.04,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LD2",
+          "resultado": 228.45,
+          "z_score": 0.51,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NL9",
+          "resultado": 245.01,
+          "z_score": 0.87,
+          "clasificacion": "A"
+        },
+        {
+          "id": "DX6",
+          "resultado": 264.0,
+          "z_score": 1.28,
+          "clasificacion": "A"
+        },
+        {
+          "id": "QV5",
+          "resultado": 336.0,
+          "z_score": 2.85,
+          "clasificacion": "C"
+        }
+      ],
+      "evaluacion_confiable": true,
+      "aviso_bimodal": null
+    },
+    {
+      "nombre": "LDH",
+      "unidad": "U/L",
+      "n": 33,
+      "evaluacion": "grupo_pares",
+      "grupos": [
+        {
+          "nombre": "Química húmeda",
+          "n": 23,
+          "evaluado": true,
+          "valor_asignado": 703.75,
+          "sd_robusta": 198.59,
+          "cv": 28.2,
+          "n_suficiente": true
+        },
+        {
+          "nombre": "Química seca (plataforma A)",
+          "n": 8,
+          "evaluado": true,
+          "valor_asignado": 373.38,
+          "sd_robusta": 35.55,
+          "cv": 9.5,
+          "n_suficiente": false
+        },
+        {
+          "nombre": "Química seca (plataforma B)",
+          "n": 2,
+          "evaluado": false,
+          "motivo": "Grupo de pares insuficiente (n < 8)"
+        }
+      ],
+      "cv_global": 41.8,
+      "laboratorios": [
+        {
+          "id": "YX6",
+          "resultado": 279.0,
+          "z_score": -2.65,
+          "clasificacion": "C",
+          "grupo": "Química seca (plataforma A)"
+        },
+        {
+          "id": "CW7",
+          "resultado": 226.6,
+          "z_score": -2.4,
+          "clasificacion": "C",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "VK4",
+          "resultado": 339.0,
+          "z_score": -1.84,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "JU6",
+          "resultado": 415.0,
+          "z_score": -1.45,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "QV5",
+          "resultado": 452.0,
+          "z_score": -1.27,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "YK4",
+          "resultado": 550.0,
+          "z_score": -0.77,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "AB8",
+          "resultado": 348.0,
+          "z_score": -0.71,
+          "clasificacion": "A",
+          "grupo": "Química seca (plataforma A)"
+        },
+        {
+          "id": "AP2",
+          "resultado": 578.0,
+          "z_score": -0.63,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "QZ1",
+          "resultado": 619.0,
+          "z_score": -0.43,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "WJ5",
+          "resultado": 625.0,
+          "z_score": -0.4,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "ZY9",
+          "resultado": 635.0,
+          "z_score": -0.35,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "IS1",
+          "resultado": 365.0,
+          "z_score": -0.24,
+          "clasificacion": "A",
+          "grupo": "Química seca (plataforma A)"
+        },
+        {
+          "id": "FU2",
+          "resultado": 369.0,
+          "z_score": -0.12,
+          "clasificacion": "A",
+          "grupo": "Química seca (plataforma A)"
+        },
+        {
+          "id": "PZ6",
+          "resultado": 371.0,
+          "z_score": -0.07,
+          "clasificacion": "A",
+          "grupo": "Química seca (plataforma A)"
+        },
+        {
+          "id": "MS6",
+          "resultado": 723.0,
+          "z_score": 0.1,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "EG2",
+          "resultado": 726.0,
+          "z_score": 0.11,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "EH4",
+          "resultado": 738.0,
+          "z_score": 0.17,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "WG5",
+          "resultado": 742.0,
+          "z_score": 0.19,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "LD2",
+          "resultado": 753.9,
+          "z_score": 0.25,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "GD6",
+          "resultado": 775.0,
+          "z_score": 0.36,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "KO7",
+          "resultado": 804.0,
+          "z_score": 0.5,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "DX6",
+          "resultado": 810.0,
+          "z_score": 0.54,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "NM5",
+          "resultado": 395.0,
+          "z_score": 0.61,
+          "clasificacion": "A",
+          "grupo": "Química seca (plataforma A)"
+        },
+        {
+          "id": "AF7",
+          "resultado": 830.0,
+          "z_score": 0.64,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "ER7",
+          "resultado": 399.0,
+          "z_score": 0.72,
+          "clasificacion": "A",
+          "grupo": "Química seca (plataforma A)"
+        },
+        {
+          "id": "YY6",
+          "resultado": 859.0,
+          "z_score": 0.78,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "LK9",
+          "resultado": 890.0,
+          "z_score": 0.94,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "NL9",
+          "resultado": 919.9,
+          "z_score": 1.09,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "FV4",
+          "resultado": 928.0,
+          "z_score": 1.13,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "RI2",
+          "resultado": 420.0,
+          "z_score": 1.31,
+          "clasificacion": "A",
+          "grupo": "Química seca (plataforma A)"
+        },
+        {
+          "id": "BO7",
+          "resultado": 1046.0,
+          "z_score": 1.72,
+          "clasificacion": "A",
+          "grupo": "Química húmeda"
+        },
+        {
+          "id": "GB1",
+          "resultado": 416.0,
+          "z_score": null,
+          "clasificacion": "NE",
+          "grupo": "Química seca (plataforma B)"
+        },
+        {
+          "id": "KQ7",
+          "resultado": 401.0,
+          "z_score": null,
+          "clasificacion": "NE",
+          "grupo": "Química seca (plataforma B)"
+        }
+      ],
+      "evaluacion_confiable": true,
+      "aviso_bimodal": null
+    },
+    {
+      "nombre": "Lipasa",
+      "unidad": "U/L",
+      "n": 28,
+      "evaluacion": "agrupada",
+      "valor_asignado": 66.23,
+      "sd_robusta": 27.37,
+      "cv": 41.3,
+      "n_suficiente": true,
+      "laboratorios": [
+        {
+          "id": "KO7",
+          "resultado": 18.18,
+          "z_score": -1.76,
+          "clasificacion": "A"
+        },
+        {
+          "id": "QV5",
+          "resultado": 19.0,
+          "z_score": -1.73,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AP2",
+          "resultado": 34.92,
+          "z_score": -1.14,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YY6",
+          "resultado": 36.6,
+          "z_score": -1.08,
+          "clasificacion": "A"
+        },
+        {
+          "id": "UJ4",
+          "resultado": 46.0,
+          "z_score": -0.74,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FU2",
+          "resultado": 48.0,
+          "z_score": -0.67,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LD2",
+          "resultado": 48.6,
+          "z_score": -0.64,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FV4",
+          "resultado": 50.0,
+          "z_score": -0.59,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NM5",
+          "resultado": 56.4,
+          "z_score": -0.36,
+          "clasificacion": "A"
+        },
+        {
+          "id": "DX6",
+          "resultado": 58.0,
+          "z_score": -0.3,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LK9",
+          "resultado": 59.0,
+          "z_score": -0.26,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WG5",
+          "resultado": 60.0,
+          "z_score": -0.23,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YK4",
+          "resultado": 60.0,
+          "z_score": -0.23,
+          "clasificacion": "A"
+        },
+        {
+          "id": "VK4",
+          "resultado": 61.0,
+          "z_score": -0.19,
+          "clasificacion": "A"
+        },
+        {
+          "id": "BO7",
+          "resultado": 62.0,
+          "z_score": -0.15,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GD6",
+          "resultado": 63.2,
+          "z_score": -0.11,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GB1",
+          "resultado": 65.0,
+          "z_score": -0.04,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WJ5",
+          "resultado": 72.0,
+          "z_score": 0.21,
+          "clasificacion": "A"
+        },
+        {
+          "id": "CW7",
+          "resultado": 72.3,
+          "z_score": 0.22,
+          "clasificacion": "A"
+        },
+        {
+          "id": "XC8",
+          "resultado": 72.66,
+          "z_score": 0.23,
+          "clasificacion": "A"
+        },
+        {
+          "id": "RI2",
+          "resultado": 77.15,
+          "z_score": 0.4,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EH4",
+          "resultado": 84.05,
+          "z_score": 0.65,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NL9",
+          "resultado": 93.0,
+          "z_score": 0.98,
+          "clasificacion": "A"
+        },
+        {
+          "id": "IS1",
+          "resultado": 95.0,
+          "z_score": 1.05,
+          "clasificacion": "A"
+        },
+        {
+          "id": "PZ6",
+          "resultado": 170.0,
+          "z_score": 3.79,
+          "clasificacion": "I"
+        },
+        {
+          "id": "KQ7",
+          "resultado": 493.0,
+          "z_score": 15.59,
+          "clasificacion": "I"
+        },
+        {
+          "id": "AB8",
+          "resultado": 500.0,
+          "z_score": 15.85,
+          "clasificacion": "I"
+        },
+        {
+          "id": "JU6",
+          "resultado": 576.0,
+          "z_score": 18.63,
+          "clasificacion": "I"
+        }
+      ],
+      "evaluacion_confiable": true,
+      "aviso_bimodal": null
+    },
+    {
+      "nombre": "Magnesio",
+      "unidad": "mg/dl",
+      "n": 30,
+      "evaluacion": "agrupada",
+      "valor_asignado": 4.31,
+      "sd_robusta": 1.06,
+      "cv": 24.5,
+      "n_suficiente": true,
+      "laboratorios": [
+        {
+          "id": "BO7",
+          "resultado": 1.35,
+          "z_score": -2.79,
+          "clasificacion": "C"
+        },
+        {
+          "id": "QV5",
+          "resultado": 1.92,
+          "z_score": -2.25,
+          "clasificacion": "C"
+        },
+        {
+          "id": "WJ5",
+          "resultado": 2.4,
+          "z_score": -1.8,
+          "clasificacion": "A"
+        },
+        {
+          "id": "UJ4",
+          "resultado": 2.7,
+          "z_score": -1.52,
+          "clasificacion": "A"
+        },
+        {
+          "id": "RI2",
+          "resultado": 2.89,
+          "z_score": -1.34,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YX6",
+          "resultado": 2.9,
+          "z_score": -1.33,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EG2",
+          "resultado": 3.6,
+          "z_score": -0.67,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GD6",
+          "resultado": 3.7,
+          "z_score": -0.58,
+          "clasificacion": "A"
+        },
+        {
+          "id": "VK4",
+          "resultado": 4.04,
+          "z_score": -0.25,
+          "clasificacion": "A"
+        },
+        {
+          "id": "QZ1",
+          "resultado": 4.1,
+          "z_score": -0.2,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WG5",
+          "resultado": 4.2,
+          "z_score": -0.1,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GB1",
+          "resultado": 4.3,
+          "z_score": -0.01,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YY6",
+          "resultado": 4.3,
+          "z_score": -0.01,
+          "clasificacion": "A"
+        },
+        {
+          "id": "JU6",
+          "resultado": 4.4,
+          "z_score": 0.08,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LK9",
+          "resultado": 4.4,
+          "z_score": 0.08,
+          "clasificacion": "A"
+        },
+        {
+          "id": "MS6",
+          "resultado": 4.5,
+          "z_score": 0.18,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AF7",
+          "resultado": 4.7,
+          "z_score": 0.37,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KQ7",
+          "resultado": 4.7,
+          "z_score": 0.37,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ZY9",
+          "resultado": 4.7,
+          "z_score": 0.37,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LD2",
+          "resultado": 4.77,
+          "z_score": 0.43,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ER7",
+          "resultado": 4.8,
+          "z_score": 0.46,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AB8",
+          "resultado": 4.9,
+          "z_score": 0.56,
+          "clasificacion": "A"
+        },
+        {
+          "id": "IS1",
+          "resultado": 4.9,
+          "z_score": 0.56,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NM5",
+          "resultado": 5.0,
+          "z_score": 0.65,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AP2",
+          "resultado": 5.04,
+          "z_score": 0.69,
+          "clasificacion": "A"
+        },
+        {
+          "id": "PZ6",
+          "resultado": 5.1,
+          "z_score": 0.75,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FU2",
+          "resultado": 5.4,
+          "z_score": 1.03,
+          "clasificacion": "A"
+        },
+        {
+          "id": "CW7",
+          "resultado": 5.5,
+          "z_score": 1.12,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FV4",
+          "resultado": 5.6,
+          "z_score": 1.22,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NL9",
+          "resultado": 6.125,
+          "z_score": 1.71,
+          "clasificacion": "A"
+        }
+      ],
+      "evaluacion_confiable": true,
+      "aviso_bimodal": null
+    },
+    {
+      "nombre": "Potasio",
+      "unidad": "mmol/L",
+      "n": 32,
+      "evaluacion": "agrupada",
+      "valor_asignado": 6.07,
+      "sd_robusta": 0.35,
+      "cv": 5.7,
+      "n_suficiente": true,
+      "laboratorios": [
+        {
+          "id": "ZY9",
+          "resultado": 3.8,
+          "z_score": -6.49,
+          "clasificacion": "I"
+        },
+        {
+          "id": "QV5",
+          "resultado": 4.2,
+          "z_score": -5.34,
+          "clasificacion": "I"
+        },
+        {
+          "id": "AB8",
+          "resultado": 4.5,
+          "z_score": -4.49,
+          "clasificacion": "I"
+        },
+        {
+          "id": "YX6",
+          "resultado": 4.5,
+          "z_score": -4.49,
+          "clasificacion": "I"
+        },
+        {
+          "id": "DX6",
+          "resultado": 5.68,
+          "z_score": -1.11,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EG2",
+          "resultado": 5.7,
+          "z_score": -1.06,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WJ5",
+          "resultado": 5.8,
+          "z_score": -0.77,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AF7",
+          "resultado": 5.82,
+          "z_score": -0.71,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KQ7",
+          "resultado": 5.9,
+          "z_score": -0.49,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ER7",
+          "resultado": 6.0,
+          "z_score": -0.2,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NM5",
+          "resultado": 6.0,
+          "z_score": -0.2,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YK4",
+          "resultado": 6.0,
+          "z_score": -0.2,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FV4",
+          "resultado": 6.04,
+          "z_score": -0.09,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WG5",
+          "resultado": 6.04,
+          "z_score": -0.09,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NL9",
+          "resultado": 6.07,
+          "z_score": 0.0,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GB1",
+          "resultado": 6.1,
+          "z_score": 0.09,
+          "clasificacion": "A"
+        },
+        {
+          "id": "JU6",
+          "resultado": 6.1,
+          "z_score": 0.09,
+          "clasificacion": "A"
+        },
+        {
+          "id": "VK4",
+          "resultado": 6.1,
+          "z_score": 0.09,
+          "clasificacion": "A"
+        },
+        {
+          "id": "QZ1",
+          "resultado": 6.14,
+          "z_score": 0.2,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FU2",
+          "resultado": 6.2,
+          "z_score": 0.37,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GD6",
+          "resultado": 6.2,
+          "z_score": 0.37,
+          "clasificacion": "A"
+        },
+        {
+          "id": "IS1",
+          "resultado": 6.2,
+          "z_score": 0.37,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LD2",
+          "resultado": 6.2,
+          "z_score": 0.37,
+          "clasificacion": "A"
+        },
+        {
+          "id": "PZ6",
+          "resultado": 6.2,
+          "z_score": 0.37,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YY6",
+          "resultado": 6.2,
+          "z_score": 0.37,
+          "clasificacion": "A"
+        },
+        {
+          "id": "MS6",
+          "resultado": 6.28,
+          "z_score": 0.6,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AP2",
+          "resultado": 6.3,
+          "z_score": 0.66,
+          "clasificacion": "A"
+        },
+        {
+          "id": "RI2",
+          "resultado": 6.3,
+          "z_score": 0.66,
+          "clasificacion": "A"
+        },
+        {
+          "id": "CW7",
+          "resultado": 6.6,
+          "z_score": 1.51,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LK9",
+          "resultado": 6.9,
+          "z_score": 2.37,
+          "clasificacion": "C"
+        },
+        {
+          "id": "UJ4",
+          "resultado": 7.1,
+          "z_score": 2.94,
+          "clasificacion": "C"
+        },
+        {
+          "id": "BO7",
+          "resultado": 7.14,
+          "z_score": 3.06,
+          "clasificacion": "I"
+        }
+      ],
+      "evaluacion_confiable": true,
+      "aviso_bimodal": null
+    },
+    {
+      "nombre": "Proteínas Total",
+      "unidad": "g/dL",
+      "n": 35,
+      "evaluacion": "agrupada",
+      "valor_asignado": 4.75,
+      "sd_robusta": 0.79,
+      "cv": 16.6,
+      "n_suficiente": true,
+      "laboratorios": [
+        {
+          "id": "QZ1",
+          "resultado": 2.79,
+          "z_score": -2.48,
+          "clasificacion": "C"
+        },
+        {
+          "id": "GD6",
+          "resultado": 3.47,
+          "z_score": -1.62,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NL9",
+          "resultado": 3.5,
+          "z_score": -1.58,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YX6",
+          "resultado": 3.6,
+          "z_score": -1.46,
+          "clasificacion": "A"
+        },
+        {
+          "id": "CW7",
+          "resultado": 3.8,
+          "z_score": -1.2,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YK4",
+          "resultado": 4.05,
+          "z_score": -0.89,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YY6",
+          "resultado": 4.09,
+          "z_score": -0.84,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AB8",
+          "resultado": 4.3,
+          "z_score": -0.57,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KQ7",
+          "resultado": 4.3,
+          "z_score": -0.57,
+          "clasificacion": "A"
+        },
+        {
+          "id": "PZ6",
+          "resultado": 4.3,
+          "z_score": -0.57,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FU2",
+          "resultado": 4.4,
+          "z_score": -0.44,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EH4",
+          "resultado": 4.55,
+          "z_score": -0.25,
+          "clasificacion": "A"
+        },
+        {
+          "id": "MS6",
+          "resultado": 4.56,
+          "z_score": -0.24,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ER7",
+          "resultado": 4.6,
+          "z_score": -0.19,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NM5",
+          "resultado": 4.7,
+          "z_score": -0.06,
+          "clasificacion": "A"
+        },
+        {
+          "id": "VK4",
+          "resultado": 4.7,
+          "z_score": -0.06,
+          "clasificacion": "A"
+        },
+        {
+          "id": "XC8",
+          "resultado": 4.77,
+          "z_score": 0.03,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FV4",
+          "resultado": 4.79,
+          "z_score": 0.05,
+          "clasificacion": "A"
+        },
+        {
+          "id": "IS1",
+          "resultado": 4.8,
+          "z_score": 0.06,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WJ5",
+          "resultado": 4.8,
+          "z_score": 0.06,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WG5",
+          "resultado": 4.85,
+          "z_score": 0.13,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AF7",
+          "resultado": 4.9,
+          "z_score": 0.19,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GB1",
+          "resultado": 4.9,
+          "z_score": 0.19,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ZY9",
+          "resultado": 4.9,
+          "z_score": 0.19,
+          "clasificacion": "A"
+        },
+        {
+          "id": "JU6",
+          "resultado": 5.1,
+          "z_score": 0.44,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KO7",
+          "resultado": 5.11,
+          "z_score": 0.46,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EG2",
+          "resultado": 5.2,
+          "z_score": 0.57,
+          "clasificacion": "A"
+        },
+        {
+          "id": "RI2",
+          "resultado": 5.2,
+          "z_score": 0.57,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LD2",
+          "resultado": 5.36,
+          "z_score": 0.77,
+          "clasificacion": "A"
+        },
+        {
+          "id": "DX6",
+          "resultado": 5.53,
+          "z_score": 0.99,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LK9",
+          "resultado": 5.7,
+          "z_score": 1.2,
+          "clasificacion": "A"
+        },
+        {
+          "id": "QV5",
+          "resultado": 6.03,
+          "z_score": 1.62,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AP2",
+          "resultado": 6.11,
+          "z_score": 1.72,
+          "clasificacion": "A"
+        },
+        {
+          "id": "UJ4",
+          "resultado": 7.7,
+          "z_score": 3.73,
+          "clasificacion": "I"
+        },
+        {
+          "id": "BO7",
+          "resultado": 8.3,
+          "z_score": 4.49,
+          "clasificacion": "I"
+        }
+      ],
+      "evaluacion_confiable": true,
+      "aviso_bimodal": null
+    },
+    {
+      "nombre": "Sodio",
+      "unidad": "mmol/L",
+      "n": 32,
+      "evaluacion": "agrupada",
+      "valor_asignado": 153.72,
+      "sd_robusta": 5.55,
+      "cv": 3.6,
+      "n_suficiente": true,
+      "laboratorios": [
+        {
+          "id": "AB8",
+          "resultado": 119.0,
+          "z_score": -6.26,
+          "clasificacion": "I"
+        },
+        {
+          "id": "YX6",
+          "resultado": 119.0,
+          "z_score": -6.26,
+          "clasificacion": "I"
+        },
+        {
+          "id": "DX6",
+          "resultado": 142.0,
+          "z_score": -2.11,
+          "clasificacion": "C"
+        },
+        {
+          "id": "YY6",
+          "resultado": 147.0,
+          "z_score": -1.21,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AF7",
+          "resultado": 148.4,
+          "z_score": -0.96,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EG2",
+          "resultado": 148.9,
+          "z_score": -0.87,
+          "clasificacion": "A"
+        },
+        {
+          "id": "QV5",
+          "resultado": 150.0,
+          "z_score": -0.67,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WJ5",
+          "resultado": 151.0,
+          "z_score": -0.49,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ZY9",
+          "resultado": 151.0,
+          "z_score": -0.49,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NL9",
+          "resultado": 151.7,
+          "z_score": -0.36,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GD6",
+          "resultado": 152.0,
+          "z_score": -0.31,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WG5",
+          "resultado": 152.0,
+          "z_score": -0.31,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YK4",
+          "resultado": 152.0,
+          "z_score": -0.31,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FV4",
+          "resultado": 152.8,
+          "z_score": -0.17,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ER7",
+          "resultado": 153.0,
+          "z_score": -0.13,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GB1",
+          "resultado": 153.0,
+          "z_score": -0.13,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KQ7",
+          "resultado": 153.0,
+          "z_score": -0.13,
+          "clasificacion": "A"
+        },
+        {
+          "id": "VK4",
+          "resultado": 153.0,
+          "z_score": -0.13,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LD2",
+          "resultado": 154.0,
+          "z_score": 0.05,
+          "clasificacion": "A"
+        },
+        {
+          "id": "QZ1",
+          "resultado": 154.0,
+          "z_score": 0.05,
+          "clasificacion": "A"
+        },
+        {
+          "id": "IS1",
+          "resultado": 155.0,
+          "z_score": 0.23,
+          "clasificacion": "A"
+        },
+        {
+          "id": "JU6",
+          "resultado": 155.0,
+          "z_score": 0.23,
+          "clasificacion": "A"
+        },
+        {
+          "id": "MS6",
+          "resultado": 156.0,
+          "z_score": 0.41,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NM5",
+          "resultado": 157.0,
+          "z_score": 0.59,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AP2",
+          "resultado": 158.0,
+          "z_score": 0.77,
+          "clasificacion": "A"
+        },
+        {
+          "id": "PZ6",
+          "resultado": 159.0,
+          "z_score": 0.95,
+          "clasificacion": "A"
+        },
+        {
+          "id": "UJ4",
+          "resultado": 159.0,
+          "z_score": 0.95,
+          "clasificacion": "A"
+        },
+        {
+          "id": "RI2",
+          "resultado": 160.0,
+          "z_score": 1.13,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FU2",
+          "resultado": 161.0,
+          "z_score": 1.31,
+          "clasificacion": "A"
+        },
+        {
+          "id": "CW7",
+          "resultado": 164.0,
+          "z_score": 1.85,
+          "clasificacion": "A"
+        },
+        {
+          "id": "BO7",
+          "resultado": 177.0,
+          "z_score": 4.19,
+          "clasificacion": "I"
+        },
+        {
+          "id": "LK9",
+          "resultado": 188.0,
+          "z_score": 6.18,
+          "clasificacion": "I"
+        }
+      ],
+      "evaluacion_confiable": true,
+      "aviso_bimodal": null
+    },
+    {
+      "nombre": "Triglicéridos",
+      "unidad": "mg/dl",
+      "n": 37,
+      "evaluacion": "agrupada",
+      "valor_asignado": 270.76,
+      "sd_robusta": 47.31,
+      "cv": 17.5,
+      "n_suficiente": true,
+      "laboratorios": [
+        {
+          "id": "QV5",
+          "resultado": 73.4,
+          "z_score": -4.17,
+          "clasificacion": "I"
+        },
+        {
+          "id": "UJ4",
+          "resultado": 180.0,
+          "z_score": -1.92,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GD6",
+          "resultado": 195.0,
+          "z_score": -1.6,
+          "clasificacion": "A"
+        },
+        {
+          "id": "RI2",
+          "resultado": 218.0,
+          "z_score": -1.12,
+          "clasificacion": "A"
+        },
+        {
+          "id": "DW1",
+          "resultado": 223.0,
+          "z_score": -1.01,
+          "clasificacion": "A"
+        },
+        {
+          "id": "XC8",
+          "resultado": 230.0,
+          "z_score": -0.86,
+          "clasificacion": "A"
+        },
+        {
+          "id": "VK4",
+          "resultado": 234.0,
+          "z_score": -0.78,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ZY9",
+          "resultado": 240.0,
+          "z_score": -0.65,
+          "clasificacion": "A"
+        },
+        {
+          "id": "QZ1",
+          "resultado": 240.51,
+          "z_score": -0.64,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EG2",
+          "resultado": 242.0,
+          "z_score": -0.61,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FV4",
+          "resultado": 243.0,
+          "z_score": -0.59,
+          "clasificacion": "A"
+        },
+        {
+          "id": "CW7",
+          "resultado": 247.0,
+          "z_score": -0.5,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WJ5",
+          "resultado": 248.0,
+          "z_score": -0.48,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YK4",
+          "resultado": 250.0,
+          "z_score": -0.44,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EH4",
+          "resultado": 254.0,
+          "z_score": -0.35,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LN5",
+          "resultado": 259.4,
+          "z_score": -0.24,
+          "clasificacion": "A"
+        },
+        {
+          "id": "MS6",
+          "resultado": 262.0,
+          "z_score": -0.19,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YX6",
+          "resultado": 265.0,
+          "z_score": -0.12,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LD2",
+          "resultado": 267.0,
+          "z_score": -0.08,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AP2",
+          "resultado": 269.0,
+          "z_score": -0.04,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YY6",
+          "resultado": 271.0,
+          "z_score": 0.01,
+          "clasificacion": "A"
+        },
+        {
+          "id": "BO7",
+          "resultado": 272.0,
+          "z_score": 0.03,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NM5",
+          "resultado": 275.0,
+          "z_score": 0.09,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KO7",
+          "resultado": 279.0,
+          "z_score": 0.17,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AF7",
+          "resultado": 281.0,
+          "z_score": 0.22,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WG5",
+          "resultado": 281.0,
+          "z_score": 0.22,
+          "clasificacion": "A"
+        },
+        {
+          "id": "DX6",
+          "resultado": 296.5,
+          "z_score": 0.54,
+          "clasificacion": "A"
+        },
+        {
+          "id": "IS1",
+          "resultado": 309.0,
+          "z_score": 0.81,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AB8",
+          "resultado": 313.0,
+          "z_score": 0.89,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ER7",
+          "resultado": 321.0,
+          "z_score": 1.06,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FU2",
+          "resultado": 322.0,
+          "z_score": 1.08,
+          "clasificacion": "A"
+        },
+        {
+          "id": "JU6",
+          "resultado": 323.0,
+          "z_score": 1.1,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GB1",
+          "resultado": 329.0,
+          "z_score": 1.23,
+          "clasificacion": "A"
+        },
+        {
+          "id": "PZ6",
+          "resultado": 331.0,
+          "z_score": 1.27,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KQ7",
+          "resultado": 340.0,
+          "z_score": 1.46,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LK9",
+          "resultado": 348.0,
+          "z_score": 1.63,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NL9",
+          "resultado": 357.0,
+          "z_score": 1.82,
+          "clasificacion": "A"
+        }
+      ],
+      "evaluacion_confiable": true,
+      "aviso_bimodal": null
+    },
+    {
+      "nombre": "Urea",
+      "unidad": "mg/dL",
+      "n": 36,
+      "evaluacion": "agrupada",
+      "valor_asignado": 107.25,
+      "sd_robusta": 19.61,
+      "cv": 18.3,
+      "n_suficiente": true,
+      "laboratorios": [
+        {
+          "id": "QV5",
+          "resultado": 42.0,
+          "z_score": -3.33,
+          "clasificacion": "I"
+        },
+        {
+          "id": "YX6",
+          "resultado": 43.4,
+          "z_score": -3.26,
+          "clasificacion": "I"
+        },
+        {
+          "id": "VK4",
+          "resultado": 49.0,
+          "z_score": -2.97,
+          "clasificacion": "C"
+        },
+        {
+          "id": "JU6",
+          "resultado": 51.0,
+          "z_score": -2.87,
+          "clasificacion": "C"
+        },
+        {
+          "id": "ER7",
+          "resultado": 54.4,
+          "z_score": -2.7,
+          "clasificacion": "C"
+        },
+        {
+          "id": "CW7",
+          "resultado": 79.52,
+          "z_score": -1.41,
+          "clasificacion": "A"
+        },
+        {
+          "id": "UJ4",
+          "resultado": 85.0,
+          "z_score": -1.13,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LN5",
+          "resultado": 86.2,
+          "z_score": -1.07,
+          "clasificacion": "A"
+        },
+        {
+          "id": "MS6",
+          "resultado": 100.2,
+          "z_score": -0.36,
+          "clasificacion": "A"
+        },
+        {
+          "id": "XC8",
+          "resultado": 101.0,
+          "z_score": -0.32,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EG2",
+          "resultado": 104.0,
+          "z_score": -0.17,
+          "clasificacion": "A"
+        },
+        {
+          "id": "DW1",
+          "resultado": 105.0,
+          "z_score": -0.11,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LD2",
+          "resultado": 105.3,
+          "z_score": -0.1,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EH4",
+          "resultado": 106.0,
+          "z_score": -0.06,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FV4",
+          "resultado": 106.0,
+          "z_score": -0.06,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YK4",
+          "resultado": 106.0,
+          "z_score": -0.06,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KQ7",
+          "resultado": 107.5,
+          "z_score": 0.01,
+          "clasificacion": "A"
+        },
+        {
+          "id": "QZ1",
+          "resultado": 110.0,
+          "z_score": 0.14,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KO7",
+          "resultado": 110.8,
+          "z_score": 0.18,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ZY9",
+          "resultado": 111.0,
+          "z_score": 0.19,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YY6",
+          "resultado": 112.0,
+          "z_score": 0.24,
+          "clasificacion": "A"
+        },
+        {
+          "id": "DX6",
+          "resultado": 112.5,
+          "z_score": 0.27,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NM5",
+          "resultado": 112.8,
+          "z_score": 0.28,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WG5",
+          "resultado": 115.0,
+          "z_score": 0.4,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AB8",
+          "resultado": 116.9,
+          "z_score": 0.49,
+          "clasificacion": "A"
+        },
+        {
+          "id": "IS1",
+          "resultado": 118.0,
+          "z_score": 0.55,
+          "clasificacion": "A"
+        },
+        {
+          "id": "PZ6",
+          "resultado": 118.0,
+          "z_score": 0.55,
+          "clasificacion": "A"
+        },
+        {
+          "id": "RI2",
+          "resultado": 119.0,
+          "z_score": 0.6,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WJ5",
+          "resultado": 119.0,
+          "z_score": 0.6,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FU2",
+          "resultado": 122.8,
+          "z_score": 0.79,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AF7",
+          "resultado": 124.8,
+          "z_score": 0.89,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AP2",
+          "resultado": 126.4,
+          "z_score": 0.98,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GD6",
+          "resultado": 130.0,
+          "z_score": 1.16,
+          "clasificacion": "A"
+        },
+        {
+          "id": "BO7",
+          "resultado": 132.0,
+          "z_score": 1.26,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NL9",
+          "resultado": 132.41,
+          "z_score": 1.28,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LK9",
+          "resultado": 142.0,
+          "z_score": 1.77,
+          "clasificacion": "A"
+        }
+      ],
+      "evaluacion_confiable": true,
+      "aviso_bimodal": null
+    },
+    {
+      "nombre": "Ácido Úrico",
+      "unidad": "mg/dl",
+      "n": 37,
+      "evaluacion": "agrupada",
+      "valor_asignado": 9.33,
+      "sd_robusta": 1.45,
+      "cv": 15.6,
+      "n_suficiente": true,
+      "laboratorios": [
+        {
+          "id": "QV5",
+          "resultado": 2.3,
+          "z_score": -4.85,
+          "clasificacion": "I"
+        },
+        {
+          "id": "LN5",
+          "resultado": 5.27,
+          "z_score": -2.8,
+          "clasificacion": "C"
+        },
+        {
+          "id": "CW7",
+          "resultado": 5.5,
+          "z_score": -2.64,
+          "clasificacion": "C"
+        },
+        {
+          "id": "UJ4",
+          "resultado": 7.3,
+          "z_score": -1.4,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LD2",
+          "resultado": 7.61,
+          "z_score": -1.19,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YX6",
+          "resultado": 7.7,
+          "z_score": -1.12,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NL9",
+          "resultado": 7.92,
+          "z_score": -0.97,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FV4",
+          "resultado": 7.99,
+          "z_score": -0.92,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WJ5",
+          "resultado": 8.1,
+          "z_score": -0.85,
+          "clasificacion": "A"
+        },
+        {
+          "id": "JU6",
+          "resultado": 8.2,
+          "z_score": -0.78,
+          "clasificacion": "A"
+        },
+        {
+          "id": "QZ1",
+          "resultado": 8.87,
+          "z_score": -0.32,
+          "clasificacion": "A"
+        },
+        {
+          "id": "DW1",
+          "resultado": 8.92,
+          "z_score": -0.28,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GB1",
+          "resultado": 9.0,
+          "z_score": -0.23,
+          "clasificacion": "A"
+        },
+        {
+          "id": "VK4",
+          "resultado": 9.0,
+          "z_score": -0.23,
+          "clasificacion": "A"
+        },
+        {
+          "id": "DX6",
+          "resultado": 9.16,
+          "z_score": -0.12,
+          "clasificacion": "A"
+        },
+        {
+          "id": "KQ7",
+          "resultado": 9.2,
+          "z_score": -0.09,
+          "clasificacion": "A"
+        },
+        {
+          "id": "RI2",
+          "resultado": 9.34,
+          "z_score": 0.01,
+          "clasificacion": "A"
+        },
+        {
+          "id": "XC8",
+          "resultado": 9.35,
+          "z_score": 0.01,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AF7",
+          "resultado": 9.4,
+          "z_score": 0.05,
+          "clasificacion": "A"
+        },
+        {
+          "id": "MS6",
+          "resultado": 9.51,
+          "z_score": 0.12,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YY6",
+          "resultado": 9.66,
+          "z_score": 0.23,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ER7",
+          "resultado": 9.8,
+          "z_score": 0.32,
+          "clasificacion": "A"
+        },
+        {
+          "id": "IS1",
+          "resultado": 9.8,
+          "z_score": 0.32,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AB8",
+          "resultado": 9.9,
+          "z_score": 0.39,
+          "clasificacion": "A"
+        },
+        {
+          "id": "NM5",
+          "resultado": 9.9,
+          "z_score": 0.39,
+          "clasificacion": "A"
+        },
+        {
+          "id": "PZ6",
+          "resultado": 9.9,
+          "z_score": 0.39,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EH4",
+          "resultado": 9.97,
+          "z_score": 0.44,
+          "clasificacion": "A"
+        },
+        {
+          "id": "YK4",
+          "resultado": 10.0,
+          "z_score": 0.46,
+          "clasificacion": "A"
+        },
+        {
+          "id": "ZY9",
+          "resultado": 10.2,
+          "z_score": 0.6,
+          "clasificacion": "A"
+        },
+        {
+          "id": "EG2",
+          "resultado": 10.3,
+          "z_score": 0.67,
+          "clasificacion": "A"
+        },
+        {
+          "id": "FU2",
+          "resultado": 10.5,
+          "z_score": 0.81,
+          "clasificacion": "A"
+        },
+        {
+          "id": "GD6",
+          "resultado": 10.58,
+          "z_score": 0.86,
+          "clasificacion": "A"
+        },
+        {
+          "id": "WG5",
+          "resultado": 11.1,
+          "z_score": 1.22,
+          "clasificacion": "A"
+        },
+        {
+          "id": "AP2",
+          "resultado": 11.2,
+          "z_score": 1.29,
+          "clasificacion": "A"
+        },
+        {
+          "id": "LK9",
+          "resultado": 12.7,
+          "z_score": 2.32,
+          "clasificacion": "C"
+        },
+        {
+          "id": "BO7",
+          "resultado": 13.1,
+          "z_score": 2.6,
+          "clasificacion": "C"
+        },
+        {
+          "id": "KO7",
+          "resultado": 13.79,
+          "z_score": 3.08,
+          "clasificacion": "I"
+        }
+      ],
+      "evaluacion_confiable": true,
+      "aviso_bimodal": null
+    }
+  ]
+}
