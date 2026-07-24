@@ -102,9 +102,11 @@ async function mostrarEstadoFormulario(user) {
     // 2. No hay ronda activa habilitada
     if (!rondaActiva || !rondaActiva.habilitado) {
         const codigo = rondaActiva?.codigo || '—';
+        const detalle = rondaActiva?.mensaje_cierre
+            || `La próxima ronda es <strong>${codigo}</strong>. CONCALAB-UASD le notificará cuando esté disponible.`;
         mostrarBanner('info',
             `El formulario de reporte no está habilitado en este momento.`,
-            `La próxima ronda es <strong>${codigo}</strong>. CONCALAB-UASD le notificará cuando esté disponible.`
+            detalle
         );
         return;
     }
