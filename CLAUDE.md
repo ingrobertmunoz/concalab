@@ -199,6 +199,12 @@ Desde EA-001-2026 la página **ya no se clona**. El estilo vive en `css/informe.
 
 Antes eran 1.575 líneas por ronda con el CSS y el JS embebidos. Cada corrección había que repetirla en cada copia y las rondas divergían en silencio — así fue como la página de 2025 quedó ordenando mal los identificadores, sin acotar los ejes y sin métrica global, defectos ya resueltos en la de 2026. Ahora una corrección en `js/informe.js` alcanza a todas las rondas a la vez.
 
+**Las gráficas se dibujan al entrar en pantalla, no al cargar.** El informe tiene 53 gráficas de Plotly y dibujarlas todas de golpe bloqueaba el hilo principal para mostrar las dos que caben en pantalla. `dibujarCuandoSeVean()` usa un `IntersectionObserver` con `rootMargin: '800px'`, así que cada gráfica está lista antes de que el usuario llegue a ella. Medido con reloj de pared (5 corridas, incluye ~700 ms fijos de arranque del navegador): **1.981 ms → 1.172 ms**, unos 810 ms menos.
+
+Dos detalles que **no se deben quitar**: (1) los contenedores llevan `min-height` fija (380/430 px el histograma, 450 px el de barras, y la altura calculada del heatmap), de modo que la página no cambia de alto al dibujarse y los anclas del índice siguen apuntando al sitio correcto; (2) `#heatmap-section` se pone visible **antes** de observarlo — un elemento con `display:none` tiene tamaño cero y el observer no dispararía nunca. Si no existe `IntersectionObserver`, se dibuja todo de una vez: más lento, pero el informe nunca queda en blanco.
+
+Al verificar en headless: `--dump-dom` **no dispara el observer** porque no pinta. Hay que usar `--screenshot`, que sí fuerza el pintado.
+
 **`js/informe.js` no calcula métricas.** Los números vienen de `calcular_zscore.py` y los verifica `validar_informe.py`. Ahí solo se decide *cómo mostrarlos*: orden de la tabla, recorte de ejes, qué barras se rotulan, colores. Una cifra nueva se agrega al JSON, no al JavaScript.
 
 **Historia — la página de 2025 (`EA-001-2025.html`) se mantiene tal cual**, con su CSS y su JS embebidos. No se migra: es el informe que ya se entregó, y tocarlo rompería la trazabilidad de lo que recibieron los participantes.

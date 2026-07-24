@@ -396,17 +396,13 @@ function renderReport(data) {
             <h2>🧪 ${a.nombre}${esPorPares(a) ? ' <span class="tag-pares">grupo de pares</span>' : ''}</h2>
             <div class="analyte-stats" style="display:flex;">${stats}</div>
             ${cvAlert}
-            <div id="hist-${i}" style="width:100%;"></div>
-            <div id="bar-${i}" style="width:100%; margin-top:1rem;"></div>
+            <div id="hist-${i}" style="width:100%; min-height:${esPorPares(a) ? 430 : 380}px;"></div>
+            <div id="bar-${i}" style="width:100%; margin-top:1rem; min-height:450px;"></div>
         </div>
     `;
     });
 
-    // Draw charts (after DOM is ready)
-    requestAnimationFrame(() => {
-        data.analitos.forEach((a, i) => renderCharts(a, i));
-        renderHeatmap(data);
-    });
+    dibujarCuandoSeVean(data);
 
     // Summary table + alerts
     renderGlobalMetric(data);
@@ -831,6 +827,60 @@ function renderCVAlerts(analitos) {
     </div>`;
     });
     container.innerHTML = html;
+}
+
+// ── Dibujo perezoso ──────────────────────────────────────────────────────
+// Plotly cuesta ~40 ms por gráfica y el informe tiene 53: dibujarlas todas al
+// cargar bloquea ~2 s para mostrar las dos que caben en pantalla. Cada sección
+// se dibuja al acercarse al viewport, con margen suficiente para que ya esté
+// lista cuando el usuario llega. Los contenedores llevan `min-height` fija, así
+// que la altura de la página no cambia al dibujarse y los anclas del índice
+// siguen apuntando al sitio correcto.
+const MARGEN_PREDIBUJO = '800px 0px';
+
+function dibujarCuandoSeVean(data) {
+    const secciones = data.analitos.map((a, i) => ({
+        a, i, el: document.getElementById(safeId(a.nombre))
+    })).filter(s => s.el);
+
+    // El heatmap arranca oculto, y un elemento con display:none tiene tamaño
+    // cero: IntersectionObserver nunca lo reportaría. Se muestra vacío con su
+    // altura reservada y Plotly lo rellena cuando toca.
+    const heatmap = document.getElementById('heatmap-section');
+    if (heatmap) {
+        heatmap.style.display = 'block';
+        const lienzo = document.getElementById('heatmap-chart');
+        if (lienzo) {
+            lienzo.style.minHeight =
+                Math.max(500, data.analitos.length * 30 + 120) + 'px';
+        }
+    }
+
+    // Sin IntersectionObserver (navegador antiguo) se dibuja todo de una vez:
+    // más lento, pero el informe nunca queda en blanco.
+    if (!('IntersectionObserver' in window)) {
+        requestAnimationFrame(() => {
+            secciones.forEach(s => renderCharts(s.a, s.i));
+            renderHeatmap(data);
+        });
+        return;
+    }
+
+    const obs = new IntersectionObserver((entradas, o) => {
+        entradas.forEach(e => {
+            if (!e.isIntersecting) return;
+            o.unobserve(e.target);              // cada gráfica se dibuja una sola vez
+            if (e.target === heatmap) {
+                renderHeatmap(data);
+            } else {
+                const s = secciones.find(x => x.el === e.target);
+                if (s) renderCharts(s.a, s.i);
+            }
+        });
+    }, { rootMargin: MARGEN_PREDIBUJO });
+
+    secciones.forEach(s => obs.observe(s.el));
+    if (heatmap) obs.observe(heatmap);
 }
 
 function renderHeatmap(data) {
