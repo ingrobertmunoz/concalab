@@ -35,7 +35,7 @@ from datetime import datetime
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from calcular_zscore import (  # noqa: E402
     cargar, calcular_agrupado, robust_mean_sd, plataforma, detectar_bimodales,
-    N_MINIMO, N_MINIMO_GRUPO, RAZON_BIMODAL, CONFIG_PATH, ANALITOS_POR_GRUPO_PARES,
+    N_MINIMO, N_MINIMO_GRUPO, RAZON_BIMODAL, CONFIG_PATH, analitos_por_grupo_pares,
 )
 
 
@@ -395,10 +395,11 @@ def main():
     if not por_analito:
         sys.exit(f"No hay resultados de Química Clínica para {codigo}.")
 
-    analitos = calcular_agrupado(por_analito, por_grupo_pares=ANALITOS_POR_GRUPO_PARES)
+    por_pares = analitos_por_grupo_pares(codigo)
+    analitos = calcular_agrupado(por_analito, por_grupo_pares=por_pares)
     bimodales = detectar_bimodales(calcular_agrupado(por_analito), por_analito)
     # Los resueltos por grupo de pares ya no son un problema pendiente.
-    bimodales = {k: v for k, v in bimodales.items() if k not in ANALITOS_POR_GRUPO_PARES}
+    bimodales = {k: v for k, v in bimodales.items() if k not in por_pares}
 
     os.makedirs(SALIDA_DIR, exist_ok=True)
     ruta = os.path.join(SALIDA_DIR, f"preliminar_{codigo}-quimica.html")
@@ -407,8 +408,8 @@ def main():
 
     n_at = sum(1 for a in analitos for l in a["laboratorios"] if l["clasificacion"] in ("C", "I"))
     n_ne = sum(1 for a in analitos for l in a["laboratorios"] if l["clasificacion"] == "NE")
-    if ANALITOS_POR_GRUPO_PARES:
-        print(f"  Por grupo de pares: {', '.join(sorted(ANALITOS_POR_GRUPO_PARES))}"
+    if por_pares:
+        print(f"  Por grupo de pares: {', '.join(sorted(por_pares))}"
               + (f"   (sin evaluar: {n_ne})" if n_ne else ""))
     print(f"  Analitos: {len(analitos)}   Casos atípicos: {n_at}")
     if bimodales:

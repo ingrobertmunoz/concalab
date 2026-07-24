@@ -43,23 +43,38 @@ N_MINIMO_GRUPO = 8
 # asignado agrupado deja de ser confiable.
 RAZON_BIMODAL = 1.5
 
-# Analitos que se evalúan por GRUPO DE PARES en vez de agrupados (ISO 13528 §7).
-#
-# La lista es explícita a propósito: cambiar la base de evaluación de un analito
-# es una decisión del proveedor del ensayo y debe quedar documentada, no
-# depender de que un umbral se cruce solo. detectar_bimodales() funciona como
-# red de seguridad y avisa si aparece un analito bimodal que no esté aquí.
-#
-# EA-001-2026: los equipos Fujifilm Dri-Chem leen ~2.9x más alto que la química
-# húmeda en ALP y ~0.5x en LDH. Con un único valor asignado la σ* se infla, la
-# ventana de aceptación se ensancha y prácticamente nadie reprueba, de modo que
-# el ensayo pierde capacidad de discriminar. Separados, cada grupo baja a un
-# CV interno de ~10%.
-ANALITOS_POR_GRUPO_PARES = {
-    "Fosfatasa Alcalina (ALP)",
-    "LDH",
-    "Gamma GGT",
-}
+def analitos_por_grupo_pares(codigo, area="quimica"):
+    """
+    Analitos que esta ronda evalúa por GRUPO DE PARES en vez de agrupados
+    (ISO 13528 §7). Se leen de data/config.json, no de una constante.
+
+    Vivía como constante de módulo, y eso era una bomba de tiempo: la decisión
+    tomada para una ronda se habría aplicado sola a todas las siguientes,
+    aunque los datos dijeran otra cosa. Cambiar la base de evaluación de un
+    analito es una decisión del proveedor del ensayo y pertenece a la ronda,
+    no al código.
+
+    Una ronda sin entrada arranca vacía a propósito: detectar_bimodales()
+    avisa qué analitos son candidatos y el proveedor decide y lo declara en
+    config.json. No se automatiza cruzando un umbral.
+    """
+    try:
+        with open(CONFIG_PATH, encoding="utf-8") as f:
+            cfg = json.load(f)
+    except (OSError, ValueError) as e:
+        print(f"  AVISO: no se pudo leer {CONFIG_PATH} ({e}); se evalúa todo agrupado.")
+        return frozenset()
+
+    d = (cfg.get("decisiones_evaluacion") or {}).get(codigo, {}).get(area, {})
+    analitos = frozenset(d.get("grupo_pares") or ())
+
+    if not analitos:
+        print(f"  AVISO: {codigo}/{area} no declara analitos por grupo de pares en "
+              f"{CONFIG_PATH}.\n"
+              f"         Se evalúa todo agrupado. Revisa los avisos de bimodalidad:\n"
+              f"         un analito bimodal evaluado agrupado produce un falso "
+              f"negativo (σ* inflada, nadie reprueba).")
+    return analitos
 
 
 # ====================================================================
@@ -513,6 +528,7 @@ def main():
     if not codigo:
         with open(CONFIG_PATH, encoding="utf-8") as f:
             codigo = json.load(f)["ronda_activa"]["codigo"]
+    area = "quimica"
 
     por_analito, descartados = cargar(codigo)
     if not por_analito:
@@ -527,19 +543,20 @@ def main():
     # Primera pasada agrupada, solo para detectar bimodalidad sobre datos sin separar.
     bimodales = detectar_bimodales(calcular_agrupado(por_analito), por_analito)
 
-    # Red de seguridad: si aparece un analito bimodal que no está en la lista
-    # explícita, hay que decidirlo, no dejar que pase silenciosamente.
-    sin_decidir = sorted(set(bimodales) - ANALITOS_POR_GRUPO_PARES)
+    # Red de seguridad: si aparece un analito bimodal que la ronda no declaró,
+    # hay que decidirlo, no dejar que pase silenciosamente.
+    por_pares = analitos_por_grupo_pares(codigo, area)
+    sin_decidir = sorted(set(bimodales) - por_pares)
     if sin_decidir:
-        print("\n  AVISO: bimodalidad detectada en analitos que NO están en "
-              "ANALITOS_POR_GRUPO_PARES:")
+        print(f"\n  AVISO: bimodalidad detectada en analitos que {codigo} NO declara "
+              f"en decisiones_evaluacion de {CONFIG_PATH}:")
         for nom in sin_decidir:
             print(f"    · {nom} — plataformas separadas {bimodales[nom][0]:.1f}x")
         print("    Se publicarán como 'no concluyentes'. Revisar con --efecto-metodo.")
 
-    analitos = calcular_agrupado(por_analito, por_grupo_pares=ANALITOS_POR_GRUPO_PARES)
-    if ANALITOS_POR_GRUPO_PARES:
-        print(f"\n  Evaluados por grupo de pares: {', '.join(sorted(ANALITOS_POR_GRUPO_PARES))}")
+    analitos = calcular_agrupado(por_analito, por_grupo_pares=por_pares)
+    if por_pares:
+        print(f"\n  Evaluados por grupo de pares: {', '.join(sorted(por_pares))}")
     imprimir_agrupado(analitos)
 
     if args.efecto_metodo:

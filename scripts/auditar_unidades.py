@@ -45,7 +45,7 @@ from collections import defaultdict
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from calcular_zscore import (  # noqa: E402
-    cargar, calcular_agrupado, ANALITOS_POR_GRUPO_PARES, CONFIG_PATH,
+    cargar, calcular_agrupado, analitos_por_grupo_pares, CONFIG_PATH,
 )
 
 # Tolerancia relativa para aceptar que un factor observado coincide con uno teórico.
@@ -219,7 +219,8 @@ def main():
             codigo = json.load(f)["ronda_activa"]["codigo"]
 
     por_analito, _ = cargar(codigo)
-    analitos = calcular_agrupado(por_analito, por_grupo_pares=ANALITOS_POR_GRUPO_PARES)
+    analitos = calcular_agrupado(por_analito,
+                                 por_grupo_pares=analitos_por_grupo_pares(codigo))
 
     # El cálculo no arrastra la unidad cruda; se reincorpora aquí para el veredicto.
     crudo = {(f["cod"], nom): f["unidad"] for nom, fs in por_analito.items() for f in fs}

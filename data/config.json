@@ -6,5 +6,20 @@
     "fecha_cierre": "2026-07-19",
     "habilitado": false,
     "mensaje_cierre": "La ronda <strong>EA-001-2026</strong> ya cerró y sus resultados están en procesamiento. CONCALAB-UASD le notificará la fecha de publicación del informe y la apertura de la próxima ronda."
+  },
+
+  "_comentario_decisiones": "Base de evaluación por ronda y área (ISO 13528 §7). Cambiar la base de evaluación de un analito es una decisión del proveedor del ensayo: se declara aquí de forma explícita y queda versionada junto al informe. Una ronda nueva arranca SIN entradas; detectar_bimodales() avisa por consola qué analitos son candidatos y el proveedor decide. No se debe automatizar cruzando un umbral.",
+
+  "decisiones_evaluacion": {
+    "EA-001-2026": {
+      "quimica": {
+        "grupo_pares": [
+          "Fosfatasa Alcalina (ALP)",
+          "LDH",
+          "Gamma GGT"
+        ],
+        "justificacion": "Efecto de método entre química seca y húmeda. Agrupados, el Algoritmo A no converge a un centro único e infla la σ*: ALP daba 34 A / 2 C / 0 I (nadie reprobaba) y LDH 33 A / 0 C / 0 I, un falso negativo. Separados, el CV interno de cada grupo baja a ~10% y aparecen las no conformidades reales."
+      }
+    }
   }
 }

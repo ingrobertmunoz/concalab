@@ -38,22 +38,53 @@ git push origin master   # GitHub Pages auto-updates from master/root
 
 ## Python Data Pipeline
 
-Scripts run locally to process proficiency test data. They require a `concalab` conda environment:
+Scripts run locally to process proficiency test data. They require a `concalab` conda environment.
+
+**Un solo comando corre todo el informe de Química Clínica — `scripts/informe_quimica.py`**
 
 ```bash
 conda activate concalab
-python scripts/extraer_resultados_firebase.py   # Firestore → CSV crudo (rondas ≥ 2026)
-python scripts/calculate_zscore.py              # Z-Scores (ISO 13528 Algoritmos A y S)
-python scripts/generate_report.py               # Informe HTML con gráficos Plotly
+python scripts/informe_quimica.py                       # ronda activa
+python scripts/informe_quimica.py --codigo EA-001-2026
+python scripts/informe_quimica.py --desde calcular      # reusa el CSV ya extraído
+python scripts/informe_quimica.py --solo-verificar      # no recalcula: valida y audita
 ```
+
+Encadena las cinco etapas en orden, **se detiene en el primer error** y termina imprimiendo las compuertas manuales. Las etapas sueltas siguen existiendo y se pueden correr una a una para depurar.
+
+El orden no es una comodidad: ninguna etapa es opcional. La auditoría de unidades existe para no publicar como no conforme a un laboratorio que reportó en otra unidad, y la validación del contrato atrapa fallos que en el navegador son silenciosos. Antes, el orden solo vivía en este archivo y nada impedía saltarse un paso.
 
 Data flow (desde EA-001-2026):
 ```
 Firestore "resultados_generales"
   → support/ensayos_EA-XXX-YYYY.csv          (crudo, sin normalizar, NO commiteado)
   → data/informes/EA-XXX-YYYY-<area>.json    (estadística calculada, sí desplegado)
-  → publicaciones/informes/EA-XXX-YYYY.html  (informe público)
+  → publicaciones/informes/EA-XXX-YYYY.html  (informe público, se clona a mano)
 ```
+
+| Etapa | Script | Produce |
+|---|---|---|
+| 1. Extraer | `extraer_resultados_firebase.py` | `support/ensayos_<codigo>.csv` |
+| 2. Calcular | `calcular_zscore.py` | `data/informes/<codigo>-quimica.json` |
+| 3. Validar | `validar_informe.py` | comprobación (falla con exit 1) |
+| 4. Auditar | `auditar_unidades.py` | comprobación en consola |
+| 5. Triaje | `informe_preliminar.py` | `support/preliminar_<codigo>-quimica.html` |
+
+**El orquestador no publica, a propósito.** La página pública se clona a mano y solo después de que una persona revisó el preliminar. Automatizar ese paso convertiría un juicio profesional en un efecto secundario.
+
+**Validación del contrato — `scripts/validar_informe.py`**
+
+La página hace `fetch` del JSON y dibuja con JavaScript, y **JavaScript no falla cuando un campo no existe**: `a.evaluacion_confiable` sobre un objeto que no lo trae devuelve `undefined`, que es falsy, y la página sigue dibujando. Si `escribir_json` dejara de emitir ese campo, los analitos no concluyentes se presentarían como desempeño normal — justo el falso negativo que la evaluación por grupo de pares existe para evitar.
+
+El validador comprueba tres cosas: **estructura** (los campos que el JS lee, con su tipo), **semántica** (un `NE` no puede traer Z-Score, un grupo evaluado no puede venir sin valor asignado, `|z|` debe concordar con la clasificación, ningún resultado puede ser 0) y **anonimato** (ningún campo identificable, ninguna marca de equipo, todos los identificadores con formato `cod_anonimo`). Devuelve exit 1 si algo falla, por lo que corta el pipeline.
+
+Si la página empieza a leer un campo nuevo, hay que agregarlo a las listas `CAMPOS_*` del validador.
+
+**Las decisiones de evaluación son por ronda, no constantes de código**
+
+`data/config.json` → `decisiones_evaluacion.<codigo>.<area>.grupo_pares` declara qué analitos se evalúan por grupo de pares, con su `justificacion`. Antes era `ANALITOS_POR_GRUPO_PARES`, una constante de módulo, y eso era una bomba de tiempo: la decisión tomada para una ronda se habría aplicado sola a todas las siguientes aunque los datos dijeran otra cosa.
+
+Una ronda nueva arranca **sin entradas** a propósito. `detectar_bimodales()` avisa por consola qué analitos son candidatos, el proveedor decide, y la decisión queda versionada junto al informe. `analitos_por_grupo_pares()` avisa si la ronda no declara nada, para que evaluar todo agrupado sea una elección visible y no un descuido.
 
 **Extracción de una ronda — `scripts/extraer_resultados_firebase.py`**
 
@@ -108,7 +139,7 @@ Genera `support/preliminar_<codigo>-quimica.html` (interno, en `.gitignore`): sa
 
 **Trampa a vigilar en cada ronda — bimodalidad por plataforma.** Cuando dos plataformas analíticas conviven en un analito con medianas separadas ≥1.5x, el Algoritmo A no converge a un centro único e **infla la σ\***; la ventana de aceptación se ensancha tanto que casi nadie reprueba. Un "todo aceptable" ahí es un **falso negativo**, no un buen resultado. En EA-001-2026 pasó con **ALP** (2.9x: Fujifilm Dri-Chem mediana 1099 vs química húmeda 378) y **LDH** (2.0x, en sentido inverso). Fujifilm lee alto en ALP y bajo en LDH: es química de método, no un desajuste de calibración.
 
-**Evaluación por grupo de pares (ISO 13528 §7).** Los analitos afectados se listan en `ANALITOS_POR_GRUPO_PARES` dentro de `calcular_zscore.py`. La lista es **explícita a propósito**: cambiar la base de evaluación de un analito es una decisión del proveedor del ensayo y debe quedar documentada, no depender de que un umbral se cruce solo. `detectar_bimodales()` actúa como red de seguridad y avisa por consola si aparece un analito bimodal que no esté en la lista (esos se publican como "no concluyentes").
+**Evaluación por grupo de pares (ISO 13528 §7).** Los analitos afectados se declaran **por ronda** en `data/config.json` → `decisiones_evaluacion` (ver arriba). La lista es **explícita a propósito**: cambiar la base de evaluación de un analito es una decisión del proveedor del ensayo y debe quedar documentada, no depender de que un umbral se cruce solo. `detectar_bimodales()` actúa como red de seguridad y avisa por consola si aparece un analito bimodal que la ronda no declaró (esos se publican como "no concluyentes").
 
 Cada plataforma recibe su propio X\* y σ\*, y el Z-Score se calcula dentro del grupo que corresponde. Un grupo con menos de `N_MINIMO_GRUPO` (8) participantes **no se evalúa**: esos laboratorios salen con clasificación `NE`, se reportan sin Z-Score y no cuentan en los totales. No se anexan al grupo más parecido — evaluarlos contra un método que no es el suyo sería incorrecto.
 
