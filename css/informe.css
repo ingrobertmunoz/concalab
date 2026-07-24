@@ -1,0 +1,568 @@
+/*
+ * Estilos del informe de ensayo de aptitud — compartido por todas las rondas.
+ *
+ * Vivía embebido en publicaciones/informes/EA-001-2026.html. Como cada ronda
+ * se creaba clonando la página anterior, cualquier corrección visual había que
+ * repetirla en cada copia y las rondas divergían en silencio: la página de
+ * 2025 quedó con defectos que ya estaban resueltos en la de 2026.
+ *
+ * Depende de las variables de css/main.css (--primary-color, --secondary-color,
+ * --text-light...), que debe cargarse antes.
+ */
+
+/* Aviso de documento preliminar: el informe se publica mientras el
+   cálculo sigue en revisión, así que debe leerse como no oficial. */
+.banner-preliminar {
+    background: #fff8e1;
+    border: 1px solid #e0b400;
+    border-left: 6px solid #b8860b;
+    border-radius: 8px;
+    padding: 1.1rem 1.4rem;
+    margin-bottom: 2rem;
+}
+
+.banner-preliminar .titulo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    color: #7a5b00;
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+}
+
+.banner-preliminar .titulo .etiqueta {
+    background: #b8860b;
+    color: #fff;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+}
+
+.banner-preliminar p {
+    color: #5c4600;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Métrica global: un laboratorio con cualquier no conforme no es
+   satisfactorio. La estratificación acompaña al titular porque el
+   porcentaje solo no distingue una falla aislada de trece. */
+.metrica-global {
+    display: grid;
+    grid-template-columns: minmax(200px, 260px) 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    margin: 1.25rem 0 1rem;
+}
+
+.metrica-titular {
+    text-align: center;
+    padding: 1.25rem 1rem;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: 8px;
+}
+
+.metrica-titular .cifra {
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.metrica-titular .detalle {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-top: 0.35rem;
+}
+
+.metrica-estratos {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.estrato {
+    display: grid;
+    grid-template-columns: 170px 1fr 92px;
+    gap: 0.75rem;
+    align-items: center;
+    font-size: 0.92rem;
+}
+
+.estrato .nombre {
+    font-weight: 600;
+    color: var(--text-color, #333);
+}
+
+.estrato .nombre small {
+    display: block;
+    font-weight: 400;
+    color: var(--text-light);
+    font-size: 0.78rem;
+}
+
+.estrato .barra {
+    background: #eceff3;
+    border-radius: 4px;
+    height: 22px;
+    overflow: hidden;
+}
+
+.estrato .barra span {
+    display: block;
+    height: 100%;
+    border-radius: 4px;
+}
+
+.estrato .valor {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-light);
+}
+
+.estrato .valor strong {
+    color: var(--text-color, #333);
+}
+
+@media (max-width: 640px) {
+    .metrica-global { grid-template-columns: 1fr; }
+    .estrato { grid-template-columns: 120px 1fr 78px; font-size: 0.85rem; }
+}
+
+.report-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.report-header .badge {
+    display: inline-block;
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.report-header h2 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.report-header p {
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+/* Summary cards */
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.summary-card {
+    text-align: center;
+    padding: 1.2rem;
+    border-radius: 12px;
+    color: white;
+}
+
+.summary-card .number {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.summary-card .label {
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+/* Analyte nav index */
+.nav-toc {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+.nav-toc h3 {
+    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+}
+
+.nav-toc .pills {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.nav-toc .pills a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: var(--bg-light);
+    color: var(--primary-color);
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: var(--transition);
+}
+
+.nav-toc .pills a:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.nav-toc .pills a.pill-summary {
+    background: var(--primary-color);
+    color: white;
+    font-weight: 600;
+}
+
+/* Analyte section */
+.analyte-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+.analyte-section h2 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Stats row */
+.analyte-stats {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.analyte-stats .stat {
+    background: var(--bg-light);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    flex: 1;
+    min-width: 120px;
+}
+
+.analyte-stats .stat strong {
+    color: var(--primary-color);
+}
+
+/* Charts container */
+.chart-box {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 1.5rem;
+}
+
+/* Summary table */
+.summary-table-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.summary-table-container h3 {
+    color: var(--primary-color);
+    padding: 1.2rem 1.5rem 0.8rem;
+    font-size: 1.2rem;
+}
+
+.summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.summary-table th {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.7rem 0.8rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+.summary-table td {
+    padding: 0.6rem 0.8rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.summary-table tr:hover {
+    background: var(--bg-light);
+}
+
+.cv-high {
+    color: #856404;
+    font-weight: bold;
+}
+
+.cv-critical {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+/* Alerts */
+.alert-box {
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+}
+
+.alert-warning {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    color: #856404;
+}
+
+.alert-danger {
+    background: #f8d7da;
+    border-left: 4px solid #dc3545;
+    color: #721c24;
+}
+
+.alert-bimodal {
+    background: #eef3fb;
+    border-left: 4px solid var(--primary-color);
+    color: #1c2b45;
+}
+
+.alert-bimodal ul { font-size: 0.88rem; }
+
+.alert-pares {
+    background: #f2f6fc;
+    border-left: 4px solid #1f4e9c;
+    color: #16233b;
+}
+
+.alert-pares ul { font-size: 0.88rem; list-style: none; padding-left: 0; }
+.alert-pares li { margin-bottom: 0.3rem; }
+
+.nota-pares {
+    font-size: 0.82rem;
+    margin-top: 0.6rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid #d5dfee;
+    color: #3d4a63;
+}
+
+.punto-grupo {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 0.45rem;
+    vertical-align: baseline;
+}
+
+.tag-pares {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: #1f4e9c;
+    color: white;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    vertical-align: middle;
+}
+
+.stat-grupo {
+    font-size: 0.78rem;
+    line-height: 1.5;
+    min-width: 210px;
+}
+
+.sub-grupo {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    margin-top: 0.15rem;
+}
+
+.sin-eval { color: var(--text-light); font-style: italic; }
+
+/* Resumen por laboratorio */
+.tabla-nota {
+    padding: 0 1.5rem 0.9rem;
+    font-size: 0.82rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    max-width: 80ch;
+}
+
+.summary-table th.sortable {
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.summary-table th.sortable:hover { background: #002f66; }
+
+.summary-table th.sortable::after {
+    content: ' ⇅';
+    opacity: 0.4;
+    font-size: 0.85em;
+}
+
+.summary-table th.sortable.asc::after { content: ' ↑'; opacity: 1; }
+.summary-table th.sortable.desc::after { content: ' ↓'; opacity: 1; }
+.summary-table th.num, .tabla-labs td.num { text-align: right; }
+
+.tabla-labs .cod {
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--primary-color);
+}
+
+.conf-barra {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #eef1f7;
+    min-width: 90px;
+    margin-bottom: 0.2rem;
+}
+
+.conf-barra span { display: block; }
+.conf-barra span + span { border-left: 2px solid white; }
+
+.conf-pct {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Selector de área */
+.area-tabs {
+    display: flex;
+    gap: 0.4rem;
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 1.8rem;
+    flex-wrap: wrap;
+}
+
+.area-tab {
+    padding: 0.7rem 1.4rem;
+    border: none;
+    background: none;
+    font-family: inherit;
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: var(--text-light);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: var(--transition);
+}
+
+.area-tab:hover:not(:disabled) { color: var(--primary-color); }
+
+.area-tab.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--secondary-color);
+}
+
+.area-tab:disabled { cursor: not-allowed; opacity: 0.55; }
+
+.area-tab .pendiente {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+}
+
+/* Methodology */
+.methodology {
+    background: var(--bg-light);
+    padding: 1.2rem 1.5rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    margin-top: 1.5rem;
+}
+
+.methodology strong {
+    color: var(--primary-color);
+}
+
+/* Loading */
+/* Heatmap */
+.heatmap-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+.heatmap-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.heatmap-section p {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.loading {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-light);
+}
+
+.loading .spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--border-color);
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .analyte-selector select {
+        min-width: 100%;
+    }
+
+    .summary-table {
+        font-size: 0.75rem;
+    }
+
+    .summary-table th,
+    .summary-table td {
+        padding: 0.4rem;
+    }
+}

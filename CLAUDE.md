@@ -172,16 +172,45 @@ Efecto en EA-001-2026: ALP pasó de 34 A / 2 C / 0 I (nadie reprobaba) a 31 A / 
 
 **Las etiquetas de grupo no nombran al fabricante.** `plataforma()` devuelve `Química húmeda` / `Química seca (plataforma A)` / `Química seca (plataforma B)`. Ese valor viaja al JSON público dentro de cada laboratorio (`{"id": "QV5", ..., "grupo": "Química húmeda"}`), así que publicar la marca revelaría qué equipo usa cada `cod_anonimo`. Con grupos pequeños —la plataforma B tiene n=2 en EA-001-2026— eso bastaría para re-identificar laboratorios en un mercado local reducido, que es el mismo riesgo por el que `metodo` e `instrumento` no se despliegan. La distinción **seca vs húmeda es la causa real** del efecto de método, de modo que el informe conserva su poder explicativo sin la marca. La correspondencia marca ↔ plataforma vive solo en el código de `plataforma()`, que no se despliega.
 
-**Página pública del informe — no se genera, se clona**
+**Página pública del informe — armazón por ronda + lógica compartida**
 
-`publicaciones/informes/EA-XXX-YYYY.html` es un armazón estático escrito a mano: hace `fetch` del JSON y dibuja todo con Plotly en el navegador. No hay script que la genere (`generate_report.py` produce otra cosa: `data/reporte_histogramas.html`). Para una ronda nueva se copia la página anterior y se apunta `JSON_URL` al JSON nuevo.
+Desde EA-001-2026 la página **ya no se clona**. El estilo vive en `css/informe.css` y toda la lógica —incluido el esqueleto HTML del informe— en `js/informe.js`, compartidos por todas las rondas. La página por ronda es un armazón de ~158 líneas (cabecera del sitio, hero, punto de montaje, pie) cuya única parte específica es este bloque:
 
-Como el `fetch` no funciona con `file://`, para verla localmente hay que servir el sitio:
+```html
+<div id="informe-root"></div>
+...
+<script>
+    window.INFORME = {
+        codigo: 'EA-001-2026',
+        area: 'quimica',
+        json: '../../data/informes/EA-001-2026-quimica.json',
+        preliminar: true,
+        areas: [
+            { clave: 'quimica',     nombre: 'Química Clínica', disponible: true },
+            { clave: 'uroanalisis', nombre: 'Uroanálisis',     disponible: false,
+              estado: 'En procesamiento' }
+        ]
+    };
+</script>
+<script src="../../js/informe.js"></script>
+```
+
+`preliminar: true` dibuja el banner de documento no oficial; ponerlo en `false` lo quita y no toca nada más. `areas` genera las pestañas: un área sin informe aún se muestra **deshabilitada, no oculta**, para que el participante sepa que está en camino.
+
+Antes eran 1.575 líneas por ronda con el CSS y el JS embebidos. Cada corrección había que repetirla en cada copia y las rondas divergían en silencio — así fue como la página de 2025 quedó ordenando mal los identificadores, sin acotar los ejes y sin métrica global, defectos ya resueltos en la de 2026. Ahora una corrección en `js/informe.js` alcanza a todas las rondas a la vez.
+
+**`js/informe.js` no calcula métricas.** Los números vienen de `calcular_zscore.py` y los verifica `validar_informe.py`. Ahí solo se decide *cómo mostrarlos*: orden de la tabla, recorte de ejes, qué barras se rotulan, colores. Una cifra nueva se agrega al JSON, no al JavaScript.
+
+**Historia — la página de 2025 (`EA-001-2025.html`) se mantiene tal cual**, con su CSS y su JS embebidos. No se migra: es el informe que ya se entregó, y tocarlo rompería la trazabilidad de lo que recibieron los participantes.
+
+**Detalle de lo que hace `js/informe.js`**
+
+Hace `fetch` del JSON y dibuja todo con Plotly en el navegador. Como el `fetch` no funciona con `file://`, para verlo localmente hay que servir el sitio:
 ```bash
 python3 -m http.server 8765     # luego abrir http://localhost:8765/publicaciones/informes/EA-001-2026.html
 ```
 
-Diferencias de `EA-001-2026.html` respecto a la de 2025, todas necesarias y a conservar en rondas futuras:
+Decisiones de presentación **a conservar** — cada una corrige un defecto real que la página de 2025 todavía tiene:
 
 - **Identificadores de texto** — el eje usa `cod_anonimo` (`QV5`), no enteros. La de 2025 ordenaba con `sort((a,b) => a-b)`, que sobre texto no ordena.
 - **Histograma con rango acotado a |z| ≤ 5** — sin esto un solo resultado extremo estira el eje y mete a todos los demás en una única barra, con lo que el histograma deja de mostrar la distribución. Los laboratorios que caen fuera **no se ocultan**: se dibujan como triángulos `◀ ▶` en el borde hacia el que se salen (con código, resultado y Z-Score en el tooltip) y se nombran en una línea sobre el gráfico, hasta 3 para no desbordar el ancho. Cada laboratorio debe poder localizarse en su propio informe; contar cuántos quedaron fuera no basta.
