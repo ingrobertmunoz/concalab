@@ -414,6 +414,13 @@ def efecto_metodo(analitos, por_analito):
     afectados = []
     for a in analitos:
         filas = por_analito[a["nombre"]]
+
+        # X*/σ* agrupados calculados AQUÍ desde todos los valores, no leídos del
+        # dict del analito: un analito ya declarado por grupo de pares no trae
+        # 'valor_asignado' ni 'sd_robusta' (trae 'grupos'), y el diagnóstico debe
+        # poder comparar "agrupado vs. por pares" sin importar cómo esté hoy.
+        x_pool, s_pool, cv_pool = _stats([f["valor"] for f in filas])
+
         grupos = defaultdict(list)
         for f in filas:
             grupos[f["plataforma"]].append(f)
@@ -435,7 +442,7 @@ def efecto_metodo(analitos, por_analito):
             c_pool = Counter()
             c_peer = Counter()
             for f in v:
-                z_pool = (f["valor"] - a["valor_asignado"]) / a["sd_robusta"] if a["sd_robusta"] else float("nan")
+                z_pool = (f["valor"] - x_pool) / s_pool if s_pool else float("nan")
                 z_peer = (f["valor"] - gx) / gs if gs else float("nan")
                 cl_pool, cl_peer = clasificar(z_pool), clasificar(z_peer)
                 c_pool[cl_pool] += 1
@@ -445,17 +452,17 @@ def efecto_metodo(analitos, por_analito):
             detalle_grupos.append((g, len(v), medianas[g], gx, gs, c_pool, c_peer))
 
         if razon >= 1.5 or cambios:
-            afectados.append((a, razon, cambios, detalle_grupos))
+            afectados.append((a, razon, cambios, detalle_grupos, x_pool, s_pool, cv_pool))
 
     if not afectados:
         print("  Ningún analito muestra efecto de plataforma relevante.")
         return
 
     afectados.sort(key=lambda x: -x[1])
-    for a, razon, cambios, detalle in afectados:
+    for a, razon, cambios, detalle, x_pool, s_pool, cv_pool in afectados:
         print(f"\n  {a['nombre']}  —  razón entre plataformas: {razon:.2f}x"
               f"   |   reclasificarían: {cambios} lab(s)")
-        print(f"      X* agrupado = {a['valor_asignado']:g} {a['unidad']}   σ* = {a['sd_robusta']:g}   CV = {a['cv']:.1f}%")
+        print(f"      X* agrupado = {x_pool:g} {a['unidad']}   σ* = {s_pool:g}   CV = {cv_pool:.1f}%")
         print(f"      {'Plataforma':<26}{'n':>3}{'mediana':>10}{'X* grupo':>11}{'σ* grupo':>10}"
               f"{'  agrupado A/C/I':>18}{'  por pares A/C/I':>19}")
         for g, n, med, gx, gs, c_pool, c_peer in sorted(detalle, key=lambda d: -d[2]):

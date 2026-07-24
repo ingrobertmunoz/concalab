@@ -134,6 +134,13 @@ El daño de tratarlos como medición es doble y va en las dos direcciones: (1) e
 
 **Analitos dependientes del método:** ALP y Lipasa muestran un efecto de método fuerte (los equipos FUJIFILM Dri-Chem leen ~3x más alto que los métodos húmedos). Agruparlos en un solo valor asignado penaliza a ambos grupos a la vez. ISO 13528 admite evaluación por grupo de pares para estos casos.
 
+**Que un analito sea "dependiente del método" en teoría no basta para evaluarlo por grupo de pares — hay que verificarlo en los datos de cada ronda.** En EA-001-2026 se estudió pasar **Lipasa** a grupo de pares y **se descartó**, por dos razones que el diagnóstico deja ver:
+
+1. **Los grupos no llegan al mínimo.** Química húmeda n=22, pero seca A n=4 y seca B n=2 — ambas por debajo de `N_MINIMO_GRUPO` (8). "Evaluar por grupo de pares" habría mandado los 6 laboratorios de química seca a `NE` (sin evaluar). Con un solo grupo de tamaño suficiente, `efecto_metodo()` ni siquiera lista a Lipasa: `len(grandes) < 2`.
+2. **No hay separación de plataformas.** La química seca dio `[48, 95, 170, 500]` y `[65, 493]`: dos labs (48, 95, 65) caen dentro del consenso húmedo de ~60. El CV alto (41.3%) lo causan **tres errores gruesos individuales**, no un sesgo de método: JU6 = 576 con unidad `G/DL` **en química húmeda** (error de unidad/transcripción, caso tipo CW7), AB8 = 500 y KQ7 = 493. Forzar el grupo de pares habría dado 21 A / 1 I / 6 NE — escondiendo tres no conformidades reales dentro de `NE` y quitando la A a labs correctos: un **falso negativo por construcción**, justo lo que §7 existe para evitar.
+
+Lipasa se mantiene **agrupada**: los errores gruesos quedan como no conformes y el laboratorio los asume. La lección general: el candidato lo propone `detectar_bimodales()`, pero la decisión exige que **haya dos plataformas con n≥8 y una separación real de medianas** — verificable con `python scripts/calcular_zscore.py --codigo <codigo> --efecto-metodo`.
+
 **Cálculo de Z-Score — `scripts/calcular_zscore.py`**
 
 ```bash
