@@ -70,6 +70,8 @@ Firestore "resultados_generales"
 | 4. Auditar | `auditar_unidades.py` | comprobación en consola |
 | 5. Triaje | `informe_preliminar.py` | `support/preliminar_<codigo>-quimica.html` |
 
+**Regenerar una ronda anterior es para COMPARAR, no para reemplazar.** `publicaciones/informes/EA-001-2025.html` es el informe que ya se entregó a los participantes y se mantiene tal cual. Si se recalcula EA-001-2025 con el pipeline actual —para verificar la estandarización o para comparar rondas— el resultado va a un archivo aparte y **no sustituye al publicado**. Cambiar retroactivamente un informe emitido rompería la trazabilidad de lo que cada laboratorio recibió.
+
 **El orquestador no publica, a propósito.** La página pública se clona a mano y solo después de que una persona revisó el preliminar. Automatizar ese paso convertiría un juicio profesional en un efecto secundario.
 
 **Validación del contrato — `scripts/validar_informe.py`**
@@ -79,6 +81,29 @@ La página hace `fetch` del JSON y dibuja con JavaScript, y **JavaScript no fall
 El validador comprueba tres cosas: **estructura** (los campos que el JS lee, con su tipo), **semántica** (un `NE` no puede traer Z-Score, un grupo evaluado no puede venir sin valor asignado, `|z|` debe concordar con la clasificación, ningún resultado puede ser 0) y **anonimato** (ningún campo identificable, ninguna marca de equipo, todos los identificadores con formato `cod_anonimo`). Devuelve exit 1 si algo falla, por lo que corta el pipeline.
 
 Si la página empieza a leer un campo nuevo, hay que agregarlo a las listas `CAMPOS_*` del validador.
+
+**Todas las métricas se calculan en Python; el JavaScript solo dibuja**
+
+Regla del proyecto:
+
+> **Python calcula números. JavaScript decide cómo mostrarlos.**
+
+| Va en el JSON (Python) | Se queda en el navegador |
+|---|---|
+| `conteos` A/C/I/NE por analito y por grupo de pares | Ordenar la tabla al hacer clic |
+| `desempeno_global.por_laboratorio` — consolidación por lab | Acotar el eje a \|z\| ≤ 5 y dibujar los triángulos |
+| `desempeno_global` — conformes, %, estratos, concentración | Rotular solo las barras con \|z\| > 2 |
+| `resumen` — totales de la ronda | Colores, tooltips, pestañas |
+
+Lo de la derecha depende del tamaño de pantalla y de la interacción; en Python no tiene sentido.
+
+Antes, los conteos por analito se recalculaban **en dos sitios distintos del mismo archivo** y la métrica global existía solo como JavaScript dentro de una página. Eso tenía tres consecuencias: no era auditable (`validar_informe.py` no podía verificar una cifra ausente del JSON), no era comparable entre rondas, y **se clonaba con la página** — que es cómo la página de 2025 quedó sin grupos de pares, sin métrica global y con el orden de identificadores roto.
+
+Con el cálculo en Python, agregar una métrica nueva y correr `informe_quimica.py --codigo EA-001-2025` hace que **la ronda vieja también la tenga**: el histórico se recalcula en vez de reescribirse. Mover el cálculo no afecta al rendimiento — medido en el navegador, las métricas cuestan 0.06 ms de unos 2.100 ms; el coste real son las 53 gráficas de Plotly, a ~40 ms cada una.
+
+`validar_informe.py` **recalcula** conteos, resumen, porcentaje de conformidad y estratos desde `analitos[]`, y falla si no cuadran. También comprueba que los estratos cubran a todos los laboratorios sin solaparse. Publicar una conclusión que la estadística no sostiene es peor que no publicarla.
+
+**Los cortes de los estratos son política del proveedor** y viven en `data/config.json` → `estratos_desempeno` (`desde`/`hasta`/`color`; `hasta: null` = sin límite). Hoy: 0 no conformes = Satisfactorio, 1–2 = Requiere atención, ≥3 = Acción correctiva.
 
 **Las decisiones de evaluación son por ronda, no constantes de código**
 

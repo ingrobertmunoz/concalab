@@ -321,6 +321,13 @@ def calcular_agrupado(por_analito, por_grupo_pares=frozenset()):
                         labs.append(entrada(f, None, {"grupo": g}))
 
             labs.sort(key=lambda l: (l["z_score"] is None, l["z_score"] or 0))
+
+            # Conteos dentro de cada grupo: el informe los muestra en la tabla
+            # resumen. Se calculan aquí para que el navegador no los rehaga.
+            for g in grupos:
+                c = Counter(l["clasificacion"] for l in labs if l.get("grupo") == g["nombre"])
+                g["conteos"] = {"A": c["A"], "C": c["C"], "I": c["I"], "NE": c["NE"]}
+
             analitos.append({
                 "nombre": nombre, "unidad": unidad, "n": len(filas),
                 "evaluacion": "grupo_pares",
@@ -469,6 +476,100 @@ def efecto_metodo(analitos, por_analito):
 CAMPOS_INTERNOS = ("plataforma", "metodo", "instrumento")
 
 
+# Corte por defecto si config.json no declara estratos. Se replica el criterio
+# documentado en vez de fallar: un informe sin estratos es peor que uno con los
+# cortes habituales, y validar_informe.py avisa igual si algo no cuadra.
+ESTRATOS_POR_DEFECTO = [
+    {"clave": "satisfactorio", "nombre": "Satisfactorio",     "descripcion": "ningún no conforme",   "desde": 0, "hasta": 0,    "color": "#1e7e34"},
+    {"clave": "atencion",      "nombre": "Requiere atención", "descripcion": "1 a 2 no conformes",   "desde": 1, "hasta": 2,    "color": "#b8860b"},
+    {"clave": "correctiva",    "nombre": "Acción correctiva", "descripcion": "3 o más no conformes", "desde": 3, "hasta": None, "color": "#c62828"},
+]
+
+# Cuántos laboratorios entran en la nota de concentración de no conformidades.
+TOP_CONCENTRACION = 6
+
+
+def leer_estratos():
+    try:
+        with open(CONFIG_PATH, encoding="utf-8") as f:
+            return json.load(f).get("estratos_desempeno") or ESTRATOS_POR_DEFECTO
+    except (OSError, ValueError):
+        return ESTRATOS_POR_DEFECTO
+
+
+def consolidar_por_laboratorio(analitos):
+    """
+    Conteos A/C/I por laboratorio sobre los analitos con evaluación concluyente.
+
+    Excluye los no concluyentes a propósito: con una σ* inflada casi todo sale
+    aceptable, así que incluirlos regalaría puntos de conformidad a todos por
+    igual. 'NE' no es un resultado evaluado y no suma ni al numerador ni al
+    denominador.
+    """
+    por_lab = {}
+    for a in analitos:
+        if a.get("evaluacion_confiable") is False:
+            continue
+        for l in a["laboratorios"]:
+            r = por_lab.setdefault(l["id"], {"id": l["id"], "A": 0, "C": 0, "I": 0})
+            if l["clasificacion"] in ("A", "C", "I"):
+                r[l["clasificacion"]] += 1
+    for r in por_lab.values():
+        r["n"] = r["A"] + r["C"] + r["I"]
+        r["pct_conformidad"] = round(r["A"] / r["n"] * 100, 1) if r["n"] else 0.0
+    return sorted(por_lab.values(), key=lambda r: r["id"])
+
+
+def desempeno_global(analitos):
+    """
+    Métrica de LABORATORIOS, no de resultados: un laboratorio es satisfactorio
+    solo si ninguno de sus analitos salió no conforme.
+
+    Se acompaña siempre de la estratificación y de la concentración de fallas.
+    El porcentaje solo no distingue una falla aislada de trece, y si las no
+    conformidades están concentradas en pocos laboratorios —como en
+    EA-001-2026— la cifra sugiere un problema generalizado y llevaría a la
+    acción correctiva equivocada.
+    """
+    labs = consolidar_por_laboratorio(analitos)
+    total = len(labs)
+    if not total:
+        return None
+
+    conformes = sum(1 for r in labs if r["I"] == 0)
+
+    estratos = []
+    for e in leer_estratos():
+        hasta = e.get("hasta")
+        dentro = [r for r in labs
+                  if r["I"] >= e.get("desde", 0) and (hasta is None or r["I"] <= hasta)]
+        estratos.append({**e, "laboratorios": len(dentro),
+                         "pct": round(len(dentro) / total * 100, 1)})
+
+    con_fallas = sorted((r for r in labs if r["I"] > 0), key=lambda r: -r["I"])
+    top = con_fallas[:TOP_CONCENTRACION]
+    total_i = sum(r["I"] for r in labs)
+    suma_top = sum(r["I"] for r in top)
+
+    return {
+        "criterio": "Un laboratorio es satisfactorio solo si ninguno de sus "
+                    "analitos resultó no conforme.",
+        "laboratorios": total,
+        "conformes": conformes,
+        "pct_conformes": round(conformes / total * 100, 1),
+        "estratos": estratos,
+        "concentracion": {
+            "laboratorios": len(top),
+            "no_conformes": suma_top,
+            "no_conformes_total": total_i,
+            "pct": round(suma_top / total_i * 100, 1) if total_i else 0.0,
+        },
+        "por_laboratorio": labs,
+        "analitos_excluidos": [a["nombre"] for a in analitos
+                               if a.get("evaluacion_confiable") is False],
+    }
+
+
 def escribir_json(codigo, analitos, area="quimica", bimodales=None):
     bimodales = bimodales or {}
     tot = Counter()
@@ -481,8 +582,13 @@ def escribir_json(codigo, analitos, area="quimica", bimodales=None):
         # Un analito bimodal resuelto por grupo de pares SÍ es confiable: la
         # separación en grupos es justamente lo que corrige la σ* inflada.
         b = None if a.get("evaluacion") == "grupo_pares" else bimodales.get(a["nombre"])
+        c = Counter(l["clasificacion"] for l in a["laboratorios"])
         limpios.append({
             **a,
+            # Los conteos se calculan aquí y no en el navegador: el JS los
+            # recalculaba en dos sitios distintos del mismo archivo, y cada
+            # ronda clonaba esa lógica sin forma de auditarla.
+            "conteos": {"A": c["A"], "C": c["C"], "I": c["I"], "NE": c["NE"]},
             "evaluacion_confiable": b is None,
             "aviso_bimodal": None if b is None else {
                 "razon": round(b[0], 2),
@@ -508,6 +614,7 @@ def escribir_json(codigo, analitos, area="quimica", bimodales=None):
             "sin_evaluar": tot["NE"],
             "total": tot["A"] + tot["C"] + tot["I"],
         },
+        "desempeno_global": desempeno_global(analitos),
         "analitos": analitos,
     }
     os.makedirs(SALIDA_DIR, exist_ok=True)

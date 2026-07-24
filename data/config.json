@@ -10,6 +10,14 @@
 
   "_comentario_decisiones": "Base de evaluación por ronda y área (ISO 13528 §7). Cambiar la base de evaluación de un analito es una decisión del proveedor del ensayo: se declara aquí de forma explícita y queda versionada junto al informe. Una ronda nueva arranca SIN entradas; detectar_bimodales() avisa por consola qué analitos son candidatos y el proveedor decide. No se debe automatizar cruzando un umbral.",
 
+  "_comentario_estratos": "Clasificación de desempeño POR LABORATORIO (no por resultado). Un laboratorio es satisfactorio solo si ninguno de sus analitos salió no conforme: un resultado errado que llega a un paciente es una falla, con independencia de cuántos otros salieron bien. Los cortes son política del proveedor del ensayo, por eso viven aquí y no en el código. 'hasta' null significa sin límite superior.",
+
+  "estratos_desempeno": [
+    { "clave": "satisfactorio",   "nombre": "Satisfactorio",     "descripcion": "ningún no conforme", "desde": 0, "hasta": 0,    "color": "#1e7e34" },
+    { "clave": "atencion",        "nombre": "Requiere atención", "descripcion": "1 a 2 no conformes", "desde": 1, "hasta": 2,    "color": "#b8860b" },
+    { "clave": "correctiva",      "nombre": "Acción correctiva", "descripcion": "3 o más no conformes", "desde": 3, "hasta": null, "color": "#c62828" }
+  ],
+
   "decisiones_evaluacion": {
     "EA-001-2026": {
       "quimica": {

@@ -991,10 +991,9 @@
             const container = document.getElementById('all-analytes');
             data.analitos.forEach((a, i) => {
                 const id = safeId(a.nombre);
-                const countA = a.laboratorios.filter(l => l.clasificacion === 'A').length;
-                const countC = a.laboratorios.filter(l => l.clasificacion === 'C').length;
-                const countI = a.laboratorios.filter(l => l.clasificacion === 'I').length;
-                const countNE = a.laboratorios.filter(l => l.clasificacion === 'NE').length;
+                // Calculados en calcular_zscore.py y verificados por
+                // validar_informe.py; aquí solo se leen.
+                const { A: countA, C: countC, I: countI, NE: countNE } = a.conteos;
 
                 // Un analito bimodal ya tiene explicada su dispersión: mostrar la
                 // alerta de CV encima sería redundante y desviaría la lectura.
@@ -1261,71 +1260,39 @@
         // casi todo resulte aceptable, de modo que incluirlos regalaría conformidad a
         // todos los laboratorios por igual (hasta +5 puntos porcentuales) y la tabla
         // dejaría de reflejar desempeño real.
-        // Consolida los resultados por laboratorio. Lo usan la métrica global y
-        // la tabla resumen, que deben partir exactamente del mismo conteo.
+        // Adapta la consolidación ya calculada en Python al formato que usa la
+        // tabla. La exclusión de analitos no concluyentes y el criterio de que
+        // 'NE' no cuenta ya vienen aplicados desde consolidar_por_laboratorio().
         function consolidarPorLab(data) {
-            const usables = data.analitos.filter(a => a.evaluacion_confiable !== false);
-            const excluidos = data.analitos.filter(a => a.evaluacion_confiable === false);
-
-            const porLab = {};
-            usables.forEach(a => a.laboratorios.forEach(l => {
-                const r = porLab[l.id] || (porLab[l.id] = { id: l.id, a: 0, c: 0, i: 0 });
-                // 'NE' (sin grupo de pares suficiente) no es un resultado evaluado:
-                // no suma ni al numerador ni al denominador de la conformidad.
-                if (l.clasificacion === 'A') r.a++;
-                else if (l.clasificacion === 'C') r.c++;
-                else if (l.clasificacion === 'I') r.i++;
+            const g = data.desempeno_global || {};
+            const filas = (g.por_laboratorio || []).map(r => ({
+                id: r.id, a: r.A, c: r.C, i: r.I, n: r.n, pct: r.pct_conformidad
             }));
-
-            const filas = Object.values(porLab).map(r => {
-                r.n = r.a + r.c + r.i;
-                r.pct = r.n ? r.a / r.n * 100 : 0;
-                return r;
-            });
+            const excluidosNombres = g.analitos_excluidos || [];
+            const excluidos = data.analitos.filter(a => excluidosNombres.includes(a.nombre));
+            const usables = data.analitos.filter(a => !excluidosNombres.includes(a.nombre));
             return { filas, usables, excluidos };
         }
 
+        // Solo dibuja: las cifras vienen calculadas de calcular_zscore.py y
+        // validar_informe.py las recalcula antes de publicar. Aquí no se
+        // decide nada, para que la métrica no se clone con cada ronda.
         function renderGlobalMetric(data) {
-            const { filas } = consolidarPorLab(data);
-            const total = filas.length;
-            if (!total) return;
+            const g = data.desempeno_global;
+            if (!g || !g.laboratorios) return;
 
-            // Criterio estricto: un solo resultado no conforme descalifica al
-            // laboratorio. Un resultado errado que llega a un paciente es una
-            // falla, sin importar cuántos otros hayan salido bien.
-            const conformes = filas.filter(f => f.i === 0).length;
-            const pct = conformes / total * 100;
-
-            document.getElementById('mg-cifra').textContent = pct.toFixed(1) + '%';
+            document.getElementById('mg-cifra').textContent = g.pct_conformes.toFixed(1) + '%';
             document.getElementById('mg-detalle').innerHTML =
-                `<strong>${conformes} de ${total}</strong> laboratorios<br>sin ningún resultado no conforme`;
+                `<strong>${g.conformes} de ${g.laboratorios}</strong> laboratorios<br>sin ningún resultado no conforme`;
 
-            const estratos = [
-                {
-                    nombre: 'Satisfactorio', desc: 'ningún no conforme', color: '#1e7e34',
-                    labs: filas.filter(f => f.i === 0)
-                },
-                {
-                    nombre: 'Requiere atención', desc: '1 a 2 no conformes', color: '#b8860b',
-                    labs: filas.filter(f => f.i >= 1 && f.i <= 2)
-                },
-                {
-                    nombre: 'Acción correctiva', desc: '3 o más no conformes', color: '#c62828',
-                    labs: filas.filter(f => f.i >= 3)
-                },
-            ];
-
-            document.getElementById('mg-estratos').innerHTML = estratos.map(e => {
-                const p = e.labs.length / total * 100;
-                return `
+            document.getElementById('mg-estratos').innerHTML = g.estratos.map(e => `
                 <div class="estrato">
-                    <div class="nombre">${e.nombre}<small>${e.desc}</small></div>
-                    <div class="barra" title="${e.labs.length} de ${total} laboratorios">
-                        <span style="width:${p}%;background:${e.color}"></span>
+                    <div class="nombre">${e.nombre}<small>${e.descripcion}</small></div>
+                    <div class="barra" title="${e.laboratorios} de ${g.laboratorios} laboratorios">
+                        <span style="width:${e.pct}%;background:${e.color}"></span>
                     </div>
-                    <div class="valor"><strong>${e.labs.length}</strong> · ${p.toFixed(1)}%</div>
-                </div>`;
-            }).join('');
+                    <div class="valor"><strong>${e.laboratorios}</strong> · ${e.pct.toFixed(1)}%</div>
+                </div>`).join('');
 
             document.getElementById('global-metric-note').innerHTML =
                 `Esta métrica evalúa <strong>laboratorios</strong>, no resultados. Un laboratorio se ` +
@@ -1336,15 +1303,12 @@
 
             // Sin esto, el porcentaje sugiere que la falla está repartida entre
             // todos. Está concentrada, y eso cambia la acción correctiva.
-            const conFallas = filas.filter(f => f.i > 0).sort((x, y) => y.i - x.i);
-            const totalI = filas.reduce((s, f) => s + f.i, 0);
-            const top = conFallas.slice(0, 6);
-            const sumTop = top.reduce((s, f) => s + f.i, 0);
-            if (totalI && top.length) {
+            const c = g.concentracion;
+            if (c && c.no_conformes_total) {
                 document.getElementById('global-metric-concentracion').innerHTML =
-                    `<strong>Las no conformidades están concentradas:</strong> ${top.length} laboratorios ` +
-                    `acumulan ${sumTop} de los ${totalI} resultados no conformes de la ronda ` +
-                    `(${(sumTop / totalI * 100).toFixed(0)}%), sobre un total de ${total} participantes. ` +
+                    `<strong>Las no conformidades están concentradas:</strong> ${c.laboratorios} laboratorios ` +
+                    `acumulan ${c.no_conformes} de los ${c.no_conformes_total} resultados no conformes de la ronda ` +
+                    `(${c.pct.toFixed(0)}%), sobre un total de ${g.laboratorios} participantes. ` +
                     `La mayoría de los laboratorios con alguna falla presenta una sola; el esfuerzo de ` +
                     `mejora debe dirigirse a los casos con desvío sistemático, no al conjunto.`;
             }
@@ -1428,19 +1392,14 @@
             const tbody = document.getElementById('summary-tbody');
 
             analitos.forEach(a => {
-                const countA = a.laboratorios.filter(l => l.clasificacion === 'A').length;
-                const countC = a.laboratorios.filter(l => l.clasificacion === 'C').length;
-                const countI = a.laboratorios.filter(l => l.clasificacion === 'I').length;
+                const { A: countA, C: countC, I: countI } = a.conteos;
 
                 // Un analito por grupo de pares ocupa una fila por grupo: no tiene un
                 // X* único, y mostrar un promedio de ambos no describiría a ninguno.
                 if (esPorPares(a)) {
                     const evs = a.grupos.filter(g => g.evaluado);
                     evs.forEach((g, k) => {
-                        const gl = a.laboratorios.filter(l => l.grupo === g.nombre);
-                        const cA = gl.filter(l => l.clasificacion === 'A').length;
-                        const cC = gl.filter(l => l.clasificacion === 'C').length;
-                        const cI = gl.filter(l => l.clasificacion === 'I').length;
+                        const { A: cA, C: cC, I: cI } = g.conteos;
                         const cvClass = g.cv > 30 ? 'cv-critical' : (g.cv > 15 ? 'cv-high' : '');
                         tbody.innerHTML += `
                         <tr>

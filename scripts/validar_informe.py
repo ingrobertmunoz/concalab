@@ -196,6 +196,98 @@ class Validador:
                 self.aviso(f"{nom}: CV {a['cv']}% muy alto y marcado como concluyente "
                            f"— revisar si corresponde grupo de pares")
 
+    # ── 2b. Métricas derivadas ───────────────────────────────────────────
+    def metricas(self, d):
+        """
+        Recalcula desde analitos[] las cifras que el informe presenta como
+        conclusión y falla si no cuadran.
+
+        Sin esto la métrica titular sería un número sin respaldo: el JSON
+        podría declarar 54.1% de conformidad mientras los Z-Score dicen otra
+        cosa, y nada lo detectaría. Publicar una conclusión que la estadística
+        no sostiene es peor que no publicarla.
+        """
+        # Conteos por analito.
+        for a in d.get("analitos", []):
+            c = a.get("conteos")
+            if not c:
+                self.error(f"{a.get('nombre','?')}: falta 'conteos'")
+                continue
+            real = {"A": 0, "C": 0, "I": 0, "NE": 0}
+            for l in a.get("laboratorios", []):
+                if l.get("clasificacion") in real:
+                    real[l["clasificacion"]] += 1
+            for k, v in real.items():
+                if c.get(k) != v:
+                    self.error(f"{a.get('nombre','?')}: conteos.{k}={c.get(k)} "
+                               f"pero hay {v} laboratorios así clasificados")
+
+        # Resumen global.
+        r = d.get("resumen") or {}
+        tot = {"A": 0, "C": 0, "I": 0, "NE": 0}
+        for a in d.get("analitos", []):
+            for l in a.get("laboratorios", []):
+                if l.get("clasificacion") in tot:
+                    tot[l["clasificacion"]] += 1
+        for campo, esperado in (("aceptables", tot["A"]), ("cuestionables", tot["C"]),
+                                ("inaceptables", tot["I"]), ("sin_evaluar", tot["NE"]),
+                                ("total", tot["A"] + tot["C"] + tot["I"])):
+            if r.get(campo) != esperado:
+                self.error(f"resumen.{campo}={r.get(campo)} pero el recálculo da {esperado}")
+
+        # Desempeño global: se recalcula con la misma regla que el informe
+        # declara, incluida la exclusión de analitos no concluyentes.
+        g = d.get("desempeno_global")
+        if not g:
+            self.error("falta 'desempeno_global'")
+            return
+
+        por_lab = {}
+        for a in d.get("analitos", []):
+            if a.get("evaluacion_confiable") is False:
+                continue
+            for l in a.get("laboratorios", []):
+                s = por_lab.setdefault(l.get("id"), {"A": 0, "C": 0, "I": 0})
+                if l.get("clasificacion") in s:
+                    s[l["clasificacion"]] += 1
+
+        total = len(por_lab)
+        conformes = sum(1 for s in por_lab.values() if s["I"] == 0)
+
+        if g.get("laboratorios") != total:
+            self.error(f"desempeno_global.laboratorios={g.get('laboratorios')} "
+                       f"pero el recálculo da {total}")
+        if g.get("conformes") != conformes:
+            self.error(f"desempeno_global.conformes={g.get('conformes')} "
+                       f"pero el recálculo da {conformes}")
+
+        pct = round(conformes / total * 100, 1) if total else 0.0
+        if g.get("pct_conformes") != pct:
+            self.error(f"desempeno_global.pct_conformes={g.get('pct_conformes')} "
+                       f"pero el recálculo da {pct}")
+
+        # Los estratos deben cubrir a todos los laboratorios sin solaparse: si
+        # no suman el total, algún laboratorio quedó fuera de la clasificación.
+        suma = 0
+        for e in g.get("estratos", []):
+            hasta = e.get("hasta")
+            dentro = [s for s in por_lab.values()
+                      if s["I"] >= e.get("desde", 0) and (hasta is None or s["I"] <= hasta)]
+            if e.get("laboratorios") != len(dentro):
+                self.error(f"estrato '{e.get('clave')}': declara {e.get('laboratorios')} "
+                           f"laboratorios pero el recálculo da {len(dentro)}")
+            suma += e.get("laboratorios") or 0
+        if g.get("estratos") and suma != total:
+            self.error(f"los estratos suman {suma} laboratorios pero hay {total}: "
+                       f"los cortes dejan huecos o se solapan")
+
+        # El primer estrato debe coincidir con los conformes, o el titular y la
+        # estratificación estarían contando cosas distintas.
+        primero = (g.get("estratos") or [{}])[0]
+        if primero.get("laboratorios") not in (None, conformes):
+            self.error(f"el estrato '{primero.get('clave')}' declara "
+                       f"{primero['laboratorios']} pero hay {conformes} conformes")
+
     # ── 3. Anonimato ─────────────────────────────────────────────────────
     def anonimato(self, d, crudo):
         def recorrer(o, ruta=""):
@@ -246,6 +338,7 @@ def validar(codigo, area="quimica"):
     v = Validador()
     v.estructura(d)
     v.semantica(d)
+    v.metricas(d)
     v.anonimato(d, crudo)
     return v, ruta
 

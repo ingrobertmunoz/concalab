@@ -12,6 +12,349 @@
     "sin_evaluar": 6,
     "total": 852
   },
+  "desempeno_global": {
+    "criterio": "Un laboratorio es satisfactorio solo si ninguno de sus analitos resultó no conforme.",
+    "laboratorios": 37,
+    "conformes": 20,
+    "pct_conformes": 54.1,
+    "estratos": [
+      {
+        "clave": "satisfactorio",
+        "nombre": "Satisfactorio",
+        "descripcion": "ningún no conforme",
+        "desde": 0,
+        "hasta": 0,
+        "color": "#1e7e34",
+        "laboratorios": 20,
+        "pct": 54.1
+      },
+      {
+        "clave": "atencion",
+        "nombre": "Requiere atención",
+        "descripcion": "1 a 2 no conformes",
+        "desde": 1,
+        "hasta": 2,
+        "color": "#b8860b",
+        "laboratorios": 10,
+        "pct": 27.0
+      },
+      {
+        "clave": "correctiva",
+        "nombre": "Acción correctiva",
+        "descripcion": "3 o más no conformes",
+        "desde": 3,
+        "hasta": null,
+        "color": "#c62828",
+        "laboratorios": 7,
+        "pct": 18.9
+      }
+    ],
+    "concentracion": {
+      "laboratorios": 6,
+      "no_conformes": 39,
+      "no_conformes_total": 55,
+      "pct": 70.9
+    },
+    "por_laboratorio": [
+      {
+        "id": "AB8",
+        "A": 19,
+        "C": 2,
+        "I": 4,
+        "n": 25,
+        "pct_conformidad": 76.0
+      },
+      {
+        "id": "AF7",
+        "A": 24,
+        "C": 0,
+        "I": 0,
+        "n": 24,
+        "pct_conformidad": 100.0
+      },
+      {
+        "id": "AP2",
+        "A": 23,
+        "C": 1,
+        "I": 0,
+        "n": 24,
+        "pct_conformidad": 95.8
+      },
+      {
+        "id": "BO7",
+        "A": 18,
+        "C": 3,
+        "I": 5,
+        "n": 26,
+        "pct_conformidad": 69.2
+      },
+      {
+        "id": "CW7",
+        "A": 15,
+        "C": 5,
+        "I": 5,
+        "n": 25,
+        "pct_conformidad": 60.0
+      },
+      {
+        "id": "DW1",
+        "A": 10,
+        "C": 0,
+        "I": 0,
+        "n": 10,
+        "pct_conformidad": 100.0
+      },
+      {
+        "id": "DX6",
+        "A": 20,
+        "C": 1,
+        "I": 3,
+        "n": 24,
+        "pct_conformidad": 83.3
+      },
+      {
+        "id": "EG2",
+        "A": 21,
+        "C": 0,
+        "I": 0,
+        "n": 21,
+        "pct_conformidad": 100.0
+      },
+      {
+        "id": "EH4",
+        "A": 22,
+        "C": 0,
+        "I": 0,
+        "n": 22,
+        "pct_conformidad": 100.0
+      },
+      {
+        "id": "ER7",
+        "A": 22,
+        "C": 1,
+        "I": 0,
+        "n": 23,
+        "pct_conformidad": 95.7
+      },
+      {
+        "id": "FU2",
+        "A": 24,
+        "C": 0,
+        "I": 0,
+        "n": 24,
+        "pct_conformidad": 100.0
+      },
+      {
+        "id": "FV4",
+        "A": 24,
+        "C": 1,
+        "I": 1,
+        "n": 26,
+        "pct_conformidad": 92.3
+      },
+      {
+        "id": "GB1",
+        "A": 22,
+        "C": 0,
+        "I": 0,
+        "n": 22,
+        "pct_conformidad": 100.0
+      },
+      {
+        "id": "GD6",
+        "A": 24,
+        "C": 0,
+        "I": 1,
+        "n": 25,
+        "pct_conformidad": 96.0
+      },
+      {
+        "id": "IS1",
+        "A": 25,
+        "C": 0,
+        "I": 0,
+        "n": 25,
+        "pct_conformidad": 100.0
+      },
+      {
+        "id": "JU6",
+        "A": 23,
+        "C": 2,
+        "I": 1,
+        "n": 26,
+        "pct_conformidad": 88.5
+      },
+      {
+        "id": "KO7",
+        "A": 15,
+        "C": 1,
+        "I": 1,
+        "n": 17,
+        "pct_conformidad": 88.2
+      },
+      {
+        "id": "KQ7",
+        "A": 22,
+        "C": 0,
+        "I": 1,
+        "n": 23,
+        "pct_conformidad": 95.7
+      },
+      {
+        "id": "LD2",
+        "A": 25,
+        "C": 1,
+        "I": 0,
+        "n": 26,
+        "pct_conformidad": 96.2
+      },
+      {
+        "id": "LK9",
+        "A": 17,
+        "C": 6,
+        "I": 1,
+        "n": 24,
+        "pct_conformidad": 70.8
+      },
+      {
+        "id": "LN5",
+        "A": 6,
+        "C": 2,
+        "I": 0,
+        "n": 8,
+        "pct_conformidad": 75.0
+      },
+      {
+        "id": "MS6",
+        "A": 23,
+        "C": 0,
+        "I": 0,
+        "n": 23,
+        "pct_conformidad": 100.0
+      },
+      {
+        "id": "NL9",
+        "A": 17,
+        "C": 3,
+        "I": 6,
+        "n": 26,
+        "pct_conformidad": 65.4
+      },
+      {
+        "id": "NM5",
+        "A": 25,
+        "C": 0,
+        "I": 0,
+        "n": 25,
+        "pct_conformidad": 100.0
+      },
+      {
+        "id": "PZ6",
+        "A": 24,
+        "C": 0,
+        "I": 1,
+        "n": 25,
+        "pct_conformidad": 96.0
+      },
+      {
+        "id": "QV5",
+        "A": 9,
+        "C": 3,
+        "I": 14,
+        "n": 26,
+        "pct_conformidad": 34.6
+      },
+      {
+        "id": "QZ1",
+        "A": 20,
+        "C": 1,
+        "I": 2,
+        "n": 23,
+        "pct_conformidad": 87.0
+      },
+      {
+        "id": "RI2",
+        "A": 25,
+        "C": 0,
+        "I": 0,
+        "n": 25,
+        "pct_conformidad": 100.0
+      },
+      {
+        "id": "UJ4",
+        "A": 16,
+        "C": 4,
+        "I": 2,
+        "n": 22,
+        "pct_conformidad": 72.7
+      },
+      {
+        "id": "VK4",
+        "A": 22,
+        "C": 1,
+        "I": 0,
+        "n": 23,
+        "pct_conformidad": 95.7
+      },
+      {
+        "id": "WG5",
+        "A": 24,
+        "C": 0,
+        "I": 0,
+        "n": 24,
+        "pct_conformidad": 100.0
+      },
+      {
+        "id": "WJ5",
+        "A": 25,
+        "C": 1,
+        "I": 0,
+        "n": 26,
+        "pct_conformidad": 96.2
+      },
+      {
+        "id": "XC8",
+        "A": 18,
+        "C": 0,
+        "I": 0,
+        "n": 18,
+        "pct_conformidad": 100.0
+      },
+      {
+        "id": "YK4",
+        "A": 22,
+        "C": 0,
+        "I": 0,
+        "n": 22,
+        "pct_conformidad": 100.0
+      },
+      {
+        "id": "YX6",
+        "A": 15,
+        "C": 4,
+        "I": 5,
+        "n": 24,
+        "pct_conformidad": 62.5
+      },
+      {
+        "id": "YY6",
+        "A": 26,
+        "C": 0,
+        "I": 0,
+        "n": 26,
+        "pct_conformidad": 100.0
+      },
+      {
+        "id": "ZY9",
+        "A": 21,
+        "C": 1,
+        "I": 2,
+        "n": 24,
+        "pct_conformidad": 87.5
+      }
+    ],
+    "analitos_excluidos": []
+  },
   "analitos": [
     {
       "nombre": "ALT (TGP)",
@@ -246,6 +589,12 @@
           "clasificacion": "I"
         }
       ],
+      "conteos": {
+        "A": 35,
+        "C": 0,
+        "I": 2,
+        "NE": 0
+      },
       "evaluacion_confiable": true,
       "aviso_bimodal": null
     },
@@ -482,6 +831,12 @@
           "clasificacion": "C"
         }
       ],
+      "conteos": {
+        "A": 35,
+        "C": 1,
+        "I": 1,
+        "NE": 0
+      },
       "evaluacion_confiable": true,
       "aviso_bimodal": null
     },
@@ -706,6 +1061,12 @@
           "clasificacion": "C"
         }
       ],
+      "conteos": {
+        "A": 34,
+        "C": 1,
+        "I": 0,
+        "NE": 0
+      },
       "evaluacion_confiable": true,
       "aviso_bimodal": null
     },
@@ -924,6 +1285,12 @@
           "clasificacion": "I"
         }
       ],
+      "conteos": {
+        "A": 32,
+        "C": 1,
+        "I": 1,
+        "NE": 0
+      },
       "evaluacion_confiable": true,
       "aviso_bimodal": null
     },
@@ -1142,6 +1509,12 @@
           "clasificacion": "I"
         }
       ],
+      "conteos": {
+        "A": 29,
+        "C": 1,
+        "I": 4,
+        "NE": 0
+      },
       "evaluacion_confiable": true,
       "aviso_bimodal": null
     },
@@ -1360,6 +1733,12 @@
           "clasificacion": "I"
         }
       ],
+      "conteos": {
+        "A": 28,
+        "C": 1,
+        "I": 5,
+        "NE": 0
+      },
       "evaluacion_confiable": true,
       "aviso_bimodal": null
     },
@@ -1506,6 +1885,12 @@
           "clasificacion": "C"
         }
       ],
+      "conteos": {
+        "A": 19,
+        "C": 2,
+        "I": 1,
+        "NE": 0
+      },
       "evaluacion_confiable": true,
       "aviso_bimodal": null
     },
@@ -1724,6 +2109,12 @@
           "clasificacion": "I"
         }
       ],
+      "conteos": {
+        "A": 27,
+        "C": 3,
+        "I": 4,
+        "NE": 0
+      },
       "evaluacion_confiable": true,
       "aviso_bimodal": null
     },
@@ -1930,6 +2321,12 @@
           "clasificacion": "C"
         }
       ],
+      "conteos": {
+        "A": 29,
+        "C": 1,
+        "I": 2,
+        "NE": 0
+      },
       "evaluacion_confiable": true,
       "aviso_bimodal": null
     },
@@ -2166,6 +2563,12 @@
           "clasificacion": "I"
         }
       ],
+      "conteos": {
+        "A": 34,
+        "C": 1,
+        "I": 2,
+        "NE": 0
+      },
       "evaluacion_confiable": true,
       "aviso_bimodal": null
     },
@@ -2390,6 +2793,12 @@
           "clasificacion": "I"
         }
       ],
+      "conteos": {
+        "A": 33,
+        "C": 1,
+        "I": 1,
+        "NE": 0
+      },
       "evaluacion_confiable": true,
       "aviso_bimodal": null
     },
@@ -2626,6 +3035,12 @@
           "clasificacion": "I"
         }
       ],
+      "conteos": {
+        "A": 32,
+        "C": 2,
+        "I": 3,
+        "NE": 0
+      },
       "evaluacion_confiable": true,
       "aviso_bimodal": null
     },
@@ -2642,7 +3057,13 @@
           "valor_asignado": 406.76,
           "sd_robusta": 114.89,
           "cv": 28.2,
-          "n_suficiente": true
+          "n_suficiente": true,
+          "conteos": {
+            "A": 24,
+            "C": 1,
+            "I": 1,
+            "NE": 0
+          }
         },
         {
           "nombre": "Química seca (plataforma A)",
@@ -2651,13 +3072,25 @@
           "valor_asignado": 1101.6,
           "sd_robusta": 115.46,
           "cv": 10.5,
-          "n_suficiente": false
+          "n_suficiente": false,
+          "conteos": {
+            "A": 7,
+            "C": 1,
+            "I": 0,
+            "NE": 0
+          }
         },
         {
           "nombre": "Química seca (plataforma B)",
           "n": 2,
           "evaluado": false,
-          "motivo": "Grupo de pares insuficiente (n < 8)"
+          "motivo": "Grupo de pares insuficiente (n < 8)",
+          "conteos": {
+            "A": 0,
+            "C": 0,
+            "I": 0,
+            "NE": 2
+          }
         }
       ],
       "cv_global": 61.2,
@@ -2915,6 +3348,12 @@
           "grupo": "Química seca (plataforma B)"
         }
       ],
+      "conteos": {
+        "A": 31,
+        "C": 2,
+        "I": 1,
+        "NE": 2
+      },
       "evaluacion_confiable": true,
       "aviso_bimodal": null
     },
@@ -3139,6 +3578,12 @@
           "clasificacion": "I"
         }
       ],
+      "conteos": {
+        "A": 29,
+        "C": 4,
+        "I": 2,
+        "NE": 0
+      },
       "evaluacion_confiable": true,
       "aviso_bimodal": null
     },
@@ -3155,7 +3600,13 @@
           "valor_asignado": 179.86,
           "sd_robusta": 27.21,
           "cv": 15.1,
-          "n_suficiente": true
+          "n_suficiente": true,
+          "conteos": {
+            "A": 17,
+            "C": 1,
+            "I": 2,
+            "NE": 0
+          }
         },
         {
           "nombre": "Química seca (plataforma A)",
@@ -3164,13 +3615,25 @@
           "valor_asignado": 145.41,
           "sd_robusta": 12.06,
           "cv": 8.3,
-          "n_suficiente": false
+          "n_suficiente": false,
+          "conteos": {
+            "A": 7,
+            "C": 0,
+            "I": 1,
+            "NE": 0
+          }
         },
         {
           "nombre": "Química seca (plataforma B)",
           "n": 2,
           "evaluado": false,
-          "motivo": "Grupo de pares insuficiente (n < 8)"
+          "motivo": "Grupo de pares insuficiente (n < 8)",
+          "conteos": {
+            "A": 0,
+            "C": 0,
+            "I": 0,
+            "NE": 2
+          }
         }
       ],
       "cv_global": 19.7,
@@ -3386,6 +3849,12 @@
           "grupo": "Química seca (plataforma B)"
         }
       ],
+      "conteos": {
+        "A": 24,
+        "C": 1,
+        "I": 3,
+        "NE": 2
+      },
       "evaluacion_confiable": true,
       "aviso_bimodal": null
     },
@@ -3622,6 +4091,12 @@
           "clasificacion": "I"
         }
       ],
+      "conteos": {
+        "A": 29,
+        "C": 6,
+        "I": 2,
+        "NE": 0
+      },
       "evaluacion_confiable": true,
       "aviso_bimodal": null
     },
@@ -3708,6 +4183,12 @@
           "clasificacion": "C"
         }
       ],
+      "conteos": {
+        "A": 10,
+        "C": 1,
+        "I": 1,
+        "NE": 0
+      },
       "evaluacion_confiable": true,
       "aviso_bimodal": null
     },
@@ -3724,7 +4205,13 @@
           "valor_asignado": 703.75,
           "sd_robusta": 198.59,
           "cv": 28.2,
-          "n_suficiente": true
+          "n_suficiente": true,
+          "conteos": {
+            "A": 22,
+            "C": 1,
+            "I": 0,
+            "NE": 0
+          }
         },
         {
           "nombre": "Química seca (plataforma A)",
@@ -3733,13 +4220,25 @@
           "valor_asignado": 373.38,
           "sd_robusta": 35.55,
           "cv": 9.5,
-          "n_suficiente": false
+          "n_suficiente": false,
+          "conteos": {
+            "A": 7,
+            "C": 1,
+            "I": 0,
+            "NE": 0
+          }
         },
         {
           "nombre": "Química seca (plataforma B)",
           "n": 2,
           "evaluado": false,
-          "motivo": "Grupo de pares insuficiente (n < 8)"
+          "motivo": "Grupo de pares insuficiente (n < 8)",
+          "conteos": {
+            "A": 0,
+            "C": 0,
+            "I": 0,
+            "NE": 2
+          }
         }
       ],
       "cv_global": 41.8,
@@ -3976,6 +4475,12 @@
           "grupo": "Química seca (plataforma B)"
         }
       ],
+      "conteos": {
+        "A": 29,
+        "C": 2,
+        "I": 0,
+        "NE": 2
+      },
       "evaluacion_confiable": true,
       "aviso_bimodal": null
     },
@@ -4158,6 +4663,12 @@
           "clasificacion": "I"
         }
       ],
+      "conteos": {
+        "A": 24,
+        "C": 0,
+        "I": 4,
+        "NE": 0
+      },
       "evaluacion_confiable": true,
       "aviso_bimodal": null
     },
@@ -4352,6 +4863,12 @@
           "clasificacion": "A"
         }
       ],
+      "conteos": {
+        "A": 28,
+        "C": 2,
+        "I": 0,
+        "NE": 0
+      },
       "evaluacion_confiable": true,
       "aviso_bimodal": null
     },
@@ -4558,6 +5075,12 @@
           "clasificacion": "I"
         }
       ],
+      "conteos": {
+        "A": 25,
+        "C": 2,
+        "I": 5,
+        "NE": 0
+      },
       "evaluacion_confiable": true,
       "aviso_bimodal": null
     },
@@ -4782,6 +5305,12 @@
           "clasificacion": "I"
         }
       ],
+      "conteos": {
+        "A": 32,
+        "C": 1,
+        "I": 2,
+        "NE": 0
+      },
       "evaluacion_confiable": true,
       "aviso_bimodal": null
     },
@@ -4988,6 +5517,12 @@
           "clasificacion": "I"
         }
       ],
+      "conteos": {
+        "A": 27,
+        "C": 1,
+        "I": 4,
+        "NE": 0
+      },
       "evaluacion_confiable": true,
       "aviso_bimodal": null
     },
@@ -5224,6 +5759,12 @@
           "clasificacion": "A"
         }
       ],
+      "conteos": {
+        "A": 36,
+        "C": 0,
+        "I": 1,
+        "NE": 0
+      },
       "evaluacion_confiable": true,
       "aviso_bimodal": null
     },
@@ -5454,6 +5995,12 @@
           "clasificacion": "A"
         }
       ],
+      "conteos": {
+        "A": 31,
+        "C": 3,
+        "I": 2,
+        "NE": 0
+      },
       "evaluacion_confiable": true,
       "aviso_bimodal": null
     },
@@ -5690,6 +6237,12 @@
           "clasificacion": "I"
         }
       ],
+      "conteos": {
+        "A": 31,
+        "C": 4,
+        "I": 2,
+        "NE": 0
+      },
       "evaluacion_confiable": true,
       "aviso_bimodal": null
     }
