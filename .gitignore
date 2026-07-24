@@ -8,11 +8,15 @@ support/codigos_laboratorios_secretos.md
 support/firebase-service-account.json
 support/concalab-uasd-64ff4-firebase-adminsdk-fbsvc-c400cdf10b.json
 support/laboratorios_concalab.xlsx
+# Lleva hardcodeados nombres, correos, representantes y teléfonos reales de los
+# laboratorios: es un registro de datos personales, no solo una herramienta.
+support/generar_laboratorios.py
 *.docx
 
 # Hojas de cálculo y datos confidenciales
 *.xlsx
 *.xls
+*.ods
 
 # Archivos PDF
 *.pdf
@@ -35,6 +39,8 @@ venv/
 .vscode/
 .idea/
 Thumbs.db
+# Archivos de bloqueo de LibreOffice
+.~lock.*#
 
 # Artefactos de compilación LaTeX
 *.aux
@@ -50,3 +56,13 @@ Thumbs.db
 
 # Carpetas
 tarea-dss/
+
+# Reporte interno de participación (nombres reales)
+support/participacion_*.html
+
+# Datos crudos de ronda extraídos de Firestore (método/instrumento re-identifican
+# al laboratorio; regenerables con scripts/extraer_resultados_firebase.py)
+support/ensayos_*.csv
+
+# Informe preliminar de triaje (interno: método/instrumento re-identifican al lab)
+support/preliminar_*.html
