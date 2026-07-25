@@ -71,3 +71,8 @@ support/preliminar_*.html
 # es el de CLIA (EA-001-2026.html → -quimica-clia.json). No desplegar el consenso.
 publicaciones/informes/EA-001-2026-consenso.html
 data/informes/EA-001-2026-quimica.json
+
+# CLAUDE.md: documentación interna de ingeniería. Se conserva SOLO local
+# (Claude Code la lee del disco). No debe estar en el repo público ni servirse
+# en el sitio (www.concalabuasd.com/CLAUDE.md era accesible).
+CLAUDE.md
