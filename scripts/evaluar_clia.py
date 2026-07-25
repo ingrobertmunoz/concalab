@@ -187,9 +187,9 @@ CRITERIOS = {
                   "una desviación igual al Error Total Permitido (ETa), es decir, "
                   "al límite de aceptación de CLIA §493.931.",
     "niveles": [
-        {"clasificacion": "A", "nombre": "Satisfactorio", "regla": "|z| ≤ 2 (dentro de ⅔ del ETa)"},
-        {"clasificacion": "C", "nombre": "Alerta",        "regla": "2 < |z| < 3 (entre ⅔ del ETa y el límite)"},
-        {"clasificacion": "I", "nombre": "No aceptable",  "regla": "|z| ≥ 3 (fuera del límite de CLIA)"},
+        {"clasificacion": "A", "nombre": "Satisfactorio",    "regla": "|z| ≤ 2 (dentro de ⅔ del ETa)"},
+        {"clasificacion": "C", "nombre": "Alerta",           "regla": "2 < |z| < 3 (entre ⅔ del ETa y el límite)"},
+        {"clasificacion": "I", "nombre": "No satisfactorio", "regla": "|z| ≥ 3 (fuera del límite de CLIA)"},
     ],
     "eta_fuente": "Error Total Permitido de CLIA — 42 CFR §493.931 (regla final "
                   "CMS-3355-F, 2022). Lipasa y Bilirrubina Directa no están reguladas "

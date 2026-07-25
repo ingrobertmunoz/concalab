@@ -28,6 +28,21 @@ const CFG = Object.assign({
     montaje: 'informe-root',
 }, window.INFORME || {});
 
+// Nombres de las clasificaciones A/C/I según el modelo. En el modelo CLIA
+// (aptitud al uso) se usan los términos de PROASECAL/ESfEQA; en el de consenso,
+// la nomenclatura del z-score de ISO 13528. El consenso queda EXACTAMENTE igual.
+const _clia = CFG.modelo === 'clia';
+const LB = {
+    Ap:     _clia ? 'Satisfactorios'    : 'Aceptables',
+    Cp:     _clia ? 'Alertas'           : 'Cuestionables',
+    Ip:     _clia ? 'No satisfactorios' : 'Inaceptables',
+    A:      _clia ? 'Satisfactorio'     : 'Aceptable',
+    C:      _clia ? 'Alerta'            : 'Cuestionable',
+    I:      _clia ? 'No satisfactorio'  : 'Inaceptable',
+    conf:   _clia ? 'Satisfactorios'    : 'Conformes',
+    noconf: _clia ? 'No satisfactorios' : 'No conformes',
+};
+
 // ── Esqueleto del informe ────────────────────────────────────────────────
 // Se genera aquí para que una ronda nueva no tenga que clonar 130 líneas de
 // markup cuyos IDs deben coincidir exactamente con los que busca este archivo.
@@ -126,9 +141,9 @@ const ESQUELETO = `<!-- Aviso global de analitos no concluyentes -->
             <tr>
                 <th data-sort="id" class="sortable">Laboratorio</th>
                 <th data-sort="n" class="sortable num">Analitos evaluados</th>
-                <th data-sort="a" class="sortable num">Conformes</th>
-                <th data-sort="c" class="sortable num">Cuestionables</th>
-                <th data-sort="i" class="sortable num">No conformes</th>
+                <th data-sort="a" class="sortable num">${LB.conf}</th>
+                <th data-sort="c" class="sortable num">${LB.Cp}</th>
+                <th data-sort="i" class="sortable num">${LB.noconf}</th>
                 <th data-sort="pct" class="sortable">% Conformidad</th>
             </tr>
         </thead>
@@ -198,6 +213,22 @@ function zColor(z) {
 
 function safeId(name) {
     return name.replace(/\s/g, '-').replace(/[().]/g, '');
+}
+
+// Etiqueta legible del Error Total Permitido (modelo CLIA): la regla declarada
+// y, entre paréntesis, el δE ya resuelto en la unidad del analito. Marca los
+// analitos que CLIA no regula (Lipasa, Bilirrubina Directa → variación biológica).
+function etaLabel(eta, unidad) {
+    if (!eta) return '';
+    const partes = [];
+    if (eta.pct != null) partes.push(`±${eta.pct}%`);
+    if (eta.abs != null) partes.push(`±${eta.abs} ${eta.unidad || unidad}`);
+    const regla = partes.join(eta.regla === 'mayor' ? ' o ' : ' ');
+    const soloAbs = eta.pct == null && eta.abs != null;
+    const resuelto = (!soloAbs && eta.delta_e != null)
+        ? ` (±${Number(eta.delta_e).toFixed(2)} ${unidad})` : '';
+    const vb = (eta.fuente && eta.fuente.includes('EFLM')) ? ' <em>(EFLM, no CLIA)</em>' : '';
+    return regla + resuelto + vb;
 }
 
 // ── Evaluación por grupo de pares ─────────────────────────────────────
@@ -331,15 +362,15 @@ function renderReport(data) {
     </div>
     <div class="summary-card" style="background: #28a745;">
         <div class="number">${r.aceptables}</div>
-        <div class="label">Aceptables (${pctA}%)</div>
+        <div class="label">${LB.Ap} (${pctA}%)</div>
     </div>
     <div class="summary-card" style="background: #ffc107; color: #333;">
         <div class="number">${r.cuestionables}</div>
-        <div class="label">Cuestionables (${pctC}%)</div>
+        <div class="label">${LB.Cp} (${pctC}%)</div>
     </div>
     <div class="summary-card" style="background: #dc3545;">
         <div class="number">${r.inaceptables}</div>
-        <div class="label">Inaceptables (${pctI}%)</div>
+        <div class="label">${LB.Ip} (${pctI}%)</div>
     </div>
     <div class="summary-card" style="background: var(--primary-color);">
         <div class="number">${r.total}</div>
@@ -402,13 +433,14 @@ function renderReport(data) {
                ${a.grupos.filter(g => g.evaluado).map(g => `
                <div class="stat stat-grupo">
                    <strong>${g.nombre}</strong><br>
-                   n = ${g.n} · X* = ${g.valor_asignado} ${a.unidad} · σ* = ${g.sd_robusta} · CV ${g.cv}%
+                   n = ${g.n} · X* = ${g.valor_asignado} ${a.unidad} · σ* = ${g.sd_robusta} · CV ${g.cv}%${g.eta ? ` · ETa ${etaLabel(g.eta, a.unidad)}` : ''}
                </div>`).join('')}
                <div class="stat">✅ ${countA} ⚠️ ${countC} ❌ ${countI}${countNE ? ` · ${countNE} sin evaluar` : ''}</div>`
             : `<div class="stat"><strong>n:</strong> ${a.n} labs</div>
                <div class="stat"><strong>X*:</strong> ${a.valor_asignado} ${a.unidad}</div>
                <div class="stat"><strong>σ*:</strong> ${a.sd_robusta} ${a.unidad}</div>
                <div class="stat"><strong>CV:</strong> ${a.cv}%</div>
+               ${a.eta ? `<div class="stat"><strong>ETa:</strong> ${etaLabel(a.eta, a.unidad)}</div>` : ''}
                <div class="stat">✅ ${countA} ⚠️ ${countC} ❌ ${countI}</div>`;
 
         container.innerHTML += `
@@ -941,8 +973,8 @@ function renderHeatmap(data) {
             if (labMap[id] && labMap[id].z_score !== null) {
                 const z = labMap[id].z_score;
                 row.push(Math.max(-CLAMP, Math.min(CLAMP, z)));
-                const clasif = labMap[id].clasificacion === 'A' ? 'Aceptable'
-                    : labMap[id].clasificacion === 'C' ? 'Cuestionable' : 'Inaceptable';
+                const clasif = labMap[id].clasificacion === 'A' ? LB.A
+                    : labMap[id].clasificacion === 'C' ? LB.C : LB.I;
                 hoverRow.push(
                     `${id}<br>${a.nombre}<br>Z-Score: ${z.toFixed(2)}<br>Resultado: ${labMap[id].resultado} ${a.unidad}<br>${clasif}`
                 );

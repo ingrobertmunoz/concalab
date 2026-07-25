@@ -23,7 +23,7 @@
       },
       {
         "clasificacion": "I",
-        "nombre": "No aceptable",
+        "nombre": "No satisfactorio",
         "regla": "|z| ≥ 3 (fuera del límite de CLIA)"
       }
     ],

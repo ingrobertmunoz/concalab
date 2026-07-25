@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Informe de Ensayo de Aptitud EA-001-2026 - CONCALAB-UASD. Resultados y análisis estadísticos con gráficos interactivos.">
+        content="Informe de Ensayo de Aptitud EA-001-2026 - CONCALAB-UASD. Evaluación según CLIA: valor asignado por media robusta (ISO 13528) y Error Total Permitido (ETa).">
     <title>Informe EA-001-2026 - CONCALAB-UASD</title>
 
     <link rel="stylesheet" href="../../css/main.css">
@@ -77,7 +77,7 @@
         <div class="container">
             <div class="hero-content fade-in-down">
                 <h1 class="hero-title">Informe de Ensayo de Aptitud</h1>
-                <p class="hero-subtitle">Química Clínica — Resultados y Análisis Estadístico Interactivo</p>
+                <p class="hero-subtitle">Química Clínica — Evaluación según CLIA (Error Total Permitido)</p>
             </div>
         </div>
     </section>
@@ -138,12 +138,15 @@
     <script src="../../js/scroll-reveal.js"></script>
 
     <script>
-        // Única parte específica de esta ronda. Toda la lógica y el esqueleto
-        // están en js/informe.js, compartidos por todos los informes.
+        // Informe principal de la ronda: evaluación según CLIA (aptitud al uso).
+        // 'modelo: clia' activa el panel de criterios y la banda X* ± ETa. La
+        // evaluación por consenso se conserva en EA-001-2026-consenso.html.
+        // Toda la lógica y el esqueleto están en js/informe.js, compartidos.
         window.INFORME = {
             codigo: 'EA-001-2026',
             area: 'quimica',
-            json: '../../data/informes/EA-001-2026-quimica.json',
+            modelo: 'clia',
+            json: '../../data/informes/EA-001-2026-quimica-clia.json',
             preliminar: true,
             areas: [
                 { clave: 'quimica',     nombre: 'Química Clínica', disponible: true },
