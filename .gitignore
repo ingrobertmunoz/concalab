@@ -66,3 +66,8 @@ support/ensayos_*.csv
 
 # Informe preliminar de triaje (interno: método/instrumento re-identifican al lab)
 support/preliminar_*.html
+
+# Informe de consenso de EA-001-2026: se conserva SOLO local. El informe público
+# es el de CLIA (EA-001-2026.html → -quimica-clia.json). No desplegar el consenso.
+publicaciones/informes/EA-001-2026-consenso.html
+data/informes/EA-001-2026-quimica.json
