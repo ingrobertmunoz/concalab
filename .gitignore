@@ -76,3 +76,8 @@ data/informes/EA-001-2026-quimica.json
 # (Claude Code la lee del disco). No debe estar en el repo público ni servirse
 # en el sitio (www.concalabuasd.com/CLAUDE.md era accesible).
 CLAUDE.md
+
+# Archivos internos con nombres/direcciones reales de laboratorios: NO desplegar.
+# (El directorio público de miembros vive en miembros.html + data/laboratorios.json.)
+support/Labs info.md
+support/LABORATORIOS Y DIRECCION.docx
