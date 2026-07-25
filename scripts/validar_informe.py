@@ -307,6 +307,73 @@ class Validador:
             if marca in bajo:
                 self.error(f"marca de equipo '{marca}' presente en el JSON desplegado")
 
+    # ── 4. Modelo CLIA ───────────────────────────────────────────────────
+    # Solo corre cuando el JSON declara modelo="clia". Verifica lo que el
+    # modelo de consenso no tiene: que la σ de evaluación sea el ETa/3 y que el
+    # z-score se reproduzca desde X* y σpt. Sin esto, un σpt mal calculado
+    # pasaría —la coherencia |z|↔clasificación seguiría cuadrando— y el informe
+    # calificaría contra un límite equivocado.
+    def _especificaciones(self):
+        try:
+            with open(CONFIG_PATH, encoding="utf-8") as f:
+                return (json.load(f).get("especificaciones_desempeno") or {}).get("quimica", {})
+        except (OSError, ValueError):
+            return {}
+
+    @staticmethod
+    def _delta_e_cfg(spec, x):
+        cand = []
+        if spec.get("pct") is not None:
+            cand.append(spec["pct"] / 100.0 * abs(x))
+        if spec.get("abs") is not None:
+            cand.append(float(spec["abs"]))
+        return max(cand) if cand else None
+
+    def _bloque_clia(self, etiqueta, bloque, spec_cfg, labs):
+        eta, sigma_pt = bloque.get("eta"), bloque.get("sigma_pt")
+        x = bloque.get("valor_asignado")
+        if not eta or eta.get("delta_e") is None:
+            self.error(f"{etiqueta}: evaluado sin 'eta.delta_e'"); return
+        if sigma_pt is None:
+            self.error(f"{etiqueta}: evaluado sin 'sigma_pt'"); return
+        dE = eta["delta_e"]
+        if abs(sigma_pt - dE / 3) > 0.01:
+            self.error(f"{etiqueta}: sigma_pt={sigma_pt} ≠ δE/3={round(dE/3, 4)}")
+        if spec_cfg and x is not None:
+            dE_cfg = self._delta_e_cfg(spec_cfg, x)
+            if dE_cfg is not None and abs(dE - dE_cfg) > 0.01:
+                self.error(f"{etiqueta}: δE={dE} no coincide con config "
+                           f"({round(dE_cfg, 4)}) sobre X*={x}")
+        for l in labs:
+            z, r = l.get("z_score"), l.get("resultado")
+            if z is None or x is None or not sigma_pt:
+                continue
+            z_calc = (r - x) / sigma_pt
+            # Tolerancia relativa: X* y σpt viajan redondeados en el JSON, y con
+            # un |z| grande (errores gruesos) ese redondeo se amplifica. Un z mal
+            # calculado de verdad se desvía mucho más que esto.
+            if abs(z - z_calc) > max(0.05, abs(z_calc) * 0.0005):
+                self.error(f"{etiqueta}/{l.get('id')}: z={z} no se reproduce desde "
+                           f"X*={x}, σpt={sigma_pt} (da {round(z_calc, 2)})")
+
+    def clia(self, d):
+        esp = self._especificaciones()
+        if "criterios_aceptacion" not in d:
+            self.error("modelo clia sin 'criterios_aceptacion' (el panel de criterios)")
+        for a in d.get("analitos", []):
+            nom = a.get("nombre", "?")
+            spec_cfg = esp.get(nom)
+            if spec_cfg is None:
+                self.error(f"{nom}: sin ETa en config.especificaciones_desempeno.quimica")
+            if a.get("evaluacion") == "grupo_pares":
+                for g in a.get("grupos", []):
+                    if g.get("evaluado"):
+                        labs = [l for l in a.get("laboratorios", [])
+                                if l.get("grupo") == g.get("nombre")]
+                        self._bloque_clia(f"{nom}/grupo {g.get('nombre')}", g, spec_cfg, labs)
+            else:
+                self._bloque_clia(nom, a, spec_cfg, a.get("laboratorios", []))
+
     def informar(self, ruta):
         print("=" * 78)
         print(f"  VALIDACIÓN DEL CONTRATO JSON ↔ INFORME HTML")
@@ -325,11 +392,13 @@ class Validador:
         return not self.errores
 
 
-def validar(codigo, area="quimica"):
-    ruta = os.path.join(SALIDA_DIR, f"{codigo}-{area}.json")
+def validar(codigo, area="quimica", modelo=None):
+    sufijo = "-clia" if modelo == "clia" else ""
+    ruta = os.path.join(SALIDA_DIR, f"{codigo}-{area}{sufijo}.json")
     if not os.path.exists(ruta):
+        script = "evaluar_clia.py" if modelo == "clia" else "calcular_zscore.py"
         sys.exit(f"ERROR: no existe {ruta}\n"
-                 f"Ejecuta primero: python scripts/calcular_zscore.py --codigo {codigo}")
+                 f"Ejecuta primero: python scripts/{script} --codigo {codigo}")
 
     with open(ruta, encoding="utf-8") as f:
         crudo = f.read()
@@ -339,6 +408,8 @@ def validar(codigo, area="quimica"):
     v.estructura(d)
     v.semantica(d)
     v.metricas(d)
+    if d.get("modelo") == "clia":
+        v.clia(d)
     v.anonimato(d, crudo)
     return v, ruta
 
@@ -347,6 +418,8 @@ def main():
     ap = argparse.ArgumentParser(description="Valida el JSON de un informe antes de publicarlo.")
     ap.add_argument("--codigo")
     ap.add_argument("--area", default="quimica")
+    ap.add_argument("--modelo", choices=["consenso", "clia"], default="consenso",
+                    help="'clia' valida el JSON -clia.json (evaluación por ETa)")
     args = ap.parse_args()
 
     codigo = args.codigo
@@ -354,7 +427,7 @@ def main():
         with open(CONFIG_PATH, encoding="utf-8") as f:
             codigo = json.load(f)["ronda_activa"]["codigo"]
 
-    v, ruta = validar(codigo, args.area)
+    v, ruta = validar(codigo, args.area, args.modelo)
     sys.exit(0 if v.informar(ruta) else 1)
 
 

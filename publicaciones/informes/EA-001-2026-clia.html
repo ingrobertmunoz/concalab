@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Informe de Ensayo de Aptitud EA-001-2026 (evaluación según CLIA) - CONCALAB-UASD. Valor asignado por media robusta ISO 13528 y Error Total Permitido de CLIA.">
+    <title>Informe EA-001-2026 (CLIA) - CONCALAB-UASD</title>
+
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="../../css/animations.css">
+    <link rel="icon" type="image/x-icon" href="../../assets/icons/favicon.ico">
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
+    <link rel="stylesheet" href="../../css/informe.css">
+</head>
+
+<body>
+    <div class="nav-overlay"></div>
+
+    <header class="header">
+        <div class="header-container">
+            <a href="../../index.html" class="logo"
+                style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 1rem;">
+                <img src="../../assets/images/logo-concalab.png" alt="Logo CONCALAB-UASD"
+                    onerror="this.style.display='none'">
+                <div class="logo-text">
+                    <div class="logo-title">CONCALAB-UASD</div>
+                    <div class="logo-subtitle">Control de Calidad de Laboratorios</div>
+                </div>
+            </a>
+
+            <nav class="nav-main">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="../../index.html" class="nav-link">Inicio</a></li>
+                    <li class="nav-item dropdown active">
+                        <a href="#" class="nav-link">Publicaciones</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../protocolos.html" class="nav-link">Protocolos</a></li>
+                            <li><a href="../informes.html" class="nav-link active">Informes</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="../../portal-educativo.html" class="nav-link">Educación</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Servicios</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../../servicios.html" class="nav-link">Nuestros Servicios</a></li>
+                            <li><a href="../../resultados.html" class="nav-link">Reportar Resultados</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="../../miembros.html" class="nav-link">Miembros</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Nosotros</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../../sobre-nosotros/quienes-somos.html" class="nav-link">Quiénes Somos</a>
+                            </li>
+                            <li><a href="../../sobre-nosotros/historia.html" class="nav-link">Historia</a></li>
+                            <li><a href="../../sobre-nosotros/marco-legal.html" class="nav-link">Marco Legal</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="../../contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Buscar...">
+                    <button class="search-btn" aria-label="Buscar">🔍</button>
+                </div>
+            </nav>
+
+            <button class="menu-toggle" aria-label="Menú">☰</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in-down">
+                <h1 class="hero-title">Informe de Ensayo de Aptitud</h1>
+                <p class="hero-subtitle">Química Clínica — Evaluación según CLIA (Error Total Permitido)</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+
+            <!-- Todo el informe lo construye js/informe.js -->
+            <div id="informe-root"></div>
+
+            <!-- Back to informes -->
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="../informes.html" class="btn btn-outline">← Volver a Informes</a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CONCALAB-UASD</h3>
+                    <p>Control de Calidad de Laboratorios</p>
+                    <p>Universidad Autónoma de Santo Domingo</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="../../index.html">Inicio</a></li>
+                        <li><a href="../../servicios.html">Servicios</a></li>
+                        <li><a href="../../portal-educativo.html">Educación</a></li>
+                        <li><a href="../../contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Publicaciones</h3>
+                    <ul class="footer-links">
+                        <li><a href="../protocolos.html">Protocolos</a></li>
+                        <li><a href="../informes.html">Informes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>📍 Santo Domingo, República Dominicana</p>
+                    <p>📧 info@concalab.uasd.edu.do</p>
+                    <p>📞 +1 (809) XXX-XXXX</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CONCALAB-UASD. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/search.js"></script>
+    <script src="../../js/scroll-reveal.js"></script>
+
+    <script>
+        // Única parte específica de este informe. La lógica y el esqueleto están
+        // en js/informe.js, compartidos. 'modelo: clia' activa el panel de
+        // criterios de aceptación y la banda de aceptación X* ± ETa.
+        window.INFORME = {
+            codigo: 'EA-001-2026',
+            area: 'quimica',
+            modelo: 'clia',
+            json: '../../data/informes/EA-001-2026-quimica-clia.json',
+            preliminar: true,
+            areas: [
+                { clave: 'quimica',     nombre: 'Química Clínica', disponible: true },
+                { clave: 'uroanalisis', nombre: 'Uroanálisis',     disponible: false,
+                  estado: 'En procesamiento' }
+            ]
+        };
+    </script>
+    <script src="../../js/informe.js"></script>
+
+</body>
+
+</html>

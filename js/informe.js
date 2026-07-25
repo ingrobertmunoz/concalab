@@ -96,6 +96,9 @@ const ESQUELETO = `<!-- Aviso global de analitos no concluyentes -->
     <p class="tabla-nota" id="global-metric-concentracion"></p>
 </div>
 
+<!-- Criterios de aceptación (se rellena cuando el JSON los trae, p. ej. modelo CLIA) -->
+<div class="methodology" id="criteria-panel" style="display:none;"></div>
+
 
 <!-- Navigation Index -->
 <div class="nav-toc" id="nav-toc" style="display:none;">
@@ -291,6 +294,23 @@ function renderReport(data) {
     <p>${data.metodologia} — Fecha: ${data.fecha}</p>
 `;
 
+    // Criterios de aceptación al inicio. Solo aparece si el JSON los declara
+    // (modelo CLIA); un número nuevo se agrega en Python, no aquí.
+    const critPanel = document.getElementById('criteria-panel');
+    const crit = data.criterios_aceptacion;
+    if (crit && critPanel) {
+        critPanel.style.display = 'block';
+        critPanel.innerHTML = `
+        ${crit.que_es_clia ? `<p style="margin:0 0 .8rem 0;"><strong>¿Qué es CLIA?</strong> ${crit.que_es_clia}</p>` : ''}
+        <strong>Criterios de aceptación</strong><br>
+        • <strong>Valor asignado (X*):</strong> ${crit.valor_asignado}<br>
+        • <strong>Dispersión (σ*, CV):</strong> ${crit.dispersion}<br>
+        • <strong>Evaluación:</strong> ${crit.evaluacion}<br>
+        • <strong>Niveles:</strong> ${crit.niveles
+            .map(n => `<strong>${n.nombre}</strong> ${n.regla}`).join(' &nbsp;|&nbsp; ')}<br>
+        • <strong>ETa:</strong> ${crit.eta_fuente}`;
+    }
+
     // Summary cards
     const r = data.resumen;
     const pctA = (r.aceptables / r.total * 100).toFixed(1);
@@ -409,7 +429,11 @@ function renderReport(data) {
     renderLabTable(data);
     renderSummaryTable(data.analitos);
     renderCVAlerts(data.analitos);
-    document.getElementById('methodology-box').style.display = 'block';
+    // El recuadro de metodología del pie describe el z-score de consenso
+    // (z=(x−X*)/σ*). En el modelo CLIA eso sería incorrecto: el panel de
+    // criterios del inicio ya declara la metodología correcta, así que se oculta.
+    document.getElementById('methodology-box').style.display =
+        data.criterios_aceptacion ? 'none' : 'block';
 }
 
 function renderCharts(analyte, index) {
@@ -430,11 +454,17 @@ function renderCharts(analyte, index) {
     const xMin = Math.min(...centros.map(c => c.x - Z_VISTA * c.s));
     const xMax = Math.max(...centros.map(c => c.x + Z_VISTA * c.s));
 
-    // Banda verde |z| <= 2: solo tiene sentido con un único criterio. Con
-    // grupos de pares cada uno tendría el suyo y se solaparían, así que se
-    // omite y la zona aceptable queda expresada en el gráfico de Z-Score.
-    const z2low = centros.length === 1 ? centros[0].x - 2 * centros[0].s : null;
-    const z2high = centros.length === 1 ? centros[0].x + 2 * centros[0].s : null;
+    // Banda de aceptación: solo tiene sentido con un único criterio. Con grupos
+    // de pares cada uno tendría el suyo y se solaparían, así que se omite y la
+    // zona aceptable queda expresada en el gráfico de Z-Score.
+    // En el modelo CLIA la banda es X* ± ETa (el límite regulatorio); en el de
+    // consenso es X* ± 2σ*. El rango visible del eje sigue basado en σ* para no
+    // ocultar la dispersión real de los laboratorios.
+    const semiBanda = (CFG.modelo === 'clia' && analyte.eta)
+        ? analyte.eta.delta_e
+        : 2 * centros[0].s;
+    const z2low = centros.length === 1 ? centros[0].x - semiBanda : null;
+    const z2high = centros.length === 1 ? centros[0].x + semiBanda : null;
 
     const dentro = resultados.filter(v => v >= xMin && v <= xMax);
     const nBins = Math.max(8, Math.min(20, Math.floor(resultados.length / 2)));

@@ -6,6 +6,23 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **CONCALAB-UASD** is the official website of the Quality Control of Laboratories program at the Universidad Autónoma de Santo Domingo (UASD), Dominican Republic. It manages proficiency testing (ensayos de aptitud) for clinical laboratories following ISO 13528:2022.
 
+## Fuentes normativas — consultar por NotebookLM, no de memoria
+
+Como proveedor de ensayos de aptitud, **toda afirmación normativa se cita desde el documento oficial, no de conocimiento general ni de reproducciones de terceros** (p. ej. las tablas de Westgard sirven para orientarse, pero **no son citables** en el sistema de calidad).
+
+Los documentos oficiales viven en el NotebookLM del proveedor llamado **"Ensayos de Aptitud"** (`notebook id 18ed97b9-51e4-435b-89b1-6e8be5258915`), consultable con la skill **`notebooklm`**:
+
+- **ISO 13528:2022** — métodos estadísticos para ensayos de aptitud.
+- **ISO/IEC 17043** — requisitos para proveedores de ensayos de aptitud.
+- **CLIA — regla final CMS-3355-F** ([govinfo, FR-2022-07-11](https://www.govinfo.gov/content/pkg/FR-2022-07-11/pdf/2022-14513.pdf)) y su [corrección de nov 2022](https://www.govinfo.gov/content/pkg/FR-2022-11-17/pdf/2022-24990.pdf) — criterios de desempeño aceptable por analito. La química de rutina está en **§493.931**. CLIA **no regula Lipasa ni Bilirrubina Directa**; para esos usar variación biológica (EFLM).
+
+El notebook también contiene **informes de proveedores reales** (no son fuente normativa citable, sino precedentes de cómo se evalúa en la práctica):
+
+- **PROASECAL** (proveedor **regional**, Latinoamérica) — informe de **Química Clínica** (`QUIMICA AGRUPADO PEA 2025`) y de **Uroanálisis** (`INFORME PROASECAL NOVIEMBRE 2025`). Referencia principal por ser regional. Método: en química reporta **dos índices** — `PA` (% de desviación permitida sobre `δE` = error permitido, con `Xpt` asignado; equivale al z con σ=δE/3) **y** el z-score de consenso `z = (Xi−X*)/S*`. En uroanálisis (cualitativo) evalúa por **concordancia con la moda** + % de aciertos, sin z-score.
+- **WSLH** (Wisconsin) y **Wadsworth/NY DOH** — proveedores de EE. UU. que declaran media robusta + tolerancia CLIA, aceptable/no aceptable.
+
+Antes de dar un límite, una cláusula o un criterio normativo: `notebooklm ask "..." --notebook 18ed97b9-... [-s <source_id>]`. Si la CLI dice "Authentication expired", re-autenticar antes de consultar. Si el NotebookLM no tuviera el documento, decirlo y ofrecer subir la fuente oficial — nunca inventar la cifra.
+
 ## Tech Stack
 
 - **Pure static site** — no build process, no npm, no framework. HTML5 + CSS3 + Vanilla JS (ES6+).
@@ -149,6 +166,23 @@ python scripts/calcular_zscore.py --codigo EA-001-2026 --efecto-metodo  # solo d
 ```
 
 Por defecto evalúa **agrupado**: un valor asignado por analito con todos los laboratorios juntos. Escribe `data/informes/<codigo>-quimica.json`. `--efecto-metodo` no escribe nada; compara el resultado agrupado contra el que daría cada plataforma analítica por separado.
+
+**Evaluación por aptitud al uso (modelo CLIA) — `scripts/evaluar_clia.py`**
+
+Pipeline **paralelo** al de consenso; **no lo reemplaza**. El de consenso evalúa con la σ* de los participantes (`z = (x−X*)/σ*`), que en un grupo disperso ensancha la ventana y es indulgente. El modelo CLIA mantiene el **mismo valor asignado** (media robusta, Algoritmo A) pero evalúa contra un **Error Total Permitido (ETa)** fijo por analito:
+
+> **σpt = ETa/3**, de modo que **|z| = 3 equivale al límite de CLIA**. Es el mismo criterio de ESfEQA; el `PA` de PROASECAL es este z reescalado a % (`PA = z × 33.33`).
+
+```bash
+python scripts/evaluar_clia.py --codigo EA-001-2026        # escribe <codigo>-quimica-clia.json
+python scripts/validar_informe.py --codigo EA-001-2026 --modelo clia
+```
+
+- **Los ETa viven en `data/config.json` → `especificaciones_desempeno.quimica`** (uno por analito): `pct` = % de X*, `abs` = valor absoluto, `regla: mayor` toma el mayor de ambos (regla de CLIA). Fuente: CLIA 42 CFR §493.931. **CLIA no regula Lipasa ni Bilirrubina Directa** → ETa por variación biológica (EFLM).
+- `evaluar_clia.py` **reutiliza** la maquinaria de `calcular_zscore.py` (robusto, carga, plataformas, grupos de pares, desempeño global). σ* y CV se conservan en el JSON pero **solo informan dispersión**, no evalúan.
+- El JSON trae `modelo: "clia"`, `criterios_aceptacion` (incluida la definición de CLIA), y por analito/grupo `eta` (con `delta_e`) y `sigma_pt`. `validar_informe.py --modelo clia` **reproduce el z desde X* y σpt** y comprueba que `σpt = δE/3` y que δE cuadre con config — lo que el validador de consenso no hace.
+- La página es `publicaciones/informes/<codigo>-clia.html`, un armazón con `window.INFORME.modelo = 'clia'`. Ese flag activa en `js/informe.js` (compartido) el **panel de criterios al inicio** y la **banda de aceptación X* ± δE** del histograma (el eje sigue basado en σ* para no ocultar la dispersión). Sin el flag, el informe de consenso se dibuja igual que siempre.
+- Niveles: `|z| ≤ 2` Satisfactorio · `2 < |z| < 3` Alerta · `|z| ≥ 3` No aceptable. Se **clasifica sobre el z redondeado** para que el número mostrado y la clasificación coincidan en el borde (un 2.998 se muestra 3.00 y clasifica No aceptable).
 
 **Auditoría de unidades — `scripts/auditar_unidades.py`**
 

@@ -29,5 +29,38 @@
         "justificacion": "Efecto de método entre química seca y húmeda. Agrupados, el Algoritmo A no converge a un centro único e infla la σ*: ALP daba 34 A / 2 C / 0 I (nadie reprobaba) y LDH 33 A / 0 C / 0 I, un falso negativo. Separados, el CV interno de cada grupo baja a ~10% y aparecen las no conformidades reales."
       }
     }
+  },
+
+  "_comentario_especificaciones": "Error Total Permitido (ETa) por analito para la evaluación por aptitud al uso (modelo CLIA). δE se resuelve sobre el valor asignado X*: 'pct' = % de X*, 'abs' = valor absoluto en 'unidad'; con regla 'mayor' se toma el mayor de ambos (más permisivo a baja concentración), como lo define CLIA. El z-score se calcula con σpt = δE/3, de modo que |z|=3 equivale al límite de CLIA. Fuente por defecto: CLIA 42 CFR §493.931 (regla final CMS-3355-F, 2022). CLIA no regula Lipasa ni Bilirrubina Directa: para esos se usa el ETa deseable por variación biológica (EFLM).",
+
+  "especificaciones_desempeno": {
+    "quimica": {
+      "ALT (TGP)":                 { "pct": 15,  "abs": 6,   "unidad": "U/L",    "regla": "mayor", "fuente": "CLIA §493.931" },
+      "AST (TGO)":                 { "pct": 15,  "abs": 6,   "unidad": "U/L",    "regla": "mayor", "fuente": "CLIA §493.931" },
+      "Albúmina":                  { "pct": 8,                                                     "fuente": "CLIA §493.931" },
+      "Amilasa":                   { "pct": 20,                                                    "fuente": "CLIA §493.931" },
+      "Bilirrubina Total":         { "pct": 20,  "abs": 0.4, "unidad": "mg/dL",  "regla": "mayor", "fuente": "CLIA §493.931" },
+      "Bilirrubina Directa":       { "pct": 44.5,                                                  "fuente": "EFLM (variación biológica) — CLIA no regula" },
+      "CK-TOTAL":                  { "pct": 20,                                                    "fuente": "CLIA §493.931" },
+      "Calcio":                    { "abs": 1.0, "unidad": "mg/dL",                                "fuente": "CLIA §493.931" },
+      "Cloruro":                   { "pct": 5,                                                     "fuente": "CLIA §493.931" },
+      "Colesterol":                { "pct": 10,                                                    "fuente": "CLIA §493.931" },
+      "Colesterol HDL":            { "pct": 20,  "abs": 6,   "unidad": "mg/dL",  "regla": "mayor", "fuente": "CLIA §493.931" },
+      "Creatinina":                { "pct": 10,  "abs": 0.2, "unidad": "mg/dL",  "regla": "mayor", "fuente": "CLIA §493.931" },
+      "Fosfatasa Alcalina (ALP)":  { "pct": 20,                                                    "fuente": "CLIA §493.931" },
+      "Fósforo":                   { "pct": 10,  "abs": 0.3, "unidad": "mg/dL",  "regla": "mayor", "fuente": "CLIA §493.931" },
+      "Gamma GGT":                 { "pct": 15,  "abs": 5,   "unidad": "U/L",    "regla": "mayor", "fuente": "CLIA §493.931" },
+      "Glucosa":                   { "pct": 8,   "abs": 6,   "unidad": "mg/dL",  "regla": "mayor", "fuente": "CLIA §493.931" },
+      "Hierro":                    { "pct": 15,                                                    "fuente": "CLIA §493.931" },
+      "LDH":                       { "pct": 15,                                                    "fuente": "CLIA §493.931" },
+      "Lipasa":                    { "pct": 37.9,                                                  "fuente": "EFLM (variación biológica) — CLIA no regula" },
+      "Magnesio":                  { "pct": 15,                                                    "fuente": "CLIA §493.931" },
+      "Potasio":                   { "abs": 0.3, "unidad": "mmol/L",                               "fuente": "CLIA §493.931" },
+      "Proteínas Total":           { "pct": 8,                                                     "fuente": "CLIA §493.931" },
+      "Sodio":                     { "abs": 4,   "unidad": "mmol/L",                               "fuente": "CLIA §493.931" },
+      "Triglicéridos":             { "pct": 15,                                                    "fuente": "CLIA §493.931" },
+      "Urea":                      { "pct": 9,   "abs": 2,   "unidad": "mg/dL",  "regla": "mayor", "fuente": "CLIA §493.931" },
+      "Ácido Úrico":               { "pct": 10,                                                    "fuente": "CLIA §493.931" }
+    }
   }
 }
