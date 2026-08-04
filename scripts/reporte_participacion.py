@@ -57,7 +57,10 @@ def obtener_participacion(db, codigo):
             "uro":         u,
             "total":       total,
         })
-    # Orden por nombre del laboratorio (sin código anónimo: la tabla se difunde a los participantes)
+    # Orden por nombre del laboratorio. Esta tabla NO debe llevar el identificador
+    # público del informe, sea cual sea el campo que la ronda declare (cod_anonimo
+    # hasta 2025, cod_interno desde EA-001-2026): se difunde con nombres reales, y
+    # asociar nombre ↔ identificador de-anonimizaría los informes publicados.
     filas.sort(key=lambda r: r["laboratorio"].lower())
     return filas
 
@@ -115,7 +118,7 @@ def escribir_html(ronda, filas):
   th {{ background:{AZUL}; color:#fff; text-align:center; }}
   caption {{ caption-side:bottom; color:#888; font-size:.8rem; padding-top:.6rem; text-align:left; }}
 </style></head><body>
-<div class="aviso">Tabla de difusión a los participantes. Sin código anónimo (no debe asociarse nombre ↔ código). No publicar en el sitio web ni commitear.</div>
+<div class="aviso">Tabla de difusión a los participantes. Sin el identificador público del informe (no debe asociarse nombre ↔ identificador). No publicar en el sitio web ni commitear.</div>
 <h1>Participación — {html.escape(ronda['codigo'])}</h1>
 <div class="sub">{html.escape(ronda.get('descripcion',''))} ·
   Ronda {'habilitada' if ronda.get('habilitado') else 'cerrada'} ·

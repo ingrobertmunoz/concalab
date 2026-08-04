@@ -53,9 +53,14 @@ CAMPOS_AGRUPADO   = ("valor_asignado", "sd_robusta", "cv")
 CAMPOS_POR_GRUPOS = ("valor_asignado", "sd_robusta", "cv")
 
 # Nunca deben aparecer en el JSON desplegado: identifican al laboratorio.
+#
+# 'cod_interno' salió de esta lista en EA-001-2026, cuando el proveedor lo declaró
+# identificador público de la ronda (ver identificador_publico en data/config.json).
+# Aun así no puede viajar como campo crudo: solo se publica formateado como etiqueta
+# en 'id', que FORMATO_COD verifica.
 CAMPOS_PROHIBIDOS = {
     "metodo", "instrumento", "plataforma", "laboratorio", "correo",
-    "representante", "telefono", "uid_lab", "cod_interno", "unidad_raw",
+    "representante", "telefono", "uid_lab", "unidad_raw",
 }
 
 # Marcas de equipo: revelan qué analizador usa cada cod_anonimo. En un grupo
@@ -64,7 +69,11 @@ MARCAS = ("fujifilm", "vitros", "dri-chem", "dirui", "mindray", "humastar",
           "biosystems", "architect", "bioclin", "wiener", "urit", "prietest")
 
 CLASIFICACIONES = {"A", "C", "I", "NE"}
-FORMATO_COD = re.compile(r"^[A-Z]{2}\d$")
+# Formatos admitidos de identificador público. 'L-NNN' es el de EA-001-2026 en
+# adelante; el de 2 letras + dígito se conserva porque las rondas ya publicadas
+# mantienen el identificador con el que se entregaron y deben seguir validando.
+# El relleno a 3 dígitos es obligatorio: las tablas y el heatmap ordenan como texto.
+FORMATO_COD = re.compile(r"^(L-\d{3}|[A-Z]{2}\d)$")
 
 
 class Validador:
@@ -102,7 +111,23 @@ class Validador:
                     if c not in l:
                         self.error(f"{nom}/{l.get('id','?')}: falta '{c}'")
 
-            if a.get("evaluacion") == "grupo_pares":
+            if a.get("evaluacion") == "no_evaluada":
+                # Un analito sin calificar NO debe traer valor asignado: publicar
+                # un X* mientras se declara que no hay consenso defendible es
+                # justamente la contradicción que la decisión evita.
+                for c in ("valor_asignado", "sd_robusta", "cv"):
+                    if a.get(c) is not None:
+                        self.error(f"{nom}: no evaluado pero publica '{c}'")
+                if not a.get("nota_sin_evaluar"):
+                    self.error(f"{nom}: no evaluado sin 'nota_sin_evaluar' que lo explique")
+                if a.get("evaluacion_confiable") is not False:
+                    self.error(f"{nom}: no evaluado debe traer evaluacion_confiable=false "
+                               f"para quedar fuera del desempeño global")
+                for l in a["laboratorios"]:
+                    if l.get("clasificacion") != "NE":
+                        self.error(f"{nom}/{l.get('id')}: analito no evaluado con "
+                                   f"clasificación '{l.get('clasificacion')}'")
+            elif a.get("evaluacion") == "grupo_pares":
                 if not isinstance(a.get("grupos"), list) or not a["grupos"]:
                     self.error(f"{nom}: evaluación por grupo de pares sin 'grupos'")
                     continue
@@ -144,7 +169,7 @@ class Validador:
                 cod, clas, z = l.get("id"), l.get("clasificacion"), l.get("z_score")
 
                 if not FORMATO_COD.match(str(cod or "")):
-                    self.error(f"{nom}: identificador '{cod}' no tiene formato cod_anonimo")
+                    self.error(f"{nom}: identificador '{cod}' no tiene un formato público válido")
                 if cod in vistos:
                     self.error(f"{nom}: el laboratorio {cod} aparece dos veces")
                 vistos.add(cod)
@@ -362,6 +387,11 @@ class Validador:
             self.error("modelo clia sin 'criterios_aceptacion' (el panel de criterios)")
         for a in d.get("analitos", []):
             nom = a.get("nombre", "?")
+            # Un analito que la ronda decidió no calificar no aplica ningún
+            # criterio de aceptación: exigirle ETa obligaría a declarar un
+            # límite que no se usa. estructura() ya comprueba su coherencia.
+            if a.get("evaluacion") == "no_evaluada":
+                continue
             spec_cfg = esp.get(nom)
             if spec_cfg is None:
                 self.error(f"{nom}: sin ETa en config.especificaciones_desempeno.quimica")

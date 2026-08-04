@@ -3,7 +3,7 @@ Cálculo de Z-Score por analito — ISO/IEC 17043 & ISO 13528 (Algoritmos A y S)
 
 Lee el CSV crudo que produce scripts/extraer_resultados_firebase.py y calcula,
 por analito, el valor asignado (X*), la SD robusta (σ*) y el Z-Score de cada
-laboratorio, identificado por cod_anonimo.
+laboratorio, identificado por la etiqueta pública id_publico.
 
   z = (x − X*) / σ*     |z| ≤ 2 → A   |   2 < |z| < 3 → C   |   |z| ≥ 3 → I
 
@@ -77,6 +77,34 @@ def analitos_por_grupo_pares(codigo, area="quimica"):
     return analitos
 
 
+def analitos_sin_evaluar(codigo, area="quimica"):
+    """
+    Analitos que esta ronda publica SIN calificación de desempeño.
+
+    Devuelve (nombres, nota_publica). Es una decisión de política del proveedor,
+    no una consecuencia de los datos: se toma cuando no puede establecerse un
+    valor asignado defendible —por dispersión sin consenso, o porque el
+    comportamiento del material frente a ciertas plataformas no es atribuible al
+    desempeño del laboratorio (falta de conmutabilidad)—. Evaluar igualmente
+    produciría no conformidades que el proveedor no puede sostener.
+
+    Lo que esto implica aguas abajo, y que NO puede quedarse a medias: los
+    resultados salen con clasificación 'NE' y sin Z-Score, y el analito se
+    excluye del desempeño global y del resumen por laboratorio. Publicar la nota
+    conservando las clasificaciones dejaría el texto diciendo lo contrario de lo
+    que muestran el heatmap y la tabla.
+    """
+    try:
+        with open(CONFIG_PATH, encoding="utf-8") as f:
+            cfg = json.load(f)
+    except (OSError, ValueError):
+        return frozenset(), None
+
+    d = (cfg.get("decisiones_evaluacion") or {}).get(codigo, {}).get(area, {})
+    nombres = frozenset(d.get("sin_evaluar") or ())
+    return nombres, d.get("sin_evaluar_nota")
+
+
 # ====================================================================
 # ALGORITMOS ISO 13528
 # ====================================================================
@@ -136,7 +164,7 @@ def plataforma(instrumento, metodo):
     igual.
 
     Las etiquetas NO nombran al fabricante a propósito. Este valor termina en
-    `grupo` dentro del JSON público, junto al cod_anonimo: publicar la marca
+    `grupo` dentro del JSON público, junto al id_publico: publicar la marca
     revelaría qué equipo usa cada laboratorio y, en los grupos pequeños (en
     EA-001-2026 la plataforma B tiene n=2), bastaría para re-identificarlo en
     un mercado local reducido. "Seca vs húmeda" es la causa real del efecto de
@@ -175,8 +203,13 @@ def unidad_canonica(unidades):
     grupos = defaultdict(list)
     for u in limpias:
         grupos[u.lower().replace(" ", "")].append(u)
-    mayor = max(grupos.values(), key=len)
-    return Counter(mayor).most_common(1)[0][0]
+    # Los empates se rompen alfabéticamente, no por orden de aparición: si dos
+    # grafías empatan (g/dL y g/dl aparecen 17 veces cada una en EA-001-2026),
+    # most_common() devolvería la primera que se leyó del CSV, y la etiqueta
+    # publicada cambiaría al reordenar las filas sin que cambie ningún dato.
+    mayor = max(sorted(grupos.items()), key=lambda kv: len(kv[1]))[1]
+    conteo = Counter(mayor)
+    return min(sorted(conteo), key=lambda u: -conteo[u])
 
 
 def cargar(codigo, categoria="Quím"):
@@ -205,11 +238,11 @@ def cargar(codigo, categoria="Quím"):
             # conformidad falsa, y además arrastra el X* y engorda la σ* del
             # analito para todos los demás participantes.
             if v == 0:
-                ceros.append((r["cod_anonimo"], r["analito"], r["resultado_raw"]))
+                ceros.append((r["id_publico"], r["analito"], r["resultado_raw"]))
                 descartados += 1
                 continue
             por_analito[r["analito"]].append({
-                "cod": r["cod_anonimo"],
+                "cod": r["id_publico"],
                 "valor": v,
                 "unidad": r["unidad_raw"],
                 "metodo": r["metodo"],
@@ -263,7 +296,8 @@ def _stats(valores):
     return round(x, 2), round(s, 2), round((s / x * 100) if x else 0.0, 1)
 
 
-def calcular_agrupado(por_analito, por_grupo_pares=frozenset()):
+def calcular_agrupado(por_analito, por_grupo_pares=frozenset(), sin_evaluar=frozenset(),
+                      nota_sin_evaluar=None):
     """
     Calcula X*, σ* y Z-Score por analito.
 
@@ -293,6 +327,31 @@ def calcular_agrupado(por_analito, por_grupo_pares=frozenset()):
             if extra:
                 d.update(extra)
             return d
+
+        # Analito publicado sin calificación: se muestra la distribución para que
+        # cada laboratorio se ubique, pero NO se emite valor asignado. Publicar un
+        # X* sería contradictorio — es justamente lo que la ronda no puede
+        # sostener. La mediana viaja aparte, rotulada como referencia descriptiva.
+        if nombre in sin_evaluar:
+            valores = [f["valor"] for f in filas]
+            labs = [entrada(f, None) for f in filas]
+            labs.sort(key=lambda l: l["resultado"])
+            analitos.append({
+                "nombre": nombre, "unidad": unidad, "n": len(filas),
+                "evaluacion": "no_evaluada",
+                "valor_asignado": None,
+                "sd_robusta": None,
+                "cv": None,
+                "n_suficiente": len(filas) >= N_MINIMO,
+                "referencia_descriptiva": {
+                    "mediana": round(statistics.median(valores), 2),
+                    "minimo": round(min(valores), 2),
+                    "maximo": round(max(valores), 2),
+                },
+                "nota_sin_evaluar": nota_sin_evaluar,
+                "laboratorios": labs,
+            })
+            continue
 
         if nombre in por_grupo_pares:
             grupos_filas = defaultdict(list)
@@ -379,6 +438,13 @@ def imprimir_agrupado(analitos):
                     print(f"      · {g['nombre']:<24}{g['n']:>4}{'sin evaluar':>29}  {g['motivo']}")
             continue
 
+        if a.get("evaluacion") == "no_evaluada":
+            ref = a.get("referencia_descriptiva") or {}
+            print(f"  {a['nombre']:<28}{a['n']:>4}{'—':>11}{'—':>10}{'—':>8}"
+                  f"{c['A']:>5}{c['C']:>4}{c['I']:>4}{c['NE']:>4}  {unidad:<9}"
+                  f"  <<< SIN EVALUAR (mediana {ref.get('mediana')})")
+            continue
+
         alerta = "  <<< CV alto" if a["cv"] > 15 else ""
         aviso_n = " (n bajo)" if not a["n_suficiente"] else ""
         print(f"  {a['nombre']:<28}{a['n']:>4}{a['valor_asignado']:>11g}{a['sd_robusta']:>10g}"
@@ -391,7 +457,7 @@ def imprimir_agrupado(analitos):
           f"C: {tot['C']} ({tot['C']/evaluadas*100:.1f}%)   "
           f"I: {tot['I']} ({tot['I']/evaluadas*100:.1f}%)")
     if tot["NE"]:
-        print(f"  Sin evaluar (grupo de pares insuficiente): {tot['NE']}")
+        print(f"  Sin evaluar (grupo de pares insuficiente o analito no evaluado): {tot['NE']}")
     print("=" * 96)
 
 
@@ -479,7 +545,7 @@ def efecto_metodo(analitos, por_analito):
 
 # Campos que solo existen para el análisis interno. NUNCA deben salir en el JSON
 # de data/informes/, que se despliega a GitHub Pages: método e instrumento en
-# texto libre permiten re-identificar al laboratorio detrás del cod_anonimo.
+# texto libre permiten re-identificar al laboratorio detrás del id_publico.
 CAMPOS_INTERNOS = ("plataforma", "metodo", "instrumento")
 
 
@@ -589,6 +655,12 @@ def escribir_json(codigo, analitos, area="quimica", bimodales=None):
         # Un analito bimodal resuelto por grupo de pares SÍ es confiable: la
         # separación en grupos es justamente lo que corrige la σ* inflada.
         b = None if a.get("evaluacion") == "grupo_pares" else bimodales.get(a["nombre"])
+        # Un analito no evaluado ya trae su propia explicación: mostrar además el
+        # aviso de bimodalidad confundiría dos cosas distintas (una es la causa
+        # técnica, la otra es la decisión de no calificar).
+        no_evaluado = a.get("evaluacion") == "no_evaluada"
+        if no_evaluado:
+            b = None
         c = Counter(l["clasificacion"] for l in a["laboratorios"])
         limpios.append({
             **a,
@@ -596,7 +668,10 @@ def escribir_json(codigo, analitos, area="quimica", bimodales=None):
             # recalculaba en dos sitios distintos del mismo archivo, y cada
             # ronda clonaba esa lógica sin forma de auditarla.
             "conteos": {"A": c["A"], "C": c["C"], "I": c["I"], "NE": c["NE"]},
-            "evaluacion_confiable": b is None,
+            # Un analito sin calificar no es "evaluación confiable": es la señal
+            # que usan consolidar_por_laboratorio() y el JS para excluirlo de los
+            # conteos por laboratorio y del desempeño global.
+            "evaluacion_confiable": (b is None) and not no_evaluado,
             "aviso_bimodal": None if b is None else {
                 "razon": round(b[0], 2),
                 "grupos": [{"plataforma": g, "n": n, "mediana": round(m, 2)} for g, n, m in b[1]],
@@ -660,7 +735,11 @@ def main():
     # Red de seguridad: si aparece un analito bimodal que la ronda no declaró,
     # hay que decidirlo, no dejar que pase silenciosamente.
     por_pares = analitos_por_grupo_pares(codigo, area)
-    sin_decidir = sorted(set(bimodales) - por_pares)
+    sin_eval, nota_sin_eval = analitos_sin_evaluar(codigo, area)
+    # Un analito sin evaluar no necesita decisión de grupo de pares: no se
+    # califica por ninguna vía, así que la bimodalidad deja de ser relevante.
+    por_pares = por_pares - sin_eval
+    sin_decidir = sorted(set(bimodales) - por_pares - sin_eval)
     if sin_decidir:
         print(f"\n  AVISO: bimodalidad detectada en analitos que {codigo} NO declara "
               f"en decisiones_evaluacion de {CONFIG_PATH}:")
@@ -668,9 +747,16 @@ def main():
             print(f"    · {nom} — plataformas separadas {bimodales[nom][0]:.1f}x")
         print("    Se publicarán como 'no concluyentes'. Revisar con --efecto-metodo.")
 
-    analitos = calcular_agrupado(por_analito, por_grupo_pares=por_pares)
+    analitos = calcular_agrupado(por_analito, por_grupo_pares=por_pares,
+                                 sin_evaluar=sin_eval, nota_sin_evaluar=nota_sin_eval)
     if por_pares:
         print(f"\n  Evaluados por grupo de pares: {', '.join(sorted(por_pares))}")
+    if sin_eval:
+        print(f"  SIN evaluar (decisión del proveedor): {', '.join(sorted(sin_eval))}")
+        if not nota_sin_eval:
+            sys.exit("ERROR: hay analitos en 'sin_evaluar' pero falta "
+                     "'sin_evaluar_nota' en config.json. El informe no puede "
+                     "publicar un analito sin calificar sin explicar por qué.")
     imprimir_agrupado(analitos)
 
     if args.efecto_metodo:

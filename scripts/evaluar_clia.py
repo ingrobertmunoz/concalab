@@ -29,13 +29,14 @@ import os
 import sys
 import json
 import argparse
+import statistics
 from collections import defaultdict, Counter
 from datetime import date
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from calcular_zscore import (  # noqa: E402
     cargar, robust_mean_sd, _stats, plataforma, unidad_canonica, clasificar,
-    analitos_por_grupo_pares, desempeno_global, CAMPOS_INTERNOS,
+    analitos_por_grupo_pares, analitos_sin_evaluar, desempeno_global, CAMPOS_INTERNOS,
     N_MINIMO, N_MINIMO_GRUPO, SALIDA_DIR, CONFIG_PATH,
 )
 
@@ -95,7 +96,8 @@ def _entrada(f, z, extra=None):
     return d
 
 
-def evaluar(por_analito, especificaciones, por_grupo_pares):
+def evaluar(por_analito, especificaciones, por_grupo_pares,
+            sin_evaluar=frozenset(), nota_sin_evaluar=None):
     """
     Igual estructura que calcular_agrupado(), pero el z-score usa σpt = δE/3
     en vez de la σ* del consenso. σ* y CV se calculan y se guardan como
@@ -105,6 +107,30 @@ def evaluar(por_analito, especificaciones, por_grupo_pares):
     for nombre in sorted(por_analito):
         filas = por_analito[nombre]
         unidad = unidad_canonica([f["unidad"] for f in filas])
+
+        # --- Analito SIN CALIFICAR (decisión del proveedor) -----------------
+        # Se resuelve antes de buscar el ETa: un analito que no se evalúa no
+        # necesita criterio de aceptación, y exigirlo obligaría a declarar un
+        # límite que no se va a aplicar.
+        if nombre in sin_evaluar:
+            valores = [f["valor"] for f in filas]
+            labs = [_entrada(f, None) for f in filas]
+            labs.sort(key=lambda l: l["resultado"])
+            analitos.append({
+                "nombre": nombre, "unidad": unidad, "n": len(filas),
+                "evaluacion": "no_evaluada",
+                "valor_asignado": None, "sd_robusta": None, "cv": None,
+                "n_suficiente": len(filas) >= N_MINIMO,
+                "referencia_descriptiva": {
+                    "mediana": round(statistics.median(valores), 2),
+                    "minimo": round(min(valores), 2),
+                    "maximo": round(max(valores), 2),
+                },
+                "nota_sin_evaluar": nota_sin_evaluar,
+                "laboratorios": labs,
+            })
+            continue
+
         spec = especificaciones.get(nombre)
         if not spec:
             sys.exit(f"ERROR: '{nombre}' no tiene ETa en especificaciones_desempeno.")
@@ -210,7 +236,10 @@ def escribir_json(codigo, analitos, area="quimica"):
         cc = Counter(l["clasificacion"] for l in a["laboratorios"])
         limpios.append({
             **a,
-            "evaluacion_confiable": True,
+            # Excepción: un analito que la ronda decidió no calificar tampoco
+            # entra en el desempeño global ni en el resumen por laboratorio.
+            # Ese es el efecto de evaluacion_confiable=False aguas abajo.
+            "evaluacion_confiable": a.get("evaluacion") != "no_evaluada",
             "conteos": {"A": cc["A"], "C": cc["C"], "I": cc["I"], "NE": cc["NE"]},
             "laboratorios": [
                 {k: v for k, v in l.items() if k not in CAMPOS_INTERNOS}
@@ -260,8 +289,14 @@ def main():
     por_analito, _ceros = cargar(codigo)
     especificaciones = leer_especificaciones("quimica")
     por_grupo_pares = analitos_por_grupo_pares(codigo, "quimica")
+    sin_eval, nota_sin_eval = analitos_sin_evaluar(codigo, "quimica")
+    por_grupo_pares = por_grupo_pares - sin_eval
+    if sin_eval and not nota_sin_eval:
+        sys.exit("ERROR: hay analitos en 'sin_evaluar' pero falta "
+                 "'sin_evaluar_nota' en config.json.")
 
-    analitos = evaluar(por_analito, especificaciones, por_grupo_pares)
+    analitos = evaluar(por_analito, especificaciones, por_grupo_pares,
+                       sin_evaluar=sin_eval, nota_sin_evaluar=nota_sin_eval)
     ruta, tot = escribir_json(codigo, analitos)
 
     evaluadas = tot["A"] + tot["C"] + tot["I"]

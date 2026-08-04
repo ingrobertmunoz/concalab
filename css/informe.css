@@ -403,6 +403,46 @@
 
 .sin-eval { color: var(--text-light); font-style: italic; }
 
+/* ── Analito publicado sin calificación de desempeño ──────────────────────
+   El gris es funcional, no decorativo: el informe usa color de estado
+   (verde/ámbar/rojo) para comunicar conformidad, y este analito no tiene
+   ninguna que comunicar. Neutralizarlo evita que se lea como un resultado. */
+.analyte-no-evaluado {
+    background: #f7f8f9;
+    border-left: 4px solid #8a8f98;
+    box-shadow: none;
+}
+
+.analyte-no-evaluado h2 {
+    color: #5b6169;
+    border-bottom-color: #d4d7dc;
+}
+
+.analyte-no-evaluado .analyte-stats .stat {
+    background: #eef0f2;
+    color: #5b6169;
+}
+
+.tag-no-evaluado {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: #6b7280;
+    color: white;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    vertical-align: middle;
+}
+
+.alert-box.alert-neutro {
+    background: #eef0f2;
+    border-left: 4px solid #6b7280;
+    color: #3f444b;
+}
+
+.fila-no-evaluada td { background: #f7f8f9; }
+
 /* Resumen por laboratorio */
 .tabla-nota {
     padding: 0 1.5rem 0.9rem;

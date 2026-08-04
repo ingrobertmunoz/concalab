@@ -127,8 +127,10 @@ const ESQUELETO = `<!-- Aviso global de analitos no concluyentes -->
 <!-- Heatmap -->
 <div class="heatmap-section" id="heatmap-section" style="display:none;">
     <h3>Mapa de Desempeño General</h3>
-    <p>Laboratorio vs. Analito — Color según Z-Score. Las celdas grises indican que el laboratorio no
-        participó en ese analito.</p>
+    <p>Laboratorio vs. Analito — Color según Z-Score. Una celda gris significa que ese resultado no
+        tiene calificación: el laboratorio no reportó el analito, su grupo de pares no alcanzó el
+        mínimo, o el analito se publicó sin evaluación de desempeño. El detalle aparece al pasar el
+        cursor sobre la celda.</p>
     <div id="heatmap-chart"></div>
 </div>
 
@@ -238,6 +240,21 @@ function etaLabel(eta, unidad) {
 // evaluar en vez de anexarlos al grupo más parecido, que sería incorrecto.
 function esPorPares(a) {
     return a.evaluacion === 'grupo_pares';
+}
+
+// Analito publicado sin calificación de desempeño, por decisión del proveedor
+// (data/config.json → decisiones_evaluacion.<ronda>.<area>.sin_evaluar). No
+// trae valor asignado y todos sus resultados vienen como 'NE'. Se dibuja en
+// gris y sin la banda de aceptación: el color de estado y el z-score
+// afirmarían una conformidad que la ronda declara que no puede sostener.
+function esNoEvaluado(a) {
+    return a.evaluacion === 'no_evaluada';
+}
+
+function notaNoEvaluado(a) {
+    return `<div class="alert-box alert-neutro" style="margin-bottom:1rem;">
+        ℹ️ ${a.nota_sin_evaluar || 'Analito publicado solo con fines informativos.'}
+    </div>`;
 }
 
 // Paleta por grupo. Es identidad, no estado: nunca los colores A/C/I.
@@ -382,17 +399,36 @@ function renderReport(data) {
     </div>
 `;
 
-    // Aviso global: analitos cuya evaluación agrupada no es concluyente.
-    const noConcl = data.analitos.filter(a => a.evaluacion_confiable === false);
+    // Aviso global. Los analitos fuera de los totales lo están por dos motivos
+    // distintos y el aviso los separa: uno es un límite del cálculo (σ* inflada
+    // por bimodalidad, pendiente de decidir), el otro es una decisión ya tomada
+    // por el proveedor. Mezclarlos diría que ALP está "pendiente" cuando ya se
+    // resolvió, y hablaría de "sus clasificaciones" cuando no tiene ninguna.
+    const noEval = data.analitos.filter(a => esNoEvaluado(a));
+    const noConcl = data.analitos.filter(
+        a => a.evaluacion_confiable === false && !esNoEvaluado(a));
+
+    const avisos = [];
+    if (noEval.length) {
+        avisos.push(`
+            <strong>${noEval.length} analito(s) sin evaluación de desempeño:
+            ${noEval.map(a => a.nombre).join(', ')}.</strong><br>
+            CONCALAB-UASD no emite calificación de conformidad para ${noEval.length > 1 ? 'estos analitos' : 'este analito'}
+            en esta ronda; los resultados se publican solo con fines informativos. El motivo se
+            detalla en la sección correspondiente. No se asigna Z-Score ni clasificación, y no
+            computan en los totales de esta portada ni en el desempeño por laboratorio.`);
+    }
     if (noConcl.length) {
-        document.getElementById('global-alert').innerHTML = `
-        <div class="alert-box alert-bimodal">
+        avisos.push(`
             <strong>${noConcl.length} analito(s) con evaluación no concluyente:
             ${noConcl.map(a => a.nombre).join(', ')}.</strong><br>
             Se presentan con fines de referencia y quedan pendientes de evaluación por grupo de pares.
             Sus clasificaciones no deben leerse como desempeño, y por lo tanto tampoco están
-            reflejadas de forma representativa en los totales de esta portada.
-        </div>`;
+            reflejadas de forma representativa en los totales de esta portada.`);
+    }
+    if (avisos.length) {
+        document.getElementById('global-alert').innerHTML = avisos
+            .map(t => `<div class="alert-box alert-bimodal">${t}</div>`).join('');
     }
 
     // Navigation pills
@@ -416,7 +452,9 @@ function renderReport(data) {
 
         // Un analito bimodal ya tiene explicada su dispersión: mostrar la
         // alerta de CV encima sería redundante y desviaría la lectura.
-        const cvAlert = esPorPares(a)
+        const cvAlert = esNoEvaluado(a)
+            ? notaNoEvaluado(a)
+            : esPorPares(a)
             ? paresAlert(a)
             : a.evaluacion_confiable === false
                 ? bimodalAlert(a)
@@ -428,7 +466,13 @@ function renderReport(data) {
 
         // En un analito por grupo de pares no existe un X* único: cada
         // plataforma tiene el suyo, así que se muestra una fila por grupo.
-        const stats = esPorPares(a)
+        const ref = a.referencia_descriptiva || {};
+        const stats = esNoEvaluado(a)
+            ? `<div class="stat"><strong>n:</strong> ${a.n} labs</div>
+               <div class="stat"><strong>Mediana:</strong> ${ref.mediana} ${a.unidad} <em>(referencia descriptiva, no valor asignado)</em></div>
+               <div class="stat"><strong>Rango:</strong> ${ref.minimo} – ${ref.maximo} ${a.unidad}</div>
+               <div class="stat">Sin calificación de desempeño</div>`
+            : esPorPares(a)
             ? `<div class="stat"><strong>n:</strong> ${a.n} labs</div>
                ${a.grupos.filter(g => g.evaluado).map(g => `
                <div class="stat stat-grupo">
@@ -444,8 +488,8 @@ function renderReport(data) {
                <div class="stat">✅ ${countA} ⚠️ ${countC} ❌ ${countI}</div>`;
 
         container.innerHTML += `
-        <div class="analyte-section" id="${id}">
-            <h2>🧪 ${a.nombre}${esPorPares(a) ? ' <span class="tag-pares">grupo de pares</span>' : ''}</h2>
+        <div class="analyte-section${esNoEvaluado(a) ? ' analyte-no-evaluado' : ''}" id="${id}">
+            <h2>🧪 ${a.nombre}${esPorPares(a) ? ' <span class="tag-pares">grupo de pares</span>' : ''}${esNoEvaluado(a) ? ' <span class="tag-no-evaluado">no evaluado</span>' : ''}</h2>
             <div class="analyte-stats" style="display:flex;">${stats}</div>
             ${cvAlert}
             <div id="hist-${i}" style="width:100%; min-height:${esPorPares(a) ? 430 : 380}px;"></div>
@@ -466,6 +510,103 @@ function renderReport(data) {
     // criterios del inicio ya declara la metodología correcta, así que se oculta.
     document.getElementById('methodology-box').style.display =
         data.criterios_aceptacion ? 'none' : 'block';
+}
+
+function dibujarSeccion(analyte, index) {
+    if (esNoEvaluado(analyte)) return renderChartNoEvaluado(analyte, index);
+    return renderCharts(analyte, index);
+}
+
+// Analito sin calificación: histograma + barras del RESULTADO CRUDO por
+// laboratorio. Deliberadamente NO lleva banda de aceptación, línea de X* ni
+// Z-Score: cada uno de esos elementos afirma un criterio de conformidad, que es
+// justamente lo que la ronda declara que no puede sostener para este analito.
+//
+// Las barras sustituyen al gráfico de Z-Score y no son opcionales: sin ellas el
+// participante no puede localizar SU resultado —el histograma solo muestra el
+// conjunto— y el informe dejaría de cumplir su función para este analito.
+// Ordenadas de menor a mayor, la separación entre plataformas se ve como un
+// salto en la serie, sin necesidad de nombrar ninguna marca ni grupo.
+function renderChartNoEvaluado(analyte, index) {
+    const resultados = analyte.laboratorios.map(l => l.resultado);
+    const ref = analyte.referencia_descriptiva || {};
+    const GRIS = '#8a8f98';
+
+    // El eje cubre todo el recorrido observado: sin valor asignado no hay un
+    // centro desde el que recortar, y en este analito la dispersión ES el
+    // hallazgo, así que ocultarla sería contraproducente.
+    const nBins = Math.max(8, Math.min(20, Math.floor(resultados.length / 2)));
+
+    Plotly.newPlot(`hist-${index}`, [{
+        x: resultados,
+        type: 'histogram',
+        nbinsx: nBins,
+        marker: { color: 'rgba(138,143,152,0.55)', line: { color: GRIS, width: 1 } },
+        hovertemplate: `%{y} laboratorio(s)<br>%{x} ${analyte.unidad}<extra></extra>`,
+        name: 'Resultados'
+    }], {
+        title: {
+            text: `Distribución de Resultados — ${analyte.nombre} (${analyte.unidad})` +
+                  '<br><span style="font-size:12px;color:#8a8f98">' +
+                  'Sin evaluación de desempeño — solo con fines informativos</span>',
+            font: { size: 16, color: GRIS }
+        },
+        xaxis: { title: `Resultado (${analyte.unidad})`, gridcolor: '#eee' },
+        yaxis: { title: 'Frecuencia (n° de laboratorios)', gridcolor: '#eee' },
+        shapes: ref.mediana == null ? [] : [{
+            type: 'line', x0: ref.mediana, x1: ref.mediana, y0: 0, y1: 1,
+            yref: 'paper', line: { color: GRIS, width: 2, dash: 'dot' }
+        }],
+        annotations: ref.mediana == null ? [] : [{
+            x: ref.mediana, y: 1, yref: 'paper', yanchor: 'bottom',
+            text: `Mediana = ${ref.mediana} (referencia, no valor asignado)`,
+            showarrow: false, font: { size: 11, color: GRIS }
+        }],
+        height: 380,
+        margin: { l: 60, r: 30, t: 70, b: 50 },
+        plot_bgcolor: '#fafafa',
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        showlegend: false
+    }, { responsive: true, displayModeBar: false });
+
+    // Los laboratorios vienen ya ordenados por resultado desde Python.
+    const labs = analyte.laboratorios;
+
+    Plotly.newPlot(`bar-${index}`, [{
+        x: labs.map(l => l.id),
+        y: labs.map(l => l.resultado),
+        type: 'bar',
+        marker: { color: 'rgba(138,143,152,0.75)', line: { color: GRIS, width: 1 } },
+        hovertemplate: `%{x}<br>Resultado: %{y} ${analyte.unidad}` +
+                       '<br>Sin evaluación de desempeño<extra></extra>'
+    }], {
+        title: {
+            text: `Resultado por Laboratorio — ${analyte.nombre} (${analyte.unidad})` +
+                  '<br><span style="font-size:12px;color:#8a8f98">' +
+                  'Valor reportado, sin Z-Score ni clasificación</span>',
+            font: { size: 16, color: GRIS }
+        },
+        xaxis: { title: 'Laboratorio', tickangle: -60, tickfont: { size: 9 }, type: 'category' },
+        yaxis: { title: `Resultado (${analyte.unidad})`, gridcolor: '#eee' },
+        shapes: ref.mediana == null ? [] : [{
+            type: 'line', x0: 0, x1: 1, xref: 'paper',
+            y0: ref.mediana, y1: ref.mediana,
+            line: { color: GRIS, width: 2, dash: 'dot' }
+        }],
+        annotations: ref.mediana == null ? [] : [{
+            x: 0, xref: 'paper', xanchor: 'left',
+            y: ref.mediana, yanchor: 'bottom',
+            text: `Mediana = ${ref.mediana} ${analyte.unidad}`,
+            showarrow: false, font: { size: 11, color: '#5b6169' },
+            // Fondo opaco: la etiqueta cae sobre las barras y sin él se pierde.
+            bgcolor: 'rgba(255,255,255,0.85)', borderpad: 2
+        }],
+        height: 450,
+        margin: { l: 60, r: 30, t: 70, b: 90 },
+        plot_bgcolor: '#fafafa',
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        showlegend: false
+    }, { responsive: true, displayModeBar: false });
 }
 
 function renderCharts(analyte, index) {
@@ -747,9 +888,16 @@ function renderLabTable(data) {
 
     const nota = document.getElementById('lab-table-note');
     nota.innerHTML =
+        // Los excluidos lo están por dos motivos distintos y la nota debe
+        // decir cuál: un analito no concluyente tiene la σ* inflada por
+        // bimodalidad; uno no evaluado es una decisión declarada del proveedor.
+        // Atribuir la exclusión al motivo equivocado desinforma.
         `Consolidado de los ${usables.length} analitos con evaluación concluyente` +
         (excluidos.length
-            ? `; se excluyen ${excluidos.map(a => a.nombre).join(' y ')}, cuya evaluación agrupada no es interpretable.`
+            ? '; se excluyen ' + excluidos.map(a => esNoEvaluado(a)
+                ? `<strong>${a.nombre}</strong>, publicado sin evaluación de desempeño en esta ronda`
+                : `<strong>${a.nombre}</strong>, cuya evaluación agrupada no es interpretable`
+              ).join(' y ') + '.'
             : '.') +
         ` <strong>El número de analitos evaluados varía entre laboratorios</strong> (de ` +
         `${Math.min(...filas.map(f => f.n))} a ${Math.max(...filas.map(f => f.n))}), porque cada uno reporta ` +
@@ -851,6 +999,20 @@ function renderSummaryTable(analitos) {
             return;
         }
 
+        // Un analito no evaluado no tiene X* ni σ*: la fila lo dice en vez de
+        // dejar celdas con 'null', y no muestra conteos A/C/I porque no los hay.
+        if (esNoEvaluado(a)) {
+            const ref = a.referencia_descriptiva || {};
+            tbody.innerHTML += `
+            <tr class="fila-no-evaluada">
+                <td><strong>${a.nombre}</strong></td>
+                <td>${a.n}</td>
+                <td colspan="6" class="sin-eval">Sin evaluación de desempeño —
+                    mediana ${ref.mediana} ${a.unidad} (referencia descriptiva)</td>
+            </tr>`;
+            return;
+        }
+
         let cvClass = '';
         if (a.cv > 30) cvClass = 'cv-critical';
         else if (a.cv > 15) cvClass = 'cv-high';
@@ -872,7 +1034,8 @@ function renderSummaryTable(analitos) {
 
 function renderCVAlerts(analitos) {
     const container = document.getElementById('cv-alerts');
-    const highCV = analitos.filter(a => !esPorPares(a) && a.cv > 15).sort((a, b) => b.cv - a.cv);
+    const highCV = analitos.filter(a => !esPorPares(a) && !esNoEvaluado(a) && a.cv > 15)
+        .sort((a, b) => b.cv - a.cv);
     if (highCV.length === 0) return;
 
     let html = '<h3 style="color: var(--primary-color); margin-bottom: 1rem;">⚠️ Alertas de Coeficiente de Variación</h3>';
@@ -922,7 +1085,7 @@ function dibujarCuandoSeVean(data) {
     // más lento, pero el informe nunca queda en blanco.
     if (!('IntersectionObserver' in window)) {
         requestAnimationFrame(() => {
-            secciones.forEach(s => renderCharts(s.a, s.i));
+            secciones.forEach(s => dibujarSeccion(s.a, s.i));
             renderHeatmap(data);
         });
         return;
@@ -936,7 +1099,7 @@ function dibujarCuandoSeVean(data) {
                 renderHeatmap(data);
             } else {
                 const s = secciones.find(x => x.el === e.target);
-                if (s) renderCharts(s.a, s.i);
+                if (s) dibujarSeccion(s.a, s.i);
             }
         });
     }, { rootMargin: MARGEN_PREDIBUJO });
@@ -951,11 +1114,16 @@ function renderHeatmap(data) {
     // Collect all unique lab IDs sorted
     const allLabIds = new Set();
     data.analitos.forEach(a => a.laboratorios.forEach(l => allLabIds.add(l.id)));
-    const labIds = [...allLabIds].sort();   // cod_anonimo: orden alfabetico
+    // Orden lexicográfico. Coincide con el numérico porque el identificador viene
+    // con relleno fijo desde Python (L-001 … L-146); sin relleno daría L-1, L-10, L-2.
+    const labIds = [...allLabIds].sort();
     const labLabels = labIds.map(id => id);
 
-    // Analyte names (Y axis)
-    const analyteNames = data.analitos.map(a => a.nombre);
+    // Analyte names (Y axis). El analito sin calificar se rotula como tal: su
+    // fila queda toda en gris y, sin la marca, se confundiría con laboratorios
+    // que no participaron.
+    const analyteNames = data.analitos.map(a =>
+        esNoEvaluado(a) ? `${a.nombre} (no evaluado)` : a.nombre);
 
     // Build Z-score matrix and custom hover text
     // Each row = one analyte, each col = one lab
@@ -980,9 +1148,15 @@ function renderHeatmap(data) {
                 );
             } else {
                 row.push(null);
-                hoverRow.push(labMap[id]
-                    ? `${id}<br>${a.nombre}<br>Resultado: ${labMap[id].resultado} ${a.unidad}<br>Sin evaluar (grupo de pares insuficiente)`
-                    : `${id}<br>${a.nombre}<br>No participó`);
+                // Una celda gris tiene tres causas distintas y el tooltip debe
+                // distinguirlas: el laboratorio no reportó, su grupo de pares era
+                // insuficiente, o el analito entero se publicó sin calificar.
+                // Sin esto, un analito no evaluado se leería como "no participó".
+                hoverRow.push(!labMap[id]
+                    ? `${id}<br>${a.nombre}<br>No participó`
+                    : esNoEvaluado(a)
+                        ? `${id}<br>${a.nombre}<br>Resultado: ${labMap[id].resultado} ${a.unidad}<br>Analito sin evaluación de desempeño`
+                        : `${id}<br>${a.nombre}<br>Resultado: ${labMap[id].resultado} ${a.unidad}<br>Sin evaluar (grupo de pares insuficiente)`);
             }
         });
         zMatrix.push(row);

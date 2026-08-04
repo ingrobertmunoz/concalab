@@ -8,6 +8,16 @@
     "mensaje_cierre": "La ronda <strong>EA-001-2026</strong> ya cerró y sus resultados están en procesamiento. CONCALAB-UASD le notificará la fecha de publicación del informe y la apertura de la próxima ronda."
   },
 
+  "_comentario_identificador": "Identificador público del laboratorio en los informes de cada ronda. Cambiarlo es una decisión del proveedor y queda versionada junto al informe, igual que la base de evaluación. 'campo' nombra el campo del documento de Firestore del que sale la etiqueta; 'formato' es la plantilla que se le aplica. El relleno a 3 dígitos NO es cosmético: las tablas y el eje del heatmap ordenan el identificador como TEXTO, y sin relleno daría L-1, L-10, L-100, L-2. Las rondas anteriores conservan el identificador con el que se publicaron: un informe ya entregado no se reescribe.",
+
+  "identificador_publico": {
+    "EA-001-2026": {
+      "campo": "cod_interno",
+      "formato": "L-{:03d}",
+      "justificacion": "El cod_interno pasa a ser el identificador público de la ronda por decisión del proveedor, que verificó que nunca se ha difundido junto al nombre del laboratorio — único supuesto bajo el cual no de-anonimiza. Se toma del propio documento de resultados_generales y no de un mapeo desde cod_anonimo: en Firestore hay cod_anonimo duplicado (ZZ9 en dos cuentas internas) y un mapeo habría resuelto esa ambigüedad en silencio."
+    }
+  },
+
   "_comentario_decisiones": "Base de evaluación por ronda y área (ISO 13528 §7). Cambiar la base de evaluación de un analito es una decisión del proveedor del ensayo: se declara aquí de forma explícita y queda versionada junto al informe. Una ronda nueva arranca SIN entradas; detectar_bimodales() avisa por consola qué analitos son candidatos y el proveedor decide. No se debe automatizar cruzando un umbral.",
 
   "_comentario_estratos": "Clasificación de desempeño POR LABORATORIO (no por resultado). Un laboratorio es satisfactorio solo si ninguno de sus analitos salió no conforme: un resultado errado que llega a un paciente es una falla, con independencia de cuántos otros salieron bien. Los cortes son política del proveedor del ensayo, por eso viven aquí y no en el código. 'hasta' null significa sin límite superior.",
@@ -26,7 +36,12 @@
           "LDH",
           "Gamma GGT"
         ],
-        "justificacion": "Efecto de método entre química seca y húmeda. Agrupados, el Algoritmo A no converge a un centro único e infla la σ*: ALP daba 34 A / 2 C / 0 I (nadie reprobaba) y LDH 33 A / 0 C / 0 I, un falso negativo. Separados, el CV interno de cada grupo baja a ~10% y aparecen las no conformidades reales."
+        "justificacion": "Efecto de método entre química seca y húmeda. Agrupados, el Algoritmo A no converge a un centro único e infla la σ*: ALP daba 34 A / 2 C / 0 I (nadie reprobaba) y LDH 33 A / 0 C / 0 I, un falso negativo. Separados, el CV interno de cada grupo baja a ~10% y aparecen las no conformidades reales.",
+        "sin_evaluar": [
+          "Fosfatasa Alcalina (ALP)"
+        ],
+        "sin_evaluar_justificacion": "Decisión del proveedor: no se emite calificación de conformidad. El grupo de química seca es internamente coherente (CV 10.5%) pero desplazado en bloque a X* ≈ 1101 frente a ≈ 407 de la química húmeda, cuyo CV (28.2%) tampoco sostiene un consenso. Evaluar por grupo de pares habría otorgado conformidad al grupo desplazado —certificando como correcto un valor que los registros del material no respaldan— y repartido 12 no satisfactorios y 7 alertas sobre una base indefendible. Retirar ALP de la evaluación no altera el desempeño global de la ronda (sigue 1/37 satisfactorios y los mismos estratos): solo elimina no conformidades que no podían sostenerse.",
+        "sin_evaluar_nota": "<strong>Analito no evaluado en esta ronda.</strong> CONCALAB-UASD no emite calificación de conformidad para Fosfatasa Alcalina (ALP) en el ensayo EA-001-2026. La decisión se basa en dos hallazgos: (1) la dispersión entre participantes no permite establecer un valor asignado por consenso defendible, y (2) los valores próximos a 1000 U/L no son atribuibles al material de referencia suministrado según registros, lo que apunta a un problema de conmutabilidad del material frente a determinadas plataformas y no al desempeño de los laboratorios. Los resultados se publican <strong>solo con fines informativos</strong>: cada participante puede ubicar su valor respecto al conjunto y a su plataforma, pero no se asigna Z-Score ni clasificación, y ALP no computa en el desempeño global ni en el resumen por laboratorio."
       }
     }
   },

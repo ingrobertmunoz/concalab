@@ -2,7 +2,7 @@
   "codigo": "EA-001-2026",
   "area": "quimica",
   "modelo": "clia",
-  "fecha": "2026-07-24",
+  "fecha": "2026-08-03",
   "metodologia": "Valor asignado: media robusta (ISO 13528, Algoritmo A). Evaluación: z-score con σpt = ETa/3 (CLIA §493.931).",
   "evaluacion": "clia",
   "criterios_aceptacion": {
@@ -31,11 +31,11 @@
   },
   "resumen": {
     "laboratorios": 37,
-    "aceptables": 399,
-    "cuestionables": 117,
-    "inaceptables": 336,
-    "sin_evaluar": 6,
-    "total": 852
+    "aceptables": 384,
+    "cuestionables": 110,
+    "inaceptables": 324,
+    "sin_evaluar": 40,
+    "total": 818
   },
   "desempeno_global": {
     "criterio": "Un laboratorio es satisfactorio solo si ninguno de sus analitos resultó no conforme.",
@@ -76,93 +76,45 @@
     ],
     "concentracion": {
       "laboratorios": 6,
-      "no_conformes": 116,
-      "no_conformes_total": 336,
-      "pct": 34.5
+      "no_conformes": 112,
+      "no_conformes_total": 324,
+      "pct": 34.6
     },
     "por_laboratorio": [
       {
-        "id": "AB8",
-        "A": 12,
-        "C": 2,
-        "I": 11,
-        "n": 25,
-        "pct_conformidad": 48.0
-      },
-      {
-        "id": "AF7",
-        "A": 13,
-        "C": 4,
-        "I": 7,
-        "n": 24,
-        "pct_conformidad": 54.2
-      },
-      {
-        "id": "AP2",
-        "A": 5,
-        "C": 2,
-        "I": 17,
-        "n": 24,
-        "pct_conformidad": 20.8
-      },
-      {
-        "id": "BO7",
+        "id": "L-001",
         "A": 8,
-        "C": 0,
-        "I": 18,
-        "n": 26,
-        "pct_conformidad": 30.8
-      },
-      {
-        "id": "CW7",
-        "A": 6,
-        "C": 0,
-        "I": 19,
-        "n": 25,
-        "pct_conformidad": 24.0
-      },
-      {
-        "id": "DW1",
-        "A": 4,
-        "C": 1,
-        "I": 5,
-        "n": 10,
-        "pct_conformidad": 40.0
-      },
-      {
-        "id": "DX6",
-        "A": 9,
         "C": 3,
         "I": 12,
-        "n": 24,
-        "pct_conformidad": 37.5
+        "n": 23,
+        "pct_conformidad": 34.8
       },
       {
-        "id": "EG2",
-        "A": 6,
-        "C": 6,
-        "I": 9,
-        "n": 21,
-        "pct_conformidad": 28.6
-      },
-      {
-        "id": "EH4",
-        "A": 15,
-        "C": 4,
-        "I": 3,
-        "n": 22,
-        "pct_conformidad": 68.2
-      },
-      {
-        "id": "ER7",
+        "id": "L-002",
         "A": 16,
         "C": 3,
-        "I": 4,
-        "n": 23,
-        "pct_conformidad": 69.6
+        "I": 5,
+        "n": 24,
+        "pct_conformidad": 66.7
       },
       {
-        "id": "FU2",
+        "id": "L-004",
+        "A": 15,
+        "C": 1,
+        "I": 9,
+        "n": 25,
+        "pct_conformidad": 60.0
+      },
+      {
+        "id": "L-007",
+        "A": 4,
+        "C": 2,
+        "I": 17,
+        "n": 23,
+        "pct_conformidad": 17.4
+      },
+      {
+        "id": "L-011",
         "A": 14,
         "C": 2,
         "I": 8,
@@ -170,55 +122,47 @@
         "pct_conformidad": 58.3
       },
       {
-        "id": "FV4",
-        "A": 9,
-        "C": 4,
-        "I": 13,
-        "n": 26,
-        "pct_conformidad": 34.6
+        "id": "L-014",
+        "A": 4,
+        "C": 1,
+        "I": 4,
+        "n": 9,
+        "pct_conformidad": 44.4
       },
       {
-        "id": "GB1",
-        "A": 12,
-        "C": 3,
+        "id": "L-017",
+        "A": 14,
+        "C": 4,
         "I": 7,
-        "n": 22,
-        "pct_conformidad": 54.5
-      },
-      {
-        "id": "GD6",
-        "A": 10,
-        "C": 6,
-        "I": 9,
         "n": 25,
-        "pct_conformidad": 40.0
+        "pct_conformidad": 56.0
       },
       {
-        "id": "IS1",
-        "A": 17,
-        "C": 3,
-        "I": 5,
-        "n": 25,
-        "pct_conformidad": 68.0
-      },
-      {
-        "id": "JU6",
-        "A": 15,
+        "id": "L-021",
+        "A": 2,
         "C": 2,
+        "I": 19,
+        "n": 23,
+        "pct_conformidad": 8.7
+      },
+      {
+        "id": "L-026",
+        "A": 16,
+        "C": 5,
+        "I": 2,
+        "n": 23,
+        "pct_conformidad": 69.6
+      },
+      {
+        "id": "L-032",
+        "A": 10,
+        "C": 3,
         "I": 9,
-        "n": 26,
-        "pct_conformidad": 57.7
+        "n": 22,
+        "pct_conformidad": 45.5
       },
       {
-        "id": "KO7",
-        "A": 7,
-        "C": 4,
-        "I": 6,
-        "n": 17,
-        "pct_conformidad": 41.2
-      },
-      {
-        "id": "KQ7",
+        "id": "L-033",
         "A": 14,
         "C": 2,
         "I": 7,
@@ -226,23 +170,15 @@
         "pct_conformidad": 60.9
       },
       {
-        "id": "LD2",
-        "A": 16,
-        "C": 5,
-        "I": 5,
-        "n": 26,
-        "pct_conformidad": 61.5
+        "id": "L-043",
+        "A": 8,
+        "C": 0,
+        "I": 17,
+        "n": 25,
+        "pct_conformidad": 32.0
       },
       {
-        "id": "LK9",
-        "A": 4,
-        "C": 2,
-        "I": 18,
-        "n": 24,
-        "pct_conformidad": 16.7
-      },
-      {
-        "id": "LN5",
+        "id": "L-045",
         "A": 4,
         "C": 0,
         "I": 4,
@@ -250,31 +186,135 @@
         "pct_conformidad": 50.0
       },
       {
-        "id": "MS6",
-        "A": 16,
-        "C": 7,
-        "I": 0,
-        "n": 23,
-        "pct_conformidad": 69.6
+        "id": "L-046",
+        "A": 9,
+        "C": 4,
+        "I": 12,
+        "n": 25,
+        "pct_conformidad": 36.0
       },
       {
-        "id": "NL9",
+        "id": "L-047",
+        "A": 0,
+        "C": 2,
+        "I": 23,
+        "n": 25,
+        "pct_conformidad": 0.0
+      },
+      {
+        "id": "L-053",
+        "A": 11,
+        "C": 5,
+        "I": 8,
+        "n": 24,
+        "pct_conformidad": 45.8
+      },
+      {
+        "id": "L-055",
         "A": 4,
         "C": 4,
-        "I": 18,
-        "n": 26,
-        "pct_conformidad": 15.4
+        "I": 17,
+        "n": 25,
+        "pct_conformidad": 16.0
       },
       {
-        "id": "NM5",
-        "A": 19,
+        "id": "L-056",
+        "A": 13,
+        "C": 2,
+        "I": 6,
+        "n": 21,
+        "pct_conformidad": 61.9
+      },
+      {
+        "id": "L-071",
+        "A": 6,
+        "C": 6,
+        "I": 8,
+        "n": 20,
+        "pct_conformidad": 30.0
+      },
+      {
+        "id": "L-076",
+        "A": 10,
+        "C": 5,
+        "I": 9,
+        "n": 24,
+        "pct_conformidad": 41.7
+      },
+      {
+        "id": "L-078",
+        "A": 18,
         "C": 3,
         "I": 3,
-        "n": 25,
-        "pct_conformidad": 76.0
+        "n": 24,
+        "pct_conformidad": 75.0
       },
       {
-        "id": "PZ6",
+        "id": "L-087",
+        "A": 12,
+        "C": 3,
+        "I": 2,
+        "n": 17,
+        "pct_conformidad": 70.6
+      },
+      {
+        "id": "L-090",
+        "A": 12,
+        "C": 2,
+        "I": 10,
+        "n": 24,
+        "pct_conformidad": 50.0
+      },
+      {
+        "id": "L-102",
+        "A": 6,
+        "C": 4,
+        "I": 6,
+        "n": 16,
+        "pct_conformidad": 37.5
+      },
+      {
+        "id": "L-124",
+        "A": 3,
+        "C": 4,
+        "I": 14,
+        "n": 21,
+        "pct_conformidad": 14.3
+      },
+      {
+        "id": "L-128",
+        "A": 13,
+        "C": 6,
+        "I": 4,
+        "n": 23,
+        "pct_conformidad": 56.5
+      },
+      {
+        "id": "L-131",
+        "A": 15,
+        "C": 7,
+        "I": 0,
+        "n": 22,
+        "pct_conformidad": 68.2
+      },
+      {
+        "id": "L-135",
+        "A": 15,
+        "C": 3,
+        "I": 4,
+        "n": 22,
+        "pct_conformidad": 68.2
+      },
+      {
+        "id": "L-138",
+        "A": 14,
+        "C": 4,
+        "I": 3,
+        "n": 21,
+        "pct_conformidad": 66.7
+      },
+      {
+        "id": "L-139",
         "A": 15,
         "C": 2,
         "I": 8,
@@ -282,103 +322,65 @@
         "pct_conformidad": 60.0
       },
       {
-        "id": "QV5",
-        "A": 0,
-        "C": 2,
-        "I": 24,
-        "n": 26,
-        "pct_conformidad": 0.0
-      },
-      {
-        "id": "QZ1",
-        "A": 10,
-        "C": 3,
-        "I": 10,
-        "n": 23,
-        "pct_conformidad": 43.5
-      },
-      {
-        "id": "RI2",
-        "A": 12,
-        "C": 5,
-        "I": 8,
-        "n": 25,
-        "pct_conformidad": 48.0
-      },
-      {
-        "id": "UJ4",
-        "A": 3,
-        "C": 5,
-        "I": 14,
-        "n": 22,
-        "pct_conformidad": 13.6
-      },
-      {
-        "id": "VK4",
+        "id": "L-140",
         "A": 15,
-        "C": 2,
-        "I": 6,
-        "n": 23,
-        "pct_conformidad": 65.2
-      },
-      {
-        "id": "WG5",
-        "A": 17,
-        "C": 5,
-        "I": 2,
-        "n": 24,
-        "pct_conformidad": 70.8
-      },
-      {
-        "id": "WJ5",
-        "A": 14,
-        "C": 5,
-        "I": 7,
-        "n": 26,
-        "pct_conformidad": 53.8
-      },
-      {
-        "id": "XC8",
-        "A": 13,
-        "C": 3,
-        "I": 2,
-        "n": 18,
-        "pct_conformidad": 72.2
-      },
-      {
-        "id": "YK4",
-        "A": 13,
-        "C": 3,
+        "C": 1,
         "I": 6,
         "n": 22,
-        "pct_conformidad": 59.1
+        "pct_conformidad": 68.2
       },
       {
-        "id": "YX6",
-        "A": 3,
-        "C": 2,
+        "id": "L-141",
+        "A": 12,
+        "C": 3,
+        "I": 7,
+        "n": 22,
+        "pct_conformidad": 54.5
+      },
+      {
+        "id": "L-142",
+        "A": 16,
+        "C": 4,
+        "I": 5,
+        "n": 25,
+        "pct_conformidad": 64.0
+      },
+      {
+        "id": "L-143",
+        "A": 5,
+        "C": 0,
         "I": 19,
         "n": 24,
-        "pct_conformidad": 12.5
+        "pct_conformidad": 20.8
       },
       {
-        "id": "YY6",
-        "A": 16,
+        "id": "L-144",
+        "A": 5,
+        "C": 2,
+        "I": 16,
+        "n": 23,
+        "pct_conformidad": 21.7
+      },
+      {
+        "id": "L-145",
+        "A": 13,
+        "C": 4,
+        "I": 6,
+        "n": 23,
+        "pct_conformidad": 56.5
+      },
+      {
+        "id": "L-146",
+        "A": 13,
         "C": 2,
         "I": 8,
-        "n": 26,
-        "pct_conformidad": 61.5
-      },
-      {
-        "id": "ZY9",
-        "A": 13,
-        "C": 6,
-        "I": 5,
-        "n": 24,
-        "pct_conformidad": 54.2
+        "n": 23,
+        "pct_conformidad": 56.5
       }
     ],
-    "analitos_excluidos": []
+    "analitos_excluidos": [
+      "Fosfatasa Alcalina (ALP)"
+    ]
   },
   "analitos": [
     {
@@ -401,223 +403,223 @@
       "n_suficiente": true,
       "laboratorios": [
         {
-          "id": "QV5",
+          "id": "L-047",
           "resultado": 17.8,
           "z_score": -17.5,
           "clasificacion": "I"
         },
         {
-          "id": "YX6",
+          "id": "L-021",
           "resultado": 108.0,
           "z_score": -4.86,
           "clasificacion": "I"
         },
         {
-          "id": "QZ1",
+          "id": "L-032",
           "resultado": 112.7,
           "z_score": -4.2,
           "clasificacion": "I"
         },
         {
-          "id": "AP2",
+          "id": "L-144",
           "resultado": 118.0,
           "z_score": -3.46,
           "clasificacion": "I"
         },
         {
-          "id": "DX6",
+          "id": "L-001",
           "resultado": 121.0,
           "z_score": -3.04,
           "clasificacion": "I"
         },
         {
-          "id": "GD6",
+          "id": "L-076",
           "resultado": 121.0,
           "z_score": -3.04,
           "clasificacion": "I"
         },
         {
-          "id": "WG5",
+          "id": "L-026",
           "resultado": 123.0,
           "z_score": -2.75,
           "clasificacion": "C"
         },
         {
-          "id": "DW1",
+          "id": "L-014",
           "resultado": 126.0,
           "z_score": -2.33,
           "clasificacion": "C"
         },
         {
-          "id": "UJ4",
+          "id": "L-017",
           "resultado": 130.0,
           "z_score": -1.77,
           "clasificacion": "A"
         },
         {
-          "id": "WJ5",
+          "id": "L-124",
           "resultado": 130.0,
           "z_score": -1.77,
           "clasificacion": "A"
         },
         {
-          "id": "CW7",
+          "id": "L-143",
           "resultado": 130.4,
           "z_score": -1.72,
           "clasificacion": "A"
         },
         {
-          "id": "PZ6",
+          "id": "L-011",
           "resultado": 133.0,
           "z_score": -1.35,
           "clasificacion": "A"
         },
         {
-          "id": "AB8",
+          "id": "L-090",
           "resultado": 136.0,
           "z_score": -0.93,
           "clasificacion": "A"
         },
         {
-          "id": "FU2",
+          "id": "L-128",
           "resultado": 137.0,
           "z_score": -0.79,
           "clasificacion": "A"
         },
         {
-          "id": "ZY9",
+          "id": "L-146",
           "resultado": 137.0,
           "z_score": -0.79,
           "clasificacion": "A"
         },
         {
-          "id": "MS6",
+          "id": "L-131",
           "resultado": 139.0,
           "z_score": -0.51,
           "clasificacion": "A"
         },
         {
-          "id": "LN5",
+          "id": "L-045",
           "resultado": 139.8,
           "z_score": -0.4,
           "clasificacion": "A"
         },
         {
-          "id": "IS1",
+          "id": "L-002",
           "resultado": 142.0,
           "z_score": -0.09,
           "clasificacion": "A"
         },
         {
-          "id": "ER7",
+          "id": "L-135",
           "resultado": 143.0,
           "z_score": 0.05,
           "clasificacion": "A"
         },
         {
-          "id": "YK4",
+          "id": "L-056",
           "resultado": 148.0,
           "z_score": 0.75,
           "clasificacion": "A"
         },
         {
-          "id": "VK4",
+          "id": "L-140",
           "resultado": 151.0,
           "z_score": 1.17,
           "clasificacion": "A"
         },
         {
-          "id": "LD2",
+          "id": "L-142",
           "resultado": 151.2,
           "z_score": 1.2,
           "clasificacion": "A"
         },
         {
-          "id": "NM5",
+          "id": "L-078",
           "resultado": 152.0,
           "z_score": 1.31,
           "clasificacion": "A"
         },
         {
-          "id": "YY6",
+          "id": "L-139",
           "resultado": 152.0,
           "z_score": 1.31,
           "clasificacion": "A"
         },
         {
-          "id": "JU6",
+          "id": "L-004",
           "resultado": 153.0,
           "z_score": 1.45,
           "clasificacion": "A"
         },
         {
-          "id": "KQ7",
+          "id": "L-033",
           "resultado": 153.0,
           "z_score": 1.45,
           "clasificacion": "A"
         },
         {
-          "id": "RI2",
+          "id": "L-053",
           "resultado": 153.0,
           "z_score": 1.45,
           "clasificacion": "A"
         },
         {
-          "id": "EH4",
+          "id": "L-138",
           "resultado": 156.0,
           "z_score": 1.87,
           "clasificacion": "A"
         },
         {
-          "id": "XC8",
+          "id": "L-087",
           "resultado": 157.0,
           "z_score": 2.01,
           "clasificacion": "C"
         },
         {
-          "id": "EG2",
+          "id": "L-007",
           "resultado": 159.0,
           "z_score": 2.29,
           "clasificacion": "C"
         },
         {
-          "id": "LK9",
+          "id": "L-071",
           "resultado": 159.0,
           "z_score": 2.29,
           "clasificacion": "C"
         },
         {
-          "id": "KO7",
+          "id": "L-055",
           "resultado": 161.0,
           "z_score": 2.57,
           "clasificacion": "C"
         },
         {
-          "id": "NL9",
+          "id": "L-102",
           "resultado": 161.0,
           "z_score": 2.57,
           "clasificacion": "C"
         },
         {
-          "id": "AF7",
+          "id": "L-145",
           "resultado": 161.6,
           "z_score": 2.66,
           "clasificacion": "C"
         },
         {
-          "id": "FV4",
+          "id": "L-046",
           "resultado": 163.0,
           "z_score": 2.85,
           "clasificacion": "C"
         },
         {
-          "id": "GB1",
+          "id": "L-141",
           "resultado": 166.0,
           "z_score": 3.27,
           "clasificacion": "I"
         },
         {
-          "id": "BO7",
+          "id": "L-043",
           "resultado": 1176.0,
           "z_score": 144.88,
           "clasificacion": "I"
@@ -651,223 +653,223 @@
       "n_suficiente": true,
       "laboratorios": [
         {
-          "id": "QV5",
+          "id": "L-047",
           "resultado": 24.6,
           "z_score": -16.61,
           "clasificacion": "I"
         },
         {
-          "id": "YX6",
+          "id": "L-021",
           "resultado": 102.0,
           "z_score": -5.96,
           "clasificacion": "I"
         },
         {
-          "id": "AP2",
+          "id": "L-144",
           "resultado": 108.0,
           "z_score": -5.14,
           "clasificacion": "I"
         },
         {
-          "id": "VK4",
+          "id": "L-140",
           "resultado": 118.0,
           "z_score": -3.76,
           "clasificacion": "I"
         },
         {
-          "id": "DW1",
+          "id": "L-014",
           "resultado": 121.0,
           "z_score": -3.35,
           "clasificacion": "I"
         },
         {
-          "id": "QZ1",
+          "id": "L-032",
           "resultado": 126.8,
           "z_score": -2.55,
           "clasificacion": "C"
         },
         {
-          "id": "ZY9",
+          "id": "L-128",
           "resultado": 127.0,
           "z_score": -2.52,
           "clasificacion": "C"
         },
         {
-          "id": "UJ4",
+          "id": "L-124",
           "resultado": 128.0,
           "z_score": -2.38,
           "clasificacion": "C"
         },
         {
-          "id": "WJ5",
+          "id": "L-017",
           "resultado": 129.0,
           "z_score": -2.25,
           "clasificacion": "C"
         },
         {
-          "id": "GD6",
+          "id": "L-076",
           "resultado": 130.0,
           "z_score": -2.11,
           "clasificacion": "C"
         },
         {
-          "id": "MS6",
+          "id": "L-131",
           "resultado": 132.0,
           "z_score": -1.83,
           "clasificacion": "A"
         },
         {
-          "id": "AB8",
+          "id": "L-090",
           "resultado": 133.0,
           "z_score": -1.7,
           "clasificacion": "A"
         },
         {
-          "id": "IS1",
+          "id": "L-002",
           "resultado": 135.0,
           "z_score": -1.42,
           "clasificacion": "A"
         },
         {
-          "id": "WG5",
+          "id": "L-026",
           "resultado": 135.0,
           "z_score": -1.42,
           "clasificacion": "A"
         },
         {
-          "id": "RI2",
+          "id": "L-053",
           "resultado": 137.0,
           "z_score": -1.15,
           "clasificacion": "A"
         },
         {
-          "id": "DX6",
+          "id": "L-001",
           "resultado": 137.5,
           "z_score": -1.08,
           "clasificacion": "A"
         },
         {
-          "id": "ER7",
+          "id": "L-135",
           "resultado": 139.0,
           "z_score": -0.87,
           "clasificacion": "A"
         },
         {
-          "id": "EG2",
+          "id": "L-071",
           "resultado": 140.0,
           "z_score": -0.73,
           "clasificacion": "A"
         },
         {
-          "id": "CW7",
+          "id": "L-143",
           "resultado": 140.11,
           "z_score": -0.72,
           "clasificacion": "A"
         },
         {
-          "id": "PZ6",
+          "id": "L-011",
           "resultado": 142.0,
           "z_score": -0.46,
           "clasificacion": "A"
         },
         {
-          "id": "EH4",
+          "id": "L-138",
           "resultado": 146.0,
           "z_score": 0.09,
           "clasificacion": "A"
         },
         {
-          "id": "LD2",
+          "id": "L-142",
           "resultado": 146.8,
           "z_score": 0.2,
           "clasificacion": "A"
         },
         {
-          "id": "NM5",
+          "id": "L-078",
           "resultado": 149.0,
           "z_score": 0.51,
           "clasificacion": "A"
         },
         {
-          "id": "FU2",
+          "id": "L-146",
           "resultado": 150.0,
           "z_score": 0.64,
           "clasificacion": "A"
         },
         {
-          "id": "LN5",
+          "id": "L-045",
           "resultado": 150.4,
           "z_score": 0.7,
           "clasificacion": "A"
         },
         {
-          "id": "AF7",
+          "id": "L-145",
           "resultado": 155.3,
           "z_score": 1.37,
           "clasificacion": "A"
         },
         {
-          "id": "YY6",
+          "id": "L-139",
           "resultado": 158.0,
           "z_score": 1.74,
           "clasificacion": "A"
         },
         {
-          "id": "XC8",
+          "id": "L-087",
           "resultado": 161.0,
           "z_score": 2.16,
           "clasificacion": "C"
         },
         {
-          "id": "NL9",
+          "id": "L-055",
           "resultado": 162.0,
           "z_score": 2.29,
           "clasificacion": "C"
         },
         {
-          "id": "LK9",
+          "id": "L-007",
           "resultado": 164.0,
           "z_score": 2.57,
           "clasificacion": "C"
         },
         {
-          "id": "BO7",
+          "id": "L-043",
           "resultado": 169.0,
           "z_score": 3.26,
           "clasificacion": "I"
         },
         {
-          "id": "YK4",
+          "id": "L-056",
           "resultado": 178.0,
           "z_score": 4.5,
           "clasificacion": "I"
         },
         {
-          "id": "KO7",
+          "id": "L-102",
           "resultado": 182.0,
           "z_score": 5.05,
           "clasificacion": "I"
         },
         {
-          "id": "GB1",
+          "id": "L-141",
           "resultado": 186.0,
           "z_score": 5.6,
           "clasificacion": "I"
         },
         {
-          "id": "KQ7",
+          "id": "L-033",
           "resultado": 191.0,
           "z_score": 6.29,
           "clasificacion": "I"
         },
         {
-          "id": "JU6",
+          "id": "L-004",
           "resultado": 192.0,
           "z_score": 6.42,
           "clasificacion": "I"
         },
         {
-          "id": "FV4",
+          "id": "L-046",
           "resultado": 207.0,
           "z_score": 8.49,
           "clasificacion": "I"
@@ -901,211 +903,211 @@
       "n_suficiente": true,
       "laboratorios": [
         {
-          "id": "YX6",
+          "id": "L-021",
           "resultado": 2.4,
           "z_score": -9.46,
           "clasificacion": "I"
         },
         {
-          "id": "QZ1",
+          "id": "L-032",
           "resultado": 2.59,
           "z_score": -7.24,
           "clasificacion": "I"
         },
         {
-          "id": "LD2",
+          "id": "L-142",
           "resultado": 2.64,
           "z_score": -6.66,
           "clasificacion": "I"
         },
         {
-          "id": "VK4",
+          "id": "L-140",
           "resultado": 2.7,
           "z_score": -5.96,
           "clasificacion": "I"
         },
         {
-          "id": "KQ7",
+          "id": "L-033",
           "resultado": 2.8,
           "z_score": -4.79,
           "clasificacion": "I"
         },
         {
-          "id": "AF7",
+          "id": "L-145",
           "resultado": 2.84,
           "z_score": -4.32,
           "clasificacion": "I"
         },
         {
-          "id": "GB1",
+          "id": "L-017",
           "resultado": 2.9,
           "z_score": -3.62,
           "clasificacion": "I"
         },
         {
-          "id": "WJ5",
+          "id": "L-141",
           "resultado": 2.9,
           "z_score": -3.62,
           "clasificacion": "I"
         },
         {
-          "id": "AB8",
+          "id": "L-055",
           "resultado": 3.0,
           "z_score": -2.45,
           "clasificacion": "C"
         },
         {
-          "id": "EG2",
+          "id": "L-071",
           "resultado": 3.0,
           "z_score": -2.45,
           "clasificacion": "C"
         },
         {
-          "id": "NL9",
+          "id": "L-090",
           "resultado": 3.0,
           "z_score": -2.45,
           "clasificacion": "C"
         },
         {
-          "id": "ZY9",
+          "id": "L-128",
           "resultado": 3.0,
           "z_score": -2.45,
           "clasificacion": "C"
         },
         {
-          "id": "EH4",
+          "id": "L-138",
           "resultado": 3.08,
           "z_score": -1.52,
           "clasificacion": "A"
         },
         {
-          "id": "FV4",
+          "id": "L-004",
           "resultado": 3.1,
           "z_score": -1.29,
           "clasificacion": "A"
         },
         {
-          "id": "JU6",
+          "id": "L-046",
           "resultado": 3.1,
           "z_score": -1.29,
           "clasificacion": "A"
         },
         {
-          "id": "BO7",
+          "id": "L-011",
           "resultado": 3.2,
           "z_score": -0.12,
           "clasificacion": "A"
         },
         {
-          "id": "NM5",
+          "id": "L-026",
           "resultado": 3.2,
           "z_score": -0.12,
           "clasificacion": "A"
         },
         {
-          "id": "PZ6",
+          "id": "L-043",
           "resultado": 3.2,
           "z_score": -0.12,
           "clasificacion": "A"
         },
         {
-          "id": "WG5",
+          "id": "L-078",
           "resultado": 3.2,
           "z_score": -0.12,
           "clasificacion": "A"
         },
         {
-          "id": "GD6",
+          "id": "L-076",
           "resultado": 3.22,
           "z_score": 0.12,
           "clasificacion": "A"
         },
         {
-          "id": "XC8",
+          "id": "L-087",
           "resultado": 3.23,
           "z_score": 0.23,
           "clasificacion": "A"
         },
         {
-          "id": "KO7",
+          "id": "L-102",
           "resultado": 3.27,
           "z_score": 0.7,
           "clasificacion": "A"
         },
         {
-          "id": "IS1",
+          "id": "L-002",
           "resultado": 3.3,
           "z_score": 1.05,
           "clasificacion": "A"
         },
         {
-          "id": "YK4",
+          "id": "L-056",
           "resultado": 3.32,
           "z_score": 1.29,
           "clasificacion": "A"
         },
         {
-          "id": "ER7",
+          "id": "L-124",
           "resultado": 3.4,
           "z_score": 2.22,
           "clasificacion": "C"
         },
         {
-          "id": "UJ4",
+          "id": "L-135",
           "resultado": 3.4,
           "z_score": 2.22,
           "clasificacion": "C"
         },
         {
-          "id": "MS6",
+          "id": "L-131",
           "resultado": 3.41,
           "z_score": 2.34,
           "clasificacion": "C"
         },
         {
-          "id": "DX6",
+          "id": "L-001",
           "resultado": 3.47,
           "z_score": 3.04,
           "clasificacion": "I"
         },
         {
-          "id": "YY6",
+          "id": "L-139",
           "resultado": 3.54,
           "z_score": 3.86,
           "clasificacion": "I"
         },
         {
-          "id": "LK9",
+          "id": "L-007",
           "resultado": 3.7,
           "z_score": 5.72,
           "clasificacion": "I"
         },
         {
-          "id": "FU2",
+          "id": "L-146",
           "resultado": 3.8,
           "z_score": 6.89,
           "clasificacion": "I"
         },
         {
-          "id": "QV5",
+          "id": "L-047",
           "resultado": 3.89,
           "z_score": 7.94,
           "clasificacion": "I"
         },
         {
-          "id": "RI2",
+          "id": "L-053",
           "resultado": 3.9,
           "z_score": 8.06,
           "clasificacion": "I"
         },
         {
-          "id": "AP2",
+          "id": "L-144",
           "resultado": 3.92,
           "z_score": 8.29,
           "clasificacion": "I"
         },
         {
-          "id": "CW7",
+          "id": "L-143",
           "resultado": 4.1,
           "z_score": 10.4,
           "clasificacion": "I"
@@ -1139,205 +1141,205 @@
       "n_suficiente": true,
       "laboratorios": [
         {
-          "id": "QV5",
+          "id": "L-047",
           "resultado": 118.0,
           "z_score": -9.11,
           "clasificacion": "I"
         },
         {
-          "id": "GB1",
+          "id": "L-141",
           "resultado": 175.0,
           "z_score": -6.27,
           "clasificacion": "I"
         },
         {
-          "id": "JU6",
+          "id": "L-004",
           "resultado": 179.0,
           "z_score": -6.07,
           "clasificacion": "I"
         },
         {
-          "id": "YX6",
+          "id": "L-021",
           "resultado": 198.0,
           "z_score": -5.12,
           "clasificacion": "I"
         },
         {
-          "id": "GD6",
+          "id": "L-076",
           "resultado": 217.0,
           "z_score": -4.17,
           "clasificacion": "I"
         },
         {
-          "id": "KQ7",
+          "id": "L-033",
           "resultado": 229.0,
           "z_score": -3.58,
           "clasificacion": "I"
         },
         {
-          "id": "KO7",
+          "id": "L-102",
           "resultado": 262.0,
           "z_score": -1.93,
           "clasificacion": "A"
         },
         {
-          "id": "FU2",
+          "id": "L-146",
           "resultado": 269.0,
           "z_score": -1.58,
           "clasificacion": "A"
         },
         {
-          "id": "QZ1",
+          "id": "L-032",
           "resultado": 270.84,
           "z_score": -1.49,
           "clasificacion": "A"
         },
         {
-          "id": "IS1",
+          "id": "L-002",
           "resultado": 277.0,
           "z_score": -1.18,
           "clasificacion": "A"
         },
         {
-          "id": "ER7",
+          "id": "L-135",
           "resultado": 279.0,
           "z_score": -1.08,
           "clasificacion": "A"
         },
         {
-          "id": "AB8",
+          "id": "L-090",
           "resultado": 281.0,
           "z_score": -0.98,
           "clasificacion": "A"
         },
         {
-          "id": "MS6",
+          "id": "L-131",
           "resultado": 284.0,
           "z_score": -0.83,
           "clasificacion": "A"
         },
         {
-          "id": "AF7",
+          "id": "L-145",
           "resultado": 286.0,
           "z_score": -0.73,
           "clasificacion": "A"
         },
         {
-          "id": "PZ6",
+          "id": "L-011",
           "resultado": 287.0,
           "z_score": -0.68,
           "clasificacion": "A"
         },
         {
-          "id": "VK4",
+          "id": "L-140",
           "resultado": 294.0,
           "z_score": -0.33,
           "clasificacion": "A"
         },
         {
-          "id": "YY6",
+          "id": "L-139",
           "resultado": 302.0,
           "z_score": 0.07,
           "clasificacion": "A"
         },
         {
-          "id": "NM5",
+          "id": "L-078",
           "resultado": 305.0,
           "z_score": 0.22,
           "clasificacion": "A"
         },
         {
-          "id": "UJ4",
+          "id": "L-056",
           "resultado": 306.0,
           "z_score": 0.26,
           "clasificacion": "A"
         },
         {
-          "id": "YK4",
+          "id": "L-124",
           "resultado": 306.0,
           "z_score": 0.26,
           "clasificacion": "A"
         },
         {
-          "id": "DX6",
+          "id": "L-001",
           "resultado": 318.0,
           "z_score": 0.86,
           "clasificacion": "A"
         },
         {
-          "id": "RI2",
+          "id": "L-053",
           "resultado": 321.0,
           "z_score": 1.01,
           "clasificacion": "A"
         },
         {
-          "id": "AP2",
+          "id": "L-144",
           "resultado": 327.0,
           "z_score": 1.31,
           "clasificacion": "A"
         },
         {
-          "id": "WG5",
+          "id": "L-026",
           "resultado": 334.0,
           "z_score": 1.66,
           "clasificacion": "A"
         },
         {
-          "id": "XC8",
+          "id": "L-087",
           "resultado": 335.0,
           "z_score": 1.71,
           "clasificacion": "A"
         },
         {
-          "id": "LD2",
+          "id": "L-142",
           "resultado": 337.0,
           "z_score": 1.81,
           "clasificacion": "A"
         },
         {
-          "id": "ZY9",
+          "id": "L-128",
           "resultado": 338.0,
           "z_score": 1.86,
           "clasificacion": "A"
         },
         {
-          "id": "EH4",
+          "id": "L-138",
           "resultado": 341.0,
           "z_score": 2.01,
           "clasificacion": "C"
         },
         {
-          "id": "WJ5",
+          "id": "L-017",
           "resultado": 362.0,
           "z_score": 3.06,
           "clasificacion": "I"
         },
         {
-          "id": "BO7",
+          "id": "L-043",
           "resultado": 368.0,
           "z_score": 3.36,
           "clasificacion": "I"
         },
         {
-          "id": "CW7",
+          "id": "L-143",
           "resultado": 379.0,
           "z_score": 3.91,
           "clasificacion": "I"
         },
         {
-          "id": "LK9",
+          "id": "L-007",
           "resultado": 395.0,
           "z_score": 4.7,
           "clasificacion": "I"
         },
         {
-          "id": "FV4",
+          "id": "L-046",
           "resultado": 411.0,
           "z_score": 5.5,
           "clasificacion": "I"
         },
         {
-          "id": "NL9",
+          "id": "L-055",
           "resultado": 678.0,
           "z_score": 18.82,
           "clasificacion": "I"
@@ -1371,205 +1373,205 @@
       "n_suficiente": true,
       "laboratorios": [
         {
-          "id": "JU6",
+          "id": "L-004",
           "resultado": 0.35,
           "z_score": -5.53,
           "clasificacion": "I"
         },
         {
-          "id": "QV5",
+          "id": "L-047",
           "resultado": 0.76,
           "z_score": -4.1,
           "clasificacion": "I"
         },
         {
-          "id": "UJ4",
+          "id": "L-124",
           "resultado": 0.8,
           "z_score": -3.96,
           "clasificacion": "I"
         },
         {
-          "id": "GD6",
+          "id": "L-076",
           "resultado": 1.13,
           "z_score": -2.81,
           "clasificacion": "C"
         },
         {
-          "id": "WG5",
+          "id": "L-026",
           "resultado": 1.18,
           "z_score": -2.64,
           "clasificacion": "C"
         },
         {
-          "id": "EG2",
+          "id": "L-071",
           "resultado": 1.31,
           "z_score": -2.19,
           "clasificacion": "C"
         },
         {
-          "id": "LK9",
+          "id": "L-007",
           "resultado": 1.37,
           "z_score": -1.98,
           "clasificacion": "A"
         },
         {
-          "id": "PZ6",
+          "id": "L-011",
           "resultado": 1.44,
           "z_score": -1.74,
           "clasificacion": "A"
         },
         {
-          "id": "ZY9",
+          "id": "L-128",
           "resultado": 1.51,
           "z_score": -1.49,
           "clasificacion": "A"
         },
         {
-          "id": "XC8",
+          "id": "L-087",
           "resultado": 1.54,
           "z_score": -1.39,
           "clasificacion": "A"
         },
         {
-          "id": "AP2",
+          "id": "L-144",
           "resultado": 1.672,
           "z_score": -0.93,
           "clasificacion": "A"
         },
         {
-          "id": "MS6",
+          "id": "L-131",
           "resultado": 1.68,
           "z_score": -0.9,
           "clasificacion": "A"
         },
         {
-          "id": "WJ5",
+          "id": "L-017",
           "resultado": 1.7,
           "z_score": -0.83,
           "clasificacion": "A"
         },
         {
-          "id": "YY6",
+          "id": "L-139",
           "resultado": 1.75,
           "z_score": -0.66,
           "clasificacion": "A"
         },
         {
-          "id": "VK4",
+          "id": "L-140",
           "resultado": 1.8,
           "z_score": -0.49,
           "clasificacion": "A"
         },
         {
-          "id": "GB1",
+          "id": "L-141",
           "resultado": 1.81,
           "z_score": -0.45,
           "clasificacion": "A"
         },
         {
-          "id": "LD2",
+          "id": "L-142",
           "resultado": 1.81,
           "z_score": -0.45,
           "clasificacion": "A"
         },
         {
-          "id": "AF7",
+          "id": "L-145",
           "resultado": 1.82,
           "z_score": -0.42,
           "clasificacion": "A"
         },
         {
-          "id": "EH4",
+          "id": "L-138",
           "resultado": 1.87,
           "z_score": -0.24,
           "clasificacion": "A"
         },
         {
-          "id": "YX6",
+          "id": "L-021",
           "resultado": 2.1,
           "z_score": 0.56,
           "clasificacion": "A"
         },
         {
-          "id": "AB8",
+          "id": "L-002",
           "resultado": 2.2,
           "z_score": 0.9,
           "clasificacion": "A"
         },
         {
-          "id": "FU2",
+          "id": "L-033",
           "resultado": 2.2,
           "z_score": 0.9,
           "clasificacion": "A"
         },
         {
-          "id": "IS1",
+          "id": "L-090",
           "resultado": 2.2,
           "z_score": 0.9,
           "clasificacion": "A"
         },
         {
-          "id": "KQ7",
+          "id": "L-146",
           "resultado": 2.2,
           "z_score": 0.9,
           "clasificacion": "A"
         },
         {
-          "id": "NM5",
+          "id": "L-078",
           "resultado": 2.3,
           "z_score": 1.25,
           "clasificacion": "A"
         },
         {
-          "id": "BO7",
+          "id": "L-043",
           "resultado": 2.35,
           "z_score": 1.42,
           "clasificacion": "A"
         },
         {
-          "id": "RI2",
+          "id": "L-053",
           "resultado": 2.4,
           "z_score": 1.6,
           "clasificacion": "A"
         },
         {
-          "id": "ER7",
+          "id": "L-135",
           "resultado": 2.5,
           "z_score": 1.95,
           "clasificacion": "A"
         },
         {
-          "id": "FV4",
+          "id": "L-046",
           "resultado": 2.69,
           "z_score": 2.61,
           "clasificacion": "C"
         },
         {
-          "id": "YK4",
+          "id": "L-056",
           "resultado": 2.8,
           "z_score": 2.99,
           "clasificacion": "C"
         },
         {
-          "id": "DX6",
+          "id": "L-001",
           "resultado": 4.28,
           "z_score": 8.13,
           "clasificacion": "I"
         },
         {
-          "id": "NL9",
+          "id": "L-055",
           "resultado": 4.67,
           "z_score": 9.49,
           "clasificacion": "I"
         },
         {
-          "id": "QZ1",
+          "id": "L-032",
           "resultado": 7.2,
           "z_score": 18.28,
           "clasificacion": "I"
         },
         {
-          "id": "CW7",
+          "id": "L-143",
           "resultado": 91.07,
           "z_score": 309.73,
           "clasificacion": "I"
@@ -1603,205 +1605,205 @@
       "n_suficiente": true,
       "laboratorios": [
         {
-          "id": "QV5",
+          "id": "L-047",
           "resultado": 1.06,
           "z_score": -11.72,
           "clasificacion": "I"
         },
         {
-          "id": "UJ4",
+          "id": "L-124",
           "resultado": 1.2,
           "z_score": -11.29,
           "clasificacion": "I"
         },
         {
-          "id": "YX6",
+          "id": "L-021",
           "resultado": 3.4,
           "z_score": -4.48,
           "clasificacion": "I"
         },
         {
-          "id": "FV4",
+          "id": "L-046",
           "resultado": 3.43,
           "z_score": -4.39,
           "clasificacion": "I"
         },
         {
-          "id": "YY6",
+          "id": "L-139",
           "resultado": 4.29,
           "z_score": -1.73,
           "clasificacion": "A"
         },
         {
-          "id": "AB8",
+          "id": "L-090",
           "resultado": 4.3,
           "z_score": -1.7,
           "clasificacion": "A"
         },
         {
-          "id": "WJ5",
+          "id": "L-017",
           "resultado": 4.37,
           "z_score": -1.48,
           "clasificacion": "A"
         },
         {
-          "id": "ER7",
+          "id": "L-002",
           "resultado": 4.4,
           "z_score": -1.39,
           "clasificacion": "A"
         },
         {
-          "id": "FU2",
+          "id": "L-135",
           "resultado": 4.4,
           "z_score": -1.39,
           "clasificacion": "A"
         },
         {
-          "id": "IS1",
+          "id": "L-146",
           "resultado": 4.4,
           "z_score": -1.39,
           "clasificacion": "A"
         },
         {
-          "id": "NM5",
+          "id": "L-078",
           "resultado": 4.5,
           "z_score": -1.08,
           "clasificacion": "A"
         },
         {
-          "id": "YK4",
+          "id": "L-056",
           "resultado": 4.51,
           "z_score": -1.05,
           "clasificacion": "A"
         },
         {
-          "id": "MS6",
+          "id": "L-131",
           "resultado": 4.59,
           "z_score": -0.8,
           "clasificacion": "A"
         },
         {
-          "id": "EH4",
+          "id": "L-138",
           "resultado": 4.6,
           "z_score": -0.77,
           "clasificacion": "A"
         },
         {
-          "id": "GB1",
+          "id": "L-141",
           "resultado": 4.78,
           "z_score": -0.22,
           "clasificacion": "A"
         },
         {
-          "id": "RI2",
+          "id": "L-053",
           "resultado": 4.8,
           "z_score": -0.15,
           "clasificacion": "A"
         },
         {
-          "id": "EG2",
+          "id": "L-071",
           "resultado": 4.82,
           "z_score": -0.09,
           "clasificacion": "A"
         },
         {
-          "id": "XC8",
+          "id": "L-087",
           "resultado": 4.83,
           "z_score": -0.06,
           "clasificacion": "A"
         },
         {
-          "id": "JU6",
+          "id": "L-004",
           "resultado": 4.84,
           "z_score": -0.03,
           "clasificacion": "A"
         },
         {
-          "id": "GD6",
+          "id": "L-076",
           "resultado": 4.89,
           "z_score": 0.12,
           "clasificacion": "A"
         },
         {
-          "id": "LD2",
+          "id": "L-142",
           "resultado": 4.9,
           "z_score": 0.15,
           "clasificacion": "A"
         },
         {
-          "id": "WG5",
+          "id": "L-026",
           "resultado": 4.96,
           "z_score": 0.34,
           "clasificacion": "A"
         },
         {
-          "id": "ZY9",
+          "id": "L-128",
           "resultado": 5.01,
           "z_score": 0.49,
           "clasificacion": "A"
         },
         {
-          "id": "AF7",
+          "id": "L-145",
           "resultado": 5.03,
           "z_score": 0.56,
           "clasificacion": "A"
         },
         {
-          "id": "VK4",
+          "id": "L-140",
           "resultado": 5.1,
           "z_score": 0.77,
           "clasificacion": "A"
         },
         {
-          "id": "PZ6",
+          "id": "L-011",
           "resultado": 5.26,
           "z_score": 1.27,
           "clasificacion": "A"
         },
         {
-          "id": "BO7",
+          "id": "L-043",
           "resultado": 5.42,
           "z_score": 1.76,
           "clasificacion": "A"
         },
         {
-          "id": "AP2",
+          "id": "L-144",
           "resultado": 5.61,
           "z_score": 2.35,
           "clasificacion": "C"
         },
         {
-          "id": "KQ7",
+          "id": "L-033",
           "resultado": 5.7,
           "z_score": 2.63,
           "clasificacion": "C"
         },
         {
-          "id": "LK9",
+          "id": "L-007",
           "resultado": 5.91,
           "z_score": 3.28,
           "clasificacion": "I"
         },
         {
-          "id": "NL9",
+          "id": "L-055",
           "resultado": 7.05,
           "z_score": 6.8,
           "clasificacion": "I"
         },
         {
-          "id": "DX6",
+          "id": "L-001",
           "resultado": 7.7,
           "z_score": 8.81,
           "clasificacion": "I"
         },
         {
-          "id": "QZ1",
+          "id": "L-032",
           "resultado": 8.3,
           "z_score": 10.67,
           "clasificacion": "I"
         },
         {
-          "id": "CW7",
+          "id": "L-143",
           "resultado": 47.48,
           "z_score": 131.85,
           "clasificacion": "I"
@@ -1835,133 +1837,133 @@
       "n_suficiente": true,
       "laboratorios": [
         {
-          "id": "QV5",
+          "id": "L-047",
           "resultado": 106.0,
           "z_score": -12.13,
           "clasificacion": "I"
         },
         {
-          "id": "CW7",
+          "id": "L-143",
           "resultado": 148.9,
           "z_score": -10.96,
           "clasificacion": "I"
         },
         {
-          "id": "GD6",
+          "id": "L-076",
           "resultado": 355.0,
           "z_score": -5.38,
           "clasificacion": "I"
         },
         {
-          "id": "GB1",
+          "id": "L-141",
           "resultado": 444.0,
           "z_score": -2.96,
           "clasificacion": "C"
         },
         {
-          "id": "YY6",
+          "id": "L-139",
           "resultado": 458.0,
           "z_score": -2.58,
           "clasificacion": "C"
         },
         {
-          "id": "YX6",
+          "id": "L-021",
           "resultado": 461.0,
           "z_score": -2.5,
           "clasificacion": "C"
         },
         {
-          "id": "JU6",
+          "id": "L-004",
           "resultado": 485.0,
           "z_score": -1.85,
           "clasificacion": "A"
         },
         {
-          "id": "WJ5",
+          "id": "L-017",
           "resultado": 489.0,
           "z_score": -1.74,
           "clasificacion": "A"
         },
         {
-          "id": "BO7",
+          "id": "L-043",
           "resultado": 504.0,
           "z_score": -1.34,
           "clasificacion": "A"
         },
         {
-          "id": "KQ7",
+          "id": "L-033",
           "resultado": 520.0,
           "z_score": -0.9,
           "clasificacion": "A"
         },
         {
-          "id": "FV4",
+          "id": "L-046",
           "resultado": 543.0,
           "z_score": -0.28,
           "clasificacion": "A"
         },
         {
-          "id": "EH4",
+          "id": "L-138",
           "resultado": 577.0,
           "z_score": 0.64,
           "clasificacion": "A"
         },
         {
-          "id": "AF7",
+          "id": "L-128",
           "resultado": 608.0,
           "z_score": 1.48,
           "clasificacion": "A"
         },
         {
-          "id": "ZY9",
+          "id": "L-145",
           "resultado": 608.0,
           "z_score": 1.48,
           "clasificacion": "A"
         },
         {
-          "id": "LD2",
+          "id": "L-142",
           "resultado": 609.0,
           "z_score": 1.51,
           "clasificacion": "A"
         },
         {
-          "id": "NL9",
+          "id": "L-055",
           "resultado": 617.8,
           "z_score": 1.75,
           "clasificacion": "A"
         },
         {
-          "id": "IS1",
+          "id": "L-002",
           "resultado": 635.0,
           "z_score": 2.21,
           "clasificacion": "C"
         },
         {
-          "id": "PZ6",
+          "id": "L-011",
           "resultado": 676.0,
           "z_score": 3.33,
           "clasificacion": "I"
         },
         {
-          "id": "RI2",
+          "id": "L-053",
           "resultado": 690.0,
           "z_score": 3.7,
           "clasificacion": "I"
         },
         {
-          "id": "NM5",
+          "id": "L-078",
           "resultado": 712.0,
           "z_score": 4.3,
           "clasificacion": "I"
         },
         {
-          "id": "DX6",
+          "id": "L-001",
           "resultado": 735.0,
           "z_score": 4.92,
           "clasificacion": "I"
         },
         {
-          "id": "AB8",
+          "id": "L-090",
           "resultado": 957.0,
           "z_score": 10.94,
           "clasificacion": "I"
@@ -1995,205 +1997,205 @@
       "n_suficiente": true,
       "laboratorios": [
         {
-          "id": "CW7",
+          "id": "L-143",
           "resultado": 3.45,
           "z_score": -24.87,
           "clasificacion": "I"
         },
         {
-          "id": "QV5",
+          "id": "L-047",
           "resultado": 6.88,
           "z_score": -14.58,
           "clasificacion": "I"
         },
         {
-          "id": "LD2",
+          "id": "L-142",
           "resultado": 8.0,
           "z_score": -11.22,
           "clasificacion": "I"
         },
         {
-          "id": "YX6",
+          "id": "L-021",
           "resultado": 8.5,
           "z_score": -9.72,
           "clasificacion": "I"
         },
         {
-          "id": "YK4",
+          "id": "L-056",
           "resultado": 10.0,
           "z_score": -5.22,
           "clasificacion": "I"
         },
         {
-          "id": "EG2",
+          "id": "L-071",
           "resultado": 10.4,
           "z_score": -4.02,
           "clasificacion": "I"
         },
         {
-          "id": "UJ4",
+          "id": "L-124",
           "resultado": 10.8,
           "z_score": -2.82,
           "clasificacion": "C"
         },
         {
-          "id": "MS6",
+          "id": "L-131",
           "resultado": 10.94,
           "z_score": -2.4,
           "clasificacion": "C"
         },
         {
-          "id": "FU2",
+          "id": "L-146",
           "resultado": 11.2,
           "z_score": -1.62,
           "clasificacion": "A"
         },
         {
-          "id": "BO7",
+          "id": "L-017",
           "resultado": 11.3,
           "z_score": -1.32,
           "clasificacion": "A"
         },
         {
-          "id": "QZ1",
+          "id": "L-032",
           "resultado": 11.3,
           "z_score": -1.32,
           "clasificacion": "A"
         },
         {
-          "id": "VK4",
+          "id": "L-043",
           "resultado": 11.3,
           "z_score": -1.32,
           "clasificacion": "A"
         },
         {
-          "id": "WJ5",
+          "id": "L-140",
           "resultado": 11.3,
           "z_score": -1.32,
           "clasificacion": "A"
         },
         {
-          "id": "XC8",
+          "id": "L-087",
           "resultado": 11.34,
           "z_score": -1.2,
           "clasificacion": "A"
         },
         {
-          "id": "KQ7",
+          "id": "L-033",
           "resultado": 11.4,
           "z_score": -1.02,
           "clasificacion": "A"
         },
         {
-          "id": "YY6",
+          "id": "L-139",
           "resultado": 11.7,
           "z_score": -0.12,
           "clasificacion": "A"
         },
         {
-          "id": "GB1",
+          "id": "L-141",
           "resultado": 11.9,
           "z_score": 0.48,
           "clasificacion": "A"
         },
         {
-          "id": "EH4",
+          "id": "L-138",
           "resultado": 11.97,
           "z_score": 0.69,
           "clasificacion": "A"
         },
         {
-          "id": "PZ6",
+          "id": "L-011",
           "resultado": 12.0,
           "z_score": 0.78,
           "clasificacion": "A"
         },
         {
-          "id": "JU6",
+          "id": "L-004",
           "resultado": 12.1,
           "z_score": 1.08,
           "clasificacion": "A"
         },
         {
-          "id": "NM5",
+          "id": "L-078",
           "resultado": 12.1,
           "z_score": 1.08,
           "clasificacion": "A"
         },
         {
-          "id": "ER7",
+          "id": "L-002",
           "resultado": 12.2,
           "z_score": 1.38,
           "clasificacion": "A"
         },
         {
-          "id": "IS1",
+          "id": "L-135",
           "resultado": 12.2,
           "z_score": 1.38,
           "clasificacion": "A"
         },
         {
-          "id": "AB8",
+          "id": "L-090",
           "resultado": 12.3,
           "z_score": 1.68,
           "clasificacion": "A"
         },
         {
-          "id": "AF7",
+          "id": "L-026",
           "resultado": 12.4,
           "z_score": 1.98,
           "clasificacion": "A"
         },
         {
-          "id": "WG5",
+          "id": "L-145",
           "resultado": 12.4,
           "z_score": 1.98,
           "clasificacion": "A"
         },
         {
-          "id": "DX6",
+          "id": "L-001",
           "resultado": 12.5,
           "z_score": 2.28,
           "clasificacion": "C"
         },
         {
-          "id": "ZY9",
+          "id": "L-128",
           "resultado": 12.7,
           "z_score": 2.88,
           "clasificacion": "C"
         },
         {
-          "id": "AP2",
+          "id": "L-144",
           "resultado": 12.89,
           "z_score": 3.45,
           "clasificacion": "I"
         },
         {
-          "id": "RI2",
+          "id": "L-053",
           "resultado": 13.0,
           "z_score": 3.78,
           "clasificacion": "I"
         },
         {
-          "id": "LK9",
+          "id": "L-007",
           "resultado": 13.4,
           "z_score": 4.98,
           "clasificacion": "I"
         },
         {
-          "id": "NL9",
+          "id": "L-055",
           "resultado": 14.47,
           "z_score": 8.19,
           "clasificacion": "I"
         },
         {
-          "id": "FV4",
+          "id": "L-046",
           "resultado": 17.5,
           "z_score": 17.28,
           "clasificacion": "I"
         },
         {
-          "id": "GD6",
+          "id": "L-076",
           "resultado": 152.0,
           "z_score": 420.78,
           "clasificacion": "I"
@@ -2227,193 +2229,193 @@
       "n_suficiente": true,
       "laboratorios": [
         {
-          "id": "YX6",
+          "id": "L-021",
           "resultado": 82.0,
           "z_score": -16.77,
           "clasificacion": "I"
         },
         {
-          "id": "AB8",
+          "id": "L-090",
           "resultado": 84.0,
           "z_score": -15.72,
           "clasificacion": "I"
         },
         {
-          "id": "BO7",
+          "id": "L-043",
           "resultado": 101.0,
           "z_score": -6.75,
           "clasificacion": "I"
         },
         {
-          "id": "EG2",
+          "id": "L-071",
           "resultado": 103.0,
           "z_score": -5.7,
           "clasificacion": "I"
         },
         {
-          "id": "DX6",
+          "id": "L-001",
           "resultado": 104.0,
           "z_score": -5.17,
           "clasificacion": "I"
         },
         {
-          "id": "VK4",
+          "id": "L-026",
           "resultado": 108.0,
           "z_score": -3.06,
           "clasificacion": "I"
         },
         {
-          "id": "WG5",
+          "id": "L-128",
           "resultado": 108.0,
           "z_score": -3.06,
           "clasificacion": "I"
         },
         {
-          "id": "ZY9",
+          "id": "L-140",
           "resultado": 108.0,
           "z_score": -3.06,
           "clasificacion": "I"
         },
         {
-          "id": "NL9",
+          "id": "L-055",
           "resultado": 108.8,
           "z_score": -2.64,
           "clasificacion": "C"
         },
         {
-          "id": "ER7",
+          "id": "L-047",
           "resultado": 109.0,
           "z_score": -2.54,
           "clasificacion": "C"
         },
         {
-          "id": "QV5",
+          "id": "L-135",
           "resultado": 109.0,
           "z_score": -2.54,
           "clasificacion": "C"
         },
         {
-          "id": "AF7",
+          "id": "L-145",
           "resultado": 110.5,
           "z_score": -1.75,
           "clasificacion": "A"
         },
         {
-          "id": "KQ7",
+          "id": "L-033",
           "resultado": 112.0,
           "z_score": -0.95,
           "clasificacion": "A"
         },
         {
-          "id": "NM5",
+          "id": "L-078",
           "resultado": 112.0,
           "z_score": -0.95,
           "clasificacion": "A"
         },
         {
-          "id": "FV4",
+          "id": "L-046",
           "resultado": 112.1,
           "z_score": -0.9,
           "clasificacion": "A"
         },
         {
-          "id": "QZ1",
+          "id": "L-032",
           "resultado": 112.7,
           "z_score": -0.59,
           "clasificacion": "A"
         },
         {
-          "id": "GB1",
+          "id": "L-141",
           "resultado": 113.0,
           "z_score": -0.43,
           "clasificacion": "A"
         },
         {
-          "id": "JU6",
+          "id": "L-004",
           "resultado": 115.0,
           "z_score": 0.63,
           "clasificacion": "A"
         },
         {
-          "id": "YY6",
+          "id": "L-139",
           "resultado": 115.0,
           "z_score": 0.63,
           "clasificacion": "A"
         },
         {
-          "id": "FU2",
+          "id": "L-002",
           "resultado": 117.0,
           "z_score": 1.68,
           "clasificacion": "A"
         },
         {
-          "id": "IS1",
+          "id": "L-056",
           "resultado": 117.0,
           "z_score": 1.68,
           "clasificacion": "A"
         },
         {
-          "id": "YK4",
+          "id": "L-146",
           "resultado": 117.0,
           "z_score": 1.68,
           "clasificacion": "A"
         },
         {
-          "id": "MS6",
+          "id": "L-131",
           "resultado": 117.7,
           "z_score": 2.05,
           "clasificacion": "C"
         },
         {
-          "id": "LD2",
+          "id": "L-011",
           "resultado": 118.0,
           "z_score": 2.21,
           "clasificacion": "C"
         },
         {
-          "id": "PZ6",
+          "id": "L-053",
           "resultado": 118.0,
           "z_score": 2.21,
           "clasificacion": "C"
         },
         {
-          "id": "RI2",
+          "id": "L-142",
           "resultado": 118.0,
           "z_score": 2.21,
           "clasificacion": "C"
         },
         {
-          "id": "AP2",
+          "id": "L-144",
           "resultado": 120.0,
           "z_score": 3.26,
           "clasificacion": "I"
         },
         {
-          "id": "CW7",
+          "id": "L-017",
           "resultado": 128.0,
           "z_score": 7.48,
           "clasificacion": "I"
         },
         {
-          "id": "GD6",
+          "id": "L-076",
           "resultado": 128.0,
           "z_score": 7.48,
           "clasificacion": "I"
         },
         {
-          "id": "WJ5",
+          "id": "L-143",
           "resultado": 128.0,
           "z_score": 7.48,
           "clasificacion": "I"
         },
         {
-          "id": "LK9",
+          "id": "L-007",
           "resultado": 131.9,
           "z_score": 9.54,
           "clasificacion": "I"
         },
         {
-          "id": "UJ4",
+          "id": "L-124",
           "resultado": 141.0,
           "z_score": 14.33,
           "clasificacion": "I"
@@ -2447,223 +2449,223 @@
       "n_suficiente": true,
       "laboratorios": [
         {
-          "id": "QV5",
+          "id": "L-047",
           "resultado": 113.0,
           "z_score": -17.82,
           "clasificacion": "I"
         },
         {
-          "id": "YX6",
+          "id": "L-021",
           "resultado": 188.0,
           "z_score": -9.73,
           "clasificacion": "I"
         },
         {
-          "id": "UJ4",
+          "id": "L-124",
           "resultado": 220.0,
           "z_score": -6.28,
           "clasificacion": "I"
         },
         {
-          "id": "LN5",
+          "id": "L-045",
           "resultado": 225.6,
           "z_score": -5.68,
           "clasificacion": "I"
         },
         {
-          "id": "EG2",
+          "id": "L-071",
           "resultado": 233.0,
           "z_score": -4.88,
           "clasificacion": "I"
         },
         {
-          "id": "DW1",
+          "id": "L-014",
           "resultado": 237.0,
           "z_score": -4.45,
           "clasificacion": "I"
         },
         {
-          "id": "IS1",
+          "id": "L-002",
           "resultado": 240.0,
           "z_score": -4.12,
           "clasificacion": "I"
         },
         {
-          "id": "ER7",
+          "id": "L-135",
           "resultado": 245.0,
           "z_score": -3.58,
           "clasificacion": "I"
         },
         {
-          "id": "VK4",
+          "id": "L-140",
           "resultado": 249.0,
           "z_score": -3.15,
           "clasificacion": "I"
         },
         {
-          "id": "NM5",
+          "id": "L-078",
           "resultado": 256.0,
           "z_score": -2.4,
           "clasificacion": "C"
         },
         {
-          "id": "PZ6",
+          "id": "L-011",
           "resultado": 258.0,
           "z_score": -2.18,
           "clasificacion": "C"
         },
         {
-          "id": "RI2",
+          "id": "L-053",
           "resultado": 260.0,
           "z_score": -1.97,
           "clasificacion": "A"
         },
         {
-          "id": "WJ5",
+          "id": "L-017",
           "resultado": 262.0,
           "z_score": -1.75,
           "clasificacion": "A"
         },
         {
-          "id": "LD2",
+          "id": "L-142",
           "resultado": 266.0,
           "z_score": -1.32,
           "clasificacion": "A"
         },
         {
-          "id": "AB8",
+          "id": "L-076",
           "resultado": 270.0,
           "z_score": -0.89,
           "clasificacion": "A"
         },
         {
-          "id": "GD6",
+          "id": "L-090",
           "resultado": 270.0,
           "z_score": -0.89,
           "clasificacion": "A"
         },
         {
-          "id": "FU2",
+          "id": "L-146",
           "resultado": 271.0,
           "z_score": -0.78,
           "clasificacion": "A"
         },
         {
-          "id": "JU6",
+          "id": "L-004",
           "resultado": 272.0,
           "z_score": -0.67,
           "clasificacion": "A"
         },
         {
-          "id": "GB1",
+          "id": "L-026",
           "resultado": 274.0,
           "z_score": -0.46,
           "clasificacion": "A"
         },
         {
-          "id": "WG5",
+          "id": "L-141",
           "resultado": 274.0,
           "z_score": -0.46,
           "clasificacion": "A"
         },
         {
-          "id": "KQ7",
+          "id": "L-033",
           "resultado": 275.0,
           "z_score": -0.35,
           "clasificacion": "A"
         },
         {
-          "id": "ZY9",
+          "id": "L-128",
           "resultado": 287.0,
           "z_score": 0.94,
           "clasificacion": "A"
         },
         {
-          "id": "CW7",
+          "id": "L-143",
           "resultado": 292.0,
           "z_score": 1.48,
           "clasificacion": "A"
         },
         {
-          "id": "XC8",
+          "id": "L-056",
           "resultado": 294.0,
           "z_score": 1.7,
           "clasificacion": "A"
         },
         {
-          "id": "YK4",
+          "id": "L-087",
           "resultado": 294.0,
           "z_score": 1.7,
           "clasificacion": "A"
         },
         {
-          "id": "DX6",
+          "id": "L-001",
           "resultado": 298.0,
           "z_score": 2.13,
           "clasificacion": "C"
         },
         {
-          "id": "MS6",
+          "id": "L-131",
           "resultado": 301.0,
           "z_score": 2.45,
           "clasificacion": "C"
         },
         {
-          "id": "EH4",
+          "id": "L-138",
           "resultado": 307.0,
           "z_score": 3.1,
           "clasificacion": "I"
         },
         {
-          "id": "AF7",
+          "id": "L-145",
           "resultado": 313.0,
           "z_score": 3.75,
           "clasificacion": "I"
         },
         {
-          "id": "AP2",
+          "id": "L-139",
           "resultado": 314.0,
           "z_score": 3.86,
           "clasificacion": "I"
         },
         {
-          "id": "YY6",
+          "id": "L-144",
           "resultado": 314.0,
           "z_score": 3.86,
           "clasificacion": "I"
         },
         {
-          "id": "FV4",
+          "id": "L-046",
           "resultado": 318.0,
           "z_score": 4.29,
           "clasificacion": "I"
         },
         {
-          "id": "KO7",
+          "id": "L-102",
           "resultado": 324.0,
           "z_score": 4.93,
           "clasificacion": "I"
         },
         {
-          "id": "LK9",
+          "id": "L-007",
           "resultado": 329.0,
           "z_score": 5.47,
           "clasificacion": "I"
         },
         {
-          "id": "BO7",
+          "id": "L-043",
           "resultado": 343.0,
           "z_score": 6.98,
           "clasificacion": "I"
         },
         {
-          "id": "QZ1",
+          "id": "L-032",
           "resultado": 350.01,
           "z_score": 7.74,
           "clasificacion": "I"
         },
         {
-          "id": "NL9",
+          "id": "L-055",
           "resultado": 437.0,
           "z_score": 17.12,
           "clasificacion": "I"
@@ -2697,211 +2699,211 @@
       "n_suficiente": true,
       "laboratorios": [
         {
-          "id": "UJ4",
+          "id": "L-124",
           "resultado": 28.0,
           "z_score": -10.29,
           "clasificacion": "I"
         },
         {
-          "id": "YK4",
+          "id": "L-056",
           "resultado": 45.0,
           "z_score": -7.43,
           "clasificacion": "I"
         },
         {
-          "id": "EH4",
+          "id": "L-138",
           "resultado": 60.2,
           "z_score": -4.87,
           "clasificacion": "I"
         },
         {
-          "id": "XC8",
+          "id": "L-087",
           "resultado": 60.5,
           "z_score": -4.82,
           "clasificacion": "I"
         },
         {
-          "id": "AP2",
+          "id": "L-144",
           "resultado": 61.3,
           "z_score": -4.68,
           "clasificacion": "I"
         },
         {
-          "id": "DW1",
+          "id": "L-014",
           "resultado": 62.0,
           "z_score": -4.57,
           "clasificacion": "I"
         },
         {
-          "id": "YY6",
+          "id": "L-139",
           "resultado": 69.5,
           "z_score": -3.3,
           "clasificacion": "I"
         },
         {
-          "id": "FV4",
+          "id": "L-046",
           "resultado": 69.7,
           "z_score": -3.27,
           "clasificacion": "I"
         },
         {
-          "id": "QV5",
+          "id": "L-047",
           "resultado": 70.8,
           "z_score": -3.08,
           "clasificacion": "I"
         },
         {
-          "id": "EG2",
+          "id": "L-071",
           "resultado": 73.0,
           "z_score": -2.71,
           "clasificacion": "C"
         },
         {
-          "id": "KO7",
+          "id": "L-102",
           "resultado": 74.0,
           "z_score": -2.55,
           "clasificacion": "C"
         },
         {
-          "id": "RI2",
+          "id": "L-026",
           "resultado": 80.0,
           "z_score": -1.54,
           "clasificacion": "A"
         },
         {
-          "id": "WG5",
+          "id": "L-053",
           "resultado": 80.0,
           "z_score": -1.54,
           "clasificacion": "A"
         },
         {
-          "id": "LD2",
+          "id": "L-142",
           "resultado": 81.1,
           "z_score": -1.35,
           "clasificacion": "A"
         },
         {
-          "id": "VK4",
+          "id": "L-140",
           "resultado": 83.0,
           "z_score": -1.03,
           "clasificacion": "A"
         },
         {
-          "id": "QZ1",
+          "id": "L-032",
           "resultado": 84.79,
           "z_score": -0.73,
           "clasificacion": "A"
         },
         {
-          "id": "GD6",
+          "id": "L-076",
           "resultado": 86.1,
           "z_score": -0.51,
           "clasificacion": "A"
         },
         {
-          "id": "MS6",
+          "id": "L-131",
           "resultado": 86.5,
           "z_score": -0.44,
           "clasificacion": "A"
         },
         {
-          "id": "JU6",
+          "id": "L-004",
           "resultado": 94.0,
           "z_score": 0.82,
           "clasificacion": "A"
         },
         {
-          "id": "KQ7",
+          "id": "L-033",
           "resultado": 96.0,
           "z_score": 1.16,
           "clasificacion": "A"
         },
         {
-          "id": "ZY9",
+          "id": "L-128",
           "resultado": 99.33,
           "z_score": 1.72,
           "clasificacion": "A"
         },
         {
-          "id": "WJ5",
+          "id": "L-017",
           "resultado": 99.6,
           "z_score": 1.76,
           "clasificacion": "A"
         },
         {
-          "id": "GB1",
+          "id": "L-141",
           "resultado": 102.0,
           "z_score": 2.17,
           "clasificacion": "C"
         },
         {
-          "id": "AF7",
+          "id": "L-145",
           "resultado": 103.7,
           "z_score": 2.45,
           "clasificacion": "C"
         },
         {
-          "id": "YX6",
+          "id": "L-021",
           "resultado": 104.0,
           "z_score": 2.5,
           "clasificacion": "C"
         },
         {
-          "id": "BO7",
+          "id": "L-007",
           "resultado": 107.0,
           "z_score": 3.01,
           "clasificacion": "I"
         },
         {
-          "id": "LK9",
+          "id": "L-043",
           "resultado": 107.0,
           "z_score": 3.01,
           "clasificacion": "I"
         },
         {
-          "id": "AB8",
+          "id": "L-002",
           "resultado": 110.0,
           "z_score": 3.51,
           "clasificacion": "I"
         },
         {
-          "id": "ER7",
+          "id": "L-011",
           "resultado": 110.0,
           "z_score": 3.51,
           "clasificacion": "I"
         },
         {
-          "id": "FU2",
+          "id": "L-090",
           "resultado": 110.0,
           "z_score": 3.51,
           "clasificacion": "I"
         },
         {
-          "id": "IS1",
+          "id": "L-135",
           "resultado": 110.0,
           "z_score": 3.51,
           "clasificacion": "I"
         },
         {
-          "id": "PZ6",
+          "id": "L-146",
           "resultado": 110.0,
           "z_score": 3.51,
           "clasificacion": "I"
         },
         {
-          "id": "NM5",
+          "id": "L-078",
           "resultado": 118.1,
           "z_score": 4.88,
           "clasificacion": "I"
         },
         {
-          "id": "CW7",
+          "id": "L-143",
           "resultado": 123.98,
           "z_score": 5.87,
           "clasificacion": "I"
         },
         {
-          "id": "NL9",
+          "id": "L-055",
           "resultado": 166.0,
           "z_score": 12.94,
           "clasificacion": "I"
@@ -2935,223 +2937,223 @@
       "n_suficiente": true,
       "laboratorios": [
         {
-          "id": "QV5",
+          "id": "L-047",
           "resultado": 1.4,
           "z_score": -18.95,
           "clasificacion": "I"
         },
         {
-          "id": "CW7",
+          "id": "L-143",
           "resultado": 1.83,
           "z_score": -15.55,
           "clasificacion": "I"
         },
         {
-          "id": "QZ1",
+          "id": "L-032",
           "resultado": 3.0,
           "z_score": -6.32,
           "clasificacion": "I"
         },
         {
-          "id": "YX6",
+          "id": "L-021",
           "resultado": 3.07,
           "z_score": -5.76,
           "clasificacion": "I"
         },
         {
-          "id": "EH4",
+          "id": "L-138",
           "resultado": 3.23,
           "z_score": -4.5,
           "clasificacion": "I"
         },
         {
-          "id": "YK4",
+          "id": "L-056",
           "resultado": 3.25,
           "z_score": -4.34,
           "clasificacion": "I"
         },
         {
-          "id": "UJ4",
+          "id": "L-124",
           "resultado": 3.3,
           "z_score": -3.95,
           "clasificacion": "I"
         },
         {
-          "id": "XC8",
+          "id": "L-087",
           "resultado": 3.53,
           "z_score": -2.13,
           "clasificacion": "C"
         },
         {
-          "id": "YY6",
+          "id": "L-139",
           "resultado": 3.54,
           "z_score": -2.05,
           "clasificacion": "C"
         },
         {
-          "id": "WJ5",
+          "id": "L-017",
           "resultado": 3.58,
           "z_score": -1.74,
           "clasificacion": "A"
         },
         {
-          "id": "LN5",
+          "id": "L-045",
           "resultado": 3.6,
           "z_score": -1.58,
           "clasificacion": "A"
         },
         {
-          "id": "KO7",
+          "id": "L-102",
           "resultado": 3.61,
           "z_score": -1.5,
           "clasificacion": "A"
         },
         {
-          "id": "DW1",
+          "id": "L-014",
           "resultado": 3.62,
           "z_score": -1.42,
           "clasificacion": "A"
         },
         {
-          "id": "AB8",
+          "id": "L-090",
           "resultado": 3.66,
           "z_score": -1.11,
           "clasificacion": "A"
         },
         {
-          "id": "AP2",
+          "id": "L-144",
           "resultado": 3.66,
           "z_score": -1.11,
           "clasificacion": "A"
         },
         {
-          "id": "PZ6",
+          "id": "L-011",
           "resultado": 3.68,
           "z_score": -0.95,
           "clasificacion": "A"
         },
         {
-          "id": "WG5",
+          "id": "L-026",
           "resultado": 3.7,
           "z_score": -0.79,
           "clasificacion": "A"
         },
         {
-          "id": "ZY9",
+          "id": "L-128",
           "resultado": 3.71,
           "z_score": -0.71,
           "clasificacion": "A"
         },
         {
-          "id": "IS1",
+          "id": "L-002",
           "resultado": 3.73,
           "z_score": -0.55,
           "clasificacion": "A"
         },
         {
-          "id": "FU2",
+          "id": "L-146",
           "resultado": 3.74,
           "z_score": -0.47,
           "clasificacion": "A"
         },
         {
-          "id": "MS6",
+          "id": "L-131",
           "resultado": 3.78,
           "z_score": -0.16,
           "clasificacion": "A"
         },
         {
-          "id": "EG2",
+          "id": "L-071",
           "resultado": 3.82,
           "z_score": 0.16,
           "clasificacion": "A"
         },
         {
-          "id": "ER7",
+          "id": "L-135",
           "resultado": 3.88,
           "z_score": 0.63,
           "clasificacion": "A"
         },
         {
-          "id": "NM5",
+          "id": "L-078",
           "resultado": 3.94,
           "z_score": 1.11,
           "clasificacion": "A"
         },
         {
-          "id": "DX6",
+          "id": "L-001",
           "resultado": 3.96,
           "z_score": 1.26,
           "clasificacion": "A"
         },
         {
-          "id": "GD6",
+          "id": "L-076",
           "resultado": 4.03,
           "z_score": 1.82,
           "clasificacion": "A"
         },
         {
-          "id": "VK4",
+          "id": "L-140",
           "resultado": 4.04,
           "z_score": 1.89,
           "clasificacion": "A"
         },
         {
-          "id": "RI2",
+          "id": "L-053",
           "resultado": 4.08,
           "z_score": 2.21,
           "clasificacion": "C"
         },
         {
-          "id": "FV4",
+          "id": "L-046",
           "resultado": 4.1,
           "z_score": 2.37,
           "clasificacion": "C"
         },
         {
-          "id": "AF7",
+          "id": "L-145",
           "resultado": 4.22,
           "z_score": 3.32,
           "clasificacion": "I"
         },
         {
-          "id": "GB1",
+          "id": "L-141",
           "resultado": 4.28,
           "z_score": 3.79,
           "clasificacion": "I"
         },
         {
-          "id": "LD2",
+          "id": "L-142",
           "resultado": 4.41,
           "z_score": 4.82,
           "clasificacion": "I"
         },
         {
-          "id": "JU6",
+          "id": "L-004",
           "resultado": 4.45,
           "z_score": 5.13,
           "clasificacion": "I"
         },
         {
-          "id": "KQ7",
+          "id": "L-033",
           "resultado": 4.45,
           "z_score": 5.13,
           "clasificacion": "I"
         },
         {
-          "id": "BO7",
+          "id": "L-007",
           "resultado": 4.9,
           "z_score": 8.68,
           "clasificacion": "I"
         },
         {
-          "id": "LK9",
+          "id": "L-043",
           "resultado": 4.9,
           "z_score": 8.68,
           "clasificacion": "I"
         },
         {
-          "id": "NL9",
+          "id": "L-055",
           "resultado": 5.44,
           "z_score": 12.95,
           "clasificacion": "I"
@@ -3169,332 +3171,241 @@
       "nombre": "Fosfatasa Alcalina (ALP)",
       "unidad": "U/L",
       "n": 36,
-      "evaluacion": "grupo_pares",
-      "valor_asignado": 560.24,
-      "sd_robusta": 343.0,
-      "cv": 61.2,
-      "grupos": [
-        {
-          "nombre": "Química húmeda",
-          "n": 26,
-          "evaluado": true,
-          "valor_asignado": 406.76,
-          "sd_robusta": 114.89,
-          "cv": 28.2,
-          "eta": {
-            "pct": 20,
-            "abs": null,
-            "unidad": null,
-            "regla": "unico",
-            "fuente": "CLIA §493.931",
-            "delta_e": 81.352
-          },
-          "sigma_pt": 27.1173,
-          "n_suficiente": true,
-          "conteos": {
-            "A": 8,
-            "C": 7,
-            "I": 11,
-            "NE": 0
-          }
-        },
-        {
-          "nombre": "Química seca (plataforma A)",
-          "n": 8,
-          "evaluado": true,
-          "valor_asignado": 1101.6,
-          "sd_robusta": 115.46,
-          "cv": 10.5,
-          "eta": {
-            "pct": 20,
-            "abs": null,
-            "unidad": null,
-            "regla": "unico",
-            "fuente": "CLIA §493.931",
-            "delta_e": 220.32
-          },
-          "sigma_pt": 73.44,
-          "n_suficiente": false,
-          "conteos": {
-            "A": 7,
-            "C": 0,
-            "I": 1,
-            "NE": 0
-          }
-        },
-        {
-          "nombre": "Química seca (plataforma B)",
-          "n": 2,
-          "evaluado": false,
-          "motivo": "Grupo de pares insuficiente (n < 8)",
-          "conteos": {
-            "A": 0,
-            "C": 0,
-            "I": 0,
-            "NE": 2
-          }
-        }
-      ],
+      "evaluacion": "no_evaluada",
+      "valor_asignado": null,
+      "sd_robusta": null,
+      "cv": null,
+      "n_suficiente": true,
+      "referencia_descriptiva": {
+        "mediana": 405.5,
+        "minimo": 230.0,
+        "maximo": 1410.0
+      },
+      "nota_sin_evaluar": "<strong>Analito no evaluado en esta ronda.</strong> CONCALAB-UASD no emite calificación de conformidad para Fosfatasa Alcalina (ALP) en el ensayo EA-001-2026. La decisión se basa en dos hallazgos: (1) la dispersión entre participantes no permite establecer un valor asignado por consenso defendible, y (2) los valores próximos a 1000 U/L no son atribuibles al material de referencia suministrado según registros, lo que apunta a un problema de conmutabilidad del material frente a determinadas plataformas y no al desempeño de los laboratorios. Los resultados se publican <strong>solo con fines informativos</strong>: cada participante puede ubicar su valor respecto al conjunto y a su plataforma, pero no se asigna Z-Score ni clasificación, y ALP no computa en el desempeño global ni en el resumen por laboratorio.",
       "laboratorios": [
         {
-          "id": "QV5",
+          "id": "L-047",
           "resultado": 230.0,
-          "z_score": -6.52,
-          "clasificacion": "I",
-          "grupo": "Química húmeda"
+          "z_score": null,
+          "clasificacion": "NE"
         },
         {
-          "id": "QZ1",
+          "id": "L-032",
           "resultado": 270.2,
-          "z_score": -5.04,
-          "clasificacion": "I",
-          "grupo": "Química húmeda"
+          "z_score": null,
+          "clasificacion": "NE"
         },
         {
-          "id": "DW1",
+          "id": "L-014",
           "resultado": 286.0,
-          "z_score": -4.45,
-          "clasificacion": "I",
-          "grupo": "Química húmeda"
+          "z_score": null,
+          "clasificacion": "NE"
         },
         {
-          "id": "AP2",
+          "id": "L-144",
           "resultado": 295.0,
-          "z_score": -4.12,
-          "clasificacion": "I",
-          "grupo": "Química húmeda"
+          "z_score": null,
+          "clasificacion": "NE"
         },
         {
-          "id": "LD2",
-          "resultado": 336.0,
-          "z_score": -2.61,
-          "clasificacion": "C",
-          "grupo": "Química húmeda"
-        },
-        {
-          "id": "WJ5",
-          "resultado": 336.0,
-          "z_score": -2.61,
-          "clasificacion": "C",
-          "grupo": "Química húmeda"
-        },
-        {
-          "id": "UJ4",
-          "resultado": 340.0,
-          "z_score": -2.46,
-          "clasificacion": "C",
-          "grupo": "Química húmeda"
-        },
-        {
-          "id": "YK4",
-          "resultado": 340.0,
-          "z_score": -2.46,
-          "clasificacion": "C",
-          "grupo": "Química húmeda"
-        },
-        {
-          "id": "VK4",
-          "resultado": 345.0,
-          "z_score": -2.28,
-          "clasificacion": "C",
-          "grupo": "Química húmeda"
-        },
-        {
-          "id": "JU6",
-          "resultado": 347.0,
-          "z_score": -2.2,
-          "clasificacion": "C",
-          "grupo": "Química húmeda"
-        },
-        {
-          "id": "YX6",
-          "resultado": 966.0,
-          "z_score": -1.85,
-          "clasificacion": "A",
-          "grupo": "Química seca (plataforma A)"
-        },
-        {
-          "id": "ER7",
-          "resultado": 1003.0,
-          "z_score": -1.34,
-          "clasificacion": "A",
-          "grupo": "Química seca (plataforma A)"
-        },
-        {
-          "id": "KO7",
-          "resultado": 373.0,
-          "z_score": -1.24,
-          "clasificacion": "A",
-          "grupo": "Química húmeda"
-        },
-        {
-          "id": "MS6",
-          "resultado": 375.0,
-          "z_score": -1.17,
-          "clasificacion": "A",
-          "grupo": "Química húmeda"
-        },
-        {
-          "id": "XC8",
-          "resultado": 378.0,
-          "z_score": -1.06,
-          "clasificacion": "A",
-          "grupo": "Química húmeda"
-        },
-        {
-          "id": "YY6",
-          "resultado": 379.0,
-          "z_score": -1.02,
-          "clasificacion": "A",
-          "grupo": "Química húmeda"
-        },
-        {
-          "id": "DX6",
-          "resultado": 385.0,
-          "z_score": -0.8,
-          "clasificacion": "A",
-          "grupo": "Química húmeda"
-        },
-        {
-          "id": "FU2",
-          "resultado": 1045.0,
-          "z_score": -0.77,
-          "clasificacion": "A",
-          "grupo": "Química seca (plataforma A)"
-        },
-        {
-          "id": "EH4",
-          "resultado": 397.0,
-          "z_score": -0.36,
-          "clasificacion": "A",
-          "grupo": "Química húmeda"
-        },
-        {
-          "id": "PZ6",
-          "resultado": 1077.0,
-          "z_score": -0.33,
-          "clasificacion": "A",
-          "grupo": "Química seca (plataforma A)"
-        },
-        {
-          "id": "NM5",
-          "resultado": 1121.0,
-          "z_score": 0.26,
-          "clasificacion": "A",
-          "grupo": "Química seca (plataforma A)"
-        },
-        {
-          "id": "CW7",
-          "resultado": 414.0,
-          "z_score": 0.27,
-          "clasificacion": "A",
-          "grupo": "Química húmeda"
-        },
-        {
-          "id": "IS1",
-          "resultado": 1126.0,
-          "z_score": 0.33,
-          "clasificacion": "A",
-          "grupo": "Química seca (plataforma A)"
-        },
-        {
-          "id": "WG5",
-          "resultado": 439.0,
-          "z_score": 1.19,
-          "clasificacion": "A",
-          "grupo": "Química húmeda"
-        },
-        {
-          "id": "RI2",
-          "resultado": 1200.0,
-          "z_score": 1.34,
-          "clasificacion": "A",
-          "grupo": "Química seca (plataforma A)"
-        },
-        {
-          "id": "GD6",
-          "resultado": 475.0,
-          "z_score": 2.52,
-          "clasificacion": "C",
-          "grupo": "Química húmeda"
-        },
-        {
-          "id": "AF7",
-          "resultado": 497.0,
-          "z_score": 3.33,
-          "clasificacion": "I",
-          "grupo": "Química húmeda"
-        },
-        {
-          "id": "BO7",
-          "resultado": 516.0,
-          "z_score": 4.03,
-          "clasificacion": "I",
-          "grupo": "Química húmeda"
-        },
-        {
-          "id": "AB8",
-          "resultado": 1410.0,
-          "z_score": 4.2,
-          "clasificacion": "I",
-          "grupo": "Química seca (plataforma A)"
-        },
-        {
-          "id": "EG2",
-          "resultado": 537.0,
-          "z_score": 4.8,
-          "clasificacion": "I",
-          "grupo": "Química húmeda"
-        },
-        {
-          "id": "NL9",
-          "resultado": 546.0,
-          "z_score": 5.13,
-          "clasificacion": "I",
-          "grupo": "Química húmeda"
-        },
-        {
-          "id": "FV4",
-          "resultado": 577.0,
-          "z_score": 6.28,
-          "clasificacion": "I",
-          "grupo": "Química húmeda"
-        },
-        {
-          "id": "LK9",
-          "resultado": 685.0,
-          "z_score": 10.26,
-          "clasificacion": "I",
-          "grupo": "Química húmeda"
-        },
-        {
-          "id": "ZY9",
-          "resultado": 1391.0,
-          "z_score": 36.3,
-          "clasificacion": "I",
-          "grupo": "Química húmeda"
-        },
-        {
-          "id": "GB1",
+          "id": "L-141",
           "resultado": 300.0,
           "z_score": null,
-          "clasificacion": "NE",
-          "grupo": "Química seca (plataforma B)"
+          "clasificacion": "NE"
         },
         {
-          "id": "KQ7",
+          "id": "L-033",
           "resultado": 308.0,
           "z_score": null,
-          "clasificacion": "NE",
-          "grupo": "Química seca (plataforma B)"
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-017",
+          "resultado": 336.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-142",
+          "resultado": 336.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-056",
+          "resultado": 340.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-124",
+          "resultado": 340.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-140",
+          "resultado": 345.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-004",
+          "resultado": 347.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-102",
+          "resultado": 373.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-131",
+          "resultado": 375.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-087",
+          "resultado": 378.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-139",
+          "resultado": 379.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-001",
+          "resultado": 385.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-138",
+          "resultado": 397.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-143",
+          "resultado": 414.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-026",
+          "resultado": 439.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-076",
+          "resultado": 475.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-145",
+          "resultado": 497.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-043",
+          "resultado": 516.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-071",
+          "resultado": 537.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-055",
+          "resultado": 546.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-046",
+          "resultado": 577.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-007",
+          "resultado": 685.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-021",
+          "resultado": 966.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-135",
+          "resultado": 1003.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-146",
+          "resultado": 1045.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-011",
+          "resultado": 1077.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-078",
+          "resultado": 1121.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-002",
+          "resultado": 1126.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-053",
+          "resultado": 1200.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-128",
+          "resultado": 1391.0,
+          "z_score": null,
+          "clasificacion": "NE"
+        },
+        {
+          "id": "L-090",
+          "resultado": 1410.0,
+          "z_score": null,
+          "clasificacion": "NE"
         }
       ],
-      "evaluacion_confiable": true,
+      "evaluacion_confiable": false,
       "conteos": {
-        "A": 15,
-        "C": 7,
-        "I": 12,
-        "NE": 2
+        "A": 0,
+        "C": 0,
+        "I": 0,
+        "NE": 36
       }
     },
     {
@@ -3517,211 +3428,211 @@
       "n_suficiente": true,
       "laboratorios": [
         {
-          "id": "QV5",
+          "id": "L-047",
           "resultado": 4.35,
           "z_score": -12.17,
           "clasificacion": "I"
         },
         {
-          "id": "WJ5",
+          "id": "L-017",
           "resultado": 5.0,
           "z_score": -9.51,
           "clasificacion": "I"
         },
         {
-          "id": "CW7",
+          "id": "L-143",
           "resultado": 5.23,
           "z_score": -8.57,
           "clasificacion": "I"
         },
         {
-          "id": "YX6",
+          "id": "L-021",
           "resultado": 5.8,
           "z_score": -6.23,
           "clasificacion": "I"
         },
         {
-          "id": "ZY9",
+          "id": "L-128",
           "resultado": 5.9,
           "z_score": -5.82,
           "clasificacion": "I"
         },
         {
-          "id": "QZ1",
+          "id": "L-032",
           "resultado": 6.4,
           "z_score": -3.77,
           "clasificacion": "I"
         },
         {
-          "id": "YY6",
+          "id": "L-139",
           "resultado": 6.4,
           "z_score": -3.77,
           "clasificacion": "I"
         },
         {
-          "id": "EG2",
+          "id": "L-071",
           "resultado": 6.6,
           "z_score": -2.95,
           "clasificacion": "C"
         },
         {
-          "id": "LD2",
+          "id": "L-142",
           "resultado": 6.95,
           "z_score": -1.52,
           "clasificacion": "A"
         },
         {
-          "id": "UJ4",
+          "id": "L-124",
           "resultado": 7.0,
           "z_score": -1.31,
           "clasificacion": "A"
         },
         {
-          "id": "AB8",
+          "id": "L-090",
           "resultado": 7.1,
           "z_score": -0.9,
           "clasificacion": "A"
         },
         {
-          "id": "MS6",
+          "id": "L-131",
           "resultado": 7.19,
           "z_score": -0.53,
           "clasificacion": "A"
         },
         {
-          "id": "AF7",
+          "id": "L-002",
           "resultado": 7.3,
           "z_score": -0.08,
           "clasificacion": "A"
         },
         {
-          "id": "GD6",
+          "id": "L-033",
           "resultado": 7.3,
           "z_score": -0.08,
           "clasificacion": "A"
         },
         {
-          "id": "IS1",
+          "id": "L-076",
           "resultado": 7.3,
           "z_score": -0.08,
           "clasificacion": "A"
         },
         {
-          "id": "KQ7",
+          "id": "L-145",
           "resultado": 7.3,
           "z_score": -0.08,
           "clasificacion": "A"
         },
         {
-          "id": "XC8",
+          "id": "L-087",
           "resultado": 7.32,
           "z_score": 0.0,
           "clasificacion": "A"
         },
         {
-          "id": "EH4",
+          "id": "L-138",
           "resultado": 7.36,
           "z_score": 0.16,
           "clasificacion": "A"
         },
         {
-          "id": "JU6",
+          "id": "L-004",
           "resultado": 7.4,
           "z_score": 0.33,
           "clasificacion": "A"
         },
         {
-          "id": "NM5",
+          "id": "L-053",
           "resultado": 7.4,
           "z_score": 0.33,
           "clasificacion": "A"
         },
         {
-          "id": "RI2",
+          "id": "L-078",
           "resultado": 7.4,
           "z_score": 0.33,
           "clasificacion": "A"
         },
         {
-          "id": "KO7",
+          "id": "L-102",
           "resultado": 7.43,
           "z_score": 0.45,
           "clasificacion": "A"
         },
         {
-          "id": "VK4",
+          "id": "L-056",
           "resultado": 7.5,
           "z_score": 0.74,
           "clasificacion": "A"
         },
         {
-          "id": "YK4",
+          "id": "L-140",
           "resultado": 7.5,
           "z_score": 0.74,
           "clasificacion": "A"
         },
         {
-          "id": "FU2",
+          "id": "L-146",
           "resultado": 7.6,
           "z_score": 1.15,
           "clasificacion": "A"
         },
         {
-          "id": "ER7",
+          "id": "L-011",
           "resultado": 7.7,
           "z_score": 1.56,
           "clasificacion": "A"
         },
         {
-          "id": "PZ6",
+          "id": "L-135",
           "resultado": 7.7,
           "z_score": 1.56,
           "clasificacion": "A"
         },
         {
-          "id": "BO7",
+          "id": "L-043",
           "resultado": 7.8,
           "z_score": 1.97,
           "clasificacion": "A"
         },
         {
-          "id": "WG5",
+          "id": "L-026",
           "resultado": 7.89,
           "z_score": 2.34,
           "clasificacion": "C"
         },
         {
-          "id": "FV4",
+          "id": "L-046",
           "resultado": 8.39,
           "z_score": 4.39,
           "clasificacion": "I"
         },
         {
-          "id": "AP2",
+          "id": "L-144",
           "resultado": 8.51,
           "z_score": 4.88,
           "clasificacion": "I"
         },
         {
-          "id": "GB1",
+          "id": "L-141",
           "resultado": 9.0,
           "z_score": 6.89,
           "clasificacion": "I"
         },
         {
-          "id": "LK9",
+          "id": "L-007",
           "resultado": 10.1,
           "z_score": 11.39,
           "clasificacion": "I"
         },
         {
-          "id": "NL9",
+          "id": "L-055",
           "resultado": 10.1,
           "z_score": 11.39,
           "clasificacion": "I"
         },
         {
-          "id": "DX6",
+          "id": "L-001",
           "resultado": 11.0,
           "z_score": 15.08,
           "clasificacion": "I"
@@ -3807,211 +3718,211 @@
       ],
       "laboratorios": [
         {
-          "id": "QV5",
+          "id": "L-047",
           "resultado": 33.9,
           "z_score": -16.23,
           "clasificacion": "I",
           "grupo": "Química húmeda"
         },
         {
-          "id": "QZ1",
+          "id": "L-032",
           "resultado": 125.6,
           "z_score": -6.03,
           "clasificacion": "I",
           "grupo": "Química húmeda"
         },
         {
-          "id": "YX6",
+          "id": "L-021",
           "resultado": 107.0,
           "z_score": -5.28,
           "clasificacion": "I",
           "grupo": "Química seca (plataforma A)"
         },
         {
-          "id": "MS6",
+          "id": "L-131",
           "resultado": 156.0,
           "z_score": -2.65,
           "clasificacion": "C",
           "grupo": "Química húmeda"
         },
         {
-          "id": "DX6",
+          "id": "L-001",
           "resultado": 159.0,
           "z_score": -2.32,
           "clasificacion": "C",
           "grupo": "Química húmeda"
         },
         {
-          "id": "WG5",
+          "id": "L-026",
           "resultado": 160.0,
           "z_score": -2.21,
           "clasificacion": "C",
           "grupo": "Química húmeda"
         },
         {
-          "id": "GD6",
+          "id": "L-076",
           "resultado": 161.0,
           "z_score": -2.1,
           "clasificacion": "C",
           "grupo": "Química húmeda"
         },
         {
-          "id": "AP2",
+          "id": "L-144",
           "resultado": 162.0,
           "z_score": -1.99,
           "clasificacion": "A",
           "grupo": "Química húmeda"
         },
         {
-          "id": "LK9",
+          "id": "L-007",
           "resultado": 173.0,
           "z_score": -0.76,
           "clasificacion": "A",
           "grupo": "Química húmeda"
         },
         {
-          "id": "IS1",
+          "id": "L-002",
           "resultado": 140.0,
           "z_score": -0.74,
           "clasificacion": "A",
           "grupo": "Química seca (plataforma A)"
         },
         {
-          "id": "FU2",
+          "id": "L-146",
           "resultado": 141.0,
           "z_score": -0.61,
           "clasificacion": "A",
           "grupo": "Química seca (plataforma A)"
         },
         {
-          "id": "AB8",
+          "id": "L-090",
           "resultado": 143.0,
           "z_score": -0.33,
           "clasificacion": "A",
           "grupo": "Química seca (plataforma A)"
         },
         {
-          "id": "ER7",
+          "id": "L-135",
           "resultado": 144.0,
           "z_score": -0.19,
           "clasificacion": "A",
           "grupo": "Química seca (plataforma A)"
         },
         {
-          "id": "EH4",
+          "id": "L-046",
           "resultado": 182.0,
           "z_score": 0.24,
           "clasificacion": "A",
           "grupo": "Química húmeda"
         },
         {
-          "id": "FV4",
+          "id": "L-128",
           "resultado": 182.0,
           "z_score": 0.24,
           "clasificacion": "A",
           "grupo": "Química húmeda"
         },
         {
-          "id": "ZY9",
+          "id": "L-138",
           "resultado": 182.0,
           "z_score": 0.24,
           "clasificacion": "A",
           "grupo": "Química húmeda"
         },
         {
-          "id": "LD2",
+          "id": "L-017",
           "resultado": 185.0,
           "z_score": 0.57,
           "clasificacion": "A",
           "grupo": "Química húmeda"
         },
         {
-          "id": "WJ5",
+          "id": "L-142",
           "resultado": 185.0,
           "z_score": 0.57,
           "clasificacion": "A",
           "grupo": "Química húmeda"
         },
         {
-          "id": "PZ6",
+          "id": "L-011",
           "resultado": 150.0,
           "z_score": 0.63,
           "clasificacion": "A",
           "grupo": "Química seca (plataforma A)"
         },
         {
-          "id": "JU6",
+          "id": "L-004",
           "resultado": 188.0,
           "z_score": 0.91,
           "clasificacion": "A",
           "grupo": "Química húmeda"
         },
         {
-          "id": "NM5",
+          "id": "L-078",
           "resultado": 156.0,
           "z_score": 1.46,
           "clasificacion": "A",
           "grupo": "Química seca (plataforma A)"
         },
         {
-          "id": "NL9",
+          "id": "L-055",
           "resultado": 194.0,
           "z_score": 1.57,
           "clasificacion": "A",
           "grupo": "Química húmeda"
         },
         {
-          "id": "YY6",
+          "id": "L-139",
           "resultado": 195.0,
           "z_score": 1.68,
           "clasificacion": "A",
           "grupo": "Química húmeda"
         },
         {
-          "id": "AF7",
+          "id": "L-145",
           "resultado": 198.8,
           "z_score": 2.11,
           "clasificacion": "C",
           "grupo": "Química húmeda"
         },
         {
-          "id": "RI2",
+          "id": "L-053",
           "resultado": 162.0,
           "z_score": 2.28,
           "clasificacion": "C",
           "grupo": "Química seca (plataforma A)"
         },
         {
-          "id": "BO7",
+          "id": "L-043",
           "resultado": 215.0,
           "z_score": 3.91,
           "clasificacion": "I",
           "grupo": "Química húmeda"
         },
         {
-          "id": "KO7",
+          "id": "L-102",
           "resultado": 261.0,
           "z_score": 9.02,
           "clasificacion": "I",
           "grupo": "Química húmeda"
         },
         {
-          "id": "CW7",
+          "id": "L-143",
           "resultado": 310.7,
           "z_score": 14.55,
           "clasificacion": "I",
           "grupo": "Química húmeda"
         },
         {
-          "id": "GB1",
-          "resultado": 205.0,
+          "id": "L-033",
+          "resultado": 227.0,
           "z_score": null,
           "clasificacion": "NE",
           "grupo": "Química seca (plataforma B)"
         },
         {
-          "id": "KQ7",
-          "resultado": 227.0,
+          "id": "L-141",
+          "resultado": 205.0,
           "z_score": null,
           "clasificacion": "NE",
           "grupo": "Química seca (plataforma B)"
@@ -4045,223 +3956,223 @@
       "n_suficiente": true,
       "laboratorios": [
         {
-          "id": "QV5",
+          "id": "L-047",
           "resultado": 87.0,
           "z_score": -25.46,
           "clasificacion": "I"
         },
         {
-          "id": "LN5",
+          "id": "L-045",
           "resultado": 202.4,
           "z_score": -9.49,
           "clasificacion": "I"
         },
         {
-          "id": "UJ4",
+          "id": "L-124",
           "resultado": 206.0,
           "z_score": -8.99,
           "clasificacion": "I"
         },
         {
-          "id": "YX6",
+          "id": "L-021",
           "resultado": 208.0,
           "z_score": -8.72,
           "clasificacion": "I"
         },
         {
-          "id": "IS1",
+          "id": "L-002",
           "resultado": 247.0,
           "z_score": -3.32,
           "clasificacion": "I"
         },
         {
-          "id": "AB8",
+          "id": "L-090",
           "resultado": 248.0,
           "z_score": -3.18,
           "clasificacion": "I"
         },
         {
-          "id": "FU2",
+          "id": "L-146",
           "resultado": 249.0,
           "z_score": -3.04,
           "clasificacion": "I"
         },
         {
-          "id": "NM5",
+          "id": "L-078",
           "resultado": 251.0,
           "z_score": -2.77,
           "clasificacion": "C"
         },
         {
-          "id": "ER7",
+          "id": "L-135",
           "resultado": 258.0,
           "z_score": -1.8,
           "clasificacion": "A"
         },
         {
-          "id": "VK4",
+          "id": "L-140",
           "resultado": 259.0,
           "z_score": -1.66,
           "clasificacion": "A"
         },
         {
-          "id": "KQ7",
+          "id": "L-033",
           "resultado": 260.0,
           "z_score": -1.52,
           "clasificacion": "A"
         },
         {
-          "id": "YK4",
+          "id": "L-056",
           "resultado": 262.0,
           "z_score": -1.24,
           "clasificacion": "A"
         },
         {
-          "id": "DW1",
+          "id": "L-014",
           "resultado": 263.0,
           "z_score": -1.11,
           "clasificacion": "A"
         },
         {
-          "id": "GB1",
+          "id": "L-011",
           "resultado": 264.0,
           "z_score": -0.97,
           "clasificacion": "A"
         },
         {
-          "id": "PZ6",
+          "id": "L-139",
           "resultado": 264.0,
           "z_score": -0.97,
           "clasificacion": "A"
         },
         {
-          "id": "YY6",
+          "id": "L-141",
           "resultado": 264.0,
           "z_score": -0.97,
           "clasificacion": "A"
         },
         {
-          "id": "JU6",
+          "id": "L-004",
           "resultado": 265.0,
           "z_score": -0.83,
           "clasificacion": "A"
         },
         {
-          "id": "WJ5",
+          "id": "L-017",
           "resultado": 267.0,
           "z_score": -0.55,
           "clasificacion": "A"
         },
         {
-          "id": "EG2",
+          "id": "L-071",
           "resultado": 268.0,
           "z_score": -0.41,
           "clasificacion": "A"
         },
         {
-          "id": "XC8",
+          "id": "L-087",
           "resultado": 268.0,
           "z_score": -0.41,
           "clasificacion": "A"
         },
         {
-          "id": "RI2",
+          "id": "L-053",
           "resultado": 269.0,
           "z_score": -0.28,
           "clasificacion": "A"
         },
         {
-          "id": "LD2",
+          "id": "L-142",
           "resultado": 269.4,
           "z_score": -0.22,
           "clasificacion": "A"
         },
         {
-          "id": "DX6",
+          "id": "L-001",
           "resultado": 271.0,
           "z_score": 0.0,
           "clasificacion": "A"
         },
         {
-          "id": "MS6",
+          "id": "L-131",
           "resultado": 277.0,
           "z_score": 0.83,
           "clasificacion": "A"
         },
         {
-          "id": "WG5",
+          "id": "L-026",
           "resultado": 278.0,
           "z_score": 0.97,
           "clasificacion": "A"
         },
         {
-          "id": "AF7",
+          "id": "L-145",
           "resultado": 279.64,
           "z_score": 1.2,
           "clasificacion": "A"
         },
         {
-          "id": "QZ1",
+          "id": "L-032",
           "resultado": 282.53,
           "z_score": 1.6,
           "clasificacion": "A"
         },
         {
-          "id": "GD6",
+          "id": "L-076",
           "resultado": 285.0,
           "z_score": 1.94,
           "clasificacion": "A"
         },
         {
-          "id": "EH4",
+          "id": "L-138",
           "resultado": 287.0,
           "z_score": 2.22,
           "clasificacion": "C"
         },
         {
-          "id": "KO7",
+          "id": "L-102",
           "resultado": 293.0,
           "z_score": 3.05,
           "clasificacion": "I"
         },
         {
-          "id": "BO7",
+          "id": "L-043",
           "resultado": 300.0,
           "z_score": 4.01,
           "clasificacion": "I"
         },
         {
-          "id": "CW7",
+          "id": "L-143",
           "resultado": 300.0,
           "z_score": 4.01,
           "clasificacion": "I"
         },
         {
-          "id": "FV4",
+          "id": "L-046",
           "resultado": 310.0,
           "z_score": 5.4,
           "clasificacion": "I"
         },
         {
-          "id": "AP2",
+          "id": "L-144",
           "resultado": 344.0,
           "z_score": 10.1,
           "clasificacion": "I"
         },
         {
-          "id": "LK9",
+          "id": "L-007",
           "resultado": 345.0,
           "z_score": 10.24,
           "clasificacion": "I"
         },
         {
-          "id": "ZY9",
+          "id": "L-128",
           "resultado": 346.0,
           "z_score": 10.38,
           "clasificacion": "I"
         },
         {
-          "id": "NL9",
+          "id": "L-055",
           "resultado": 437.0,
           "z_score": 22.97,
           "clasificacion": "I"
@@ -4295,73 +4206,73 @@
       "n_suficiente": true,
       "laboratorios": [
         {
-          "id": "BO7",
+          "id": "L-043",
           "resultado": 7.9,
           "z_score": -19.23,
           "clasificacion": "I"
         },
         {
-          "id": "FV4",
+          "id": "L-046",
           "resultado": 173.0,
           "z_score": -3.15,
           "clasificacion": "I"
         },
         {
-          "id": "GB1",
+          "id": "L-141",
           "resultado": 177.0,
           "z_score": -2.76,
           "clasificacion": "C"
         },
         {
-          "id": "KQ7",
+          "id": "L-033",
           "resultado": 181.0,
           "z_score": -2.37,
           "clasificacion": "C"
         },
         {
-          "id": "JU6",
+          "id": "L-004",
           "resultado": 190.0,
           "z_score": -1.49,
           "clasificacion": "A"
         },
         {
-          "id": "WJ5",
+          "id": "L-017",
           "resultado": 191.4,
           "z_score": -1.35,
           "clasificacion": "A"
         },
         {
-          "id": "YY6",
+          "id": "L-139",
           "resultado": 196.0,
           "z_score": -0.91,
           "clasificacion": "A"
         },
         {
-          "id": "EH4",
+          "id": "L-138",
           "resultado": 207.0,
           "z_score": 0.17,
           "clasificacion": "A"
         },
         {
-          "id": "LD2",
+          "id": "L-142",
           "resultado": 228.45,
           "z_score": 2.26,
           "clasificacion": "C"
         },
         {
-          "id": "NL9",
+          "id": "L-055",
           "resultado": 245.01,
           "z_score": 3.87,
           "clasificacion": "I"
         },
         {
-          "id": "DX6",
+          "id": "L-001",
           "resultado": 264.0,
           "z_score": 5.72,
           "clasificacion": "I"
         },
         {
-          "id": "QV5",
+          "id": "L-047",
           "resultado": 336.0,
           "z_score": 12.73,
           "clasificacion": "I"
@@ -4447,232 +4358,232 @@
       ],
       "laboratorios": [
         {
-          "id": "CW7",
+          "id": "L-143",
           "resultado": 226.6,
           "z_score": -13.56,
           "clasificacion": "I",
           "grupo": "Química húmeda"
         },
         {
-          "id": "VK4",
+          "id": "L-140",
           "resultado": 339.0,
           "z_score": -10.37,
           "clasificacion": "I",
           "grupo": "Química húmeda"
         },
         {
-          "id": "JU6",
+          "id": "L-004",
           "resultado": 415.0,
           "z_score": -8.21,
           "clasificacion": "I",
           "grupo": "Química húmeda"
         },
         {
-          "id": "QV5",
+          "id": "L-047",
           "resultado": 452.0,
           "z_score": -7.15,
           "clasificacion": "I",
           "grupo": "Química húmeda"
         },
         {
-          "id": "YX6",
+          "id": "L-021",
           "resultado": 279.0,
           "z_score": -5.06,
           "clasificacion": "I",
           "grupo": "Química seca (plataforma A)"
         },
         {
-          "id": "YK4",
+          "id": "L-056",
           "resultado": 550.0,
           "z_score": -4.37,
           "clasificacion": "I",
           "grupo": "Química húmeda"
         },
         {
-          "id": "AP2",
+          "id": "L-144",
           "resultado": 578.0,
           "z_score": -3.57,
           "clasificacion": "I",
           "grupo": "Química húmeda"
         },
         {
-          "id": "QZ1",
+          "id": "L-032",
           "resultado": 619.0,
           "z_score": -2.41,
           "clasificacion": "C",
           "grupo": "Química húmeda"
         },
         {
-          "id": "WJ5",
+          "id": "L-017",
           "resultado": 625.0,
           "z_score": -2.24,
           "clasificacion": "C",
           "grupo": "Química húmeda"
         },
         {
-          "id": "ZY9",
+          "id": "L-128",
           "resultado": 635.0,
           "z_score": -1.95,
           "clasificacion": "A",
           "grupo": "Química húmeda"
         },
         {
-          "id": "AB8",
+          "id": "L-090",
           "resultado": 348.0,
           "z_score": -1.36,
           "clasificacion": "A",
           "grupo": "Química seca (plataforma A)"
         },
         {
-          "id": "IS1",
+          "id": "L-002",
           "resultado": 365.0,
           "z_score": -0.45,
           "clasificacion": "A",
           "grupo": "Química seca (plataforma A)"
         },
         {
-          "id": "FU2",
+          "id": "L-146",
           "resultado": 369.0,
           "z_score": -0.23,
           "clasificacion": "A",
           "grupo": "Química seca (plataforma A)"
         },
         {
-          "id": "PZ6",
+          "id": "L-011",
           "resultado": 371.0,
           "z_score": -0.13,
           "clasificacion": "A",
           "grupo": "Química seca (plataforma A)"
         },
         {
-          "id": "MS6",
+          "id": "L-131",
           "resultado": 723.0,
           "z_score": 0.55,
           "clasificacion": "A",
           "grupo": "Química húmeda"
         },
         {
-          "id": "EG2",
+          "id": "L-071",
           "resultado": 726.0,
           "z_score": 0.63,
           "clasificacion": "A",
           "grupo": "Química húmeda"
         },
         {
-          "id": "EH4",
+          "id": "L-138",
           "resultado": 738.0,
           "z_score": 0.97,
           "clasificacion": "A",
           "grupo": "Química húmeda"
         },
         {
-          "id": "WG5",
+          "id": "L-026",
           "resultado": 742.0,
           "z_score": 1.09,
           "clasificacion": "A",
           "grupo": "Química húmeda"
         },
         {
-          "id": "NM5",
+          "id": "L-078",
           "resultado": 395.0,
           "z_score": 1.16,
           "clasificacion": "A",
           "grupo": "Química seca (plataforma A)"
         },
         {
-          "id": "ER7",
+          "id": "L-135",
           "resultado": 399.0,
           "z_score": 1.37,
           "clasificacion": "A",
           "grupo": "Química seca (plataforma A)"
         },
         {
-          "id": "LD2",
+          "id": "L-142",
           "resultado": 753.9,
           "z_score": 1.43,
           "clasificacion": "A",
           "grupo": "Química húmeda"
         },
         {
-          "id": "GD6",
+          "id": "L-076",
           "resultado": 775.0,
           "z_score": 2.02,
           "clasificacion": "C",
           "grupo": "Química húmeda"
         },
         {
-          "id": "RI2",
+          "id": "L-053",
           "resultado": 420.0,
           "z_score": 2.5,
           "clasificacion": "C",
           "grupo": "Química seca (plataforma A)"
         },
         {
-          "id": "KO7",
+          "id": "L-102",
           "resultado": 804.0,
           "z_score": 2.85,
           "clasificacion": "C",
           "grupo": "Química húmeda"
         },
         {
-          "id": "DX6",
+          "id": "L-001",
           "resultado": 810.0,
           "z_score": 3.02,
           "clasificacion": "I",
           "grupo": "Química húmeda"
         },
         {
-          "id": "AF7",
+          "id": "L-145",
           "resultado": 830.0,
           "z_score": 3.59,
           "clasificacion": "I",
           "grupo": "Química húmeda"
         },
         {
-          "id": "YY6",
+          "id": "L-139",
           "resultado": 859.0,
           "z_score": 4.41,
           "clasificacion": "I",
           "grupo": "Química húmeda"
         },
         {
-          "id": "LK9",
+          "id": "L-007",
           "resultado": 890.0,
           "z_score": 5.29,
           "clasificacion": "I",
           "grupo": "Química húmeda"
         },
         {
-          "id": "NL9",
+          "id": "L-055",
           "resultado": 919.9,
           "z_score": 6.14,
           "clasificacion": "I",
           "grupo": "Química húmeda"
         },
         {
-          "id": "FV4",
+          "id": "L-046",
           "resultado": 928.0,
           "z_score": 6.37,
           "clasificacion": "I",
           "grupo": "Química húmeda"
         },
         {
-          "id": "BO7",
+          "id": "L-043",
           "resultado": 1046.0,
           "z_score": 9.73,
           "clasificacion": "I",
           "grupo": "Química húmeda"
         },
         {
-          "id": "GB1",
-          "resultado": 416.0,
+          "id": "L-033",
+          "resultado": 401.0,
           "z_score": null,
           "clasificacion": "NE",
           "grupo": "Química seca (plataforma B)"
         },
         {
-          "id": "KQ7",
-          "resultado": 401.0,
+          "id": "L-141",
+          "resultado": 416.0,
           "z_score": null,
           "clasificacion": "NE",
           "grupo": "Química seca (plataforma B)"
@@ -4706,169 +4617,169 @@
       "n_suficiente": true,
       "laboratorios": [
         {
-          "id": "KO7",
+          "id": "L-102",
           "resultado": 18.18,
           "z_score": -5.74,
           "clasificacion": "I"
         },
         {
-          "id": "QV5",
+          "id": "L-047",
           "resultado": 19.0,
           "z_score": -5.64,
           "clasificacion": "I"
         },
         {
-          "id": "AP2",
+          "id": "L-144",
           "resultado": 34.92,
           "z_score": -3.74,
           "clasificacion": "I"
         },
         {
-          "id": "YY6",
+          "id": "L-139",
           "resultado": 36.6,
           "z_score": -3.54,
           "clasificacion": "I"
         },
         {
-          "id": "UJ4",
+          "id": "L-124",
           "resultado": 46.0,
           "z_score": -2.42,
           "clasificacion": "C"
         },
         {
-          "id": "FU2",
+          "id": "L-146",
           "resultado": 48.0,
           "z_score": -2.18,
           "clasificacion": "C"
         },
         {
-          "id": "LD2",
+          "id": "L-142",
           "resultado": 48.6,
           "z_score": -2.11,
           "clasificacion": "C"
         },
         {
-          "id": "FV4",
+          "id": "L-046",
           "resultado": 50.0,
           "z_score": -1.94,
           "clasificacion": "A"
         },
         {
-          "id": "NM5",
+          "id": "L-078",
           "resultado": 56.4,
           "z_score": -1.17,
           "clasificacion": "A"
         },
         {
-          "id": "DX6",
+          "id": "L-001",
           "resultado": 58.0,
           "z_score": -0.98,
           "clasificacion": "A"
         },
         {
-          "id": "LK9",
+          "id": "L-007",
           "resultado": 59.0,
           "z_score": -0.86,
           "clasificacion": "A"
         },
         {
-          "id": "WG5",
+          "id": "L-026",
           "resultado": 60.0,
           "z_score": -0.74,
           "clasificacion": "A"
         },
         {
-          "id": "YK4",
+          "id": "L-056",
           "resultado": 60.0,
           "z_score": -0.74,
           "clasificacion": "A"
         },
         {
-          "id": "VK4",
+          "id": "L-140",
           "resultado": 61.0,
           "z_score": -0.63,
           "clasificacion": "A"
         },
         {
-          "id": "BO7",
+          "id": "L-043",
           "resultado": 62.0,
           "z_score": -0.51,
           "clasificacion": "A"
         },
         {
-          "id": "GD6",
+          "id": "L-076",
           "resultado": 63.2,
           "z_score": -0.36,
           "clasificacion": "A"
         },
         {
-          "id": "GB1",
+          "id": "L-141",
           "resultado": 65.0,
           "z_score": -0.15,
           "clasificacion": "A"
         },
         {
-          "id": "WJ5",
+          "id": "L-017",
           "resultado": 72.0,
           "z_score": 0.69,
           "clasificacion": "A"
         },
         {
-          "id": "CW7",
+          "id": "L-143",
           "resultado": 72.3,
           "z_score": 0.73,
           "clasificacion": "A"
         },
         {
-          "id": "XC8",
+          "id": "L-087",
           "resultado": 72.66,
           "z_score": 0.77,
           "clasificacion": "A"
         },
         {
-          "id": "RI2",
+          "id": "L-053",
           "resultado": 77.15,
           "z_score": 1.31,
           "clasificacion": "A"
         },
         {
-          "id": "EH4",
+          "id": "L-138",
           "resultado": 84.05,
           "z_score": 2.13,
           "clasificacion": "C"
         },
         {
-          "id": "NL9",
+          "id": "L-055",
           "resultado": 93.0,
           "z_score": 3.2,
           "clasificacion": "I"
         },
         {
-          "id": "IS1",
+          "id": "L-002",
           "resultado": 95.0,
           "z_score": 3.44,
           "clasificacion": "I"
         },
         {
-          "id": "PZ6",
+          "id": "L-011",
           "resultado": 170.0,
           "z_score": 12.4,
           "clasificacion": "I"
         },
         {
-          "id": "KQ7",
+          "id": "L-033",
           "resultado": 493.0,
           "z_score": 51.01,
           "clasificacion": "I"
         },
         {
-          "id": "AB8",
+          "id": "L-090",
           "resultado": 500.0,
           "z_score": 51.84,
           "clasificacion": "I"
         },
         {
-          "id": "JU6",
+          "id": "L-004",
           "resultado": 576.0,
           "z_score": 60.93,
           "clasificacion": "I"
@@ -4902,181 +4813,181 @@
       "n_suficiente": true,
       "laboratorios": [
         {
-          "id": "BO7",
+          "id": "L-043",
           "resultado": 1.35,
           "z_score": -13.74,
           "clasificacion": "I"
         },
         {
-          "id": "QV5",
+          "id": "L-047",
           "resultado": 1.92,
           "z_score": -11.09,
           "clasificacion": "I"
         },
         {
-          "id": "WJ5",
+          "id": "L-017",
           "resultado": 2.4,
           "z_score": -8.86,
           "clasificacion": "I"
         },
         {
-          "id": "UJ4",
+          "id": "L-124",
           "resultado": 2.7,
           "z_score": -7.47,
           "clasificacion": "I"
         },
         {
-          "id": "RI2",
+          "id": "L-053",
           "resultado": 2.89,
           "z_score": -6.59,
           "clasificacion": "I"
         },
         {
-          "id": "YX6",
+          "id": "L-021",
           "resultado": 2.9,
           "z_score": -6.54,
           "clasificacion": "I"
         },
         {
-          "id": "EG2",
+          "id": "L-071",
           "resultado": 3.6,
           "z_score": -3.29,
           "clasificacion": "I"
         },
         {
-          "id": "GD6",
+          "id": "L-076",
           "resultado": 3.7,
           "z_score": -2.83,
           "clasificacion": "C"
         },
         {
-          "id": "VK4",
+          "id": "L-140",
           "resultado": 4.04,
           "z_score": -1.25,
           "clasificacion": "A"
         },
         {
-          "id": "QZ1",
+          "id": "L-032",
           "resultado": 4.1,
           "z_score": -0.97,
           "clasificacion": "A"
         },
         {
-          "id": "WG5",
+          "id": "L-026",
           "resultado": 4.2,
           "z_score": -0.51,
           "clasificacion": "A"
         },
         {
-          "id": "GB1",
+          "id": "L-139",
           "resultado": 4.3,
           "z_score": -0.05,
           "clasificacion": "A"
         },
         {
-          "id": "YY6",
+          "id": "L-141",
           "resultado": 4.3,
           "z_score": -0.05,
           "clasificacion": "A"
         },
         {
-          "id": "JU6",
+          "id": "L-004",
           "resultado": 4.4,
           "z_score": 0.42,
           "clasificacion": "A"
         },
         {
-          "id": "LK9",
+          "id": "L-007",
           "resultado": 4.4,
           "z_score": 0.42,
           "clasificacion": "A"
         },
         {
-          "id": "MS6",
+          "id": "L-131",
           "resultado": 4.5,
           "z_score": 0.88,
           "clasificacion": "A"
         },
         {
-          "id": "AF7",
+          "id": "L-033",
           "resultado": 4.7,
           "z_score": 1.81,
           "clasificacion": "A"
         },
         {
-          "id": "KQ7",
+          "id": "L-128",
           "resultado": 4.7,
           "z_score": 1.81,
           "clasificacion": "A"
         },
         {
-          "id": "ZY9",
+          "id": "L-145",
           "resultado": 4.7,
           "z_score": 1.81,
           "clasificacion": "A"
         },
         {
-          "id": "LD2",
+          "id": "L-142",
           "resultado": 4.77,
           "z_score": 2.13,
           "clasificacion": "C"
         },
         {
-          "id": "ER7",
+          "id": "L-135",
           "resultado": 4.8,
           "z_score": 2.27,
           "clasificacion": "C"
         },
         {
-          "id": "AB8",
+          "id": "L-002",
           "resultado": 4.9,
           "z_score": 2.74,
           "clasificacion": "C"
         },
         {
-          "id": "IS1",
+          "id": "L-090",
           "resultado": 4.9,
           "z_score": 2.74,
           "clasificacion": "C"
         },
         {
-          "id": "NM5",
+          "id": "L-078",
           "resultado": 5.0,
           "z_score": 3.2,
           "clasificacion": "I"
         },
         {
-          "id": "AP2",
+          "id": "L-144",
           "resultado": 5.04,
           "z_score": 3.39,
           "clasificacion": "I"
         },
         {
-          "id": "PZ6",
+          "id": "L-011",
           "resultado": 5.1,
           "z_score": 3.67,
           "clasificacion": "I"
         },
         {
-          "id": "FU2",
+          "id": "L-146",
           "resultado": 5.4,
           "z_score": 5.06,
           "clasificacion": "I"
         },
         {
-          "id": "CW7",
+          "id": "L-143",
           "resultado": 5.5,
           "z_score": 5.52,
           "clasificacion": "I"
         },
         {
-          "id": "FV4",
+          "id": "L-046",
           "resultado": 5.6,
           "z_score": 5.99,
           "clasificacion": "I"
         },
         {
-          "id": "NL9",
+          "id": "L-055",
           "resultado": 6.125,
           "z_score": 8.42,
           "clasificacion": "I"
@@ -5110,193 +5021,193 @@
       "n_suficiente": true,
       "laboratorios": [
         {
-          "id": "ZY9",
+          "id": "L-128",
           "resultado": 3.8,
           "z_score": -22.7,
           "clasificacion": "I"
         },
         {
-          "id": "QV5",
+          "id": "L-047",
           "resultado": 4.2,
           "z_score": -18.7,
           "clasificacion": "I"
         },
         {
-          "id": "AB8",
+          "id": "L-021",
           "resultado": 4.5,
           "z_score": -15.7,
           "clasificacion": "I"
         },
         {
-          "id": "YX6",
+          "id": "L-090",
           "resultado": 4.5,
           "z_score": -15.7,
           "clasificacion": "I"
         },
         {
-          "id": "DX6",
+          "id": "L-001",
           "resultado": 5.68,
           "z_score": -3.9,
           "clasificacion": "I"
         },
         {
-          "id": "EG2",
+          "id": "L-071",
           "resultado": 5.7,
           "z_score": -3.7,
           "clasificacion": "I"
         },
         {
-          "id": "WJ5",
+          "id": "L-017",
           "resultado": 5.8,
           "z_score": -2.7,
           "clasificacion": "C"
         },
         {
-          "id": "AF7",
+          "id": "L-145",
           "resultado": 5.82,
           "z_score": -2.5,
           "clasificacion": "C"
         },
         {
-          "id": "KQ7",
+          "id": "L-033",
           "resultado": 5.9,
           "z_score": -1.7,
           "clasificacion": "A"
         },
         {
-          "id": "ER7",
+          "id": "L-056",
           "resultado": 6.0,
           "z_score": -0.7,
           "clasificacion": "A"
         },
         {
-          "id": "NM5",
+          "id": "L-078",
           "resultado": 6.0,
           "z_score": -0.7,
           "clasificacion": "A"
         },
         {
-          "id": "YK4",
+          "id": "L-135",
           "resultado": 6.0,
           "z_score": -0.7,
           "clasificacion": "A"
         },
         {
-          "id": "FV4",
+          "id": "L-026",
           "resultado": 6.04,
           "z_score": -0.3,
           "clasificacion": "A"
         },
         {
-          "id": "WG5",
+          "id": "L-046",
           "resultado": 6.04,
           "z_score": -0.3,
           "clasificacion": "A"
         },
         {
-          "id": "NL9",
+          "id": "L-055",
           "resultado": 6.07,
           "z_score": 0.0,
           "clasificacion": "A"
         },
         {
-          "id": "GB1",
+          "id": "L-004",
           "resultado": 6.1,
           "z_score": 0.3,
           "clasificacion": "A"
         },
         {
-          "id": "JU6",
+          "id": "L-140",
           "resultado": 6.1,
           "z_score": 0.3,
           "clasificacion": "A"
         },
         {
-          "id": "VK4",
+          "id": "L-141",
           "resultado": 6.1,
           "z_score": 0.3,
           "clasificacion": "A"
         },
         {
-          "id": "QZ1",
+          "id": "L-032",
           "resultado": 6.14,
           "z_score": 0.7,
           "clasificacion": "A"
         },
         {
-          "id": "FU2",
+          "id": "L-002",
           "resultado": 6.2,
           "z_score": 1.3,
           "clasificacion": "A"
         },
         {
-          "id": "GD6",
+          "id": "L-011",
           "resultado": 6.2,
           "z_score": 1.3,
           "clasificacion": "A"
         },
         {
-          "id": "IS1",
+          "id": "L-076",
           "resultado": 6.2,
           "z_score": 1.3,
           "clasificacion": "A"
         },
         {
-          "id": "LD2",
+          "id": "L-139",
           "resultado": 6.2,
           "z_score": 1.3,
           "clasificacion": "A"
         },
         {
-          "id": "PZ6",
+          "id": "L-142",
           "resultado": 6.2,
           "z_score": 1.3,
           "clasificacion": "A"
         },
         {
-          "id": "YY6",
+          "id": "L-146",
           "resultado": 6.2,
           "z_score": 1.3,
           "clasificacion": "A"
         },
         {
-          "id": "MS6",
+          "id": "L-131",
           "resultado": 6.28,
           "z_score": 2.1,
           "clasificacion": "C"
         },
         {
-          "id": "AP2",
+          "id": "L-053",
           "resultado": 6.3,
           "z_score": 2.3,
           "clasificacion": "C"
         },
         {
-          "id": "RI2",
+          "id": "L-144",
           "resultado": 6.3,
           "z_score": 2.3,
           "clasificacion": "C"
         },
         {
-          "id": "CW7",
+          "id": "L-143",
           "resultado": 6.6,
           "z_score": 5.3,
           "clasificacion": "I"
         },
         {
-          "id": "LK9",
+          "id": "L-007",
           "resultado": 6.9,
           "z_score": 8.3,
           "clasificacion": "I"
         },
         {
-          "id": "UJ4",
+          "id": "L-124",
           "resultado": 7.1,
           "z_score": 10.3,
           "clasificacion": "I"
         },
         {
-          "id": "BO7",
+          "id": "L-043",
           "resultado": 7.14,
           "z_score": 10.7,
           "clasificacion": "I"
@@ -5330,211 +5241,211 @@
       "n_suficiente": true,
       "laboratorios": [
         {
-          "id": "QZ1",
+          "id": "L-032",
           "resultado": 2.79,
           "z_score": -15.47,
           "clasificacion": "I"
         },
         {
-          "id": "GD6",
+          "id": "L-076",
           "resultado": 3.47,
           "z_score": -10.11,
           "clasificacion": "I"
         },
         {
-          "id": "NL9",
+          "id": "L-055",
           "resultado": 3.5,
           "z_score": -9.87,
           "clasificacion": "I"
         },
         {
-          "id": "YX6",
+          "id": "L-021",
           "resultado": 3.6,
           "z_score": -9.08,
           "clasificacion": "I"
         },
         {
-          "id": "CW7",
+          "id": "L-143",
           "resultado": 3.8,
           "z_score": -7.5,
           "clasificacion": "I"
         },
         {
-          "id": "YK4",
+          "id": "L-056",
           "resultado": 4.05,
           "z_score": -5.53,
           "clasificacion": "I"
         },
         {
-          "id": "YY6",
+          "id": "L-139",
           "resultado": 4.09,
           "z_score": -5.21,
           "clasificacion": "I"
         },
         {
-          "id": "AB8",
+          "id": "L-011",
           "resultado": 4.3,
           "z_score": -3.55,
           "clasificacion": "I"
         },
         {
-          "id": "KQ7",
+          "id": "L-033",
           "resultado": 4.3,
           "z_score": -3.55,
           "clasificacion": "I"
         },
         {
-          "id": "PZ6",
+          "id": "L-090",
           "resultado": 4.3,
           "z_score": -3.55,
           "clasificacion": "I"
         },
         {
-          "id": "FU2",
+          "id": "L-146",
           "resultado": 4.4,
           "z_score": -2.76,
           "clasificacion": "C"
         },
         {
-          "id": "EH4",
+          "id": "L-138",
           "resultado": 4.55,
           "z_score": -1.58,
           "clasificacion": "A"
         },
         {
-          "id": "MS6",
+          "id": "L-131",
           "resultado": 4.56,
           "z_score": -1.5,
           "clasificacion": "A"
         },
         {
-          "id": "ER7",
+          "id": "L-135",
           "resultado": 4.6,
           "z_score": -1.18,
           "clasificacion": "A"
         },
         {
-          "id": "NM5",
+          "id": "L-078",
           "resultado": 4.7,
           "z_score": -0.39,
           "clasificacion": "A"
         },
         {
-          "id": "VK4",
+          "id": "L-140",
           "resultado": 4.7,
           "z_score": -0.39,
           "clasificacion": "A"
         },
         {
-          "id": "XC8",
+          "id": "L-087",
           "resultado": 4.77,
           "z_score": 0.16,
           "clasificacion": "A"
         },
         {
-          "id": "FV4",
+          "id": "L-046",
           "resultado": 4.79,
           "z_score": 0.32,
           "clasificacion": "A"
         },
         {
-          "id": "IS1",
+          "id": "L-002",
           "resultado": 4.8,
           "z_score": 0.39,
           "clasificacion": "A"
         },
         {
-          "id": "WJ5",
+          "id": "L-017",
           "resultado": 4.8,
           "z_score": 0.39,
           "clasificacion": "A"
         },
         {
-          "id": "WG5",
+          "id": "L-026",
           "resultado": 4.85,
           "z_score": 0.79,
           "clasificacion": "A"
         },
         {
-          "id": "AF7",
+          "id": "L-128",
           "resultado": 4.9,
           "z_score": 1.18,
           "clasificacion": "A"
         },
         {
-          "id": "GB1",
+          "id": "L-141",
           "resultado": 4.9,
           "z_score": 1.18,
           "clasificacion": "A"
         },
         {
-          "id": "ZY9",
+          "id": "L-145",
           "resultado": 4.9,
           "z_score": 1.18,
           "clasificacion": "A"
         },
         {
-          "id": "JU6",
+          "id": "L-004",
           "resultado": 5.1,
           "z_score": 2.76,
           "clasificacion": "C"
         },
         {
-          "id": "KO7",
+          "id": "L-102",
           "resultado": 5.11,
           "z_score": 2.84,
           "clasificacion": "C"
         },
         {
-          "id": "EG2",
+          "id": "L-053",
           "resultado": 5.2,
           "z_score": 3.55,
           "clasificacion": "I"
         },
         {
-          "id": "RI2",
+          "id": "L-071",
           "resultado": 5.2,
           "z_score": 3.55,
           "clasificacion": "I"
         },
         {
-          "id": "LD2",
+          "id": "L-142",
           "resultado": 5.36,
           "z_score": 4.82,
           "clasificacion": "I"
         },
         {
-          "id": "DX6",
+          "id": "L-001",
           "resultado": 5.53,
           "z_score": 6.16,
           "clasificacion": "I"
         },
         {
-          "id": "LK9",
+          "id": "L-007",
           "resultado": 5.7,
           "z_score": 7.5,
           "clasificacion": "I"
         },
         {
-          "id": "QV5",
+          "id": "L-047",
           "resultado": 6.03,
           "z_score": 10.11,
           "clasificacion": "I"
         },
         {
-          "id": "AP2",
+          "id": "L-144",
           "resultado": 6.11,
           "z_score": 10.74,
           "clasificacion": "I"
         },
         {
-          "id": "UJ4",
+          "id": "L-124",
           "resultado": 7.7,
           "z_score": 23.29,
           "clasificacion": "I"
         },
         {
-          "id": "BO7",
+          "id": "L-043",
           "resultado": 8.3,
           "z_score": 28.03,
           "clasificacion": "I"
@@ -5568,193 +5479,193 @@
       "n_suficiente": true,
       "laboratorios": [
         {
-          "id": "AB8",
+          "id": "L-021",
           "resultado": 119.0,
           "z_score": -26.04,
           "clasificacion": "I"
         },
         {
-          "id": "YX6",
+          "id": "L-090",
           "resultado": 119.0,
           "z_score": -26.04,
           "clasificacion": "I"
         },
         {
-          "id": "DX6",
+          "id": "L-001",
           "resultado": 142.0,
           "z_score": -8.79,
           "clasificacion": "I"
         },
         {
-          "id": "YY6",
+          "id": "L-139",
           "resultado": 147.0,
           "z_score": -5.04,
           "clasificacion": "I"
         },
         {
-          "id": "AF7",
+          "id": "L-145",
           "resultado": 148.4,
           "z_score": -3.99,
           "clasificacion": "I"
         },
         {
-          "id": "EG2",
+          "id": "L-071",
           "resultado": 148.9,
           "z_score": -3.61,
           "clasificacion": "I"
         },
         {
-          "id": "QV5",
+          "id": "L-047",
           "resultado": 150.0,
           "z_score": -2.79,
           "clasificacion": "C"
         },
         {
-          "id": "WJ5",
+          "id": "L-017",
           "resultado": 151.0,
           "z_score": -2.04,
           "clasificacion": "C"
         },
         {
-          "id": "ZY9",
+          "id": "L-128",
           "resultado": 151.0,
           "z_score": -2.04,
           "clasificacion": "C"
         },
         {
-          "id": "NL9",
+          "id": "L-055",
           "resultado": 151.7,
           "z_score": -1.52,
           "clasificacion": "A"
         },
         {
-          "id": "GD6",
+          "id": "L-026",
           "resultado": 152.0,
           "z_score": -1.29,
           "clasificacion": "A"
         },
         {
-          "id": "WG5",
+          "id": "L-056",
           "resultado": 152.0,
           "z_score": -1.29,
           "clasificacion": "A"
         },
         {
-          "id": "YK4",
+          "id": "L-076",
           "resultado": 152.0,
           "z_score": -1.29,
           "clasificacion": "A"
         },
         {
-          "id": "FV4",
+          "id": "L-046",
           "resultado": 152.8,
           "z_score": -0.69,
           "clasificacion": "A"
         },
         {
-          "id": "ER7",
+          "id": "L-033",
           "resultado": 153.0,
           "z_score": -0.54,
           "clasificacion": "A"
         },
         {
-          "id": "GB1",
+          "id": "L-135",
           "resultado": 153.0,
           "z_score": -0.54,
           "clasificacion": "A"
         },
         {
-          "id": "KQ7",
+          "id": "L-140",
           "resultado": 153.0,
           "z_score": -0.54,
           "clasificacion": "A"
         },
         {
-          "id": "VK4",
+          "id": "L-141",
           "resultado": 153.0,
           "z_score": -0.54,
           "clasificacion": "A"
         },
         {
-          "id": "LD2",
+          "id": "L-032",
           "resultado": 154.0,
           "z_score": 0.21,
           "clasificacion": "A"
         },
         {
-          "id": "QZ1",
+          "id": "L-142",
           "resultado": 154.0,
           "z_score": 0.21,
           "clasificacion": "A"
         },
         {
-          "id": "IS1",
+          "id": "L-002",
           "resultado": 155.0,
           "z_score": 0.96,
           "clasificacion": "A"
         },
         {
-          "id": "JU6",
+          "id": "L-004",
           "resultado": 155.0,
           "z_score": 0.96,
           "clasificacion": "A"
         },
         {
-          "id": "MS6",
+          "id": "L-131",
           "resultado": 156.0,
           "z_score": 1.71,
           "clasificacion": "A"
         },
         {
-          "id": "NM5",
+          "id": "L-078",
           "resultado": 157.0,
           "z_score": 2.46,
           "clasificacion": "C"
         },
         {
-          "id": "AP2",
+          "id": "L-144",
           "resultado": 158.0,
           "z_score": 3.21,
           "clasificacion": "I"
         },
         {
-          "id": "PZ6",
+          "id": "L-011",
           "resultado": 159.0,
           "z_score": 3.96,
           "clasificacion": "I"
         },
         {
-          "id": "UJ4",
+          "id": "L-124",
           "resultado": 159.0,
           "z_score": 3.96,
           "clasificacion": "I"
         },
         {
-          "id": "RI2",
+          "id": "L-053",
           "resultado": 160.0,
           "z_score": 4.71,
           "clasificacion": "I"
         },
         {
-          "id": "FU2",
+          "id": "L-146",
           "resultado": 161.0,
           "z_score": 5.46,
           "clasificacion": "I"
         },
         {
-          "id": "CW7",
+          "id": "L-143",
           "resultado": 164.0,
           "z_score": 7.71,
           "clasificacion": "I"
         },
         {
-          "id": "BO7",
+          "id": "L-043",
           "resultado": 177.0,
           "z_score": 17.46,
           "clasificacion": "I"
         },
         {
-          "id": "LK9",
+          "id": "L-007",
           "resultado": 188.0,
           "z_score": 25.71,
           "clasificacion": "I"
@@ -5788,223 +5699,223 @@
       "n_suficiente": true,
       "laboratorios": [
         {
-          "id": "QV5",
+          "id": "L-047",
           "resultado": 73.4,
           "z_score": -14.58,
           "clasificacion": "I"
         },
         {
-          "id": "UJ4",
+          "id": "L-124",
           "resultado": 180.0,
           "z_score": -6.7,
           "clasificacion": "I"
         },
         {
-          "id": "GD6",
+          "id": "L-076",
           "resultado": 195.0,
           "z_score": -5.6,
           "clasificacion": "I"
         },
         {
-          "id": "RI2",
+          "id": "L-053",
           "resultado": 218.0,
           "z_score": -3.9,
           "clasificacion": "I"
         },
         {
-          "id": "DW1",
+          "id": "L-014",
           "resultado": 223.0,
           "z_score": -3.53,
           "clasificacion": "I"
         },
         {
-          "id": "XC8",
+          "id": "L-087",
           "resultado": 230.0,
           "z_score": -3.01,
           "clasificacion": "I"
         },
         {
-          "id": "VK4",
+          "id": "L-140",
           "resultado": 234.0,
           "z_score": -2.72,
           "clasificacion": "C"
         },
         {
-          "id": "ZY9",
+          "id": "L-128",
           "resultado": 240.0,
           "z_score": -2.27,
           "clasificacion": "C"
         },
         {
-          "id": "QZ1",
+          "id": "L-032",
           "resultado": 240.51,
           "z_score": -2.23,
           "clasificacion": "C"
         },
         {
-          "id": "EG2",
+          "id": "L-071",
           "resultado": 242.0,
           "z_score": -2.12,
           "clasificacion": "C"
         },
         {
-          "id": "FV4",
+          "id": "L-046",
           "resultado": 243.0,
           "z_score": -2.05,
           "clasificacion": "C"
         },
         {
-          "id": "CW7",
+          "id": "L-143",
           "resultado": 247.0,
           "z_score": -1.76,
           "clasificacion": "A"
         },
         {
-          "id": "WJ5",
+          "id": "L-017",
           "resultado": 248.0,
           "z_score": -1.68,
           "clasificacion": "A"
         },
         {
-          "id": "YK4",
+          "id": "L-056",
           "resultado": 250.0,
           "z_score": -1.53,
           "clasificacion": "A"
         },
         {
-          "id": "EH4",
+          "id": "L-138",
           "resultado": 254.0,
           "z_score": -1.24,
           "clasificacion": "A"
         },
         {
-          "id": "LN5",
+          "id": "L-045",
           "resultado": 259.4,
           "z_score": -0.84,
           "clasificacion": "A"
         },
         {
-          "id": "MS6",
+          "id": "L-131",
           "resultado": 262.0,
           "z_score": -0.65,
           "clasificacion": "A"
         },
         {
-          "id": "YX6",
+          "id": "L-021",
           "resultado": 265.0,
           "z_score": -0.43,
           "clasificacion": "A"
         },
         {
-          "id": "LD2",
+          "id": "L-142",
           "resultado": 267.0,
           "z_score": -0.28,
           "clasificacion": "A"
         },
         {
-          "id": "AP2",
+          "id": "L-144",
           "resultado": 269.0,
           "z_score": -0.13,
           "clasificacion": "A"
         },
         {
-          "id": "YY6",
+          "id": "L-139",
           "resultado": 271.0,
           "z_score": 0.02,
           "clasificacion": "A"
         },
         {
-          "id": "BO7",
+          "id": "L-043",
           "resultado": 272.0,
           "z_score": 0.09,
           "clasificacion": "A"
         },
         {
-          "id": "NM5",
+          "id": "L-078",
           "resultado": 275.0,
           "z_score": 0.31,
           "clasificacion": "A"
         },
         {
-          "id": "KO7",
+          "id": "L-102",
           "resultado": 279.0,
           "z_score": 0.61,
           "clasificacion": "A"
         },
         {
-          "id": "AF7",
+          "id": "L-026",
           "resultado": 281.0,
           "z_score": 0.76,
           "clasificacion": "A"
         },
         {
-          "id": "WG5",
+          "id": "L-145",
           "resultado": 281.0,
           "z_score": 0.76,
           "clasificacion": "A"
         },
         {
-          "id": "DX6",
+          "id": "L-001",
           "resultado": 296.5,
           "z_score": 1.9,
           "clasificacion": "A"
         },
         {
-          "id": "IS1",
+          "id": "L-002",
           "resultado": 309.0,
           "z_score": 2.82,
           "clasificacion": "C"
         },
         {
-          "id": "AB8",
+          "id": "L-090",
           "resultado": 313.0,
           "z_score": 3.12,
           "clasificacion": "I"
         },
         {
-          "id": "ER7",
+          "id": "L-135",
           "resultado": 321.0,
           "z_score": 3.71,
           "clasificacion": "I"
         },
         {
-          "id": "FU2",
+          "id": "L-146",
           "resultado": 322.0,
           "z_score": 3.78,
           "clasificacion": "I"
         },
         {
-          "id": "JU6",
+          "id": "L-004",
           "resultado": 323.0,
           "z_score": 3.86,
           "clasificacion": "I"
         },
         {
-          "id": "GB1",
+          "id": "L-141",
           "resultado": 329.0,
           "z_score": 4.3,
           "clasificacion": "I"
         },
         {
-          "id": "PZ6",
+          "id": "L-011",
           "resultado": 331.0,
           "z_score": 4.45,
           "clasificacion": "I"
         },
         {
-          "id": "KQ7",
+          "id": "L-033",
           "resultado": 340.0,
           "z_score": 5.11,
           "clasificacion": "I"
         },
         {
-          "id": "LK9",
+          "id": "L-007",
           "resultado": 348.0,
           "z_score": 5.71,
           "clasificacion": "I"
         },
         {
-          "id": "NL9",
+          "id": "L-055",
           "resultado": 357.0,
           "z_score": 6.37,
           "clasificacion": "I"
@@ -6038,217 +5949,217 @@
       "n_suficiente": true,
       "laboratorios": [
         {
-          "id": "QV5",
+          "id": "L-047",
           "resultado": 42.0,
           "z_score": -20.28,
           "clasificacion": "I"
         },
         {
-          "id": "YX6",
+          "id": "L-021",
           "resultado": 43.4,
           "z_score": -19.84,
           "clasificacion": "I"
         },
         {
-          "id": "VK4",
+          "id": "L-140",
           "resultado": 49.0,
           "z_score": -18.1,
           "clasificacion": "I"
         },
         {
-          "id": "JU6",
+          "id": "L-004",
           "resultado": 51.0,
           "z_score": -17.48,
           "clasificacion": "I"
         },
         {
-          "id": "ER7",
+          "id": "L-135",
           "resultado": 54.4,
           "z_score": -16.43,
           "clasificacion": "I"
         },
         {
-          "id": "CW7",
+          "id": "L-143",
           "resultado": 79.52,
           "z_score": -8.62,
           "clasificacion": "I"
         },
         {
-          "id": "UJ4",
+          "id": "L-124",
           "resultado": 85.0,
           "z_score": -6.92,
           "clasificacion": "I"
         },
         {
-          "id": "LN5",
+          "id": "L-045",
           "resultado": 86.2,
           "z_score": -6.54,
           "clasificacion": "I"
         },
         {
-          "id": "MS6",
+          "id": "L-131",
           "resultado": 100.2,
           "z_score": -2.19,
           "clasificacion": "C"
         },
         {
-          "id": "XC8",
+          "id": "L-087",
           "resultado": 101.0,
           "z_score": -1.94,
           "clasificacion": "A"
         },
         {
-          "id": "EG2",
+          "id": "L-071",
           "resultado": 104.0,
           "z_score": -1.01,
           "clasificacion": "A"
         },
         {
-          "id": "DW1",
+          "id": "L-014",
           "resultado": 105.0,
           "z_score": -0.7,
           "clasificacion": "A"
         },
         {
-          "id": "LD2",
+          "id": "L-142",
           "resultado": 105.3,
           "z_score": -0.61,
           "clasificacion": "A"
         },
         {
-          "id": "EH4",
+          "id": "L-046",
           "resultado": 106.0,
           "z_score": -0.39,
           "clasificacion": "A"
         },
         {
-          "id": "FV4",
+          "id": "L-056",
           "resultado": 106.0,
           "z_score": -0.39,
           "clasificacion": "A"
         },
         {
-          "id": "YK4",
+          "id": "L-138",
           "resultado": 106.0,
           "z_score": -0.39,
           "clasificacion": "A"
         },
         {
-          "id": "KQ7",
+          "id": "L-033",
           "resultado": 107.5,
           "z_score": 0.08,
           "clasificacion": "A"
         },
         {
-          "id": "QZ1",
+          "id": "L-032",
           "resultado": 110.0,
           "z_score": 0.85,
           "clasificacion": "A"
         },
         {
-          "id": "KO7",
+          "id": "L-102",
           "resultado": 110.8,
           "z_score": 1.1,
           "clasificacion": "A"
         },
         {
-          "id": "ZY9",
+          "id": "L-128",
           "resultado": 111.0,
           "z_score": 1.17,
           "clasificacion": "A"
         },
         {
-          "id": "YY6",
+          "id": "L-139",
           "resultado": 112.0,
           "z_score": 1.48,
           "clasificacion": "A"
         },
         {
-          "id": "DX6",
+          "id": "L-001",
           "resultado": 112.5,
           "z_score": 1.63,
           "clasificacion": "A"
         },
         {
-          "id": "NM5",
+          "id": "L-078",
           "resultado": 112.8,
           "z_score": 1.72,
           "clasificacion": "A"
         },
         {
-          "id": "WG5",
+          "id": "L-026",
           "resultado": 115.0,
           "z_score": 2.41,
           "clasificacion": "C"
         },
         {
-          "id": "AB8",
+          "id": "L-090",
           "resultado": 116.9,
           "z_score": 3.0,
           "clasificacion": "I"
         },
         {
-          "id": "IS1",
+          "id": "L-002",
           "resultado": 118.0,
           "z_score": 3.34,
           "clasificacion": "I"
         },
         {
-          "id": "PZ6",
+          "id": "L-011",
           "resultado": 118.0,
           "z_score": 3.34,
           "clasificacion": "I"
         },
         {
-          "id": "RI2",
+          "id": "L-017",
           "resultado": 119.0,
           "z_score": 3.65,
           "clasificacion": "I"
         },
         {
-          "id": "WJ5",
+          "id": "L-053",
           "resultado": 119.0,
           "z_score": 3.65,
           "clasificacion": "I"
         },
         {
-          "id": "FU2",
+          "id": "L-146",
           "resultado": 122.8,
           "z_score": 4.83,
           "clasificacion": "I"
         },
         {
-          "id": "AF7",
+          "id": "L-145",
           "resultado": 124.8,
           "z_score": 5.45,
           "clasificacion": "I"
         },
         {
-          "id": "AP2",
+          "id": "L-144",
           "resultado": 126.4,
           "z_score": 5.95,
           "clasificacion": "I"
         },
         {
-          "id": "GD6",
+          "id": "L-076",
           "resultado": 130.0,
           "z_score": 7.07,
           "clasificacion": "I"
         },
         {
-          "id": "BO7",
+          "id": "L-043",
           "resultado": 132.0,
           "z_score": 7.69,
           "clasificacion": "I"
         },
         {
-          "id": "NL9",
+          "id": "L-055",
           "resultado": 132.41,
           "z_score": 7.82,
           "clasificacion": "I"
         },
         {
-          "id": "LK9",
+          "id": "L-007",
           "resultado": 142.0,
           "z_score": 10.8,
           "clasificacion": "I"
@@ -6282,223 +6193,223 @@
       "n_suficiente": true,
       "laboratorios": [
         {
-          "id": "QV5",
+          "id": "L-047",
           "resultado": 2.3,
           "z_score": -22.6,
           "clasificacion": "I"
         },
         {
-          "id": "LN5",
+          "id": "L-045",
           "resultado": 5.27,
           "z_score": -13.05,
           "clasificacion": "I"
         },
         {
-          "id": "CW7",
+          "id": "L-143",
           "resultado": 5.5,
           "z_score": -12.32,
           "clasificacion": "I"
         },
         {
-          "id": "UJ4",
+          "id": "L-124",
           "resultado": 7.3,
           "z_score": -6.53,
           "clasificacion": "I"
         },
         {
-          "id": "LD2",
+          "id": "L-142",
           "resultado": 7.61,
           "z_score": -5.53,
           "clasificacion": "I"
         },
         {
-          "id": "YX6",
+          "id": "L-021",
           "resultado": 7.7,
           "z_score": -5.24,
           "clasificacion": "I"
         },
         {
-          "id": "NL9",
+          "id": "L-055",
           "resultado": 7.92,
           "z_score": -4.53,
           "clasificacion": "I"
         },
         {
-          "id": "FV4",
+          "id": "L-046",
           "resultado": 7.99,
           "z_score": -4.31,
           "clasificacion": "I"
         },
         {
-          "id": "WJ5",
+          "id": "L-017",
           "resultado": 8.1,
           "z_score": -3.95,
           "clasificacion": "I"
         },
         {
-          "id": "JU6",
+          "id": "L-004",
           "resultado": 8.2,
           "z_score": -3.63,
           "clasificacion": "I"
         },
         {
-          "id": "QZ1",
+          "id": "L-032",
           "resultado": 8.87,
           "z_score": -1.48,
           "clasificacion": "A"
         },
         {
-          "id": "DW1",
+          "id": "L-014",
           "resultado": 8.92,
           "z_score": -1.32,
           "clasificacion": "A"
         },
         {
-          "id": "GB1",
+          "id": "L-140",
           "resultado": 9.0,
           "z_score": -1.06,
           "clasificacion": "A"
         },
         {
-          "id": "VK4",
+          "id": "L-141",
           "resultado": 9.0,
           "z_score": -1.06,
           "clasificacion": "A"
         },
         {
-          "id": "DX6",
+          "id": "L-001",
           "resultado": 9.16,
           "z_score": -0.55,
           "clasificacion": "A"
         },
         {
-          "id": "KQ7",
+          "id": "L-033",
           "resultado": 9.2,
           "z_score": -0.42,
           "clasificacion": "A"
         },
         {
-          "id": "RI2",
+          "id": "L-053",
           "resultado": 9.34,
           "z_score": 0.03,
           "clasificacion": "A"
         },
         {
-          "id": "XC8",
+          "id": "L-087",
           "resultado": 9.35,
           "z_score": 0.06,
           "clasificacion": "A"
         },
         {
-          "id": "AF7",
+          "id": "L-145",
           "resultado": 9.4,
           "z_score": 0.23,
           "clasificacion": "A"
         },
         {
-          "id": "MS6",
+          "id": "L-131",
           "resultado": 9.51,
           "z_score": 0.58,
           "clasificacion": "A"
         },
         {
-          "id": "YY6",
+          "id": "L-139",
           "resultado": 9.66,
           "z_score": 1.06,
           "clasificacion": "A"
         },
         {
-          "id": "ER7",
+          "id": "L-002",
           "resultado": 9.8,
           "z_score": 1.51,
           "clasificacion": "A"
         },
         {
-          "id": "IS1",
+          "id": "L-135",
           "resultado": 9.8,
           "z_score": 1.51,
           "clasificacion": "A"
         },
         {
-          "id": "AB8",
+          "id": "L-011",
           "resultado": 9.9,
           "z_score": 1.83,
           "clasificacion": "A"
         },
         {
-          "id": "NM5",
+          "id": "L-078",
           "resultado": 9.9,
           "z_score": 1.83,
           "clasificacion": "A"
         },
         {
-          "id": "PZ6",
+          "id": "L-090",
           "resultado": 9.9,
           "z_score": 1.83,
           "clasificacion": "A"
         },
         {
-          "id": "EH4",
+          "id": "L-138",
           "resultado": 9.97,
           "z_score": 2.06,
           "clasificacion": "C"
         },
         {
-          "id": "YK4",
+          "id": "L-056",
           "resultado": 10.0,
           "z_score": 2.15,
           "clasificacion": "C"
         },
         {
-          "id": "ZY9",
+          "id": "L-128",
           "resultado": 10.2,
           "z_score": 2.8,
           "clasificacion": "C"
         },
         {
-          "id": "EG2",
+          "id": "L-071",
           "resultado": 10.3,
           "z_score": 3.12,
           "clasificacion": "I"
         },
         {
-          "id": "FU2",
+          "id": "L-146",
           "resultado": 10.5,
           "z_score": 3.76,
           "clasificacion": "I"
         },
         {
-          "id": "GD6",
+          "id": "L-076",
           "resultado": 10.58,
           "z_score": 4.02,
           "clasificacion": "I"
         },
         {
-          "id": "WG5",
+          "id": "L-026",
           "resultado": 11.1,
           "z_score": 5.69,
           "clasificacion": "I"
         },
         {
-          "id": "AP2",
+          "id": "L-144",
           "resultado": 11.2,
           "z_score": 6.01,
           "clasificacion": "I"
         },
         {
-          "id": "LK9",
+          "id": "L-007",
           "resultado": 12.7,
           "z_score": 10.84,
           "clasificacion": "I"
         },
         {
-          "id": "BO7",
+          "id": "L-043",
           "resultado": 13.1,
           "z_score": 12.12,
           "clasificacion": "I"
         },
         {
-          "id": "KO7",
+          "id": "L-102",
           "resultado": 13.79,
           "z_score": 14.34,
           "clasificacion": "I"
