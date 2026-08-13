@@ -87,7 +87,7 @@
         "C": 3,
         "I": 12,
         "n": 23,
-        "pct_conformidad": 34.8
+        "pct_conformidad": 47.8
       },
       {
         "id": "L-002",
@@ -95,7 +95,7 @@
         "C": 3,
         "I": 5,
         "n": 24,
-        "pct_conformidad": 66.7
+        "pct_conformidad": 79.2
       },
       {
         "id": "L-004",
@@ -103,7 +103,7 @@
         "C": 1,
         "I": 9,
         "n": 25,
-        "pct_conformidad": 60.0
+        "pct_conformidad": 64.0
       },
       {
         "id": "L-007",
@@ -111,7 +111,7 @@
         "C": 2,
         "I": 17,
         "n": 23,
-        "pct_conformidad": 17.4
+        "pct_conformidad": 26.1
       },
       {
         "id": "L-011",
@@ -119,7 +119,7 @@
         "C": 2,
         "I": 8,
         "n": 24,
-        "pct_conformidad": 58.3
+        "pct_conformidad": 66.7
       },
       {
         "id": "L-014",
@@ -127,7 +127,7 @@
         "C": 1,
         "I": 4,
         "n": 9,
-        "pct_conformidad": 44.4
+        "pct_conformidad": 55.6
       },
       {
         "id": "L-017",
@@ -135,7 +135,7 @@
         "C": 4,
         "I": 7,
         "n": 25,
-        "pct_conformidad": 56.0
+        "pct_conformidad": 72.0
       },
       {
         "id": "L-021",
@@ -143,7 +143,7 @@
         "C": 2,
         "I": 19,
         "n": 23,
-        "pct_conformidad": 8.7
+        "pct_conformidad": 17.4
       },
       {
         "id": "L-026",
@@ -151,7 +151,7 @@
         "C": 5,
         "I": 2,
         "n": 23,
-        "pct_conformidad": 69.6
+        "pct_conformidad": 91.3
       },
       {
         "id": "L-032",
@@ -159,7 +159,7 @@
         "C": 3,
         "I": 9,
         "n": 22,
-        "pct_conformidad": 45.5
+        "pct_conformidad": 59.1
       },
       {
         "id": "L-033",
@@ -167,7 +167,7 @@
         "C": 2,
         "I": 7,
         "n": 23,
-        "pct_conformidad": 60.9
+        "pct_conformidad": 69.6
       },
       {
         "id": "L-043",
@@ -191,7 +191,7 @@
         "C": 4,
         "I": 12,
         "n": 25,
-        "pct_conformidad": 36.0
+        "pct_conformidad": 52.0
       },
       {
         "id": "L-047",
@@ -199,7 +199,7 @@
         "C": 2,
         "I": 23,
         "n": 25,
-        "pct_conformidad": 0.0
+        "pct_conformidad": 8.0
       },
       {
         "id": "L-053",
@@ -207,7 +207,7 @@
         "C": 5,
         "I": 8,
         "n": 24,
-        "pct_conformidad": 45.8
+        "pct_conformidad": 66.7
       },
       {
         "id": "L-055",
@@ -215,7 +215,7 @@
         "C": 4,
         "I": 17,
         "n": 25,
-        "pct_conformidad": 16.0
+        "pct_conformidad": 32.0
       },
       {
         "id": "L-056",
@@ -223,7 +223,7 @@
         "C": 2,
         "I": 6,
         "n": 21,
-        "pct_conformidad": 61.9
+        "pct_conformidad": 71.4
       },
       {
         "id": "L-071",
@@ -231,7 +231,7 @@
         "C": 6,
         "I": 8,
         "n": 20,
-        "pct_conformidad": 30.0
+        "pct_conformidad": 60.0
       },
       {
         "id": "L-076",
@@ -239,7 +239,7 @@
         "C": 5,
         "I": 9,
         "n": 24,
-        "pct_conformidad": 41.7
+        "pct_conformidad": 62.5
       },
       {
         "id": "L-078",
@@ -247,7 +247,7 @@
         "C": 3,
         "I": 3,
         "n": 24,
-        "pct_conformidad": 75.0
+        "pct_conformidad": 87.5
       },
       {
         "id": "L-087",
@@ -255,7 +255,7 @@
         "C": 3,
         "I": 2,
         "n": 17,
-        "pct_conformidad": 70.6
+        "pct_conformidad": 88.2
       },
       {
         "id": "L-090",
@@ -263,7 +263,7 @@
         "C": 2,
         "I": 10,
         "n": 24,
-        "pct_conformidad": 50.0
+        "pct_conformidad": 58.3
       },
       {
         "id": "L-102",
@@ -271,7 +271,7 @@
         "C": 4,
         "I": 6,
         "n": 16,
-        "pct_conformidad": 37.5
+        "pct_conformidad": 62.5
       },
       {
         "id": "L-124",
@@ -279,7 +279,7 @@
         "C": 4,
         "I": 14,
         "n": 21,
-        "pct_conformidad": 14.3
+        "pct_conformidad": 33.3
       },
       {
         "id": "L-128",
@@ -287,7 +287,7 @@
         "C": 6,
         "I": 4,
         "n": 23,
-        "pct_conformidad": 56.5
+        "pct_conformidad": 82.6
       },
       {
         "id": "L-131",
@@ -295,7 +295,7 @@
         "C": 7,
         "I": 0,
         "n": 22,
-        "pct_conformidad": 68.2
+        "pct_conformidad": 100.0
       },
       {
         "id": "L-135",
@@ -303,7 +303,7 @@
         "C": 3,
         "I": 4,
         "n": 22,
-        "pct_conformidad": 68.2
+        "pct_conformidad": 81.8
       },
       {
         "id": "L-138",
@@ -311,7 +311,7 @@
         "C": 4,
         "I": 3,
         "n": 21,
-        "pct_conformidad": 66.7
+        "pct_conformidad": 85.7
       },
       {
         "id": "L-139",
@@ -319,7 +319,7 @@
         "C": 2,
         "I": 8,
         "n": 25,
-        "pct_conformidad": 60.0
+        "pct_conformidad": 68.0
       },
       {
         "id": "L-140",
@@ -327,7 +327,7 @@
         "C": 1,
         "I": 6,
         "n": 22,
-        "pct_conformidad": 68.2
+        "pct_conformidad": 72.7
       },
       {
         "id": "L-141",
@@ -335,7 +335,7 @@
         "C": 3,
         "I": 7,
         "n": 22,
-        "pct_conformidad": 54.5
+        "pct_conformidad": 68.2
       },
       {
         "id": "L-142",
@@ -343,7 +343,7 @@
         "C": 4,
         "I": 5,
         "n": 25,
-        "pct_conformidad": 64.0
+        "pct_conformidad": 80.0
       },
       {
         "id": "L-143",
@@ -359,7 +359,7 @@
         "C": 2,
         "I": 16,
         "n": 23,
-        "pct_conformidad": 21.7
+        "pct_conformidad": 30.4
       },
       {
         "id": "L-145",
@@ -367,7 +367,7 @@
         "C": 4,
         "I": 6,
         "n": 23,
-        "pct_conformidad": 56.5
+        "pct_conformidad": 73.9
       },
       {
         "id": "L-146",
@@ -375,7 +375,7 @@
         "C": 2,
         "I": 8,
         "n": 23,
-        "pct_conformidad": 56.5
+        "pct_conformidad": 65.2
       }
     ],
     "analitos_excluidos": [
@@ -3181,7 +3181,7 @@
         "minimo": 230.0,
         "maximo": 1410.0
       },
-      "nota_sin_evaluar": "<strong>Analito no evaluado en esta ronda.</strong> CONCALAB-UASD no emite calificación de conformidad para Fosfatasa Alcalina (ALP) en el ensayo EA-001-2026. La decisión se basa en dos hallazgos: (1) la dispersión entre participantes no permite establecer un valor asignado por consenso defendible, y (2) los valores próximos a 1000 U/L no son atribuibles al material de referencia suministrado según registros, lo que apunta a un problema de conmutabilidad del material frente a determinadas plataformas y no al desempeño de los laboratorios. Los resultados se publican <strong>solo con fines informativos</strong>: cada participante puede ubicar su valor respecto al conjunto y a su plataforma, pero no se asigna Z-Score ni clasificación, y ALP no computa en el desempeño global ni en el resumen por laboratorio.",
+      "nota_sin_evaluar": "<strong>Analito no evaluado en esta ronda.</strong> CONCALAB-UASD no emite calificación de conformidad para Fosfatasa Alcalina (ALP) en el ensayo EA-001-2026. La decisión se basa en un hallazgo: la dispersión de los resultados entre los laboratorios participantes no permite establecer un valor asignado por consenso defendible, ni evaluando el conjunto ni separando por grupo de pares. La ronda declara lo observado en los resultados reportados y no atribuye esa dispersión a una causa única. Los resultados se publican <strong>solo con fines informativos</strong>: cada participante puede ubicar su valor respecto al conjunto y a su plataforma, pero no se asigna Z-Score ni clasificación, y ALP no computa en el desempeño global ni en el resumen por laboratorio.",
       "laboratorios": [
         {
           "id": "L-047",

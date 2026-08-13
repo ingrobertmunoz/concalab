@@ -43,6 +43,30 @@ N_MINIMO_GRUPO = 8
 # asignado agrupado deja de ser confiable.
 RAZON_BIMODAL = 1.5
 
+def fecha_calculo(codigo):
+    """Fecha de cálculo de la ronda, declarada en data/config.json.
+
+    Sin esto cada corrida estampa `date.today()`, de modo que recalcular una
+    ronda ya emitida —aunque no cambie una sola cifra— movería su fecha y
+    sugeriría un recálculo que no ocurrió. La fecha de un informe emitido es un
+    dato del informe, no del momento en que se ejecuta el script.
+
+    Una ronda que aún no la declara usa la de hoy y avisa, para que congelarla
+    sea un paso consciente antes de publicar y no un valor heredado.
+    """
+    with open(CONFIG_PATH, encoding="utf-8") as f:
+        cfg = json.load(f)
+    declarada = cfg.get("fecha_calculo", {}).get(codigo)
+    if declarada:
+        return declarada
+    hoy = date.today().isoformat()
+    print(f"  AVISO: {codigo} no declara fecha de cálculo en data/config.json "
+          f"→ se usa hoy ({hoy}).")
+    print(f"         Antes de publicar, congelarla: "
+          f'"fecha_calculo": {{"{codigo}": "{hoy}"}}')
+    return hoy
+
+
 def analitos_por_grupo_pares(codigo, area="quimica"):
     """
     Analitos que esta ronda evalúa por GRUPO DE PARES en vez de agrupados
@@ -574,6 +598,12 @@ def consolidar_por_laboratorio(analitos):
     """
     Conteos A/C/I por laboratorio sobre los analitos con evaluación concluyente.
 
+    `pct_conformidad` = (A + C) / n: resultados dentro del criterio de
+    aceptación. El denominador es el ALCANCE DEL PROPIO LABORATORIO —los
+    analitos que reportó y se le evaluaron, de 9 a 25 en EA-001-2026—, por eso
+    el porcentaje se publica siempre acompañado de esa n: un 100% sobre 9
+    analitos no equivale a un 100% sobre 24.
+
     Excluye los no concluyentes a propósito: con una σ* inflada casi todo sale
     aceptable, así que incluirlos regalaría puntos de conformidad a todos por
     igual. 'NE' no es un resultado evaluado y no suma ni al numerador ni al
@@ -589,7 +619,19 @@ def consolidar_por_laboratorio(analitos):
                 r[l["clasificacion"]] += 1
     for r in por_lab.values():
         r["n"] = r["A"] + r["C"] + r["I"]
-        r["pct_conformidad"] = round(r["A"] / r["n"] * 100, 1) if r["n"] else 0.0
+        # Conformidad = dentro del criterio de aceptación, es decir A + C.
+        #
+        # Una alerta (2 < |z| < 3) está DENTRO del Error Total Permitido: el
+        # límite de CLIA es |z| = 3, no 2. Contarla como no conforme —que es lo
+        # que hacía A/n— contradecía la estratificación de la misma tabla, que
+        # solo cuenta las 'I': L-131 cerró EA-001-2026 con 15 A, 7 C y 0 I, o
+        # sea el 100% de sus resultados dentro del ETa, y aparecía con 68.2%
+        # mientras su estrato decía "Satisfactorio". Un laboratorio podía
+        # reclamar, con la norma en la mano, que un z de 2.4 no es un
+        # incumplimiento. La alerta no se pierde: sigue en su propia columna,
+        # que es donde informa sin penalizar.
+        r["pct_conformidad"] = (round((r["A"] + r["C"]) / r["n"] * 100, 1)
+                                if r["n"] else 0.0)
     return sorted(por_lab.values(), key=lambda r: r["id"])
 
 
@@ -685,7 +727,7 @@ def escribir_json(codigo, analitos, area="quimica", bimodales=None):
     doc = {
         "codigo": codigo,
         "area": area,
-        "fecha": date.today().isoformat(),
+        "fecha": fecha_calculo(codigo),
         "metodologia": "ISO/IEC 17043 & ISO 13528 (Estadística Robusta)",
         "evaluacion": "agrupada",
         "resumen": {

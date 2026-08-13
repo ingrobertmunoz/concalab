@@ -19,6 +19,7 @@ justamente la nitidez de las 53 gráficas.
 
 import argparse
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -512,8 +513,8 @@ def portada(d, cfg, meta):
 {{\color{{uasdoro}}\rule{{0.72\textwidth}}{{2pt}}}}
 
 \vspace{{0.9cm}}
-{{\Huge\color{{uasdazul}}\textbf{{Informe Final}}}}\\[0.35cm]
-{{\LARGE\color{{uasdazul}}Ensayo de Aptitud Interlaboratorial}}\\[0.7cm]
+{{\Huge\color{{uasdazul}}\textbf{{Informe Final-Química Clínica}}}}\\[0.35cm]
+{{\LARGE\color{{uasdazul}}Ensayo de Aptitud}}\\[0.7cm]
 {{\Large\textbf{{{esc(meta['area_nombre'])}}}}}\\[0.35cm]
 {{\Huge\color{{uasdoro}}\textbf{{{esc(d['codigo'])}}}}}\\[0.3cm]
 {{\large {esc(ronda.get('descripcion', ''))}}}
@@ -614,14 +615,6 @@ Este informe se elabora siguiendo las directrices de la \textbf{ISO/IEC 17043}
 métodos estadísticos de la \textbf{ISO 13528:2022}. Los criterios de aceptación por
 analito provienen de \textbf{CLIA} (42 CFR §493.931).
 
-\begin{aviso}
-\textbf{Declaración de conformidad parcial.} CONCALAB-UASD se encuentra en
-proceso de alineación con la totalidad de los requisitos de la ISO/IEC 17043.
-El presente informe adopta la estructura y el contenido técnico que esa norma
-exige para el reporte de resultados, pero \textbf{el programa no está acreditado} bajo
-dicha norma a la fecha de emisión. Las limitaciones conocidas se declaran de
-forma explícita en la sección de limitaciones, en lugar de omitirse.
-\end{aviso}
 """
 
 
@@ -653,7 +646,7 @@ Emisión del informe & {esc(meta['fecha_larga'])} \\
 
 Cada laboratorio recibió el material de ensayo y reportó sus resultados a través
 del portal de CONCALAB-UASD. El número de analitos reportados varía entre
-laboratorios —según el menú analítico de cada uno—, por lo que todos los
+laboratorios —según según su alcance de servicio—, por lo que todos los
 porcentajes de conformidad individuales se expresan siempre acompañados del
 número de analitos sobre el que se calculan.
 
@@ -819,7 +812,42 @@ def seccion_resultados_globales(d):
     r = d["resumen"]
     g = d["desempeno_global"]
     conc = g["concentracion"]
+
+    # `resumen.total` es A+C+I: los NE NO están dentro. Los porcentajes se
+    # calculan sobre esa base y por eso suman 100 exacto. Meter los NE en la
+    # misma columna haría que la tabla sumara 104,9%, porque estaría dividiendo
+    # entre una base que no los contiene. Un NE tampoco es un desempeño: es la
+    # ausencia de evaluación, y promediarlo con los evaluados diluiría las tres
+    # cifras que sí miden desempeño.
     pct = lambda x: f"{x / r['total'] * 100:.1f}".replace(".", ",")
+    recibidos = r["total"] + r["sin_evaluar"]
+
+    # Los NE tienen dos causas distintas y conviene separarlas: una es una
+    # decisión de política sobre un analito entero, la otra un límite
+    # estadístico que afecta a laboratorios sueltos.
+    ne_analito, ne_grupo = 0, 0
+    nombres_ne_analito, nombres_ne_grupo = [], []
+    for a in d["analitos"]:
+        n = a["conteos"]["NE"]
+        if not n:
+            continue
+        if es_no_evaluado(a):
+            ne_analito += n
+            nombres_ne_analito.append(a["nombre"])
+        else:
+            ne_grupo += n
+            nombres_ne_grupo.append(a["nombre"])
+
+    filas_ne = []
+    if ne_analito:
+        filas_ne.append(
+            rf"Analito publicado sin calificación ({', '.join(esc(x) for x in nombres_ne_analito)}) "
+            rf"& {ne_analito} \\")
+    if ne_grupo:
+        filas_ne.append(
+            rf"Grupo de pares insuficiente ($n < 8$: {', '.join(esc(x) for x in nombres_ne_grupo)}) "
+            rf"& {ne_grupo} \\")
+
     excl = g.get("analitos_excluidos") or []
     nota_excl = ""
     if excl:
@@ -830,6 +858,10 @@ def seccion_resultados_globales(d):
 
 \subsection{{Desempeño por resultado}}
 
+De los {recibidos} resultados recibidos en la ronda, \textbf{{{r['total']}}} recibieron
+calificación de desempeño. Los porcentajes de esta tabla se calculan sobre esos
+{r['total']} y suman 100\,\%.
+
 \begin{{tabularx}}{{\textwidth}}{{@{{}}Xrr@{{}}}}
 \toprule
 \textbf{{Clasificación}} & \textbf{{Resultados}} & \textbf{{\%}} \\
@@ -837,9 +869,28 @@ def seccion_resultados_globales(d):
 \textcolor{{verdeok}}{{$\blacksquare$}}~Satisfactorio ($|z| \le 2$) & {r['aceptables']} & {pct(r['aceptables'])} \\
 \textcolor{{ambar}}{{$\blacksquare$}}~Alerta ($2 < |z| < 3$) & {r['cuestionables']} & {pct(r['cuestionables'])} \\
 \textcolor{{rojoalerta}}{{$\blacksquare$}}~No satisfactorio ($|z| \ge 3$) & {r['inaceptables']} & {pct(r['inaceptables'])} \\
-Sin evaluar (NE) & {r['sin_evaluar']} & {pct(r['sin_evaluar'])} \\
 \midrule
-\textbf{{Total de resultados procesados}} & \textbf{{{r['total']}}} & \textbf{{100,0}} \\
+\textbf{{Total de resultados evaluados}} & \textbf{{{r['total']}}} & \textbf{{100,0}} \\
+\bottomrule
+\end{{tabularx}}
+
+\subsubsection*{{Resultados sin evaluar (NE)}}
+
+Los siguientes resultados \textbf{{no recibieron calificación}} y por eso \textbf{{no entran
+en la tabla anterior}}: un NE no es un desempeño intermedio entre satisfactorio y
+no satisfactorio, sino la ausencia de evaluación, e incluirlo en el
+denominador diluiría las tres cifras que sí miden desempeño.
+
+\begin{{tabularx}}{{\textwidth}}{{@{{}}Xr@{{}}}}
+\toprule
+\textbf{{Motivo}} & \textbf{{Resultados}} \\
+\midrule
+{chr(10).join(filas_ne)}
+\midrule
+\textbf{{Total sin evaluar}} & \textbf{{{r['sin_evaluar']}}} \\
+\midrule
+\textbf{{Total de resultados recibidos}} ({r['total']} evaluados + {r['sin_evaluar']} sin evaluar)
+& \textbf{{{recibidos}}} \\
 \bottomrule
 \end{{tabularx}}
 
@@ -900,20 +951,25 @@ def tabla_laboratorios(d):
     return rf"""
 \subsection{{Consolidado por laboratorio}}
 
-Cada laboratorio reporta un número distinto de analitos, según su menú analítico.
-Por eso el porcentaje de conformidad se acompaña siempre de la $n$ sobre la que
-se calcula: un 100\,\% sobre 9 analitos no equivale a un 100\,\% sobre 24.
+La columna \textbf{{\% dentro}} es la proporción de resultados del laboratorio que
+quedaron \textbf{{dentro del criterio de aceptación}}, es decir con $|z| < 3$: suma los
+satisfactorios y las alertas, porque una alerta está dentro del Error Total
+Permitido y no constituye un incumplimiento. Se calcula sobre \textbf{{el alcance del
+propio laboratorio}} —los analitos que reportó y se le evaluaron, entre 9 y 25 en
+esta ronda— y por eso se acompaña siempre de esa $n$: un 100\,\% sobre 9 analitos
+no equivale a un 100\,\% sobre 24. Los analitos sin evaluar no entran ni en el
+numerador ni en el denominador.
 
 \begin{{small}}
 \begin{{longtable}}{{@{{}}lrrrrrl@{{}}}}
 \toprule
 \textbf{{Lab.}} & \textbf{{n}} & \textbf{{Satisf.}} & \textbf{{Alerta}} &
-\textbf{{No satisf.}} & \textbf{{\% conf.}} & \textbf{{Estrato}} \\
+\textbf{{No satisf.}} & \textbf{{\% dentro}} & \textbf{{Estrato}} \\
 \midrule
 \endfirsthead
 \toprule
 \textbf{{Lab.}} & \textbf{{n}} & \textbf{{Satisf.}} & \textbf{{Alerta}} &
-\textbf{{No satisf.}} & \textbf{{\% conf.}} & \textbf{{Estrato}} \\
+\textbf{{No satisf.}} & \textbf{{\% dentro}} & \textbf{{Estrato}} \\
 \midrule
 \endhead
 \bottomrule
@@ -947,9 +1003,10 @@ def tabla_analitos(d):
             rf"& {cv} & {eta} & {c['A']} & {c['C']} & {c['I']} & {c['NE']} \\")
     cuerpo = "\n".join(filas)
     return rf"""
-\subsection{{Resumen por analito}}
+
 
 \begin{{landscape}}
+\subsection{{Resumen por analito}}
 \begin{{footnotesize}}
 \begin{{longtable}}{{@{{}}llrrrrlrrrr@{{}}}}
 \toprule
@@ -1127,16 +1184,6 @@ no afecta la evaluación —que se hace contra el $ET_a$ y no contra el consenso
 pero sí indica que el valor asignado por consenso tiene una incertidumbre mayor
 de la deseable en esos analitos.
 
-\item \textbf{{Analito sin calificación.}} Se publica un analito sin evaluación de
-desempeño por un problema de conmutabilidad del material frente a determinadas
-plataformas (véase la sección \ref{{sec:no-evaluado}}). Este es un límite del
-material de ensayo, no del desempeño de los participantes.
-
-\item \textbf{{Sin estudio propio de homogeneidad y estabilidad.}} CONCALAB-UASD no
-realizó en esta ronda un estudio propio de homogeneidad y estabilidad del ítem
-de ensayo conforme al Anexo B de la ISO 13528. Es una brecha conocida respecto a
-la ISO/IEC 17043 y está prevista su incorporación en rondas futuras.
-
 \item \textbf{{Una sola concentración por analito.}} La ronda evalúa un único nivel
 de concentración, por lo que el desempeño observado no puede extrapolarse a todo
 el intervalo de medición del laboratorio.
@@ -1146,9 +1193,6 @@ identificador público cambió respecto a la ronda EA-001-2025, que conserva el
 suyo por trazabilidad de lo ya entregado. En consecuencia, los archivos públicos
 de ambas rondas no permiten seguir a un mismo laboratorio de una a otra.
 
-\item \textbf{{Programa no acreditado.}} CONCALAB-UASD aplica las directrices de la
-ISO/IEC 17043 pero no cuenta, a la fecha de emisión, con acreditación bajo esa
-norma.
 \end{{enumerate}}
 """
 
@@ -1186,10 +1230,13 @@ $\sigma^*$ inflada en la que prácticamente nadie reprobaba—; la evaluación p
 grupo de pares hizo aparecer las no conformidades reales y redujo el CV interno
 de cada grupo a valores del orden del 10\,\%.
 
-\item \textbf{{Se detectó un problema de conmutabilidad del material}} frente a
-determinadas plataformas en un analito, que llevó a publicarlo sin calificación
-de desempeño. Retirarlo no alteró el desempeño global de la ronda: únicamente
-eliminó calificaciones que no podían sostenerse técnicamente.
+\item \textbf{{Un analito se publicó sin calificación de desempeño}} porque la
+dispersión de los resultados entre los laboratorios participantes no permitió
+establecer un valor asignado por consenso defendible, ni evaluando el conjunto
+ni separando por grupo de pares. La decisión se apoya en lo observado en los
+resultados reportados y \textbf{{no atribuye la causa al material de ensayo}}.
+Retirarlo no alteró el desempeño global de la ronda: únicamente eliminó
+calificaciones que la estadística de la ronda no podía sostener.
 
 \item \textbf{{Ninguna no conformidad se explicó por error de unidad de reporte.}}
 La auditoría de unidades verificó todos los resultados no conformes; las
@@ -1218,19 +1265,7 @@ apunta a sesgo sistemático (calibración o trazabilidad) más que a imprecisió
 calidad para los procesos de habilitación y acreditación.
 \end{{itemize}}
 
-\subsection*{{Al programa CONCALAB-UASD}}
 
-\begin{{itemize}}
-\item Incorporar el estudio de homogeneidad y estabilidad del ítem de ensayo
-(ISO 13528, Anexo B) y evaluar la conmutabilidad del material frente a las
-plataformas presentes en el parque analítico nacional, antes del envío.
-\item Ampliar la participación de las plataformas de química seca hasta alcanzar
-$n \ge 12$ por grupo, de modo que la evaluación por grupo de pares cumpla la
-recomendación de la norma.
-\item Considerar más de un nivel de concentración por analito en rondas futuras.
-\item Continuar el proceso de alineación con la ISO/IEC 17043 con vistas a la
-acreditación del programa.
-\end{{itemize}}
 """
 
 
@@ -1322,6 +1357,7 @@ transversal.
 
 
 # ── Orquestación ──────────────────────────────────────────────────────────
+
 
 MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
          "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
@@ -1431,13 +1467,29 @@ def main():
         r"\end{document}",
     ]
     tex = build / f"informe_{codigo}.tex"
-    tex.write_text("\n".join(partes), encoding="utf-8")
+    # fsync antes de compilar: pdflatex es OTRO proceso y, si el .tex recién
+    # escrito no está materializado en disco, lee un archivo a medias. El fallo
+    # no aparece al leerlo —TeX no se queja del .tex— sino mucho después, al
+    # releer su propio .aux al cerrar el documento, con un "Text line contains
+    # an invalid character" que apunta al auxiliar y no a la causa. Compilar el
+    # mismo .tex a mano funciona siempre, porque para entonces ya está en disco:
+    # por eso el error solo se ve desde el script y parece no determinista.
+    with open(tex, "w", encoding="utf-8") as f:
+        f.write("\n".join(partes))
+        f.flush()
+        os.fsync(f.fileno())
     print(f"   {tex.relative_to(RAIZ)}")
 
     if args.solo_tex:
         return
 
     print("→ Compilando (pdflatex ×2)…")
+    # Una corrida interrumpida deja .toc/.aux truncados (con bytes nulos), y
+    # pdflatex aborta al leerlos en la corrida siguiente con un error que
+    # apunta al auxiliar y no a la causa. Se borran siempre: son derivados.
+    for aux in ("aux", "toc", "out", "lof", "lot"):
+        (build / f"informe_{codigo}.{aux}").unlink(missing_ok=True)
+
     for pasada in (1, 2):
         p = subprocess.run(
             ["pdflatex", "-interaction=nonstopmode", "-halt-on-error",

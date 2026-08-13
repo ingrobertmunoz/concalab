@@ -146,7 +146,7 @@ const ESQUELETO = `<!-- Aviso global de analitos no concluyentes -->
                 <th data-sort="a" class="sortable num">${LB.conf}</th>
                 <th data-sort="c" class="sortable num">${LB.Cp}</th>
                 <th data-sort="i" class="sortable num">${LB.noconf}</th>
-                <th data-sort="pct" class="sortable">% Conformidad</th>
+                <th data-sort="pct" class="sortable">% dentro del criterio</th>
             </tr>
         </thead>
         <tbody id="lab-tbody"></tbody>

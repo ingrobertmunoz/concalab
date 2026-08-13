@@ -20,7 +20,13 @@
 
   "_comentario_decisiones": "Base de evaluación por ronda y área (ISO 13528 §7). Cambiar la base de evaluación de un analito es una decisión del proveedor del ensayo: se declara aquí de forma explícita y queda versionada junto al informe. Una ronda nueva arranca SIN entradas; detectar_bimodales() avisa por consola qué analitos son candidatos y el proveedor decide. No se debe automatizar cruzando un umbral.",
 
-  "_comentario_estratos": "Clasificación de desempeño POR LABORATORIO (no por resultado). Un laboratorio es satisfactorio solo si ninguno de sus analitos salió no conforme: un resultado errado que llega a un paciente es una falla, con independencia de cuántos otros salieron bien. Los cortes son política del proveedor del ensayo, por eso viven aquí y no en el código. 'hasta' null significa sin límite superior.",
+  "_comentario_fecha_calculo": "Fecha de cálculo de cada ronda, CONGELADA. Sin esto, cada corrida de calcular_zscore.py o evaluar_clia.py estampa el día en que se corrió, de modo que recalcular sin cambiar una sola cifra movería la fecha del informe ya publicado y sugeriría un recálculo que no ocurrió. La fecha de una ronda emitida es un dato del informe, no del momento en que se ejecuta el script. Una ronda sin declarar usa la fecha de hoy y el script avisa para que se congele antes de publicar.",
+
+  "fecha_calculo": {
+    "EA-001-2026": "2026-08-03"
+  },
+
+  "_comentario_estratos":"Clasificación de desempeño POR LABORATORIO (no por resultado). Un laboratorio es satisfactorio solo si ninguno de sus analitos salió no conforme: un resultado errado que llega a un paciente es una falla, con independencia de cuántos otros salieron bien. Los cortes son política del proveedor del ensayo, por eso viven aquí y no en el código. 'hasta' null significa sin límite superior.",
 
   "estratos_desempeno": [
     { "clave": "satisfactorio",   "nombre": "Satisfactorio",     "descripcion": "ningún no conforme", "desde": 0, "hasta": 0,    "color": "#1e7e34" },
@@ -41,7 +47,7 @@
           "Fosfatasa Alcalina (ALP)"
         ],
         "sin_evaluar_justificacion": "Decisión del proveedor: no se emite calificación de conformidad. El grupo de química seca es internamente coherente (CV 10.5%) pero desplazado en bloque a X* ≈ 1101 frente a ≈ 407 de la química húmeda, cuyo CV (28.2%) tampoco sostiene un consenso. Evaluar por grupo de pares habría otorgado conformidad al grupo desplazado —certificando como correcto un valor que los registros del material no respaldan— y repartido 12 no satisfactorios y 7 alertas sobre una base indefendible. Retirar ALP de la evaluación no altera el desempeño global de la ronda (sigue 1/37 satisfactorios y los mismos estratos): solo elimina no conformidades que no podían sostenerse.",
-        "sin_evaluar_nota": "<strong>Analito no evaluado en esta ronda.</strong> CONCALAB-UASD no emite calificación de conformidad para Fosfatasa Alcalina (ALP) en el ensayo EA-001-2026. La decisión se basa en dos hallazgos: (1) la dispersión entre participantes no permite establecer un valor asignado por consenso defendible, y (2) los valores próximos a 1000 U/L no son atribuibles al material de referencia suministrado según registros, lo que apunta a un problema de conmutabilidad del material frente a determinadas plataformas y no al desempeño de los laboratorios. Los resultados se publican <strong>solo con fines informativos</strong>: cada participante puede ubicar su valor respecto al conjunto y a su plataforma, pero no se asigna Z-Score ni clasificación, y ALP no computa en el desempeño global ni en el resumen por laboratorio."
+        "sin_evaluar_nota": "<strong>Analito no evaluado en esta ronda.</strong> CONCALAB-UASD no emite calificación de conformidad para Fosfatasa Alcalina (ALP) en el ensayo EA-001-2026. La decisión se basa en un hallazgo: la dispersión de los resultados entre los laboratorios participantes no permite establecer un valor asignado por consenso defendible, ni evaluando el conjunto ni separando por grupo de pares. La ronda declara lo observado en los resultados reportados y no atribuye esa dispersión a una causa única. Los resultados se publican <strong>solo con fines informativos</strong>: cada participante puede ubicar su valor respecto al conjunto y a su plataforma, pero no se asigna Z-Score ni clasificación, y ALP no computa en el desempeño global ni en el resumen por laboratorio."
       }
     }
   },

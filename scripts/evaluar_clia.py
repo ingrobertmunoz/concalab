@@ -37,6 +37,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from calcular_zscore import (  # noqa: E402
     cargar, robust_mean_sd, _stats, plataforma, unidad_canonica, clasificar,
     analitos_por_grupo_pares, analitos_sin_evaluar, desempeno_global, CAMPOS_INTERNOS,
+    fecha_calculo,
     N_MINIMO, N_MINIMO_GRUPO, SALIDA_DIR, CONFIG_PATH,
 )
 
@@ -252,7 +253,7 @@ def escribir_json(codigo, analitos, area="quimica"):
         "codigo": codigo,
         "area": area,
         "modelo": "clia",
-        "fecha": date.today().isoformat(),
+        "fecha": fecha_calculo(codigo),
         "metodologia": "Valor asignado: media robusta (ISO 13528, Algoritmo A). "
                        "Evaluación: z-score con σpt = ETa/3 (CLIA §493.931).",
         "evaluacion": "clia",
