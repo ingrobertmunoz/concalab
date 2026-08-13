@@ -39,6 +39,7 @@ import shutil
 import argparse
 import subprocess
 from pathlib import Path
+from datetime import date
 
 import matplotlib
 matplotlib.use("Agg")
@@ -71,6 +72,12 @@ def e(t):
 def num(x, dec=1):
     """Coma decimal: la presentación es en español dominicano."""
     return f"{x:.{dec}f}".replace(".", ",")
+
+
+def fecha_larga(iso):
+    """'2026-08-13' → '13 de agosto de 2026'."""
+    y, m, day = (int(x) for x in iso.split("-"))
+    return f"{day} de {MESES[m - 1]} de {y}"
 
 
 def buscar(d, nombre):
@@ -227,7 +234,7 @@ def portada(d, meta, equipo):
 <h1>Resultados de la ronda {e(d['codigo'])}</h1>
 <p class="subtitulo">{e(meta['area_nombre'])}</p>
 <p class="meta">Sesión de devolución a los laboratorios participantes<br>
-{e(meta['fecha_larga'])}<br><br>{nombres}</p>
+{e(meta['fecha_sesion'])}<br><br>{nombres}</p>
 </div>""", clase="portada", notas="""
 Bienvenida. Recordar tres cosas antes de empezar:<br>
 1) Esta sesión explica el informe, no lo reemplaza.<br>
@@ -243,7 +250,7 @@ def s_introduccion(d):
 Universidad Autónoma de Santo Domingo. Organiza ensayos de aptitud
 (evaluación externa de la calidad) para laboratorios clínicos del país.</p>
 <div class="cols">
-<div>
+<div class="fragment">
 <h3>En qué se apoya</h3>
 <ul>
 <li><strong>ISO/IEC 17043</strong> — requisitos para proveedores de ensayos de aptitud</li>
@@ -251,7 +258,7 @@ Universidad Autónoma de Santo Domingo. Organiza ensayos de aptitud
 <li><strong>CLIA 42 CFR §493.931</strong> — criterio de aceptación por analito</li>
 </ul>
 </div>
-<div>
+<div class="fragment">
 <h3>Confiabilidad</h3>
 <ul>
 <li>Evaluación <strong>anónima</strong>: en el informe cada laboratorio es un
@@ -270,16 +277,16 @@ def s_objetivos():
     return slide("""<span class="eyebrow">2 · Objetivos del programa</span>
 <h2>Para qué sirve participar</h2>
 <ul>
-<li><strong>Verificar el desempeño analítico</strong> frente a un valor de
+<li class="fragment"><strong>Verificar el desempeño analítico</strong> frente a un valor de
 referencia externo e independiente del laboratorio.</li>
-<li><strong>Detectar sesgo sistemático</strong> — lo que el control interno no
+<li class="fragment"><strong>Detectar sesgo sistemático</strong> — lo que el control interno no
 ve: un equipo mal calibrado es <em>consistente</em> consigo mismo todos los días.</li>
-<li><strong>Comparar con pares</strong> que usan la misma plataforma analítica.</li>
-<li><strong>Generar evidencia objetiva</strong> de evaluación externa para
+<li class="fragment"><strong>Comparar con pares</strong> que usan la misma plataforma analítica.</li>
+<li class="fragment"><strong>Generar evidencia objetiva</strong> de evaluación externa para
 habilitación y acreditación.</li>
-<li><strong>Orientar la mejora</strong>: señalar dónde actuar, con datos.</li>
+<li class="fragment"><strong>Orientar la mejora</strong>: señalar dónde actuar, con datos.</li>
 </ul>
-<div class="caja nota">El ensayo de aptitud no es un examen con nota. Es un
+<div class="caja nota fragment">El ensayo de aptitud no es un examen con nota. Es un
 instrumento de medición del propio laboratorio.</div>""", notas="""
 El segundo punto es el argumento más fuerte y el menos evidente: el control
 interno mide repetibilidad contra uno mismo. Si la calibración está corrida,
@@ -292,14 +299,14 @@ def s_metodologia_1(d):
     return slide(f"""<span class="eyebrow">3 · Metodología</span>
 <h2>Cómo se obtiene el valor de referencia</h2>
 <div class="cols">
-<div>
+<div class="fragment">
 <h3>Valor asignado (X*)</h3>
 <p>{e(c['valor_asignado'])}</p>
 <div class="caja nota"><strong>Algoritmo A</strong> reduce el peso de los
 valores extremos en vez de descartarlos. Un consenso calculado con la media
 simple se desplaza hacia los errores gruesos.</div>
 </div>
-<div>
+<div class="fragment">
 <h3>Dispersión (σ*, CV)</h3>
 <p>{e(c['dispersion'])}</p>
 <div class="caja aviso">Un CV alto <strong>no</strong> reprueba a nadie: dice
@@ -315,22 +322,22 @@ def s_metodologia_porque_clia(d):
     return slide(f"""<span class="eyebrow">3 · Metodología</span>
 <h2>Por qué CLIA y no el consenso del grupo</h2>
 <div class="cols">
-<div>
+<div class="fragment">
 <h3>Consenso (σ* del grupo)</h3>
 <p>Compara a cada laboratorio con <em>lo que hizo el resto</em>.</p>
-<div class="caja clave">Si el grupo está disperso, la ventana de aceptación se
+<div class="caja clave fragment">Si el grupo está disperso, la ventana de aceptación se
 ensancha y <strong>casi nadie reprueba</strong>. Se mide concordancia, no
 aptitud clínica.</div>
 </div>
-<div>
+<div class="fragment">
 <h3>CLIA (ETa fijo)</h3>
 <p>Compara a cada laboratorio con <em>el error máximo tolerable para decidir
 sobre un paciente</em>.</p>
-<div class="caja nota">El criterio <strong>no depende</strong> de cómo le fue
+<div class="caja nota fragment">El criterio <strong>no depende</strong> de cómo le fue
 al resto del grupo. Es el mismo cada ronda y entre proveedores.</div>
 </div>
 </div>
-<div class="caja aviso"><strong>Esta ronda se evalúa con CLIA.</strong> Es un
+<div class="caja aviso fragment"><strong>Esta ronda se evalúa con CLIA.</strong> Es un
 criterio más exigente, y por eso las cifras que veremos son más duras que las
 de un informe por consenso. El paciente no se beneficia de que su resultado
 sea parecido al de los demás laboratorios: se beneficia de que sea correcto.</div>""",
@@ -352,7 +359,7 @@ def s_metodologia_criterio(d):
 <strong>|z| = 3</strong> equivale exactamente a desviarse el Error Total
 Permitido: es el límite de CLIA §493.931.</p>
 <img class="fig ancha" src="__FIGS__/criterio.svg" alt="Escala de Z-Score">
-<table><tr><th>Clasificación</th><th>Regla</th></tr>{niveles}</table>""",
+<table class="fragment"><tr><th>Clasificación</th><th>Regla</th></tr>{niveles}</table>""",
         notas="""
 Traducirlo a lenguaje de bancada: z = 1 significa que te desviaste un tercio
 de lo que CLIA tolera. z = 3, exactamente lo que tolera. z = 6, el doble.""")
@@ -372,7 +379,7 @@ escalas distintas, un valor asignado único <strong>penaliza a los dos grupos
 a la vez</strong>.</p>
 <p style="font-size:0.78em">ISO 13528 §7 admite dar a cada plataforma su
 propio X* y su propia evaluación.</p>
-<div class="caja nota" style="font-size:0.62em">En esta ronda:
+<div class="caja nota fragment" style="font-size:0.62em">En esta ronda:
 <strong>{lista}</strong>. Un grupo con menos de 8 participantes no se evalúa
 (sale como <strong>NE</strong>): compararlo contra un método que no es el
 suyo sería incorrecto.</div>
@@ -404,11 +411,11 @@ def s_alcance(d, meta):
 </div>
 <h3>Cómo se procesó</h3>
 <ul style="font-size:0.78em">
-<li>Reporte por el <strong>portal web</strong> del programa — sin transcripción manual intermedia.</li>
-<li>Los <strong>ceros</strong> se excluyen del cálculo: ningún analizador devuelve 0,00 en un suero real, así que un 0 es un «no realizado», no una medición.</li>
-<li><strong>Auditoría de unidades</strong> sobre todos los resultados no conformes, antes de publicar.</li>
+<li class="fragment">Reporte por el <strong>portal web</strong> del programa — sin transcripción manual intermedia.</li>
+<li class="fragment">Los <strong>ceros</strong> se excluyen del cálculo: ningún analizador devuelve 0,00 en un suero real, así que un 0 es un «no realizado», no una medición.</li>
+<li class="fragment"><strong>Auditoría de unidades</strong> sobre todos los resultados no conformes, antes de publicar.</li>
 </ul>
-<div class="caja nota">Fecha de cálculo: {e(meta['fecha_larga'])}.</div>""",
+<div class="caja nota fragment">Fecha de cálculo de la ronda: {e(meta['fecha_calculo'])}.</div>""",
         notas="""
 Lo de los ceros importa y conviene explicarlo: si un 0 entrara al cálculo,
 arrastraría el valor asignado y engordaría la σ*, escondiendo desviaciones
@@ -421,21 +428,21 @@ def s_resultados_tarjeta(d):
     return slide(f"""<span class="eyebrow">4 · Resultados</span>
 <h2>Tarjeta general de la ronda</h2>
 <div class="cifras">
-<div class="cifra"><span class="n sat">{r['aceptables']}</span>
+<div class="cifra fragment"><span class="n sat">{r['aceptables']}</span>
 <span class="t">Satisfactorios<br>{pct(r['aceptables'])} %</span></div>
-<div class="cifra"><span class="n ale">{r['cuestionables']}</span>
+<div class="cifra fragment"><span class="n ale">{r['cuestionables']}</span>
 <span class="t">Alerta<br>{pct(r['cuestionables'])} %</span></div>
-<div class="cifra alerta"><span class="n">{r['inaceptables']}</span>
+<div class="cifra alerta fragment"><span class="n">{r['inaceptables']}</span>
 <span class="t">No satisfactorios<br>{pct(r['inaceptables'])} %</span></div>
-<div class="cifra"><span class="n" style="color:#5a6472">{r['sin_evaluar']}</span>
+<div class="cifra fragment"><span class="n" style="color:#5a6472">{r['sin_evaluar']}</span>
 <span class="t">Sin evaluar (NE)<br>fuera del cálculo</span></div>
 </div>
-<p style="font-size:0.72em">Los porcentajes se calculan sobre los
+<p class="fragment" style="font-size:0.72em">Los porcentajes se calculan sobre los
 <strong>{r['total']}</strong> resultados evaluados. Los
 <strong>{r['sin_evaluar']}</strong> sin evaluar quedan fuera del numerador y
 del denominador: no son un desempeño, son resultados sobre los que el
 programa decidió no pronunciarse.</p>
-<div class="caja aviso">Satisfactorio + Alerta = <strong>dentro del criterio
+<div class="caja aviso fragment">Satisfactorio + Alerta = <strong>dentro del criterio
 de aceptación</strong>. Una alerta está dentro del Error Total Permitido: es
 una advertencia, no un incumplimiento.</div>""", notas="""
 Aclarar la suma antes de que lo pregunten: 384+110+324 = 818, y los 40 NE
@@ -448,10 +455,10 @@ def s_resultados_brecha(d):
     return slide(f"""<span class="eyebrow">4 · Resultados</span>
 <h2>La cifra que importa</h2>
 <img class="fig ancha" src="__FIGS__/brecha.svg" alt="Resultados vs laboratorios">
-<div class="caja clave"><strong>{g['conformes']} de {g['laboratorios']}
+<div class="caja clave fragment"><strong>{g['conformes']} de {g['laboratorios']}
 laboratorios ({num(g['pct_conformes'])} %)</strong> completaron la ronda sin
 ninguna no conformidad. {e(g['criterio'])}</div>
-<p style="font-size:0.68em">La distancia entre las dos barras es el punto de
+<p class="fragment" style="font-size:0.68em">La distancia entre las dos barras es el punto de
 esta sesión: <strong>basta un resultado erróneo para comprometer una decisión
 clínica</strong>, sin importar cuántos otros salieron bien.</p>""",
         notas="""
@@ -465,9 +472,9 @@ def s_resultados_estratos(d):
     return slide(f"""<span class="eyebrow">4 · Resultados</span>
 <h2>Estratificación del desempeño</h2>
 <img class="fig ancha" src="__FIGS__/estratos.svg" alt="Estratos de desempeño">
-<p style="font-size:0.7em">El porcentaje global no distingue una falla
+<p class="fragment" style="font-size:0.7em">El porcentaje global no distingue una falla
 aislada de trece. El estrato sí, y de él depende qué acción corresponde.</p>
-<div class="caja nota">Los cortes de los estratos son <strong>política del
+<div class="caja nota fragment">Los cortes de los estratos son <strong>política del
 programa</strong>, declarada y versionada junto al informe — no un umbral
 improvisado por ronda.</div>""", notas="""
 Aquí conviene ser explícito: la mayoría de la red quedó en «acción
@@ -483,13 +490,13 @@ def s_hallazgo_analitos(d):
 <h2>Dónde se concentró la dificultad</h2>
 <div class="cols estrecha-izq">
 <div>
-<p style="font-size:0.74em">Los cinco analitos con menor porcentaje dentro
+<p class="fragment" style="font-size:0.74em">Los cinco analitos con menor porcentaje dentro
 del criterio fueron:</p>
-<div class="caja clave" style="font-size:0.68em">{lista}</div>
-<p style="font-size:0.68em">No son analitos exóticos: es
+<div class="caja clave fragment" style="font-size:0.68em">{lista}</div>
+<p class="fragment" style="font-size:0.68em">No son analitos exóticos: es
 <strong>química básica de alto volumen</strong>, la que más decisiones
 clínicas sostiene cada día.</p>
-<p style="font-size:0.64em"><em>El color ordena la lectura; CLIA califica
+<p class="fragment" style="font-size:0.64em"><em>El color ordena la lectura; CLIA califica
 resultados, no analitos.</em></p>
 </div>
 <div>
@@ -507,14 +514,14 @@ def s_hallazgo_metodo(d):
     return slide(f"""<span class="eyebrow">5 · Hallazgos</span>
 <h2>Efecto de método confirmado</h2>
 <ul style="font-size:0.8em">
-<li>Se confirmó una separación real entre <strong>química seca y húmeda</strong>
+<li class="fragment">Se confirmó una separación real entre <strong>química seca y húmeda</strong>
 en {e(", ".join(pares))}.</li>
-<li>Evaluarlos agrupados producía un <strong>falso negativo</strong>: una σ*
+<li class="fragment">Evaluarlos agrupados producía un <strong>falso negativo</strong>: una σ*
 inflada en la que prácticamente nadie reprobaba.</li>
-<li>Al separar por grupo de pares, el <strong>CV interno bajó a ~10 %</strong>
+<li class="fragment">Al separar por grupo de pares, el <strong>CV interno bajó a ~10 %</strong>
 y aparecieron las no conformidades reales.</li>
 </ul>
-<div class="caja aviso"><strong>Un «todo aceptable» puede ser una mala
+<div class="caja aviso fragment"><strong>Un «todo aceptable» puede ser una mala
 noticia.</strong> Cuando el grupo está disperso, la ventana de aceptación se
 ensancha sola. Por eso el programa vigila la bimodalidad en cada ronda en
 lugar de confiar en el porcentaje de aprobados.</div>""", notas="""
@@ -531,17 +538,17 @@ def s_hallazgo_no_evaluado(d, cfg):
     return slide(f"""<span class="eyebrow">5 · Hallazgos</span>
 <h2>Un analito se publicó sin calificación</h2>
 <h3>{e(a['nombre'])}</h3>
-<div class="caja nota" style="font-size:0.68em">{nota}</div>
+<div class="caja nota fragment" style="font-size:0.68em">{nota}</div>
 <ul style="font-size:0.74em">
-<li>Sale <strong>sin valor asignado</strong> y con todos los resultados en
+<li class="fragment">Sale <strong>sin valor asignado</strong> y con todos los resultados en
 <strong>NE</strong>: publicar un X* mientras se declara que no hay consenso
 defendible sería contradictorio.</li>
-<li><strong>No altera el desempeño global</strong> de nadie — solo desaparecen
+<li class="fragment"><strong>No altera el desempeño global</strong> de nadie — solo desaparecen
 calificaciones que la estadística de la ronda no podía sostener.</li>
-<li>La causa está en la <strong>dispersión de los resultados entre
+<li class="fragment">La causa está en la <strong>dispersión de los resultados entre
 laboratorios</strong>; no se atribuye al material de ensayo.</li>
 </ul>
-<div class="caja aviso">Preferimos no calificar antes que calificar sobre una
+<div class="caja aviso fragment">Preferimos no calificar antes que calificar sobre una
 base indefendible. Es una decisión declarada, no un dato faltante.</div>""",
         notas="""
 Este punto genera confianza si se explica bien: el programa está dispuesto a
@@ -552,12 +559,12 @@ para todo es un proveedor al que hay que revisarle los números.""")
 def s_hallazgo_unidades(d):
     return slide("""<span class="eyebrow">5 · Hallazgos</span>
 <h2>Ninguna no conformidad se explicó por unidad de reporte</h2>
-<p style="font-size:0.8em">Antes de publicar, cada resultado no conforme se
+<p class="fragment" style="font-size:0.8em">Antes de publicar, cada resultado no conforme se
 audita contra las conversiones reales de química clínica
 (mmol/L ↔ mg/dL, µmol/L ↔ mg/dL, g/L ↔ g/dL, escalas ×10, ×100, ×1000).</p>
-<div class="caja nota"><strong>Resultado: 0 casos atribuibles a unidad.</strong>
+<div class="caja nota fragment"><strong>Resultado: 0 casos atribuibles a unidad.</strong>
 Las desviaciones observadas son analíticas.</div>
-<p style="font-size:0.74em">La comprobación se corre <strong>siempre</strong>:
+<p class="fragment" style="font-size:0.74em">La comprobación se corre <strong>siempre</strong>:
 reportar como no conforme a un laboratorio que en realidad reportó en otra
 unidad sería injusto, y el porcentaje global no lo delataría.</p>""",
         notas="""
@@ -584,16 +591,16 @@ def s_como_leer(d):
     return slide("""<span class="eyebrow">6 · Recomendaciones</span>
 <h2>Cómo leer su propio informe</h2>
 <ol style="font-size:0.82em">
-<li>Localice <strong>su identificador</strong> en el mapa consolidado.</li>
-<li>Mire el <strong>signo</strong> de sus Z-Score, no solo el valor.</li>
-<li>Varios z del <strong>mismo signo</strong> → sesgo sistemático:
+<li class="fragment">Localice <strong>su identificador</strong> en el mapa consolidado.</li>
+<li class="fragment">Mire el <strong>signo</strong> de sus Z-Score, no solo el valor.</li>
+<li class="fragment">Varios z del <strong>mismo signo</strong> → sesgo sistemático:
 revise <strong>calibración y trazabilidad</strong>.</li>
-<li>z <strong>dispersos en ambos signos</strong> → imprecisión:
+<li class="fragment">z <strong>dispersos en ambos signos</strong> → imprecisión:
 revise <strong>mantenimiento, reactivos y operador</strong>.</li>
-<li>Un solo z extremo aislado → revise <strong>transcripción</strong> y el
+<li class="fragment">Un solo z extremo aislado → revise <strong>transcripción</strong> y el
 manejo de la muestra.</li>
 </ol>
-<div class="caja aviso">Es la diferencia entre recalibrar y cambiar un
+<div class="caja aviso fragment">Es la diferencia entre recalibrar y cambiar un
 procedimiento. <strong>El signo lo dice.</strong> Dos laboratorios con el
 mismo porcentaje de conformidad pueden necesitar acciones opuestas.</div>""",
         notas="""
@@ -628,21 +635,21 @@ def s_recomendaciones(d):
 <h2>Qué hacer, según su estrato</h2>
 <table>
 <tr><th>Estrato</th><th class="num">Lab.</th><th>Acción</th></tr>
-<tr><td class="nosat">Acción correctiva<br><em>≥3 no conformes</em></td>
+<tr class="fragment"><td class="nosat">Acción correctiva<br><em>≥3 no conformes</em></td>
 <td class="num">{cor.get('laboratorios', 0)}</td>
 <td>Abrir <strong>no conformidad formal</strong>, investigar causa raíz por
 analito (calibración, control interno, mantenimiento, conservación del
 material, transcripción) y documentar la verificación de eficacia.</td></tr>
-<tr><td class="ale">Requiere atención<br><em>1–2 no conformes</em></td>
+<tr class="fragment"><td class="ale">Requiere atención<br><em>1–2 no conformes</em></td>
 <td class="num">{at.get('laboratorios', 0)}</td>
 <td>Revisar los analitos señalados y verificar <strong>calibración y control
 interno</strong> de esos ensayos concretos.</td></tr>
-<tr><td class="sat">Satisfactorio<br><em>ninguno</em></td>
+<tr class="fragment"><td class="sat">Satisfactorio<br><em>ninguno</em></td>
 <td class="num">{estr.get('satisfactorio', {}).get('laboratorios', 0)}</td>
 <td>Mantener el desempeño y conservar el informe como
 <strong>evidencia objetiva</strong> de evaluación externa.</td></tr>
 </table>
-<div class="caja nota" style="font-size:0.66em"><strong>Para todos:</strong>
+<div class="caja nota fragment" style="font-size:0.66em"><strong>Para todos:</strong>
 conservar este informe como evidencia de evaluación externa de la calidad
 para los procesos de habilitación y acreditación.</div>""", notas="""
 Ofrecer acompañamiento: quien no sepa cómo documentar una no conformidad
@@ -657,22 +664,22 @@ def s_conclusiones(d):
     return slide(f"""<span class="eyebrow">7 · Conclusiones</span>
 <h2>Conclusiones de la ronda</h2>
 <ol style="font-size:0.72em">
-<li>Evaluados contra el criterio de <strong>aptitud clínica de CLIA</strong>,
+<li class="fragment">Evaluados contra el criterio de <strong>aptitud clínica de CLIA</strong>,
 los resultados muestran un <strong>margen amplio de mejora</strong>:
 {pct_sat} % de resultados satisfactorios, pero solo
 <strong>{g['conformes']} de {g['laboratorios']}</strong> laboratorios sin
 ninguna no conformidad.</li>
-<li>El hallazgo <strong>alcanza a la mayoría de la red</strong>, con un
+<li class="fragment">El hallazgo <strong>alcanza a la mayoría de la red</strong>, con un
 subconjunto de laboratorios que concentra una parte desproporcionada de las
 no conformidades. La mejora requiere acción del conjunto, no solo de unos
 pocos.</li>
-<li>Se confirmó un <strong>efecto de método</strong> entre plataformas; la
+<li class="fragment">Se confirmó un <strong>efecto de método</strong> entre plataformas; la
 evaluación por grupo de pares corrigió un falso negativo.</li>
-<li>Un analito se publicó <strong>sin calificación</strong> por dispersión
+<li class="fragment">Un analito se publicó <strong>sin calificación</strong> por dispersión
 entre laboratorios; no alteró el desempeño global.</li>
-<li><strong>Ninguna</strong> no conformidad se explicó por error de unidad.</li>
+<li class="fragment"><strong>Ninguna</strong> no conformidad se explicó por error de unidad.</li>
 </ol>
-<div class="caja aviso" style="font-size:0.68em">Esta es la
+<div class="caja aviso fragment" style="font-size:0.68em">Esta es la
 <strong>primera ronda evaluada contra CLIA</strong>. Funciona como línea
 base del programa: la referencia para medir la mejora en las próximas.</div>""",
         notas="""
@@ -782,6 +789,9 @@ PLANTILLA = """<!DOCTYPE html>
         // vídeo comprimido convierte cualquier animación en un borrón.
         transition: 'fade',
         transitionSpeed: 'fast',
+        // El paso a paso queda en la URL: si el navegador se recarga a mitad
+        // de la sesión, se vuelve al punto exacto y no al inicio.
+        fragmentInURL: true,
         plugins: [RevealNotes, RevealZoom]
     }});
 </script>
@@ -822,6 +832,9 @@ def main():
     ap.add_argument("--codigo")
     ap.add_argument("--area", default="quimica")
     ap.add_argument("--solo-figuras", action="store_true")
+    ap.add_argument("--fecha", metavar="AAAA-MM-DD",
+                    help="fecha de la sesión que va en la portada "
+                         "(por defecto: hoy)")
     ap.add_argument("--pdf", action="store_true",
                     help="además del HTML, exporta la versión estática en PDF")
     args = ap.parse_args()
@@ -839,7 +852,15 @@ def main():
     y, m, day = (int(x) for x in d["fecha"].split("-"))
     meta = {
         "area_nombre": AREAS.get(args.area, args.area.title()),
-        "fecha_larga": f"{day} de {MESES[m - 1]} de {y}",
+        # Dos fechas distintas, y no da igual cuál va dónde:
+        #   · fecha_calculo — cuándo se calculó la ronda. Sale del JSON, está
+        #     congelada en config.json y es la que aparece en el informe.
+        #   · fecha_sesion  — cuándo se presenta. Por defecto hoy; con
+        #     --fecha se fija la del día de la reunión si se prepara antes.
+        # Poner la fecha de cálculo en la portada dataría la sesión diez días
+        # antes de celebrarse.
+        "fecha_calculo": f"{day} de {MESES[m - 1]} de {y}",
+        "fecha_sesion": fecha_larga(args.fecha or date.today().isoformat()),
     }
 
     figs = SALIDA_DIR / f"figs-{codigo}"

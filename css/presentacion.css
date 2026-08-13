@@ -236,6 +236,26 @@
 .cols > * { flex: 1; min-width: 0; }
 .cols.estrecha-izq > *:first-child { flex: 0 0 38%; }
 
+/* ── Aparición por pasos (fragments) ───────────────────────────────────── */
+
+/* El contenido de una diapositiva se revela por partes para que el público
+   escuche un punto antes de leer el siguiente. El desplazamiento es de 8 px
+   y la transición de 0,35 s a propósito: la sesión es por videollamada y una
+   animación amplia se convierte en un borrón al comprimirse el vídeo. */
+.reveal .fragment {
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.reveal .fragment:not(.visible) {
+    transform: translateY(8px);
+}
+
+/* Las cifras y las filas de tabla no se desplazan: al ir en una rejilla o en
+   un <tr>, moverlas descuadra la fila entera mientras dura la transición. */
+.reveal .cifra.fragment:not(.visible),
+.reveal tr.fragment:not(.visible) {
+    transform: none;
+}
+
 /* ── Barra de pie ───────────────────────────────────────────────────────── */
 
 .reveal .pie-marca {
@@ -324,6 +344,13 @@
     .reveal .fig.alta { max-height: 430px; }
     .cols .fig { max-height: 400px; }
     .reveal aside.notes { display: none !important; }
+    /* En papel no hay clics: todo lo que se revela por pasos tiene que
+       aparecer. Sin esto el PDF sale con las diapositivas medio vacías. */
+    .reveal .fragment {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+    }
     /* Reveal mide el alto de cada sección para repartir las páginas. Con el
        `height: 100%` que usan en pantalla mide cero y mete las 30
        diapositivas en una sola hoja. */
