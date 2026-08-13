@@ -93,3 +93,9 @@ support/pdf_*/
 # SÍ se publica. Solo lleva identificadores públicos L-NNN, sin nombres de
 # laboratorio ni marcas de equipo.
 !publicaciones/informes/*-informe.pdf
+
+# Operaciones de mantenimiento de laboratorios: lleva cod_interno junto a
+# nombres y correos reales, y desde EA-001-2026 el cod_interno ES el
+# identificador público de los informes (L-087...). Cruzarlos de-anonimizaría
+# el desempeño de un laboratorio. La plantilla (.ejemplo.json) sí se versiona.
+support/operaciones_labs.json

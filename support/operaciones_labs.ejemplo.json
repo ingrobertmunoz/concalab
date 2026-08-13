@@ -1,0 +1,46 @@
+{
+  "_comentario": "PLANTILLA de operaciones para scripts/actualizar_labs_firebase.py. Copiar a support/operaciones_labs.json (ignorado por git) y editar allí. Los datos reales NUNCA van en este archivo ni en el .py: el repo es público y el cod_interno es el identificador que se publica en los informes (L-087, L-090...), de modo que asociarlo a un nombre o un correo de-anonimizaría al laboratorio.",
+  "_acciones": "crear | cambiar_correo | cambiar_datos | cambiar_password | desactivar",
+  "_nota_campo": "El campo opcional 'nota' es para tu registro interno; solo existe en el archivo local.",
+
+  "operaciones": [
+    {
+      "accion": "crear",
+      "cod_interno": 147,
+      "cod_anonimo": "XX9",
+      "nombre": "Laboratorio Clínico Ejemplo",
+      "representante": "Nombre del contacto",
+      "telefono": "809-000-0000",
+      "correo": "ejemplo@correo.com",
+      "password": "ABCD1234",
+      "activo": true,
+      "nota": "cod_anonimo debe ser único: 2 letras + 1 dígito. La contraseña se envía al lab por correo."
+    },
+    {
+      "accion": "cambiar_correo",
+      "cod_interno": 144,
+      "correo_nuevo": "nuevo@correo.com"
+    },
+    {
+      "accion": "cambiar_datos",
+      "cod_interno": 144,
+      "campos": {
+        "nombre": "Nombre corregido",
+        "representante": "Nuevo representante",
+        "telefono": "809-111-2222"
+      },
+      "nota": "Solo incluir los campos que cambian; el resto no se toca."
+    },
+    {
+      "accion": "cambiar_password",
+      "cod_interno": 144,
+      "password_nuevo": "NUEVA1234"
+    },
+    {
+      "accion": "desactivar",
+      "cod_interno": 144,
+      "activo": false,
+      "nota": "false bloquea el login; true reactiva."
+    }
+  ]
+}

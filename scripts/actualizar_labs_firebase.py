@@ -2,8 +2,8 @@
 Actualización puntual de laboratorios en Firebase (Auth + Firestore).
 
 A diferencia de `importar_labs_firebase.py` (que recorre TODO el Excel y usa
-.set() sobre cada doc), este script solo toca los laboratorios definidos en
-OPERACIONES, sin alterar el resto. Maneja dos casos:
+.set() sobre cada doc), este script solo toca los laboratorios listados en el
+archivo de operaciones, sin alterar el resto. Maneja estos casos:
 
   - "crear"            → nuevo lab: create_user en Auth + doc en Firestore.
   - "cambiar_correo"   → lab existente: localiza el usuario por cod_interno en
@@ -19,65 +19,67 @@ Requisitos:
   conda activate concalab
   pip install firebase-admin
 
+Las operaciones NO viven en este archivo: se leen de un JSON local
+(support/operaciones_labs.json, ignorado por git). Ver `cargar_operaciones`.
+
 Uso:
   python scripts/actualizar_labs_firebase.py --dry-run   # simula, no escribe
   python scripts/actualizar_labs_firebase.py             # escribe en Firebase
+  python scripts/actualizar_labs_firebase.py --operaciones otra/ruta.json
 """
 
 import sys
 import os
+import json
 import argparse
 import firebase_admin
 from firebase_admin import credentials, auth, firestore
 
 CREDS_PATH = "support/concalab-uasd-64ff4-firebase-adminsdk-fbsvc-c400cdf10b.json"
+OPERACIONES_PATH = "support/operaciones_labs.json"
+PLANTILLA_PATH = "support/operaciones_labs.ejemplo.json"
 
-# ── Operaciones a ejecutar ────────────────────────────────────────────────────
-# Editar esta lista para cada ronda de cambios.
 
-OPERACIONES = [
-    # ── Ejemplos de cada acción (descomenta y edita lo que necesites) ──────────
+def cargar_operaciones(ruta):
+    """Lee las operaciones de un JSON local, nunca del código.
 
-    # {
-    #     "accion": "crear",
-    #     "cod_interno": 147,
-    #     "cod_anonimo": "XX9",          # 2 letras + 1 dígito, ÚNICO (no repetir)
-    #     "nombre": "Laboratorio Clínico Ejemplo",
-    #     "representante": "Nombre del contacto",
-    #     "telefono": "809-000-0000",
-    #     "correo": "ejemplo@correo.com",
-    #     "password": "ABCD1234",        # mín. 6 caracteres; enviar al lab por correo
-    #     "activo": True,
-    # },
+    Antes eran una constante `OPERACIONES` dentro de este archivo, y eso era
+    incompatible con que el repositorio sea público: una operación real lleva
+    el `cod_interno` del laboratorio junto a su nombre y su correo, y desde
+    EA-001-2026 el `cod_interno` ES el identificador que se publica en los
+    informes (L-087, L-090...). Commitear el script con datos dentro habría
+    permitido cruzar `L-087` con el nombre del laboratorio y de-anonimizar su
+    desempeño — justamente el supuesto que `identificador_publico` da por
+    cierto en data/config.json.
 
-    # {
-    #     "accion": "cambiar_correo",
-    #     "cod_interno": 144,
-    #     "correo_nuevo": "nuevo@correo.com",
-    # },
+    Con el dato fuera del código, el registro de qué se cambió y cuándo se
+    conserva (el JSON es un archivo de trabajo, no algo que haya que borrar
+    después de correr el script), pero vive donde ya viven el Excel maestro y
+    la clave de servicio: en support/, fuera del repositorio.
+    """
+    if not os.path.exists(ruta):
+        print(f"\n  No existe {ruta} — no hay operaciones que aplicar.")
+        print(f"  Para crearlo, copia la plantilla y edítala:")
+        print(f"      cp {PLANTILLA_PATH} {ruta}\n")
+        return []
 
-    # {
-    #     "accion": "cambiar_datos",     # solo incluye los campos a cambiar
-    #     "cod_interno": 144,
-    #     "campos": {
-    #         "nombre": "Nombre corregido",
-    #         "representante": "Nuevo representante",
-    #         "telefono": "809-111-2222",
-    #     },
-    # },
+    with open(ruta, encoding="utf-8") as f:
+        datos = json.load(f)
 
-    # {
-    #     "accion": "cambiar_password",
-    #     "cod_interno": 144,
-    #     "password_nuevo": "NUEVA1234",  # enviar al lab por correo
-    # },
+    # Se admite tanto una lista suelta como el objeto con metadatos de la
+    # plantilla; las claves que empiezan por '_' son documentación.
+    ops = datos.get("operaciones", []) if isinstance(datos, dict) else datos
 
-    # {
-    #     "accion": "desactivar",
-    #     "cod_interno": 144,
-    #     "activo": False,                # False = bloquea login; True = reactiva
-    # },
-]
+    validas = {"crear", "cambiar_correo", "cambiar_datos", "cambiar_password",
+               "desactivar"}
+    for i, op in enumerate(ops, 1):
+        if op.get("accion") not in validas:
+            sys.exit(f"\n  ERROR en {ruta}, operación {i}: acción "
+                     f"{op.get('accion')!r} no reconocida.\n"
+                     f"  Válidas: {', '.join(sorted(validas))}\n")
+        if "cod_interno" not in op:
+            sys.exit(f"\n  ERROR en {ruta}, operación {i}: falta 'cod_interno'.\n")
+    return ops
 
 
 def inicializar(dry_run):
@@ -249,14 +251,19 @@ def desactivar(auth_c, db, op, dry_run):
         return False
 
 
-def main(dry_run):
+def main(dry_run, ruta_ops):
     print("=" * 60)
     print(f"  CONCALAB — Actualización puntual de labs {'(DRY-RUN)' if dry_run else ''}")
     print("=" * 60)
 
+    operaciones = cargar_operaciones(ruta_ops)
+    if not operaciones:
+        return
+    print(f"  Operaciones leídas de {ruta_ops}: {len(operaciones)}")
+
     auth_c, db = inicializar(dry_run)
     ok = 0
-    for op in OPERACIONES:
+    for op in operaciones:
         if op["accion"] == "crear":
             ok += crear(auth_c, db, op, dry_run)
         elif op["accion"] == "cambiar_correo":
@@ -271,7 +278,7 @@ def main(dry_run):
             print(f"\n  ✗ Acción desconocida: {op['accion']}")
 
     print("\n" + "=" * 60)
-    print(f"  Operaciones exitosas: {ok}/{len(OPERACIONES)}")
+    print(f"  Operaciones exitosas: {ok}/{len(operaciones)}")
     print("=" * 60)
     if not dry_run and ok:
         print("\n  Recuerda enviar las contraseñas a los labs nuevos por correo.")
@@ -280,10 +287,12 @@ def main(dry_run):
 if __name__ == "__main__":
     p = argparse.ArgumentParser(description="Actualización puntual de labs CONCALAB en Firebase")
     p.add_argument("--dry-run", action="store_true", help="Simula sin escribir en Firebase")
+    p.add_argument("--operaciones", default=OPERACIONES_PATH,
+                   help=f"JSON con las operaciones (por defecto: {OPERACIONES_PATH})")
     args = p.parse_args()
 
     if not args.dry_run and not os.path.exists(CREDS_PATH):
         print(f"\n  ERROR: no se encontró la clave de servicio: {CREDS_PATH}\n")
         sys.exit(1)
 
-    main(dry_run=args.dry_run)
+    main(dry_run=args.dry_run, ruta_ops=args.operaciones)
