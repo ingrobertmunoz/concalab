@@ -1,0 +1,331 @@
+/* ==========================================================================
+   Presentación de resultados de ronda — tema CONCALAB-UASD sobre reveal.js
+   --------------------------------------------------------------------------
+   No se usa ningún tema de los que trae reveal (black, white, league...):
+   todos imponen su propia tipografía y su propia paleta, y la presentación
+   se proyecta junto al sitio y al informe. Aquí se reusan los mismos tokens
+   de css/main.css para que las tres cosas se lean como el mismo programa.
+
+   Las variables se redeclaran en vez de importar main.css: ese archivo trae
+   el layout del sitio (nav, grids, tarjetas) que no tiene sentido en una
+   diapositiva y que pelearía con el posicionamiento de reveal.
+   ========================================================================== */
+
+:root {
+    --azul: #003f87;
+    --azul-claro: #1a5aa8;
+    --oro: #fdb913;
+    --verde: #28a745;
+    --ambar: #ffc107;
+    --rojo: #dc3545;
+    --gris: #5a6472;
+    --gris-claro: #eef1f5;
+    --tinta: #1c2430;
+}
+
+/* ── Base ───────────────────────────────────────────────────────────────── */
+
+.reveal {
+    font-family: 'IBM Plex Sans', -apple-system, 'Segoe UI', system-ui, sans-serif;
+    font-size: 30px;
+    color: var(--tinta);
+}
+
+.reveal-viewport { background: #fff; }
+
+.reveal h1, .reveal h2, .reveal h3 {
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    font-weight: 700;
+    color: var(--azul);
+    text-transform: none;
+    letter-spacing: normal;
+    margin: 0 0 0.5em 0;
+    line-height: 1.15;
+}
+
+.reveal h2 { font-size: 1.45em; }
+.reveal h3 { font-size: 1.05em; }
+
+/* Las diapositivas se anclan arriba: centradas verticalmente, el título
+   salta de posición entre una y otra y la vista se vuelve inquieta. */
+.reveal .slides section {
+    text-align: left;
+    height: 100%;
+    /* Sin border-box, el padding se suma al 100% de alto y la sección
+       sobresale: el pie de marca, anclado abajo, cae fuera de la vista. */
+    box-sizing: border-box;
+    /* El padding inferior reserva la banda del pie de marca, que va en
+       position:absolute y si no se reserva queda encima del contenido. */
+    padding: 1.2em 0 52px 0;
+}
+
+.reveal p, .reveal li { line-height: 1.45; }
+.reveal ul { margin-left: 1em; }
+.reveal li { margin-bottom: 0.45em; }
+.reveal li::marker { color: var(--oro); }
+.reveal strong { color: var(--azul); }
+.reveal em { color: var(--gris); }
+
+.reveal a { color: var(--azul-claro); }
+
+/* Etiqueta dorada sobre el título — el 'section-eyebrow' del sitio. */
+.eyebrow {
+    font-size: 0.5em;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--oro);
+    font-weight: 600;
+    margin-bottom: 0.5em;
+    display: block;
+}
+
+/* ── Portada y separadores de sección ───────────────────────────────────── */
+
+.reveal section.portada,
+.reveal section.divisor {
+    background: linear-gradient(135deg, #002a5c 0%, var(--azul) 55%, #0b4f9e 100%);
+    color: #fff;
+    text-align: center;
+    padding: 0;
+    /* Portada y divisores SÍ se centran vertical: no tienen que alinearse
+       con nada de la diapositiva siguiente, y anclados arriba dejarían el
+       bloque azul medio vacío. Las de contenido siguen ancladas arriba
+       para que el título no salte entre una y otra. */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reveal section.portada h1,
+.reveal section.portada h2,
+.reveal section.divisor h2,
+.reveal section.portada p,
+.reveal section.divisor p { color: #fff; }
+
+.reveal section.portada .eyebrow,
+.reveal section.divisor .eyebrow { color: var(--oro); }
+
+.portada-inner { padding: 1.4em 2em; }
+.portada h1 { font-size: 1.7em; margin-bottom: 0.2em; }
+.portada .subtitulo { font-size: 0.78em; opacity: 0.92; }
+.portada .meta {
+    font-size: 0.52em;
+    opacity: 0.85;
+    margin-top: 1.6em;
+    line-height: 1.7;
+}
+.portada .logos {
+    display: flex;
+    gap: 2.4em;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.1em;
+}
+.portada .logos img { height: 130px; width: auto; }
+
+.divisor .num {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.6em;
+    color: var(--oro);
+    line-height: 1;
+}
+.divisor h2 { font-size: 1.5em; margin-top: 0.15em; }
+
+/* ── Cifras destacadas ──────────────────────────────────────────────────── */
+
+.cifras {
+    display: flex;
+    gap: 0.7em;
+    margin: 0.4em 0 0.6em 0;
+}
+.cifra {
+    flex: 1;
+    background: var(--gris-claro);
+    border-left: 5px solid var(--azul);
+    border-radius: 8px;
+    padding: 0.6em 0.7em;
+}
+.cifra .n {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.55em;
+    font-weight: 700;
+    color: var(--azul);
+    line-height: 1;
+}
+.cifra .t {
+    font-size: 0.46em;
+    color: var(--gris);
+    line-height: 1.35;
+    margin-top: 0.5em;
+    display: block;
+}
+.cifra.alerta { border-left-color: var(--rojo); }
+.cifra.alerta .n { color: var(--rojo); }
+.cifra.oro { border-left-color: var(--oro); }
+
+/* ── Cajas de énfasis ───────────────────────────────────────────────────── */
+
+.caja {
+    border-radius: 8px;
+    padding: 0.65em 0.85em;
+    font-size: 0.72em;
+    line-height: 1.5;
+    margin: 0.5em 0;
+}
+.caja.nota { background: #eaf1fa; border-left: 5px solid var(--azul); }
+.caja.aviso { background: #fff6e0; border-left: 5px solid var(--oro); }
+.caja.clave { background: #fdeaec; border-left: 5px solid var(--rojo); }
+
+/* ── Tablas ─────────────────────────────────────────────────────────────── */
+
+.reveal table {
+    font-size: 0.6em;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0.3em 0;
+}
+.reveal table th {
+    background: var(--azul);
+    color: #fff;
+    font-weight: 600;
+    text-align: left;
+    padding: 0.4em 0.6em;
+    border: none;
+}
+.reveal table td {
+    padding: 0.32em 0.6em;
+    border-bottom: 1px solid #e3e8ef;
+}
+.reveal table tr:last-child td { border-bottom: none; }
+.reveal table td.num, .reveal table th.num { text-align: right; }
+
+.sat { color: var(--verde); font-weight: 600; }
+.ale { color: #b8860b; font-weight: 600; }
+.nosat { color: var(--rojo); font-weight: 600; }
+
+/* ── Figuras ────────────────────────────────────────────────────────────── */
+
+/* Los topes de altura son ajustados a propósito. Una diapositiva casi
+   siempre lleva figura MÁS texto de contexto, y una figura que se queda con
+   la altura disponible empuja ese texto por debajo del pie: en pantalla
+   compartida el participante nunca ve que se cortó. */
+.reveal .fig {
+    display: block;
+    margin: 0.3em auto;
+    max-height: 44vh;
+    max-width: 100%;
+    width: auto;
+}
+.reveal .fig.ancha { max-height: 46vh; width: 100%; object-fit: contain; }
+/* Dentro de una columna la figura ocupa el ancho disponible: con el tamaño
+   intrínseco del SVG quedaba pequeña y media diapositiva en blanco. */
+.cols .fig { width: 100%; max-height: 52vh; }
+/* Para las diapositivas donde la gráfica ES el contenido y no lleva texto
+   debajo: sin esto queda a media altura y las 26 barras no se leen. */
+.reveal .fig.alta { max-height: 66vh; width: 100%; object-fit: contain; }
+.pie {
+    font-size: 0.45em;
+    color: var(--gris);
+    text-align: center;
+    margin-top: 0.2em;
+}
+
+/* ── Dos columnas ───────────────────────────────────────────────────────── */
+
+.cols { display: flex; gap: 1.2em; align-items: flex-start; }
+.cols > * { flex: 1; min-width: 0; }
+.cols.estrecha-izq > *:first-child { flex: 0 0 38%; }
+
+/* ── Barra de pie ───────────────────────────────────────────────────────── */
+
+.reveal .pie-marca {
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    right: 0;
+    font-size: 13px;
+    color: #9aa3b2;
+    border-top: 2px solid var(--oro);
+    padding-top: 6px;
+    display: flex;
+    justify-content: space-between;
+}
+.reveal section.portada .pie-marca,
+.reveal section.divisor .pie-marca { display: none; }
+
+.reveal .progress { color: var(--oro); }
+.reveal .controls { color: var(--azul); }
+
+/* ── Impresión a PDF (?print-pdf) ───────────────────────────────────────── */
+
+/* ── Exportación a PDF (?print-pdf) ─────────────────────────────────────── */
+
+/* No se usa el modo `?print-pdf` de reveal: en la versión 6.0.1 mete las 30
+   diapositivas en una sola página. La paginación se hace aquí.
+
+   El `<html class="print-pdf">` de la plantilla no activa ese modo (reveal
+   lo decide por la query string, no por la clase): sirve para desactivar su
+   hoja de «handout», que en @media print aplanaría todo a 20 pt en blanco y
+   negro y convertiría la presentación en un documento de texto corrido. */
+@page {
+    size: 1280px 720px;
+    margin: 0;
+}
+
+@media print {
+    html, body { margin: 0 !important; padding: 0 !important; }
+    .reveal-viewport, .reveal { height: auto !important; overflow: visible !important; }
+    .reveal .slides {
+        position: static !important;
+        width: 1280px !important;
+        height: auto !important;
+        left: 0 !important; top: 0 !important;
+        transform: none !important;
+        display: block !important;
+    }
+    .reveal .slides section {
+        display: block !important;
+        position: relative !important;
+        width: 1280px !important;
+        /* 719 y no 720: a tamaño exacto de página, un redondeo subpíxel
+           empuja cada diapositiva a una segunda hoja en blanco. */
+        height: 719px !important;
+        left: 0 !important; top: 0 !important;
+        margin: 0 !important;
+        /* En pantalla el margen lo pone reveal al escalar el lienzo; con el
+           lienzo fijo del papel hay que declararlo, o el texto queda pegado
+           al borde de la hoja. */
+        padding: 38px 62px 46px !important;
+        box-sizing: border-box !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        overflow: hidden !important;
+        /* El salto va en :not(:last-child): puesto en todas, la última abre
+           una hoja más que queda en blanco. */
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    .reveal .slides section:not(:last-child) {
+        page-break-after: always;
+        break-after: page;
+    }
+    /* Todo lo que reveal añade fuera de las diapositivas (fondos,
+       controles, barra de progreso, capas de los plugins) sobra en papel y
+       además arrastraba una página en blanco al final. */
+    .reveal > *:not(.slides) { display: none !important; }
+    .reveal .slides > *:not(section) { display: none !important; }
+    /* Sin esto, el navegador puede decidir no imprimir fondos y la portada
+       y los divisores salen en blanco, sin el azul institucional. */
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    /* En papel no hay scroll: las unidades de viewport se resuelven contra
+       la caja de página y una figura al 66 % empuja el pie fuera. */
+    .reveal .fig { max-height: 380px; }
+    .reveal .fig.alta { max-height: 430px; }
+    .cols .fig { max-height: 400px; }
+    .reveal aside.notes { display: none !important; }
+    /* Reveal mide el alto de cada sección para repartir las páginas. Con el
+       `height: 100%` que usan en pantalla mide cero y mete las 30
+       diapositivas en una sola hoja. */
+    .reveal .slides section { height: 720px !important; }
+}

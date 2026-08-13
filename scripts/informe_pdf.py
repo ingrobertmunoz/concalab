@@ -159,6 +159,15 @@ def slug(nombre):
 
 # ── Figuras ───────────────────────────────────────────────────────────────
 
+def _fmt(destino):
+    """El formato sale de la extensión, no fijo en 'pdf'.
+
+    Estas mismas figuras las reusa scripts/presentacion.py en SVG: son las
+    cifras del informe y redibujarlas con otro código las dejaría fuera de lo
+    que audita validar_informe.py."""
+    return os.path.splitext(destino)[1].lstrip(".") or "pdf"
+
+
 def fig_histograma(a, destino):
     """Distribución de resultados. Réplica del histograma de la web:
     rango acotado a |z| ≤ 5 sobre σ*, banda de aceptación X* ± ETa, y los
@@ -235,7 +244,7 @@ def fig_histograma(a, destino):
     for lado in ("top", "right"):
         ax.spines[lado].set_visible(False)
     fig.tight_layout()
-    fig.savefig(destino, format="pdf", bbox_inches="tight")
+    fig.savefig(destino, format=_fmt(destino), bbox_inches="tight")
     plt.close(fig)
 
 
@@ -292,7 +301,7 @@ def fig_zscore(a, destino):
         ax.set_title(" · ".join(notas), fontsize=6, color="#6c757d", loc="left",
                      pad=3)
     fig.tight_layout()
-    fig.savefig(destino, format="pdf", bbox_inches="tight")
+    fig.savefig(destino, format=_fmt(destino), bbox_inches="tight")
     plt.close(fig)
 
 
@@ -321,7 +330,7 @@ def fig_no_evaluado(a, destino_hist, destino_barras):
     for lado in ("top", "right"):
         ax.spines[lado].set_visible(False)
     fig.tight_layout()
-    fig.savefig(destino_hist, format="pdf", bbox_inches="tight")
+    fig.savefig(destino_hist, format=_fmt(destino_hist), bbox_inches="tight")
     plt.close(fig)
 
     # Las barras no son opcionales: sustituyen al gráfico de Z-Score y son lo
@@ -343,7 +352,7 @@ def fig_no_evaluado(a, destino_hist, destino_barras):
     ax.set_title("Resultados ordenados de menor a mayor — sin clasificación "
                  "de desempeño", fontsize=6, color="#6c757d", loc="left", pad=3)
     fig.tight_layout()
-    fig.savefig(destino_barras, format="pdf", bbox_inches="tight")
+    fig.savefig(destino_barras, format=_fmt(destino_barras), bbox_inches="tight")
     plt.close(fig)
 
 
@@ -369,7 +378,7 @@ def fig_estratos(d, destino):
     for lado in ("top", "right", "left"):
         ax.spines[lado].set_visible(False)
     fig.tight_layout()
-    fig.savefig(destino, format="pdf", bbox_inches="tight")
+    fig.savefig(destino, format=_fmt(destino), bbox_inches="tight")
     plt.close(fig)
 
 
@@ -417,7 +426,7 @@ def fig_heatmap(d, destino):
     ], loc="upper center", bbox_to_anchor=(0.5, -0.10), ncol=4, fontsize=7,
         frameon=False)
     fig.tight_layout()
-    fig.savefig(destino, format="pdf", bbox_inches="tight")
+    fig.savefig(destino, format=_fmt(destino), bbox_inches="tight")
     plt.close(fig)
 
 
@@ -916,13 +925,15 @@ otros salieron bien.
 \end{{center}}
 
 \begin{{aviso}}
-\textbf{{Las no conformidades no están repartidas de manera uniforme.}}
+\textbf{{Las no conformidades no están repartidas de manera uniforme, pero
+tampoco se limitan a unos pocos laboratorios.}}
 {conc['laboratorios']} laboratorios concentran {conc['no_conformes']} de los
 {conc['no_conformes_total']} resultados no satisfactorios de la ronda
-({str(conc['pct']).replace('.', ',')}\%). Leer el porcentaje global sin este dato
-sugeriría un problema generalizado y conduciría a una acción correctiva
-equivocada: el esfuerzo de mejora debe dirigirse, en primer término, a ese
-subconjunto de laboratorios.
+({str(conc['pct']).replace('.', ',')}\%), de modo que el esfuerzo de mejora rinde
+más si empieza por ese subconjunto. Aun así, el resto de las no conformidades se
+reparte entre la mayoría de los participantes: la estratificación anterior
+muestra que el hallazgo alcanza al conjunto del programa y no puede tratarse
+como un problema de unos pocos.
 \end{{aviso}}
 """
 
@@ -1274,11 +1285,14 @@ resultados de la ronda muestran un margen amplio de mejora.}} El
 conformidad. La segunda cifra es la relevante desde la perspectiva del paciente:
 basta un resultado erróneo para comprometer una decisión clínica.
 
-\item \textbf{{El problema está concentrado, no generalizado.}}
-{conc['laboratorios']} laboratorios acumulan el
-{str(conc['pct']).replace('.', ',')}\,\% de los resultados no satisfactorios. La
-acción correctiva debe priorizarse sobre ese subconjunto; tratar el hallazgo
-como un problema del sistema completo diluiría el esfuerzo donde más se necesita.
+\item \textbf{{El hallazgo alcanza al conjunto del programa, con un subconjunto
+que concentra una parte desproporcionada.}}
+{correctiva.get('laboratorios', 0)} de {g['laboratorios']} laboratorios
+({str(correctiva.get('pct', 0)).replace('.', ',')}\,\%) quedaron en el estrato de
+acción correctiva, de modo que la mejora requiere acción del conjunto y no de
+unos pocos. Dentro de ese cuadro, {conc['laboratorios']} laboratorios acumulan el
+{str(conc['pct']).replace('.', ',')}\,\% de los resultados no satisfactorios: es
+donde el esfuerzo rinde más al empezar, no el único lugar donde hace falta.
 
 \item \textbf{{Se confirmó un efecto de método entre plataformas de química seca y
 húmeda}} en varios analitos. Evaluarlos agrupados producía un falso negativo —una

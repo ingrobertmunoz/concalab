@@ -99,3 +99,11 @@ support/pdf_*/
 # identificador público de los informes (L-087...). Cruzarlos de-anonimizaría
 # el desempeño de un laboratorio. La plantilla (.ejemplo.json) sí se versiona.
 support/operaciones_labs.json
+
+# La presentación de devolución NO se publica en el portal: se expone en la
+# sesión y se reparte por correo. Lo que se versiona es cómo se genera
+# —scripts/presentacion.py y css/presentacion.css—, no su salida, que es
+# regenerable desde el mismo JSON de la ronda. Vive bajo publicaciones/ para
+# que las rutas relativas a assets/ y css/ sean las mismas al servirla en
+# local; ignorarla es lo que la mantiene fuera de GitHub Pages.
+publicaciones/presentaciones/
