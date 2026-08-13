@@ -408,8 +408,8 @@ def calcular_agrupado(por_analito, por_grupo_pares=frozenset(), sin_evaluar=froz
             # Conteos dentro de cada grupo: el informe los muestra en la tabla
             # resumen. Se calculan aquí para que el navegador no los rehaga.
             for g in grupos:
-                c = Counter(l["clasificacion"] for l in labs if l.get("grupo") == g["nombre"])
-                g["conteos"] = {"A": c["A"], "C": c["C"], "I": c["I"], "NE": c["NE"]}
+                g["conteos"] = conteos_analito(
+                    [l for l in labs if l.get("grupo") == g["nombre"]])
 
             analitos.append({
                 "nombre": nombre, "unidad": unidad, "n": len(filas),
@@ -685,6 +685,28 @@ def desempeno_global(analitos):
     }
 
 
+def conteos_analito(laboratorios):
+    """A/C/I/NE del analito más el % dentro del criterio de aceptación.
+
+    `pct_dentro` es la misma definición que usa consolidar_por_laboratorio(),
+    girada 90°: (A+C) sobre los evaluados. Una alerta está DENTRO del Error
+    Total Permitido, así que no cuenta como incumplimiento, y los NE no entran
+    en el denominador —un analito no evaluado no tiene desempeño que medir, y
+    dividir por ellos castigaría al analito por una decisión del proveedor—.
+
+    Va en el JSON y no en quien dibuja: si el PDF lo derivara de los conteos,
+    validar_informe.py no podría auditarlo y la web podría contarlo distinto.
+    Un analito sin ningún resultado evaluado devuelve None, no 0: no es que le
+    haya ido mal, es que no hay base para pronunciarse.
+    """
+    c = Counter(l["clasificacion"] for l in laboratorios)
+    n = c["A"] + c["C"] + c["I"]
+    return {
+        "A": c["A"], "C": c["C"], "I": c["I"], "NE": c["NE"],
+        "pct_dentro": round((c["A"] + c["C"]) / n * 100, 1) if n else None,
+    }
+
+
 def escribir_json(codigo, analitos, area="quimica", bimodales=None):
     bimodales = bimodales or {}
     tot = Counter()
@@ -703,13 +725,12 @@ def escribir_json(codigo, analitos, area="quimica", bimodales=None):
         no_evaluado = a.get("evaluacion") == "no_evaluada"
         if no_evaluado:
             b = None
-        c = Counter(l["clasificacion"] for l in a["laboratorios"])
         limpios.append({
             **a,
             # Los conteos se calculan aquí y no en el navegador: el JS los
             # recalculaba en dos sitios distintos del mismo archivo, y cada
             # ronda clonaba esa lógica sin forma de auditarla.
-            "conteos": {"A": c["A"], "C": c["C"], "I": c["I"], "NE": c["NE"]},
+            "conteos": conteos_analito(a["laboratorios"]),
             # Un analito sin calificar no es "evaluación confiable": es la señal
             # que usan consolidar_por_laboratorio() y el JS para excluirlo de los
             # conteos por laboratorio y del desempeño global.

@@ -37,6 +37,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from calcular_zscore import (  # noqa: E402
     cargar, robust_mean_sd, _stats, plataforma, unidad_canonica, clasificar,
     analitos_por_grupo_pares, analitos_sin_evaluar, desempeno_global, CAMPOS_INTERNOS,
+    conteos_analito,
     fecha_calculo,
     N_MINIMO, N_MINIMO_GRUPO, SALIDA_DIR, CONFIG_PATH,
 )
@@ -167,8 +168,8 @@ def evaluar(por_analito, especificaciones, por_grupo_pares,
 
             labs.sort(key=lambda l: (l["z_score"] is None, l["z_score"] or 0))
             for g in grupos:
-                c = Counter(l["clasificacion"] for l in labs if l.get("grupo") == g["nombre"])
-                g["conteos"] = {"A": c["A"], "C": c["C"], "I": c["I"], "NE": c["NE"]}
+                g["conteos"] = conteos_analito(
+                    [l for l in labs if l.get("grupo") == g["nombre"]])
 
             gx_all, gs_all, cv_all = _stats([f["valor"] for f in filas])
             analitos.append({
@@ -234,14 +235,13 @@ def escribir_json(codigo, analitos, area="quimica"):
     # modelo CLIA la σ no viene del consenso, así que no hay σ* inflada.
     limpios = []
     for a in analitos:
-        cc = Counter(l["clasificacion"] for l in a["laboratorios"])
         limpios.append({
             **a,
             # Excepción: un analito que la ronda decidió no calificar tampoco
             # entra en el desempeño global ni en el resumen por laboratorio.
             # Ese es el efecto de evaluacion_confiable=False aguas abajo.
             "evaluacion_confiable": a.get("evaluacion") != "no_evaluada",
-            "conteos": {"A": cc["A"], "C": cc["C"], "I": cc["I"], "NE": cc["NE"]},
+            "conteos": conteos_analito(a["laboratorios"]),
             "laboratorios": [
                 {k: v for k, v in l.items() if k not in CAMPOS_INTERNOS}
                 for l in a["laboratorios"]

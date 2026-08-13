@@ -247,6 +247,16 @@ class Validador:
                     self.error(f"{a.get('nombre','?')}: conteos.{k}={c.get(k)} "
                                f"pero hay {v} laboratorios así clasificados")
 
+            # % dentro del criterio: (A+C) sobre los evaluados. Se recalcula
+            # aquí porque el PDF ordena su consolidado por analito con esta
+            # cifra: si viniera mal, la tabla presentaría como mejor analito
+            # uno que no lo es, y nada lo detectaría.
+            n = real["A"] + real["C"] + real["I"]
+            esperado = round((real["A"] + real["C"]) / n * 100, 1) if n else None
+            if c.get("pct_dentro") != esperado:
+                self.error(f"{a.get('nombre','?')}: conteos.pct_dentro="
+                           f"{c.get('pct_dentro')} pero debería ser {esperado}")
+
         # Resumen global.
         r = d.get("resumen") or {}
         tot = {"A": 0, "C": 0, "I": 0, "NE": 0}

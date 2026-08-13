@@ -1030,6 +1030,62 @@ def tabla_analitos(d):
 """
 
 
+def tabla_consolidado_analito(d):
+    """Los mismos conteos que la tabla anterior, girados: qué analitos costaron
+    más a la red de laboratorios. La tabla anterior está en orden de informe y
+    responde «cómo salió este analito»; esta responde «cuáles fueron los
+    difíciles», que es una pregunta distinta y no se contesta leyendo 26 filas
+    en otro orden."""
+    evaluados = [a for a in d["analitos"] if not es_no_evaluado(a)]
+    sin = [a for a in d["analitos"] if es_no_evaluado(a)]
+
+    filas = []
+    for a in sorted(evaluados, key=lambda a: -a["conteos"]["pct_dentro"]):
+        c = a["conteos"]
+        n = c["A"] + c["C"] + c["I"]
+        filas.append(
+            rf"{esc(a['nombre'])} & {n} & {c['A']} & {c['C']} & {c['I']} & {c['NE']} "
+            rf"& {str(c['pct_dentro']).replace('.', ',')}\% \\")
+    for a in sin:
+        # Sin calificación de desempeño: no tiene % que ordenar, pero omitirlo
+        # de la tabla lo haría desaparecer del informe sin explicación.
+        filas.append(rf"{esc(a['nombre'])} & --- & --- & --- & --- "
+                     rf"& {a['conteos']['NE']} & \emph{{no evaluado}} \\")
+    cuerpo = "\n".join(filas)
+    return rf"""
+\subsection{{Consolidado por analito}}
+
+La misma información de la tabla anterior ordenada por \textbf{{\% dentro}} —de mayor
+a menor— para mostrar en qué analitos se concentró la dificultad de la ronda. El
+porcentaje se calcula igual que en el consolidado por laboratorio: los
+satisfactorios más las alertas sobre los resultados evaluados, porque una alerta
+está dentro del Error Total Permitido. Los resultados sin evaluar (NE) se muestran
+aparte y no entran en el cálculo.
+
+Un \% dentro bajo no señala a un laboratorio en particular: indica un analito en el
+que buena parte de la red se apartó del $ET_a$, y es donde una acción de mejora
+alcanza a más participantes a la vez.
+
+\begin{{small}}
+\begin{{longtable}}{{@{{}}lrrrrrr@{{}}}}
+\toprule
+\textbf{{Analito}} & \textbf{{n eval.}} & \textbf{{Satisf.}} & \textbf{{Alerta}} &
+\textbf{{No satisf.}} & \textbf{{NE}} & \textbf{{\% dentro}} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{{Analito}} & \textbf{{n eval.}} & \textbf{{Satisf.}} & \textbf{{Alerta}} &
+\textbf{{No satisf.}} & \textbf{{NE}} & \textbf{{\% dentro}} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+{cuerpo}
+\end{{longtable}}
+\end{{small}}
+"""
+
+
 def ficha_analito(a, i):
     """Bloque por analito: encabezado, estadísticas, aviso y las dos gráficas
     —el mismo contenido que la sección correspondiente del informe web."""
@@ -1453,6 +1509,7 @@ def main():
         seccion_resultados_globales(d),
         tabla_laboratorios(d),
         tabla_analitos(d),
+        tabla_consolidado_analito(d),
         r"\clearpage" + "\n" + r"\section{Resultados por analito}" + "\n"
         + "Cada analito se presenta con sus estadísticas de la ronda, la "
           "distribución de los resultados y el Z-Score de cada laboratorio. "
