@@ -317,7 +317,13 @@
                                 <span>👤</span>
                                 <span>Equipo CONCALAB</span>
                             </div>
-                            <a href="informes/EA-001-2026.html" class="btn btn-outline">Ver Informe</a>
+                            <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                                <!-- El PDF lo genera scripts/informe_pdf.py desde el mismo JSON
+                                     que dibuja la página: ambos dicen lo mismo por construcción. -->
+                                <a href="informes/EA-001-2026-informe.pdf" class="btn btn-outline"
+                                   download>⬇ PDF</a>
+                                <a href="informes/EA-001-2026.html" class="btn btn-outline">Ver Informe</a>
+                            </div>
                         </div>
                     </div>
                 </article>

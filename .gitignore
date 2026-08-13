@@ -8,6 +8,8 @@ support/codigos_laboratorios_secretos.md
 support/firebase-service-account.json
 support/concalab-uasd-64ff4-firebase-adminsdk-fbsvc-c400cdf10b.json
 support/laboratorios_concalab.xlsx
+Agentes.md
+support/equipo.md  
 # Lleva hardcodeados nombres, correos, representantes y teléfonos reales de los
 # laboratorios: es un registro de datos personales, no solo una herramienta.
 support/generar_laboratorios.py
@@ -81,3 +83,13 @@ CLAUDE.md
 # (El directorio público de miembros vive en miembros.html + data/laboratorios.json.)
 support/Labs info.md
 support/LABORATORIOS Y DIRECCION.docx
+
+prompts/
+# Intermedios del informe entregable (.tex y figuras): regenerables con
+# scripts/informe_pdf.py desde el JSON de la ronda.
+support/pdf_*/
+
+# Excepción a la regla *.pdf de arriba: el informe entregable de cada ronda
+# SÍ se publica. Solo lleva identificadores públicos L-NNN, sin nombres de
+# laboratorio ni marcas de equipo.
+!publicaciones/informes/*-informe.pdf

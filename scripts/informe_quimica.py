@@ -165,14 +165,28 @@ def main():
        {CONFIG_PATH} → decisiones_evaluacion.{codigo}.{AREA}.grupo_pares
        (si cambia algo, volver a correr desde 'calcular')
 
-    3. Resolver los casos atípicos con el laboratorio cuando corresponda.
+    3. Decidir si algún analito se publica SIN calificación de desempeño:
+       {CONFIG_PATH} → decisiones_evaluacion.{codigo}.{AREA}.sin_evaluar
+       (exige sin_evaluar_justificacion y sin_evaluar_nota)
 
-  PUBLICAR (a mano, después de lo anterior):
+    4. Resolver los casos atípicos con el laboratorio cuando corresponda.
 
-    Clonar la página de la ronda anterior y apuntar su JSON_URL a
-      data/informes/{codigo}-{AREA}.json
-    Registrar la tarjeta en publicaciones/informes.html
-    Verificar sirviendo el sitio: python3 -m http.server 8765
+  ETAPAS 6-9 (a mano, después de lo anterior). El informe que se publica es
+  el de CLIA; lo anterior es el cálculo de consenso, que queda en local:
+
+    6. python3 scripts/evaluar_clia.py    --codigo {codigo}
+       python3 scripts/validar_informe.py --codigo {codigo} --modelo clia
+
+    7. Armazón HTML de la ronda: publicaciones/informes/{codigo}.html
+       (window.INFORME → modelo 'clia' y el JSON -quimica-clia.json)
+       Registrar la tarjeta en publicaciones/informes.html
+       Verificar sirviendo el sitio: python3 -m http.server 8765
+
+    8. python3 scripts/informe_pdf.py     --codigo {codigo}   # PDF entregable
+    9. python3 scripts/generar_og.py      --codigo {codigo}   # tarjeta al compartir
+
+  El PDF y la tarjeta OG son ESTATICOS: si el JSON cambia, hay que
+  regenerarlos o seguiran mostrando las cifras anteriores.
 """)
     print(f"  {len(etapas)} etapa(s) en {time.time() - t0:.1f}s")
     print("=" * 74)
