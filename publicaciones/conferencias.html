@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Conferencias de CONCALAB-UASD: presentaciones del equipo en congresos y eventos científicos sobre calidad analítica y ensayos de aptitud.">
+    <title>Conferencias - CONCALAB-UASD</title>
+
+    <!-- Open Graph / Twitter: vista previa al compartir el enlace. -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.concalabuasd.com/publicaciones/conferencias.html">
+    <meta property="og:title" content="Conferencias | CONCALAB-UASD">
+    <meta property="og:description" content="Presentaciones del equipo de CONCALAB-UASD en congresos y eventos científicos sobre calidad analítica y ensayos de aptitud.">
+    <meta property="og:image" content="https://www.concalabuasd.com/assets/images/og/concalab.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Conferencias | CONCALAB-UASD">
+    <meta property="og:locale" content="es_DO">
+    <meta property="og:site_name" content="CONCALAB-UASD">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Conferencias | CONCALAB-UASD">
+    <meta name="twitter:description" content="Presentaciones del equipo de CONCALAB-UASD en congresos y eventos científicos sobre calidad analítica y ensayos de aptitud.">
+    <meta name="twitter:image" content="https://www.concalabuasd.com/assets/images/og/concalab.jpg">
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="icon" type="image/x-icon" href="../assets/icons/favicon.ico">
+
+    <!-- Mismo diseño de tarjeta que publicaciones/informes.html, para que las
+         tres páginas de Publicaciones se lean como una sola sección. -->
+    <style>
+        .blog-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .blog-post {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 0;
+            /* El QR de las láminas aterriza en el ancla de la tarjeta: sin este
+               margen, la cabecera fija taparía el título. */
+            scroll-margin-top: 110px;
+        }
+
+        .blog-post:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-3px);
+        }
+
+        .blog-image {
+            min-height: 250px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .blog-content {
+            padding: 2rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            flex-wrap: wrap;
+        }
+
+        .blog-category {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .blog-title {
+            font-size: 1.75rem;
+            color: var(--primary-color);
+            margin-bottom: 0.4rem;
+        }
+
+        .blog-subtitle {
+            color: var(--secondary-dark);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .blog-excerpt {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Material relacionado: enlaces discretos, no compiten con el botón
+           de la presentación, que es lo que busca quien llega por el QR. */
+        .blog-related {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .blog-related a {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .blog-post {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-image {
+                min-height: 140px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav-overlay"></div>
+
+    <header class="header">
+        <div class="header-container">
+            <a href="../index.html" class="logo"
+                style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 1rem;">
+                <img src="../assets/images/logo-concalab.png" alt="Logo CONCALAB-UASD"
+                    onerror="this.style.display='none'">
+                <div class="logo-text">
+                    <div class="logo-title">CONCALAB-UASD</div>
+                    <div class="logo-subtitle">Control de Calidad de Laboratorios</div>
+                </div>
+            </a>
+
+            <nav class="nav-main">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="../index.html" class="nav-link">Inicio</a></li>
+                    <li class="nav-item dropdown active">
+                        <a href="#" class="nav-link">Publicaciones</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="protocolos.html" class="nav-link">Protocolos</a></li>
+                            <li><a href="informes.html" class="nav-link">Informes</a></li>
+                            <li><a href="conferencias.html" class="nav-link active">Conferencias</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="../portal-educativo.html" class="nav-link">Educación</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Servicios</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../servicios.html" class="nav-link">Nuestros Servicios</a></li>
+                            <li><a href="../resultados.html" class="nav-link">Reportar Resultados</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="../miembros.html" class="nav-link">Miembros</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Nosotros</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../sobre-nosotros/quienes-somos.html" class="nav-link">Quiénes Somos</a></li>
+                            <li><a href="../sobre-nosotros/historia.html" class="nav-link">Historia</a></li>
+                            <li><a href="../sobre-nosotros/marco-legal.html" class="nav-link">Marco Legal</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="../contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Buscar...">
+                    <button class="search-btn" aria-label="Buscar">🔍</button>
+                </div>
+            </nav>
+
+            <button class="menu-toggle" aria-label="Menú">☰</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in-down">
+                <h1 class="hero-title">Conferencias</h1>
+                <p class="hero-subtitle">Presentaciones del equipo de CONCALAB-UASD en congresos y eventos
+                    científicos</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="blog-grid">
+
+                <!-- XXII Congreso CODOBIO 2026. Es el destino del QR impreso en las
+                     láminas: el ancla #codobio-2026 no debe cambiar, o los QR que el
+                     público fotografió dejan de llevar a algún sitio. El PDF lo exporta
+                     scripts/presentacion_congreso.py --portal (solo láminas, sin notas
+                     del orador). -->
+                <article class="blog-post reveal" id="codobio-2026">
+                    <div class="blog-image">🎤</div>
+                    <div class="blog-content">
+                        <span class="blog-category">Congreso</span>
+                        <h2 class="blog-title">Situación actual de los resultados de Química Clínica en la
+                            República Dominicana</h2>
+                        <p class="blog-subtitle">Ensayo de aptitud: 37 laboratorios participantes</p>
+                        <div class="blog-meta">
+                            <span>📅 26 de noviembre de 2026</span>
+                            <span>📍 XXII Congreso Nacional de Profesionales del Laboratorio Clínico (CODOBIO)</span>
+                            <span>🎤 Mtro. Robert Muñoz Rivera</span>
+                        </div>
+                        <p class="blog-excerpt">
+                            Desempeño analítico de 37 laboratorios clínicos dominicanos en la ronda
+                            EA-001-2026, evaluado frente al <strong>Error Total Permitido de CLIA</strong>, y
+                            cómo CONCALAB-UASD automatiza con un agente de IA la importación, el cálculo y los
+                            indicadores de desempeño, con una persona que decide.
+                        </p>
+                        <div class="blog-footer">
+                            <div class="blog-related">
+                                Material relacionado:
+                                <a href="informes/EA-001-2026.html">Informe EA-001-2026</a> ·
+                                <a href="https://www.researchgate.net/publication/415301255_Analytical_performance_in_clinical_chemistry_an_observational_study_of_37_Dominican_clinical_laboratories_against_international_total_allowable_error_specifications"
+                                    target="_blank" rel="noopener">Artículo (ResearchGate)</a>
+                            </div>
+                            <a href="congresos/CODOBIO-2026-situacion-quimica-clinica.pdf" class="btn btn-outline"
+                                target="_blank" rel="noopener">Ver la presentación (PDF)</a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CONCALAB-UASD</h3>
+                    <p>Control de Calidad de Laboratorios</p>
+                    <p>Universidad Autónoma de Santo Domingo</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="../servicios.html">Servicios</a></li>
+                        <li><a href="../portal-educativo.html">Educación</a></li>
+                        <li><a href="../contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Publicaciones</h3>
+                    <ul class="footer-links">
+                        <li><a href="protocolos.html">Protocolos</a></li>
+                        <li><a href="informes.html">Informes</a></li>
+                        <li><a href="conferencias.html">Conferencias</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>📍 Santo Domingo, República Dominicana</p>
+                    <p>📧 info@concalab.uasd.edu.do</p>
+                    <p>📞 +1 (809) XXX-XXXX</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 CONCALAB-UASD. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/scroll-reveal.js"></script>
+</body>
+
+</html>

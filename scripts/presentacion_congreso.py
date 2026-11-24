@@ -72,14 +72,18 @@ PLANTILLA = RAIZ / "congreso" / "3.-Plantilla_Presentaciones_Congreso_2026.pptx"
 CARPETA = RAIZ / "congreso" / "26Nov2026_04-20pm_Salon_Pitiusa_RobertMunoz"
 ARCHIVO = "Situacion_Quimica_Clinica_RD_CONCALAB-UASD.pptx"
 FIGS = RAIZ / "congreso" / "_figs"
-# PDF que se publica en el portal educativo (solo láminas: las notas del orador
+# PDF que se publica en la página de Conferencias (solo láminas: las notas del orador
 # NO van, porque llevan indicaciones internas). No va en publicaciones/
 # presentaciones/, que está excluida a propósito del despliegue. El repositorio
 # ignora *.pdf: este archivo se agregó con `git add -f` y desde entonces se sigue.
 PDF_PORTAL = RAIZ / "publicaciones" / "congresos" / "CODOBIO-2026-situacion-quimica-clinica.pdf"
 
-URL_PORTAL = "https://www.concalabuasd.com/portal-educativo.html#congreso-2026"
-URL_PORTAL_CORTA = "concalabuasd.com  ›  Educación"
+# Destino del QR de la portada y de las láminas de CONCALAB y «Para saber más»:
+# la tarjeta de esta conferencia en Publicaciones › Conferencias. Antes apuntaba a
+# una sección del portal educativo, que se retiró por no encajar en esa página.
+# El ancla #codobio-2026 no debe cambiar una vez entregadas las láminas.
+URL_PORTAL = "https://www.concalabuasd.com/publicaciones/conferencias.html#codobio-2026"
+URL_PORTAL_CORTA = "concalabuasd.com  ›  Conferencias"
 URL_ARTICULO = ("https://www.researchgate.net/publication/415301255_Analytical_"
                 "performance_in_clinical_chemistry_an_observational_study_of_37_"
                 "Dominican_clinical_laboratories_against_international_total_"
@@ -621,8 +625,9 @@ def construir(d, m):
                                        (URL_PORTAL_CORTA, 11, False, GRIS_TXT)],
           alinear=PP_ALIGN.CENTER, espacio=0)
     s.notes_slide.notes_text_frame.text = (
-        "Mientras el moderador presenta: dejar el QR a la vista. Lleva al portal "
-        "educativo de CONCALAB, donde están el informe interactivo y el artículo.\n\n"
+        "Mientras el moderador presenta: dejar el QR a la vista. Lleva a la página "
+        "de Conferencias de CONCALAB, con esta presentación en PDF, el informe "
+        "interactivo y el artículo.\n\n"
         "Presentarse en una línea —científico de datos de CONCALAB— y pasar "
         "directo a «lo que no se mide, no se mejora»: la charla empieza por la "
         "medición, no por los porcentajes.")
@@ -1401,9 +1406,9 @@ la innovación inteligente tenga sentido humano.""")
 
     # 21 ─ Para saber más ───────────────────────────────────────────────────
     s = mz.lamina("Para saber más", notas="""
-Todo lo que mostré está publicado. El primer QR lleva al portal de CONCALAB, con el
-informe completo de la ronda: cada laboratorio puede buscar su código y ver cada
-analito. El segundo, al artículo en ResearchGate.
+Todo lo que mostré está publicado. El primer QR lleva a la página de Conferencias de
+CONCALAB, con esta presentación y el informe completo de la ronda: cada laboratorio
+puede buscar su código y ver cada analito. El segundo, al artículo en ResearchGate.
 
 Y quiero reconocer al equipo: este trabajo es de un equipo de las escuelas de
 Bioanálisis y de Matemática de la UASD. Sus nombres están en pantalla.""")
