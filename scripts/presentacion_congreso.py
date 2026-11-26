@@ -112,10 +112,12 @@ EJEMPLO_PASO = 5
 # los laboratorios; presentarla como el mejor caso diría lo contrario de lo que
 # pasó. Ambos paneles usan la misma escala relativa (±EXTREMOS_ESCALA de X*).
 EXTREMOS = ("Colesterol HDL", "ALT (TGP)")
+# Segundo analito crítico, justo después de la glucosa (mismo % dentro del criterio).
+ANEXO = "Creatinina"
 EXTREMOS_ESCALA = 0.6
 
 EXPOSITOR = "Mtro. Robert Muñoz Rivera"
-CARGO = "Científico de datos · CONCALAB-UASD"
+CARGO = "Científico de datos · CONCALAB-UASD  Escuela de Matemática, Facultad de Ciencias"
 AUTORES = [
     "Mariolga Roques Ortiz", "Magdalena Yvelisse Villar Diroche",
     "Leonardo Andrés Rosario", 
@@ -641,7 +643,7 @@ def construir(d, m):
     # calidad, sin autor: suele atribuirse a Drucker y el Drucker Institute lo
     # niega. Kelvin (1883) queda al pie como origen documentado de la idea.
     def principio(con_giro):
-        s = mz.lamina("Medir la medición", notas=(
+        s = mz.lamina("Medir la MEDICIÓN", notas=(
             """
 El giro, despacio:
 
@@ -697,7 +699,7 @@ del programa y qué podemos hacer.""")
         (f"**Objetivo:** describir el desempeño analítico de {r['laboratorios']} laboratorios "
          "clínicos dominicanos frente al error total permitido de CLIA, y mostrar cómo un "
          "agente de IA automatiza la importación, el cálculo y la generación de los "
-         "indicadores de desempeño, con una persona que decide.",
+         "indicadores de desempeño, con un equipo (CONCALAB) que decide.",
          18, False, TINTA)], ancla=MSO_ANCHOR.MIDDLE)
     # Recorrido: tres flechas encadenadas (progresión, no lista), cada etapa con
     # la pregunta que responde. Azul para el diagnóstico, naranja para el
@@ -705,7 +707,7 @@ del programa y qué podemos hacer.""")
     recorrido = [
         ("1 · Medir la medición", NAVY,
          "¿Quién verifica que el número es correcto?",
-         "Sistema de medida · control interno · ensayo de aptitud · criterio CLIA"),
+         "Proceso de medida · control interno · ensayo de aptitud · criterio CLIA"),
         ("2 · Lo que encontramos", "1D5C85",
          "¿Qué tan exactos fueron los resultados?",
          f"{r['laboratorios']} laboratorios · {m['NAnalitos']} analitos · "
@@ -730,38 +732,55 @@ del programa y qué podemos hacer.""")
         texto(s, x + 0.1, 4.0, 3.8, 0.8, [(pregunta, 19, True, NAVY)])
         texto(s, x + 0.1, 4.85, 3.8, 1.0, [(detalle, 15, False, GRIS_TXT)])
 
-    # 5 ─ Sistema de medida ─────────────────────────────────────────────────
-    s = mz.lamina("Un laboratorio es un sistema de medida",
-                  "Y como todo sistema de medida, se verifica contra una referencia externa",
+    # 5 ─ Proceso de medida ────────────────────────────────────────────────
+    # Precisión metrológica: el laboratorio realiza un PROCESO de medida (VIM 2.1,
+    # «medición»); el SISTEMA de medida (VIM 3.2: instrumentos, reactivos e
+    # insumos) es solo una parte, operada por personal según un procedimiento.
+    # Antes la lámina decía «sistema» e incluía personal y procedimiento, que el
+    # VIM 3.2 no abarca. Definiciones verificadas en jcgm.bipm.org/vim.
+    s = mz.lamina("Un laboratorio es un proceso de medida",
+                  "Y como todo proceso de medida, se verifica contra una referencia externa",
                   notas="""
-Lo digo con el vocabulario de la metrología. El Vocabulario
-Internacional de Metrología define un sistema de medida como un conjunto de
-instrumentos y otros dispositivos, «incluidos reactivos e insumos». Esa
-definición describe un laboratorio clínico casi palabra por palabra.
+Lo digo con el vocabulario de la metrología. El Vocabulario Internacional de
+Metrología define la medición como un proceso: obtener experimentalmente valores que
+puedan atribuirse razonablemente a una magnitud. Eso es lo que hace un laboratorio.
 
-El resultado no lo produce el analizador solo: lo produce todo el sistema.
-Una calibración desactualizada, un reactivo mal conservado o un procedimiento mal
-ejecutado desplazan el resultado aunque el equipo funcione perfectamente.
+Dentro de ese proceso está el sistema de medida, que el VIM define como los
+instrumentos y dispositivos, «incluidos reactivos e insumos»: el analizador, los
+reactivos, la calibración. Y ese sistema lo operan personas, siguiendo un
+procedimiento, el POE.
 
-Y a ningún instrumento de medida se le cree sin verificarlo contra una referencia.""")
-    piezas = ["Analizador", "Reactivos", "Calibración", "Personal",
-              "Procedimiento"]
-    for i, t in enumerate(piezas):
-        caja(s, 0.8, 1.75 + i * 0.8, 3.3, 0.66, [(t, True)], NAVY, size=19)
-    flecha = s.shapes.add_shape(MSO_SHAPE.RIGHT_ARROW, Inches(4.35), Inches(3.15),
-                                Inches(1.0), Inches(0.9))
+El resultado no lo produce el analizador solo: lo produce todo el proceso. Una
+calibración desactualizada, un reactivo mal conservado, un error de transcripción o
+un procedimiento mal ejecutado desplazan el resultado aunque el equipo funcione
+perfectamente.
+
+Por eso el ensayo de aptitud verifica el proceso completo, no solo el equipo: detecta
+tanto el sesgo de una plataforma como un error de transcripción. Y a ningún proceso
+de medida se le cree sin verificarlo contra una referencia.""")
+    # El sistema de medida (VIM 3.2), enmarcado; debajo, quien lo opera y cómo.
+    rect(s, 0.7, 1.62, 3.5, 2.78, "D6F3F7")
+    texto(s, 0.7, 1.64, 3.5, 0.36, [("Sistema de medida", 14, True, NAVY)],
+          alinear=PP_ALIGN.CENTER, espacio=0)
+    for i, pieza in enumerate(["Analizador", "Reactivos", "Calibración"]):
+        caja(s, 0.9, 2.02 + i * 0.78, 3.1, 0.62, [(pieza, True)], NAVY, size=19)
+    for i, pieza in enumerate(["Personal", "Procedimiento (POE)"]):
+        caja(s, 0.9, 4.55 + i * 0.72, 3.1, 0.58, [(pieza, True)], "1D5C85", size=18)
+    flecha = s.shapes.add_shape(MSO_SHAPE.RIGHT_ARROW, Inches(4.45), Inches(3.3),
+                                Inches(0.95), Inches(0.85))
     flecha.fill.solid(); flecha.fill.fore_color.rgb = rgb(CIAN); flecha.line.fill.background()
-    caja(s, 5.6, 2.75, 2.6, 1.7, [("Resultado", True), ("del paciente", False)],
+    caja(s, 5.6, 2.9, 2.6, 1.6, [("Resultado", True), ("del paciente", False)],
          NARANJA, size=22)
-    texto(s, 8.6, 1.8, 4.2, 4.0, [
-        ("**Sistema de medida**: uno o más instrumentos y otros dispositivos, "
-         "**incluidos reactivos e insumos**, que producen los valores medidos.",
-         17, False, TINTA),
-        ("Si cualquier pieza se desplaza, el resultado se desplaza con ella.",
-         17, False, GRIS_TXT),
+    texto(s, 8.55, 1.75, 4.25, 4.1, [
+        ("**Medición**: proceso de obtener experimentalmente valores que pueden "
+         "atribuirse razonablemente a una magnitud.", 16, False, TINTA),
+        ("**Sistema de medida**: instrumentos y otros dispositivos, **incluidos "
+         "reactivos e insumos**.", 16, False, TINTA),
+        ("Si cualquier pieza del proceso se desplaza, el resultado se desplaza con ella.",
+         16, False, GRIS_TXT),
     ], espacio=12)
-    fuente(s, "Vocabulario Internacional de Metrología (VIM), JCGM 200:2012, "
-              "definición 3.2 «measuring system» (traducción propia).")
+    fuente(s, "VIM, JCGM 200:2012: definiciones 2.1 «measurement» y 3.2 «measuring system» "
+              "(traducción propia).")
 
     # 6 ─ Control interno ───────────────────────────────────────────────────
     fig_diana(FIGS / "diana.png")
@@ -1035,8 +1054,8 @@ el seguimiento de un paciente con diabetes, recibir uno u otro número.
 
 Más allá del dato, la vida: detrás de cada punto hay un paciente.
 
-Y fíjense en algo que nos lleva a la siguiente lámina: la mayoría coincide alrededor
-del valor asignado. Si el material fuera el problema, se desviarían todos juntos.
+Y fíjense en algo que retomaremos: la mayoría coincide alrededor del valor
+asignado. Si el material fuera el problema, se desviarían todos juntos.
 NO mencionar códigos de laboratorio.""")
     imagen(s, FIGS / "ejemplo.png", 0.7, 1.6, h=4.3)
     texto(s, 9.85, 1.85, 3.0, 4.1, [
@@ -1048,14 +1067,54 @@ NO mencionar códigos de laboratorio.""")
     fuente(s, f"Fuente: {codigo}, CONCALAB-UASD. Los triángulos son resultados fuera "
               "del eje, con su valor.")
 
+    # 13b2 ─ Otro analito crítico ─────────────────────────────────────────
+    # Justo después de la glucosa: las dos dan el mismo % dentro del criterio,
+    # casi el de la ronda, así que son el «caso típico» con dos analitos que todos
+    # conocen. No va entre HDL y ALT para no romper la pareja «los dos extremos».
+    # Por qué es crítica: artículo, sección 1.1 (estima la función renal y ajusta
+    # la dosis de los fármacos que el riñón elimina).
+    a = buscar(d, ANEXO)
+    xa = a["valor_asignado"]
+    v = [l["resultado"] for l in a["laboratorios"] if l.get("resultado") is not None]
+    c = a["conteos"]
+    u = a["eta"]["unidad"]
+    fig_tira(a, FIGS / "anexo.png", paso=0.08,
+             xlim=(xa * (1 - EXTREMOS_ESCALA), xa * (1 + EXTREMOS_ESCALA)), unidad=u)
+    s = mz.lamina(f"Otro analito crítico: {a['nombre']}",
+                  f"Valor asignado {num(xa, 2)} {u} · la banda celeste es el límite de CLIA "
+                  f"· escala ±{EXTREMOS_ESCALA * 100:.0f} %",
+                  notas=f"""
+Y no es solo la glucosa. La {a['nombre'].lower()} es uno de los analitos más exigentes: con ella se estima la función del
+riñón y se ajusta la dosis de los medicamentos que el riñón elimina (lo dice el
+artículo, sección 1.1). Sus valores normales son pequeños, así que una desviación
+mínima pesa mucho.
+
+Mismo suero para {len(v)} laboratorios, valor asignado {num(xa, 2)} {u}, y CLIA acepta
+±{num(a['eta']['delta_e'], 2)} {u}. {c['A'] + c['C']} de {len(v)} quedaron dentro del límite ({num(c['pct_dentro'])} %),
+exactamente lo mismo que la glucosa, y prácticamente lo que dio la ronda completa. Los resultados van de
+{num(min(v), 2)} a {num(max(v), 2)} {u}.
+
+Ustedes conocen mejor que yo lo que cambia, para un paciente renal, recibir uno u
+otro número.
+
+[Si el tiempo aprieta, esta es la lámina que se puede pasar más rápido].""")
+    imagen(s, FIGS / "anexo.png", 0.7, 1.6, h=4.3)
+    texto(s, 9.85, 1.85, 3.0, 4.1, [
+        (f"**{c['A'] + c['C']} de {len(v)}**", 34, False, NAVY),
+        ("dentro del límite de CLIA", 18, False, TINTA),
+        (f"{num(c['pct_dentro'])} % — la ronda completa: {num(pct_ronda)} %", 16, False, GRIS_TXT),
+        ("Estima la función renal y ajusta la dosis de los fármacos.", 15, False, GRIS_TXT),
+    ], espacio=6)
+    fuente(s, f"Fuente: {codigo}, CONCALAB-UASD. Uso clínico: artículo del equipo, sección 1.1. "
+              "Triángulos: resultados fuera del eje, con su valor.")
     # 13c/13d ─ Los extremos ─────────────────────────────────────────────
     # Una lámina por analito, con la composición de la glucosa: en una sola
     # lámina con dos paneles se veía cargada. Misma escala relativa en ambas
     # (±EXTREMOS_ESCALA de X*) para que la dispersión se compare con justicia.
     notas_ext = {
         0: """
-Para que no quede la duda de si la glucosa fue un caso elegido, veamos los dos
-extremos, con la misma escala relativa.
+Para que no quede la duda de si la glucosa y la creatinina fueron casos elegidos,
+veamos los dos extremos, con la misma escala relativa.
 
 El {n}: uno de los analitos más bajos de la ronda, {p} % dentro del criterio. Los
 puntos se dispersan mucho más allá de la banda, hacia los dos lados. Es uno de los
@@ -1095,53 +1154,6 @@ desempeño: de hecho, es el analito más disperso de la ronda.""",
         fuente(s, f"Fuente: {codigo}, CONCALAB-UASD. Los triángulos son resultados fuera "
                   "del eje, con su valor.")
 
-    # 13e ─ Los dos errores ──────────────────────────────────────────────
-    # Después de los tres analitos: el público acaba de ver puntos fuera de la
-    # banda y aquí se dice qué le cuesta cada uno al paciente. «Error tipo I/II»
-    # es vocabulario del expositor (estadística); «falso positivo/negativo», el
-    # de la sala: van juntos. Contenido del propio artículo (introducción,
-    # «Falsos positivos y falsos negativos»). Prepara la lámina de IA, que
-    # «clasifica mal al paciente».
-    s = mz.lamina("Más allá del dato: los dos errores que paga el paciente",
-                  "Un resultado fuera del límite no es «impreciso»: produce una clasificación equivocada",
-                  notas="""
-En estadística los llamamos error tipo I y error tipo II. Ustedes los conocen como
-falso positivo y falso negativo. [Señalar cada columna].
-
-El falso positivo: un paciente sano con un resultado desviado hacia lo patológico.
-Si nadie pide una prueba confirmatoria, queda medicado durante meses o años con un
-fármaco que no necesita, con sus efectos adversos.
-
-El falso negativo: un paciente enfermo con un resultado que cae en lo normal. Se va
-a su casa tranquilo, y el tratamiento que sí necesita se retrasa. Es el más difícil
-de detectar, porque un resultado normal no despierta sospechas.
-
-Piensen en la glucosa que vimos: un laboratorio que mide alto puede diagnosticar
-diabetes a quien no la tiene; uno que mide bajo puede dejarla pasar. Ustedes conocen
-mejor que yo esos casos.
-
-Y lo más importante: un sesgo sistemático no se equivoca con un paciente. Se
-equivoca con una fracción de todos los que atiende ese laboratorio, todos los días,
-mientras nadie lo detecte.""")
-    errores = [("Falso positivo", "error tipo I", ROJO.lstrip("#"),
-                "Un paciente **sano** recibe un diagnóstico y un tratamiento que **no necesita**: "
-                "medicado durante meses o años, con sus efectos adversos."),
-               ("Falso negativo", "error tipo II", NARANJA,
-                "Un paciente **enfermo** recibe un resultado **normal**: se retrasa el "
-                "tratamiento que sí necesita.")]
-    for i, (a, b, color, cuerpo) in enumerate(errores):
-        x = 0.8 + i * 6.0
-        caja(s, x, 1.75, 5.8, 0.95, [(a, True), (b, False)], color, size=22)
-        texto(s, x + 0.1, 2.85, 5.6, 1.4, [(cuerpo, 19, False, TINTA)])
-    rect(s, 0.8, 4.45, 11.85, 1.15, "F3F6F8")
-    rect(s, 0.8, 4.45, 0.09, 1.15, NAVY)
-    texto(s, 1.1, 4.48, 11.4, 1.1, [
-        ("Un sesgo sistemático no se equivoca con un paciente: **reclasifica a una "
-         "fracción de todos los que atiende** el laboratorio.", 20, False, NAVY)],
-          ancla=MSO_ANCHOR.MIDDLE)
-    fuente(s, "Fuente: artículo del equipo CONCALAB-UASD (ResearchGate), sección 1.2, "
-              "«Falsos positivos y falsos negativos».")
-
     # 14 ─ Lo que no lo explica ─────────────────────────────────────────────
     s = mz.lamina("Lo que descartamos antes de concluir",
                   "Ninguna de estas causas explica el resultado",
@@ -1166,6 +1178,56 @@ laboratorios, y la retiramos sin calificar. El desempeño global no cambió.""")
         y = 1.8 + i * 1.35
         caja(s, 0.8, y, 3.6, 1.05, [(a, True)], NAVY, size=19)
         texto(s, 4.7, y, 8.0, 1.05, [(t, 19, False, TINTA)], ancla=MSO_ANCHOR.MIDDLE)
+
+    # 14b ─ Los dos errores ──────────────────────────────────────────────
+    # DESPUÉS de «Lo que descartamos»: primero se demuestra que el resultado es
+    # real (no es el material, ni la unidad, ni los ceros) y solo entonces se dice
+    # qué le cuesta al paciente. «Error tipo I/II»
+    # es vocabulario del expositor (estadística); «falso positivo/negativo», el
+    # de la sala: van juntos. Contenido del propio artículo (introducción,
+    # «Falsos positivos y falsos negativos»). Prepara la lámina de IA, que
+    # «clasifica mal al paciente».
+    s = mz.lamina("Más allá del dato: los dos errores que paga el paciente",
+                  "Un resultado fuera del límite no es «impreciso»: produce una clasificación equivocada",
+                  notas="""
+Ya vimos que el resultado es real. Ahora, lo que le cuesta al paciente.
+
+En estadística los llamamos error tipo I y error tipo II. Ustedes los conocen como
+falso positivo y falso negativo. [Señalar cada columna].
+
+El falso positivo: un paciente sano con un resultado desviado hacia lo patológico.
+Si nadie pide una prueba confirmatoria, queda medicado durante meses o años con un
+fármaco que no necesita, con sus efectos adversos.
+
+El falso negativo: un paciente enfermo con un resultado que cae en lo normal. Se va
+a su casa tranquilo, y el tratamiento que sí necesita se retrasa. Es el más difícil
+de detectar, porque un resultado normal no despierta sospechas.
+
+Piensen en la glucosa y la creatinina que vimos: un laboratorio que mide alto puede
+diagnosticar diabetes a quien no la tiene; uno que mide bajo puede dejarla pasar.
+Ustedes conocen mejor que yo esos casos.
+
+Y lo más importante: un sesgo sistemático no se equivoca con un paciente. Se
+equivoca con una fracción de todos los que atiende ese laboratorio, todos los días,
+mientras nadie lo detecte.""")
+    errores = [("Falso positivo", "error tipo I", ROJO.lstrip("#"),
+                "Un paciente **sano** recibe un diagnóstico y un tratamiento que **no necesita**: "
+                "medicado durante meses o años, con sus efectos adversos."),
+               ("Falso negativo", "error tipo II", NARANJA,
+                "Un paciente **enfermo** recibe un resultado **normal**: se retrasa el "
+                "tratamiento que sí necesita.")]
+    for i, (a, b, color, cuerpo) in enumerate(errores):
+        x = 0.8 + i * 6.0
+        caja(s, x, 1.75, 5.8, 0.95, [(a, True), (b, False)], color, size=22)
+        texto(s, x + 0.1, 2.85, 5.6, 1.4, [(cuerpo, 19, False, TINTA)])
+    rect(s, 0.8, 4.45, 11.85, 1.15, "F3F6F8")
+    rect(s, 0.8, 4.45, 0.09, 1.15, NAVY)
+    texto(s, 1.1, 4.48, 11.4, 1.1, [
+        ("Un sesgo sistemático no se equivoca con un paciente: **reclasifica a una "
+         "fracción de todos los que atiende** el laboratorio.", 20, False, NAVY)],
+          ancla=MSO_ANCHOR.MIDDLE)
+    fuente(s, "Fuente: artículo del equipo CONCALAB-UASD (ResearchGate), sección 1.2, "
+              "«Falsos positivos y falsos negativos».")
 
     # 15 ─ Decreto 350-04 ───────────────────────────────────────────────────
     s = mz.lamina("¿Por qué era esperable?",
@@ -1433,6 +1495,7 @@ Bioanálisis y de Matemática de la UASD. Sus nombres están en pantalla.""")
     imagen(s, FIGS / "qr_portal.png", 9.4, 1.8, h=2.6)
     texto(s, 8.9, 4.45, 3.6, 0.8, [("concalabuasd.com", 16, True, NAVY)],
           alinear=PP_ALIGN.CENTER)
+
     return mz
 
 
